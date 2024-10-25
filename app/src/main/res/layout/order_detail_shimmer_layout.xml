@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/crdProductOrderDetails1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="@dimen/_20sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_15sdp">
+
+            <TextView
+                android:id="@+id/orderIdText1"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/gray_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/orderId1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/gray_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/orderIdText1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/viewOrder1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/gray_editext_bg"
+                app:layout_constraintTop_toBottomOf="@id/orderIdText1" />
+
+            <TextView
+                android:id="@+id/txvProductName1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toStartOf="@+id/ivProductImage1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewOrder1" />
+
+            <ImageView
+                android:id="@+id/ivProductImage1"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/image_gray_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewOrder1" />
+
+            <TextView
+                android:id="@+id/txtProductPrice1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toStartOf="@+id/ivProductImage1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txvProductName1" />
+
+            <View
+                android:id="@+id/viewOffer1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/gray_editext_bg"
+                app:layout_constraintTop_toBottomOf="@id/ivProductImage1" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/crdOrdered1"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardBackgroundColor="@color/gray_bg"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewOffer1">
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/txtOrderedText1"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toEndOf="@id/crdOrdered1"
+                app:layout_constraintTop_toBottomOf="@id/viewOffer1" />
+
+            <TextView
+                android:id="@+id/txvOrderDate1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size12"
+                app:layout_constraintBottom_toTopOf="@+id/viewDelivered1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/crdOrdered1"
+                app:layout_constraintTop_toBottomOf="@+id/txtOrderedText1" />
+
+            <View
+                android:id="@+id/viewOrdered1"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_19sdp"
+                android:background="@color/primary_color"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/crdOrdered1" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/crdDelivered1"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/primary_color"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewOrdered1">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_check"
+                    app:tint="@color/white" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/txtDeliveredText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_55sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/delivered"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@id/crdDelivered1"
+                app:layout_constraintTop_toBottomOf="@id/txtOrderedText1" />
+
+            <View
+                android:id="@+id/viewDelivered1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@color/gray_editext_bg"
+                app:layout_constraintTop_toBottomOf="@id/crdDelivered1" />
+
+            <View
+                android:id="@+id/productRating1"
+                android:layout_width="@dimen/_133sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:background="@color/gray_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewDelivered1" />
+
+            <TextView
+                android:id="@+id/txvWriteAReview1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="@dimen/text_size16"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/productRating1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txvMightIntrestText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@color/gray_bg"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/crdProductOrderDetails1" />
+
+    <View
+        android:id="@+id/crdIntrestedRcv1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_110sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txvMightIntrestText1" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/crdOrderShippingDetails1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:padding="@dimen/_20sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/crdIntrestedRcv1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtShippingDetailText1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <View
+                android:id="@+id/viewShippingDetails1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                app:layout_constraintTop_toBottomOf="@id/txtShippingDetailText1" />
+
+            <TextView
+                android:id="@+id/txvName1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewShippingDetails1" />
+
+            <TextView
+                android:id="@+id/txvAddress11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvName1" />
+
+            <TextView
+                android:id="@+id/txvAddress21"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvAddress11" />
+
+            <TextView
+                android:id="@+id/txvCity1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvAddress21" />
+
+            <TextView
+                android:id="@+id/txvState1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/roboto_regular"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvCity1" />
+
+            <TextView
+                android:id="@+id/txvPincode1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txvState1"
+                app:layout_constraintTop_toBottomOf="@+id/txvCity1" />
+
+            <TextView
+                android:id="@+id/txvMobileNumber1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@color/gray_bg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvState1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/crdOrderDetails1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:padding="@dimen/_20sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crdOrderShippingDetails1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtPriceDetailText1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <View
+                android:id="@+id/viewPriceDetails1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_editext_bg"
+                app:layout_constraintTop_toBottomOf="@id/txtPriceDetailText1" />
+
+            <TextView
+                android:id="@+id/txvPaymentModeText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPriceDetails1" />
+
+            <TextView
+                android:id="@+id/txvPaymentMode1"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPriceDetails1" />
+
+            <TextView
+                android:id="@+id/txvSellingPriceText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textColor="@color/gray_bg"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvPaymentModeText1" />
+
+            <TextView
+                android:id="@+id/txvSellingPrice1"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvPaymentMode1" />
+
+            <TextView
+                android:id="@+id/txvDiscountText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvSellingPriceText1" />
+
+            <TextView
+                android:id="@+id/txvDiscount1"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvSellingPrice1" />
+
+            <TextView
+                android:id="@+id/txvOfferPriceText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvDiscountText1" />
+
+            <TextView
+                android:id="@+id/txvOfferPrice1"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvDiscount1" />
+
+            <TextView
+                android:id="@+id/txvShippingFeeText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvOfferPriceText1" />
+
+            <TextView
+                android:id="@+id/txvShippingFee1"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvOfferPrice1" />
+
+            <View
+                android:id="@+id/viewShippingFee1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_editext_bg"
+                app:layout_constraintTop_toBottomOf="@id/txvShippingFeeText1" />
+
+            <TextView
+                android:id="@+id/txvTotalPriceText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewShippingFee1" />
+
+            <TextView
+                android:id="@+id/txvTotalPrice1"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewShippingFee1" />
+
+            <View
+                android:id="@+id/viewMode1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_editext_bg"
+                app:layout_constraintTop_toBottomOf="@id/txvTotalPrice1" />
+
+
+            <View
+                android:id="@+id/crdPaymentMode1"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewMode1" />
+
+            <TextView
+                android:id="@+id/txvModeText1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/gray_bg"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/text_size15"
+                app:layout_constraintStart_toEndOf="@+id/crdPaymentMode1"
+                app:layout_constraintTop_toBottomOf="@+id/viewMode1" />
+
+            <TextView
+                android:id="@+id/txvPaymentMdName1"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvModeText1" />
+
+            <TextView
+                android:id="@+id/txvModePrice1"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@color/gray_bg"
+                android:textSize="@dimen/text_size15"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvModeText1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="subCategoriesModel"
+            type="com.uoons.india.ui.product_list.model.SubCategoriesModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_3sdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_133sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:id="@+id/crdSubCategories"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/primary_color_light_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/txvSaliantFeaturesThree"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:textSize="@dimen/text_size15"
+                android:gravity="center"
+                android:text="@{subCategoriesModel.category}"
+                android:textColor="@color/primary_color"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit ="marquee_forever"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:scrollHorizontally="true"/>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

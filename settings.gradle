@@ -1,0 +1,6 @@
+rootProject.name = "Uoons"
+include ':app'
+// Include the paranoid module
+//include ':paranoid-0.2.3'
+//project(':paranoid-0.2.3').projectDir = new File(rootDir, 'paranoid-0.2.3')
+

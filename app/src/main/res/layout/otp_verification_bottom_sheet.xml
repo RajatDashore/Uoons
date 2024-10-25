@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="otpVerificationBottomSheetVM"
+            type="com.uoons.india.ui.login_module.otp_verification.OTPVerificationBottomSheetVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_40sdp"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        android:id="@+id/bottom_sheet"
+        android:theme="@style/MyEditText">
+
+        <ImageView
+            android:id="@+id/ivButtonClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="@dimen/_10sdp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_close"
+            app:tint="@color/primary_color"
+            android:onClick="@{()->otpVerificationBottomSheetVM.navigator.dismissDialog()}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/txvVerify"
+            android:layout_margin="@dimen/_30sdp"
+            android:text="@string/verify_account"
+            android:textSize="@dimen/text_size20"
+            android:textColor="@color/primary_color"
+            android:fontFamily="@font/roboto_bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/txvVerify"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/txvMobileVerification"
+            android:layout_margin="@dimen/_20sdp"
+            android:text="@string/Mobile_verification_has_successfully_done"
+            android:textSize="@dimen/text_size14"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/txvToCompleteRegistration"
+            app:layout_constraintTop_toBottomOf="@+id/txvMobileVerification"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/_20sdp"
+            android:text="@string/to_complete_your_registration_we_have_sent_an_otp_to_verify"
+            android:textSize="@dimen/text_size14"
+            android:fontFamily="@font/roboto_regular"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/llOptEditText"
+            android:layout_margin="@dimen/_20sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txvToCompleteRegistration"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/otp_edit_box1"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/otp_edit_box2"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/otp_edit_box3"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/otp_edit_box4"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txvReferralByFriend"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llOptEditText"
+            android:text="@string/referral_by_friend"
+            android:textSize="@dimen/text_size16"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/roboto_regular"/>
+
+        <EditText
+            android:id="@+id/EnterCode"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/enter_referral_code"
+            android:imeOptions="actionNext"
+            android:visibility="gone"
+            android:singleLine="true"
+            android:maxLength="10"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size16"
+            app:layout_constraintTop_toBottomOf="@+id/txvReferralByFriend"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/txvIfyouDontFindCode"
+            app:layout_constraintTop_toBottomOf="@+id/EnterCode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/if_you_didn_receive_your_code"
+            android:textSize="@dimen/text_size14"
+            android:fontFamily="@font/roboto_regular"/>
+
+        <TextView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/txvResendCode"
+            app:layout_constraintStart_toEndOf="@id/txvIfyouDontFindCode"
+            app:layout_constraintTop_toBottomOf="@+id/EnterCode"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/resend"
+            android:textColor="@color/primary_color"
+            android:textSize="@dimen/text_size14"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="@{()->otpVerificationBottomSheetVM.navigator.reSendOTP()}"
+            android:fontFamily="@font/roboto_regular"/>
+
+        <TextView
+            android:id="@+id/txtSendOtpBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_20sdp"
+            app:layout_constraintTop_toBottomOf="@+id/txvResendCode"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/bottob_bg"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/verify"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size14"
+            android:onClick="@{()->otpVerificationBottomSheetVM.navigator.verifyOTP()}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

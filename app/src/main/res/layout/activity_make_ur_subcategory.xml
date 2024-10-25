@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#212428"
+    >
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <SearchView
+        android:layout_marginTop="20dp"
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search"
+         android:background="#ffffff"
+        android:supportsRtl="true"
+        android:layout_marginLeft="15dp"
+        android:layout_margin="25dp"
+        />
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/poppinsregular"
+        android:text="Select Product"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/iv_logo"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layerType="software"
+        android:src="@drawable/new_logo_uoons_name"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/poppinsregular"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        />
+
+
+</LinearLayout>

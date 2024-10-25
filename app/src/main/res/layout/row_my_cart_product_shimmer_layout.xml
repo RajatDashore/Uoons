@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:padding="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_2sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_10sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_gravity="center"
+                    android:id="@+id/crdProductImage"
+                    android:src="@drawable/image_gray_color"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:id="@+id/crdDelete"
+                    app:cardBackgroundColor="@color/gray_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/image_gray_color"
+                    android:id="@+id/ivFillHeart"
+                    android:background="?android:attr/actionBarItemBackground"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/crdDelete"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/crdMiniseQuantity"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    app:cardBackgroundColor="@color/gray_bg"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:padding="@dimen/_20sdp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:layout_constraintEnd_toStartOf="@+id/txvQuantityNo"
+                    app:layout_constraintTop_toBottomOf="@id/ivFillHeart">
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/txvQuantityNo"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@color/gray_bg"
+                    app:layout_constraintTop_toBottomOf="@id/ivFillHeart"
+                    app:layout_constraintEnd_toStartOf="@+id/crdPlusQuantity"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/crdPlusQuantity"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:cardBackgroundColor="@color/gray_bg"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    android:padding="@dimen/_20sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:layout_constraintTop_toBottomOf="@id/crdDelete">
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:id="@+id/txvProductName"
+                    android:background="@color/gray_bg"
+                    app:layout_constraintEnd_toStartOf="@id/ivFillHeart"
+                    app:layout_constraintStart_toEndOf="@id/crdProductImage"/>
+
+
+                <TextView
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:id="@+id/txvSellingPrice"
+                    app:layout_constraintTop_toBottomOf="@id/txvProductName"
+                    app:layout_constraintStart_toEndOf="@id/crdProductImage"
+                    android:background="@color/gray_bg"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:textSize="@dimen/text_size14" />
+
+                <TextView
+                    android:id="@+id/txvProductPrice"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@color/gray_bg"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textSize="@dimen/text_size14"
+                    app:layout_constraintTop_toBottomOf="@id/txvSellingPrice"
+                    app:layout_constraintStart_toEndOf="@id/crdProductImage"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

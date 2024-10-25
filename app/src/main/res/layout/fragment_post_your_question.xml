@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="postYourQuestionFragmentVM"
+            type="com.uoons.india.ui.question_answers.post_question.PostYourQuestionFragmentVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:theme="@style/MyEditText"
+        tools:context=".ui.question_answers.post_question.PostYourQuestionFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:id="@+id/cstLayoutWriteQuestionText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/edtSearchQuestions"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/Write_question"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:gravity="center"
+                android:textSize="@dimen/text_size16"/>
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/ic_close"
+                android:id="@+id/ivBackBtn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="?android:attr/actionBarItemBackground"
+                app:tint="@color/primary_color" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtEnterPostQuestion"
+            android:textCursorDrawable="@drawable/edit_text_color_cursor"
+            app:layout_constraintTop_toBottomOf="@+id/cstLayoutWriteQuestionText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:hint="@string/type_your_question"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:lines="6"
+            android:imeOptions="actionNext"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:gravity="start"
+            android:background="@color/white"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:id="@+id/crdSubmitYourQuestion"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:cardBackgroundColor="@color/primary_color"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:layout_constraintTop_toBottomOf="@+id/edtEnterPostQuestion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:cardCornerRadius="@dimen/_20sdp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/text_size18"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="@string/submit"/>
+        </androidx.cardview.widget.CardView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

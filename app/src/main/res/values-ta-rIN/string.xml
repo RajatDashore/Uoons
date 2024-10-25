@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    <string name="app_name">Uoons</string>-->
+    <string name="onilne_shopping_app">ஆன்லைன் ஷாப்பிங் ஆப்</string>
+    <string name="alert_title">தலைப்பு</string>
+    <string name="ok_text">சரி</string>
+    <string name="cancel">ரத்து செய்</string>
+    <string name="Latter">பின்னர்</string>
+    <string name="unauthorized_access">உங்கள் கடைசி உள்நுழைவு அமர்வு காலாவதியானது, தயவுசெய்து மீண்டும் உள்நுழையவும்.</string>
+    <string name="request_time_out">கோரிக்கை நேரம் முடிந்தது</string>
+    <string name="something_wrong_try_again">ஏதோ தவறு நடைபெற்றிருக்கிறது! தயவுசெய்து மீண்டும் முயற்சி செய்க.</string>
+    <string name="something_wrong">ஏதோ தவறு நடைபெற்றிருக்கிறது! உங்கள் இணைய இணைப்பைச் சரிபார்த்து, மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="please_check_internet_connection">இணைய இணைப்பைச் சரிபார்க்கவும்</string>
+    <string name="please_update_this_app">ப்ளே ஸ்டோரில் இருந்து இந்தப் பயன்பாட்டைப் புதுப்பிக்கவும்.</string>
+    <string name="out_of_stock_product">பங்கு இல்லை</string>
+    <string name="error_in_fetching_data">தரவைப் பெறுவதில் பிழை</string>
+    <string name="coins_applied">நாணயங்கள் பயன்படுத்தப்பட்டன.</string>
+    <string name="coins_not_applied">நாணயங்கள் பயன்படுத்தப்படவில்லை.</string>
+    <string name="update_app">பயன்பாட்டைப் புதுப்பிக்கவும்</string>
+    <string name="retry">மீண்டும் முயற்சிக்கவும்</string>
+    <string name="ok">சரி</string>
+    <string name="update">புதுப்பிக்கவும்</string>
+    <string name="rupees">₹</string>
+    <string name="disount">% ஆஃப்</string>
+    <string name="disount_items">தள்ளுபடி</string>
+    <string name="coupen_ammount">கூப்பன் தொகை</string>
+    <string name="new_total_ammount">புதிய மொத்த தொகை</string>
+
+    <string name="english" translatable="false">English</string>
+    <string name="hindi" translatable="false">हिंदी</string>
+    <string name="gujarati" translatable="false">ગુજરાતી</string>
+    <string name="marathi" translatable="false">मराठी</string>
+    <string name="telugu" translatable="false">తెలుగు (Telugu)</string>
+    <string name="tamil" translatable="false">தமிழ் (Tamil)</string>
+
+
+    <!--SignUp Validation-->
+    <string name="please_enter_full_name">தயவுசெய்து முழுப் பெயரை உள்ளிடவும்</string>
+    <string name="please_enter_email">மின்னஞ்சல் முகவரியை உள்ளிடவும்.</string>
+    <string name="enter_correct_email">சரியான மின்னஞ்சல் முகவரியை உள்ளிடவும்.</string>
+    <string name="please_enter_mobile_number">மொபைல் எண்ணை உள்ளிடவும்.</string>
+    <string name="mobile_number_length">மொபைல் எண் 10 இலக்கமாக இருக்க வேண்டும்.</string>
+    <string name="please_select_gender">பாலினத்தைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="please_enter_spoken_language">பேசும் மொழியை உள்ளிடவும்.</string>
+    <string name="please_select_occupation">தயவுசெய்து தொழிலைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="please_enter_about_you">உங்களைப் பற்றி உள்ளிடவும்.</string>
+    <string name="please_enter_address">முகவரியை உள்ளிடவும்.</string>
+    <string name="please_enter_house_no">வீட்டின் எண், கட்டிடத்தின் பெயரை உள்ளிடவும்.</string>
+    <string name="please_enter_road_name">சாலையின் பெயர், பகுதி, காலனி ஆகியவற்றை உள்ளிடவும்.</string>
+    <string name="please_enter_address_type">முகவரி வகையைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="please_enter_pincode">பின் குறியீட்டை உள்ளிடவும்.</string>
+    <string name="please_enter_valid_pincode">சரியான பின்கோடை உள்ளிடவும்.</string>
+    <string name="please_enter_city">நகரத்தை உள்ளிடவும்.</string>
+    <string name="please_select_state">மாநிலத்தைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="please_select_payment_mode">கட்டண முறையைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="please_enter_message">தயவுசெய்து செய்தியை உள்ளிடவும்.</string>
+    <string name="please_choose_topic">தயவுசெய்து தலைப்புகளைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="select_image">படத்தைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="take_photo">புகைப்படம் எடு</string>
+    <string name="choose_from_gallery">கேலரியில் இருந்து தேர்வு செய்யவும்</string>
+    <string name="choose_image_from">இதிலிருந்து புகைப்படத்தைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="cancel_image_capture">பயனர் படத்தைப் பிடிப்பதை ரத்து செய்தார்</string>
+    <string name="fail_image_capture">மன்னிக்கவும்! படத்தைப் பிடிக்க முடியவில்லை</string>
+    <string name="image_length">படம் 5 Mb க்கு மேல் இருக்கக்கூடாது</string>
+    <string name="toast_cannot_retrieve_selected_image">தேர்ந்தெடுக்கப்பட்ட படத்தை மீட்டெடுக்க முடியவில்லை</string>
+    <string name="toast_cannot_retrieve_cropped_image">செதுக்கப்பட்ட படத்தை மீட்டெடுக்க முடியவில்லை</string>
+
+    <!--Dialog-->
+    <string name="on_location_instruction">ஆப்ஸ் அமைப்புகளுக்குச் சென்று அனுமதிகளை இயக்கவும்</string>
+    <string name="dialog_alert_heading">எச்சரிக்கை</string>
+    <string name="validation_internet_connection">இணைய இணைப்பைச் சரிபார்க்கவும்</string>
+    <string name="no_internet">உங்கள் இணைய இணைப்பைச் சரிபார்க்கவும்</string>
+    <string name="error">பிழை</string>
+    <string name="try_again">மீண்டும் முயற்சி செய்</string>
+    <string name="alert_txt">எச்சரிக்கை</string>
+    <string name="allow_permission_setting">அமைப்புகளுக்குச் சென்று, பயன்பாட்டின் உள்ளே அம்சத்தைப் பயன்படுத்த அனுமதி வழங்கவும்.</string>
+    <string name="allow_permission">தயவுசெய்து அனுமதி வழங்கவும்</string>
+    <string name="want_to_exit">நிச்சயமாக நீங்கள் வெளியேற வேண்டுமா?</string>
+    <string name="enable_location">இருப்பிடத்தை இயக்கு</string>
+    <string name="loading">ஏற்றுகிறது…</string>
+
+    <string name="validation_internet_try_again">உங்கள் இணைய இணைப்பைச் சரிபார்த்து \nமீண்டும் முயற்சிக்கவும்</string>
+
+    <!-- Walkthrought activity -->
+    <string name="choose_items_online">பொருட்களை ஆன்லைனில் தேர்வு செய்யவும்</string>
+    <string name="payment_online">ஆன்லைனில் பணம் செலுத்துதல்</string>
+    <string name="welcome_to_uoons">Uoons க்கு வரவேற்கிறோம்</string>
+    <string name="get_started">தொடங்குங்கள்</string>
+    <string name="online_item_description">லோரெம் இப்சம் என்பது அச்சிடும் மற்றும் தட்டச்சுத் துறையின் போலி உரை. லோரெம் இப்சம் தொழில்துறையாக இருந்து வருகிறது</string>
+    <string name="onBoarding_screen_one">பரந்த அளவிலான தயாரிப்புகள் மற்றும் பிராண்டுகளைக் கொண்ட இந்திய தளம், இப்போது உங்களுக்குப் பிடித்த எலக்ட்ரானிக்ஸ் கேஜெட்களைத் தேர்ந்தெடுத்து, உங்களுக்குச் சேவை செய்ய வாய்ப்பளிக்கவும். உண்மையான ஒப்பந்தங்கள் மற்றும் உண்மையான மதிப்பாய்வை நாங்கள் நம்புகிறோம்</string>
+    <string name="onBoarding_screen_second">COD, டெபிட் மற்றும் கிரெடிட் கார்டு, EMI, Net Banking, UPI, Wallet, Pay later போன்ற பல கட்டண விருப்பங்கள் உள்ளன.</string>
+    <string name="select_language">மொழியை தேர்ந்தெடுங்கள்</string>
+    <string name="select">தேர்ந்தெடு</string>
+
+    <!-- Home Screen -->
+    <string name="home">வீடு</string>
+    <string name="category">வகை</string>
+    <string name="order">ஆர்டர்</string>
+    <string name="account">கணக்கு</string>
+    <string name="varsionName">பதிப்பு பெயர் : </string>
+
+    <!-- TODO: Sing up to Bottom Sheet Dialog -->
+    <string name="enter_mobile_no">மொபைல் எண்ணை உள்ளிடவும்.</string>
+    <string name="enter_valid_mobile_no">செல்லுபடியாகும் மொபைல் எண்ணை உள்ளிடவும்.</string>
+    <string name="enter_otp">தயவுசெய்து otp ஐ உள்ளிடவும்.</string>
+    <string name="enter_valid_otp">4 எண்ணை உள்ளிடவும்.</string>
+
+    <string name="Sign_up_to_check_your_order_details">உங்கள் ஆர்டர் விவரங்களைச் சரிபார்க்க பதிவு செய்யவும்</string>
+    <string name="phone_number">தொலைபேசி எண்</string>
+    <string name="send_otp">OTP அனுப்பவும்</string>
+    <string name="by_continuing_you_agree_to_uoons">தொடர்வதன் மூலம், நீங்கள் Uoons ஐ ஒப்புக்கொள்கிறீர்கள்</string>
+
+    <string name="terms_and_conditions">விதிமுறைகள் மற்றும் நிபந்தனைகள்<font color="#FF000000"> மற்றும்</font> தனியுரிமைக் கொள்கை</string>
+
+    <string name="verify_account">கணக்கை சரிபார்க்கவும்</string>
+    <string name="Mobile_verification_has_successfully_done">மொபைல் சரிபார்ப்பு வெற்றிகரமாக முடிந்தது</string>
+    <string name="to_complete_your_registration_we_have_sent_an_otp_to_verify">உங்கள் பதிவை முடிக்க, சரிபார்க்க OTP அனுப்பியுள்ளோம்</string>
+    <string name="verify">சரிபார்க்கவும்</string>
+
+    <string name="if_you_didn_receive_your_code_resend">உங்கள் குறியீட்டைப் பெறவில்லை என்றால்?<font color="#F05936"> மீண்டும் அனுப்பு</font></string>
+    <string name="if_you_didn_receive_your_code">உங்கள் குறியீட்டைப் பெறவில்லை என்றால்?</string>
+    <string name="resend">மீண்டும் அனுப்பு</string>
+
+    <!-- TODO: Home Screen -->
+    <string name="Search_your_items">உங்கள் பொருட்களைத் தேடுங்கள்</string>
+    <string name="view_all">அனைத்தையும் காட்டு</string>
+    <string name="best_seller">சிறந்த விற்பனையாளர்</string>
+    <string name="search_questions">ஒரு கேள்வி இருக்கிறதா? பதில்களைத் தேடுங்கள்</string>
+    <string name="didnot_get_answer">நீங்கள் தேடும் சரியான பதில் கிடைக்கவில்லை</string>
+    <string name="post_your_question">உங்கள் கேள்வியை இடுகையிடவும்</string>
+    <string name="Write_question">கேள்வியை எழுதுங்கள்</string>
+    <string name="type_your_question">உங்கள் கேள்வியைத் தட்டச்சு செய்யவும்..</string>
+    <string name="no_data_found">வேறு தகவல்கள் இல்லை !</string>
+
+    <!-- TODO: Account Screen -->
+    <string name="sign_up">பதிவு செய்யவும்</string>
+    <string name="call_us_at">எங்களை அழைக்கவும்</string>
+    <string name="my_bank_details">எனது வங்கி விவரங்கள்</string>
+    <string name="they_will_be_used_for_all_refunds">உங்கள் சரியான வங்கி விவரங்களை கவனமாக உள்ளிடவும். அவை அனைத்து பணத்தைத் திரும்பப்பெறுதல், மார்ஜின்கள் மற்றும் போனஸ் கொடுப்பனவுகளுக்குப் பயன்படுத்தப்படும்.</string>
+    <string name="my_payments">எனது கொடுப்பனவுகள்</string>
+    <string name="refer_and_earn">பார்க்கவும் மற்றும் சம்பாதிக்கவும்</string>
+    <string name="my_coins">என் நாணயங்கள்</string>
+    <string name="my_referral_code">எனது பரிந்துரை குறியீடு</string>
+    <string name="referral_by_friend">நண்பரின் பரிந்துரையா?</string>
+    <string name="enter_referral_code">பரிந்துரை குறியீட்டை உள்ளிடவும்</string>
+    <string name="Please_enter_the_exact_code_in_the_space_below">கீழே உள்ள இடத்தில் சரியான குறியீட்டை உள்ளிடவும்.</string>
+    <string name="help">உதவி</string>
+    <string name="settings">அமைப்புகள்</string>
+    <string name="rate_us">எங்களை மதிப்பிடு</string>
+    <string name="legal_and_policies">சட்டம் மற்றும் கொள்கைகள்</string>
+
+    <!-- TODO: Profile Screen -->
+    <string name="profile">சுயவிவரம்</string>
+    <string name="edit_profile">சுயவிவரத்தைத் திருத்து</string>
+    <string name="add_profile">சுயவிவரத்தைச் சேர்</string>
+    <string name="add_picture">படத்தைச் சேர்க்கவும்</string>
+    <string name="full_name">முழு பெயர்</string>
+    <string name="email">மின்னஞ்சல்</string>
+    <string name="gender">பாலினம்</string>
+    <string name="languages_spoken">பேசப்படும் மொழிகள்</string>
+    <string name="occupation">தொழில்</string>
+    <string name="about_me">என்னை பற்றி</string>
+    <string name="landmark">மைல்கல்</string>
+    <string name="pin_code">அஞ்சல் குறியீடு</string>
+    <string name="city">நகரம்</string>
+    <string name="state">நிலை</string>
+    <string name="save">சேமிக்கவும்</string>
+    <string name="done">முடிந்தது</string>
+    <string name="apply_filter">வடிகட்டியைப் பயன்படுத்து</string>
+    <string name="clear_filter">வடிகட்டியை அழி</string>
+
+    <!-- TODO: My Bank Details Screen -->
+    <string name="account_number">கணக்கு எண்</string>
+    <string name="confirm_account_number">கணக்கு எண்ணை உறுதிப்படுத்தவும்</string>
+    <string name="account_holder_name">கணக்கு வைத்திருப்பவரின் பெயர்</string>
+    <string name="ifsc_code">IFSC குறியீடு</string>
+    <string name="bank_name">வங்கி பெயர்</string>
+    <string name="submit">சமர்ப்பிக்கவும்</string>
+    <string name="please_enter_account_number">கணக்கு எண்ணை உள்ளிடவும்</string>
+    <string name="please_enter_confirm_account_number">உறுதிப்படுத்தல் கணக்கு எண்ணை உள்ளிடவும்</string>
+    <string name="account_number_mismatch">கணக்கு எண் பொருந்தவில்லை</string>
+    <string name="please_enter_account_holder_name">கணக்கு வைத்திருப்பவரின் பெயரை உள்ளிடவும்</string>
+    <string name="please_enter_ifsc_code">IFSC குறியீட்டை உள்ளிடவும்</string>
+
+    <!-- TODO: Sorting Screen -->
+    <string name="sort">வரிசைப்படுத்துதல்</string>
+    <string name="most_relevant">மிகவும் பொருத்தமான</string>
+    <string name="new_arrivals">புதிய வருகை</string>
+    <string name="most_popular">மிகவும் பிரபலமான</string>
+    <string name="price_low_to_high">விலை (குறைவு முதல் அதிகம்)</string>
+    <string name="price_high_to_low">விலை (அதிகம் முதல் குறைவு)</string>
+    <string name="ratings_high_to_low">மதிப்பீடுகள் (அதிகத்திலிருந்து குறைந்த வரை)</string>
+
+    <!-- TODO: Sorting Screen -->
+    <string name="filters">வடிப்பான்கள்</string>
+
+    <!-- TODO: Order Screen -->
+    <string name="rate_this_product_now">இந்த தயாரிப்பை இப்போது மதிப்பிடவும்</string>
+
+    <!-- TODO: Order Details Screen -->
+    <string name="order_details">ஆணை விவரங்கள்</string>
+    <string name="order_and_review">ஆர்டர் மற்றும் மதிப்புரைகள்</string>
+    <string name="order_id">ஆர்டர் ஐடி - </string>
+    <string name="seller">விற்பனையாளர் : </string>
+    <string name="ordered">உத்தரவிட்டார் </string>
+    <string name="delivered">வழங்கப்பட்டது </string>
+    <string name="you_might_be_also_intrested_in">நீங்களும் ஆர்வமாக இருக்கலாம்</string>
+
+
+    <!-- TODO: Help Screen -->
+    <string name="contact_us">எங்களை தொடர்பு கொள்ள</string>
+    <string name="faq">எஃப் அ கே</string>
+    <string name="Call_support_timings_are_from_10am__7pm">அழைப்பு ஆதரவு நேரங்கள் காலை 10 மணி முதல் மாலை 7 மணி வரை</string>
+    <string name="lorem_ipsum_is_simply_dummy_text">லோரெம் இப்சம் என்பது அச்சிடும் மற்றும் தட்டச்சுத் துறையின் போலி உரை. லோரெம் இப்சம் 1500 களில் இருந்து தொழில்துறை தரமான போலி உரையாக இருந்து வருகிறது, தெரியாத அச்சுப்பொறி ஒரு வகையின் கேலியை எடுத்து, அதை ஒரு வகை மாதிரி புத்தகத்தை உருவாக்கியது.</string>
+    <string name="name">பெயர்</string>
+    <string name="email_required">மின்னஞ்சல் (தேவை)*</string>
+    <string name="help_topics">உதவி தலைப்புகள்</string>
+    <string name="message_required">செய்தி (தேவை)*</string>
+
+    <!-- TODO: Notification Screen -->
+    <string name="notification_settings">அறிவிப்பு அமைப்புகள்</string>
+    <string name="languages">மொழிகள்</string>
+
+    <!-- TODO: Notification Settings Screen -->
+    <string name="enable_notifications_for">இதற்கான அறிவிப்புகளை இயக்கு</string>
+    <string name="all_collections">அனைத்து தொகுப்புகள்</string>
+    <string name="unselect_all">அனைத்தையும் நீக்கு</string>
+    <string name="save_changes">மாற்றங்களை சேமியுங்கள்</string>
+    <string name="for_you">உனக்காக</string>
+    <string name="would_you_like_to_rate_us">Play Store இல் எங்களை மதிப்பிட விரும்புகிறீர்களா?</string>
+    <string name="your_feedback_help_us_make_your">உங்கள் கருத்து உங்கள் அனுபவத்தை சிறப்பாக்க உதவுகிறது.</string>
+    <string name="your_refferal_code">உங்கள் பரிந்துரை குறியீடு</string>
+    <string name="my_total_coins">எனது மொத்த நாணயங்கள்</string>
+    <string name="download_uoons_app_refferal_code">Uoons பயன்பாட்டைப் பதிவிறக்கி, இந்த பரிந்துரைக் குறியீட்டைப் பயன்படுத்தினால் 500 நாணயங்கள் வரை கிடைக்கும்</string>
+    <string name="get_up_to_100_coins">5000 நாணயங்கள் வரை கிடைக்கும்</string>
+    <string name="yes">ஆம்</string>
+    <string name="no">இல்லை</string>
+
+    <!-- TODO: Legal and Policies Screen -->
+    <string name="and">மற்றும்</string>
+    <string name="terms_conditions">விதிமுறைகள் மற்றும் நிபந்தனைகள்</string>
+    <string name="privacy_policy">தனியுரிமைக் கொள்கை</string>
+
+
+    <!-- TODO: Category Items Details Screen -->
+    <string name="suggestions_to_enhance">உங்கள் ஷாப்பிங் அனுபவத்தை மேம்படுத்த எங்களுக்கு பரிந்துரைகளை வழங்கவும்</string>
+    <string name="question_answer">கேள்வி மற்றும் பதில்</string>
+    <string name="recently_viewed">சமீபத்தில் பார்த்தது</string>
+    <string name="load_more">அதிகமாய் ஏற்று</string>
+    <string name="search">தேடு</string>
+    <string name="more">மேலும்</string>
+    <string name="less">குறைவாக</string>
+    <string name="sold_buy">விற்றவர்:</string>
+    <string name="write_a_review">ஒரு விமர்சனம் எழுத</string>
+    <string name="rating_and_review">மதிப்பீடு மற்றும் மதிப்பாய்வு</string>
+    <string name="earn_uoons_loyalty_coins">ஒவ்வொரு வாங்குதலிலும் Uoons லாயல்டி நாணயங்களைப் பெறுங்கள்</string>
+    <string name="frequently_bought_together">அடிக்கடி சேர்த்து வாங்கப்பட்டது</string>
+    <string name="place_order">ஆர்டர் வைக்கவும்</string>
+    <string name="add_to_cart">பெட்டகத்தில் சேர்</string>
+    <string name="salient_features">முக்கிய அம்சங்கள் :</string>
+    <string name="description">விளக்கம்</string>
+    <string name="addition_info">கூடுதல் தகவல்</string>
+    <string name="return_policy">திரும்பும் கொள்கை</string>
+    <string name="more_like_this">இது போன்ற மேலும்</string>
+    <string name="offer_price">சலுகை விலை:</string>
+    <string name="out_of_stock">பங்கு இல்லை</string>
+    <string name="you_save">நீ காப்பாற்று:</string>
+    <string name="Discount">தள்ளுபடி:</string>
+    <string name="check">காசோலை</string>
+    <string name="m_r_p">எம்.ஆர்.பி:</string>
+    <string name="available_plans">கிடைக்கும் திட்டங்கள்</string>
+    <string name="get_flat_off_to_make_use_code">இந்த ஆர்டரை ப்ரீபெய்ட் செய்ய பிளாட் ஆஃப் செய்யுங்கள்.</string>
+    <string name="use_code">குறியீட்டைப் பயன்படுத்தவும்</string>
+    <string name="More_offers_coupons">மேலும் சலுகைகள் மற்றும் கூப்பன்கள்</string>
+    <string name="color">வண்ணங்கள்:</string>
+    <string name="variant">மாறுபாடு:</string>
+    <string name="secure_transaction">பாதுகாப்பான பரிவர்த்தனை</string>
+    <string name="suggestion_to_enhance">மேம்படுத்துவதற்கான பரிந்துரைகள்</string>
+    <string name="feedback">பின்னூட்டக் கேள்வி</string>
+    <string name="q">கே :</string>
+    <string name="write_a_feedback">ஒரு கருத்தை எழுதுங்கள்</string>
+
+    <string name="selling_price">விற்பனை விலை</string>
+    <string name="discount">தள்ளுபடி</string>
+    <string name="offer_prices">சலுகை விலை</string>
+    <string name="shipping_fee">கப்பல் கட்டணம்</string>
+    <string name="shipping_address_details">ஷிப்பிங் முகவரி விவரங்கள்</string>
+    <string name="shipping_details">கப்பல் விவரங்கள்</string>
+    <string name="add_photos">புகைப்படங்களைச் சேர்</string>
+    <string name="stand_a_chance_to_get">தயாரிப்பில் இடம்பெறும் வாய்ப்பைப் பெற்று, மில்லியன் கணக்கான வாடிக்கையாளர்களுக்கு உத்வேகமாக மாறுங்கள்.</string>
+    <string name="upload_photo">புகைப்படங்களைப் பதிவேற்றவும்</string>
+    <string name="write_your_review">உங்கள் விமர்சனத்தை இங்கே எழுதுங்கள்</string>
+    <string name="please_write_product_review">தயாரிப்பு மதிப்பாய்வை இங்கே எழுதவும்.</string>
+
+    <!-- TODO: My Cart Screen  -->
+    <string name="add">கூட்டு</string>
+    <string name="my_cart">என் வண்டி</string>
+    <string name="enter_coupon_code">கூப்பன் குறியீட்டை உள்ளிடவும்</string>
+    <string name="enter_pin_code">பின் குறியீட்டை உள்ளிடவும்</string>
+    <string name="apply_coupon">கூப்பனை விண்ணப்பிக்கவும்</string>
+    <string name="check_pincode">பின் குறியீட்டைச் சரிபார்க்கவும்</string>
+    <string name="price_details">விலை விவரங்கள்</string>
+    <string name="delivery_fee">விநியோக கட்டணம்</string>
+    <string name="product_discoount_price">தயாரிப்பு தள்ளுபடி விலை</string>
+    <string name="total_amount">மொத்த தொகை</string>
+    <string name="new_total_amount">புதிய மொத்தத் தொகை</string>
+    <string name="free">இலவசம்</string>
+    <string name="price">விலை </string>
+    <string name="items">பொருட்களை </string>
+    <string name="checkout">சரிபார்</string>
+    <string name="delivery_address">டெலிவரி முகவரி</string>
+    <string name="wishlist">விருப்பப்பட்டியல்</string>
+    <string name="your_cart_is_empty">உங்கள் வண்டி காலியாக உள்ளது</string>
+    <string name="you_haven_placed_any_order">நீங்கள் எந்த ஆர்டரையும் வைக்கவில்லை</string>
+    <string name="All_your_orders_will_appear_here">உங்கள் ஆர்டர்கள் அனைத்தும் இங்கே தோன்றும்</string>
+    <string name="this_quite_empty">இது இங்கே காலியாக உள்ளது!</string>
+    <string name="not_save_product_wishlist">நீங்கள் எந்தப் பொருளையும் விருப்பப்பட்டியலில் சேமிக்கவில்லை!</string>
+    <string name="view_products">தயாரிப்புகளைப் பார்க்கவும்</string>
+    <string name="add_new_address">+ புதிய முகவரியைச் சேர்க்கவும்</string>
+    <string name="edit">தொகு</string>
+    <string name="deliver_to_this_address">இந்த முகவரிக்கு வழங்கவும்</string>
+    <string name="set_primiry_account">முதன்மை கணக்காக அமைக்கவும்</string>
+    <string name="enter_coupen_code">கூப்பன் குறியீட்டை உள்ளிடவும்</string>
+
+    <!-- TODO: Check Out Address Screen -->
+    <string name="address">முகவரி</string>
+    <string name="road_name_area">சாலையின் பெயர், பகுதி, காலனி</string>
+    <string name="house_no_building_name">வீட்டின் எண், கட்டிடத்தின் பெயர்</string>
+    <string name="type_of_address">முகவரி வகை</string>
+    <string name="payment">பணம் செலுத்துதல்</string>
+    <string name="save_shipping_address">ஷிப்பிங் முகவரியைச் சேமிக்கவும்</string>
+    <string name="next">அடுத்தது</string>
+
+
+    <!-- TODO: Check Out Payment Screen -->
+    <string name="select_payment_method">கட்டண முறையைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="confirm_and_pay">உறுதிசெய்து செலுத்தவும்</string>
+    <string name="confirm">உறுதிப்படுத்தவும்</string>
+    <string name="pay">செலுத்து</string>
+    <string name="add_new_card">புதிய அட்டையைச் சேர்க்கவும்</string>
+    <string name="save_this_card">இந்த அட்டையைச் சேமிக்கவும்</string>
+
+    <!-- TODO: Confirm Pay Screen -->
+    <string name="thank_you">நன்றி</string>
+    <string name="your_rating_review">உங்கள் மதிப்பீடு மற்றும் மதிப்புரை</string>
+    <string name="your_order_is_confirmed">உங்கள் ஆர்டர் உறுதிசெய்யப்பட்டது</string>
+    <string name="your_order_id">உங்கள் ஆர்டர் ஐடி</string>
+    <string name="your_order_amount">உங்கள் ஆர்டர் தொகை</string>
+    <string name="order_detail">ஆர்டர் விவரம்</string>
+    <string name="payment_mode">கட்டண முறை</string>
+    <string name="order_success">ஆர்டர் வெற்றி</string>
+    <string name="back_to_home">BACK TO HOME</string>
+    <string name="thank_you_for_shopping_with_uoons_application">Uoons பயன்பாட்டுடன் ஷாப்பிங் செய்ததற்கு நன்றி.</string>
+    <string name="makeurown">Make your own</string>
+<!--    <string name="pageone">A virtual artificial intelligence and I am here to assist you with a variety of tasks that I can do 24 hours a day, 7 days a week. I can help you to develop a desktop, drone or any electronic device which you need.</string>-->
+<!--    <string name="pagethree">One more thing I want to remind, you can also choose price control and upgrade. I can also buy all required items for your device and deliver to your address.</string>-->
+<!--    <string name="pagetwo">Dont worry, Iam here to help you to find correct spare parts, tools &amp; accessories to assemble your device. You can fulfill your wish in just one click, give me command and have a cup of coffee and relax.</string>-->
+
+</resources>

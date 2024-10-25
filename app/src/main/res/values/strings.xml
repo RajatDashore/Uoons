@@ -1,0 +1,371 @@
+<resources>
+    <!--    <string name="app_name">Uoons</string>-->
+    <string name="facebook_app_id" translatable="false">451426460301235</string>
+
+    <string name="fb_login_protocol_scheme" translatable="false">fb451426460301235</string>
+    <string name="facebook_client_token" translatable="false">61031c5e5776f926031776faac997f9a</string>
+    <string name="onilne_shopping_app">Online Shopping App</string>
+    <string name="alert_title">Title</string>
+    <string name="ok_text">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="Latter">Later</string>
+    <string name="unauthorized_access">Your last login session is expired, please login again.</string>
+    <string name="request_time_out">Request Time Out</string>
+    <string name="something_wrong_try_again">Something went wrong! please try again.</string>
+    <string name="something_wrong">Something went wrong! please check your internet connection &amp; try again.</string>
+    <string name="please_check_internet_connection">Please check internet connection</string>
+    <string name="please_update_this_app">Please update this application from playstore.</string>
+    <string name="out_of_stock_product">Out of Stock</string>
+    <string name="error_in_fetching_data">Error in fetching data</string>
+    <string name="coins_applied">Coins applied.</string>
+    <string name="coins_not_applied">Coins not applied.</string>
+    <string name="update_app">Update App</string>
+    <string name="retry">Retry</string>
+    <string name="ok">OK</string>
+    <string name="update">Update</string>
+    <string name="rupees">₹</string>
+    <string name="disount">% off</string>
+    <string name="disount_items">Discount</string>
+    <string name="coupen_ammount">Coupen Ammount</string>
+    <string name="new_total_ammount">New Total Ammount</string>
+
+    <string name="english" translatable="false">English</string>
+    <string name="hindi" translatable="false">हिंदी</string>
+    <string name="gujarati" translatable="false">ગુજરાતી</string>
+    <string name="marathi" translatable="false">मराठी</string>
+    <string name="telugu" translatable="false">తెలుగు (Telugu)</string>
+    <string name="tamil" translatable="false">தமிழ் (Tamil)</string>
+    <string name="punjabi" translatable="false">ਪੰਜਾਬੀ (Punjabi)</string>
+    <string name="kannada" translatable="false">ಕನ್ನಡ (Kannada)</string>
+    <string name="Malayalam" translatable="false">മലയാളം (Malayalam)</string>
+    <string name="oops_no_internet_connection" translatable="false">Oops, No internet connection!</string>
+    <string name="make_sure_wifi_or_cellular_data_is_turned_on_and_that_retry" translatable="false">Make sure wifi or cellular data is turned on and that retry!</string>
+
+    <!--SignUp Validation-->
+    <string name="please_enter_full_name">Please enter full name</string>
+    <string name="please_enter_email">Please enter email address.</string>
+    <string name="enter_correct_email">Please enter a valid email address.</string>
+    <string name="please_enter_mobile_number">Please enter mobile number.</string>
+    <string name="mobile_number_length">Mobile number should be 10 digit.</string>
+    <string name="please_select_gender">Please select gender.</string>
+    <string name="please_enter_spoken_language">Please enter Spoken Language.</string>
+    <string name="please_select_occupation">Please select Occupation.</string>
+    <string name="please_enter_about_you">Please enter About You.</string>
+    <string name="please_enter_address">Please enter Address.</string>
+    <string name="please_enter_house_no">Please enter House No., Building Name.</string>
+    <string name="please_enter_road_name">Please enter Road Name, Area, Colony.</string>
+    <string name="please_enter_address_type">Please select Address Type.</string>
+    <string name="please_enter_pincode">Please enter Pincode.</string>
+    <string name="please_enter_valid_pincode">Please enter valid pincode.</string>
+    <string name="please_enter_city">Please enter City.</string>
+    <string name="please_select_state">Please select State.</string>
+    <string name="please_select_payment_mode">Please select payment mode.</string>
+    <string name="please_enter_message">Please enter Message.</string>
+    <string name="please_choose_topic">Please Choose Topics.</string>
+    <string name="select_image">Select Image</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_from_gallery">Choose From Gallery</string>
+    <string name="choose_image_from">Choose Photo From</string>
+    <string name="cancel_image_capture">User cancelled image capture</string>
+    <string name="fail_image_capture">Sorry! Failed to capture image</string>
+    <string name="image_length">Image should not be grater than 5 Mb</string>
+    <string name="toast_cannot_retrieve_selected_image">Cannot retrieve selected image</string>
+    <string name="toast_cannot_retrieve_cropped_image">Cannot retrieve cropped image</string>
+
+    <!--Dialog-->
+    <string name="on_location_instruction">Please go to app settings and enable permissions</string>
+    <string name="dialog_alert_heading">Alert</string>
+    <string name="validation_internet_connection">Please check internet connection</string>
+    <string name="no_internet">Please check your internet connection</string>
+    <string name="error">Error</string>
+    <string name="try_again">Try again</string>
+    <string name="alert_txt">Alert</string>
+    <string name="allow_permission_setting">Go to Settings and Grant the permission to use feature inside the application.</string>
+    <string name="allow_permission">Please allow permission</string>
+    <string name="want_to_exit">Are you sure you want to exit?</string>
+    <string name="enable_location">Enable Location</string>
+    <string name="loading">Loading…</string>
+    <string name="validation_internet_try_again">Please check your internet connection \nand try again</string>
+
+
+    <!-- Walkthrought activity -->
+    <string name="choose_items_online">Choose Items Online</string>
+    <string name="payment_online">Payment Online</string>
+    <string name="welcome_to_uoons">Welcome to Uoons</string>
+    <string name="get_started">GET STARTED</string>
+    <string name="online_item_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</string>
+    <string name="onBoarding_screen_one">An Indian platform with a wide range of products &amp; brands, now choose your favourite electronics gadgets and give a chance to serve you. We believe in Real deals &amp; True review</string>
+    <string name="onBoarding_screen_second">Multiple payment options available like COD, Debit &amp; Credit Card, EMI, Net Banking, UPI, Wallet, Pay Later etc.</string>
+    <string name="select_language">Select Language</string>
+    <string name="select">Select</string>
+
+    <!-- Home Screen -->
+    <string name="home">HOME</string>
+    <string name="category">CATEGORY</string>
+    <string name="order">ORDER</string>
+    <string name="account">ACCOUNT</string>
+    <string name="varsionName">VersionName:</string>
+
+    <!-- TODO: Sing up to Bottom Sheet Dialog -->
+    <string name="enter_mobile_no">Please enter mobile no.</string>
+    <string name="enter_valid_mobile_no">Please enter valid mobile no.</string>
+    <string name="enter_otp">Please enter otp.</string>
+    <string name="enter_valid_otp">Please enter 4 number otp.</string>
+
+    <string name="Sign_up_to_check_your_order_details">Sign Up to check your order details</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="by_continuing_you_agree_to_uoons">By continuing, you agree to Uoons</string>
+
+    <string name="terms_and_conditions">Terms &amp; Conditions<font color="#FF000000"> And</font> Privacy Policy</string>
+
+    <string name="verify_account">Verify Account</string>
+    <string name="Mobile_verification_has_successfully_done">Mobile Verification has successfully done</string>
+    <string name="to_complete_your_registration_we_have_sent_an_otp_to_verify">To complete your registration, we have sent an OTP to verify</string>
+    <string name="verify">VERIFY</string>
+
+    <string name="if_you_didn_receive_your_code_resend">If you didn’t receive your code ?<font color="#F05936"> Resend</font></string>
+    <string name="if_you_didn_receive_your_code">If you didn’t receive your code ?</string>
+    <string name="resend">Resend</string>
+
+    <!-- TODO: Home Screen -->
+    <string name="Search_your_items">Search your items</string>
+    <string name="view_all">View all</string>
+    <string name="best_seller">Best Seller</string>
+    <string name="search_questions">Have a question? Search for answers</string>
+    <string name="didnot_get_answer">Didn’t get the right answer you are looking for</string>
+    <string name="post_your_question">POST YOUR QUESTION</string>
+    <string name="Write_question">Write Question</string>
+    <string name="type_your_question">Type Your Question..</string>
+    <string name="no_data_found">No Data Found !</string>
+
+    <!-- TODO: Account Screen -->
+    <string name="sign_up">Sign Up</string>
+    <string name="call_us_at">Call us at</string>
+    <string name="my_bank_details">My Bank Details</string>
+    <string name="they_will_be_used_for_all_refunds">Please enter your correct bank details carefully. They will be used for all refunds, margins, and bonus payments.</string>
+    <string name="my_payments">My Payments</string>
+    <string name="refer_and_earn">Refer &amp; Earn</string>
+    <string name="my_coins">My Coins</string>
+    <string name="my_referral_code">My Referral Code</string>
+    <string name="referral_by_friend">Referral by a friend ?</string>
+    <string name="enter_referral_code">Enter referral code</string>
+    <string name="Please_enter_the_exact_code_in_the_space_below">Please enter the exact code in the space below.</string>
+    <string name="help">Help</string>
+    <string name="settings">Settings</string>
+    <string name="security">Security</string>
+    <string name="rate_us">Rate us</string>
+    <string name="legal_and_policies">Legal and Policies</string>
+
+    <!-- TODO: Profile Screen -->
+    <string name="profile">PROFILE</string>
+    <string name="edit_profile">EDIT PROFILE</string>
+    <string name="add_profile">ADD PROFILE</string>
+    <string name="add_picture">ADD PICTURE</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="gender">Gender</string>
+    <string name="languages_spoken">Languages Spoken</string>
+    <string name="occupation">Occupation</string>
+    <string name="about_me">About Me</string>
+    <string name="landmark">Landmark</string>
+    <string name="pin_code">Pin Code</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="save">SAVE</string>
+    <string name="done">DONE</string>
+    <string name="apply_filter">Apply Filter</string>
+    <string name="clear_filter">Clear Filter</string>
+
+    <!-- TODO: My Bank Details Screen -->
+    <string name="account_number">Account Number</string>
+    <string name="confirm_account_number">Confirm Account Number</string>
+    <string name="account_holder_name">Account Holder Name</string>
+    <string name="ifsc_code">IFSC Code</string>
+    <string name="bank_name">Bank Name</string>
+    <string name="submit">SUBMIT</string>
+    <string name="please_enter_account_number">Please enter account number</string>
+    <string name="please_enter_confirm_account_number">Please enter confirm account number</string>
+    <string name="account_number_mismatch">Account Number Not Matches</string>
+    <string name="please_enter_account_holder_name">Please enter Account Holder Name</string>
+    <string name="please_enter_ifsc_code">Please enter IFSC Code</string>
+
+    <!-- TODO: Sorting Screen -->
+    <string name="sort">Sorting</string>
+    <string name="most_relevant">Most Relevant</string>
+    <string name="new_arrivals">New Arrivals</string>
+    <string name="most_popular">Most Popular</string>
+    <string name="price_low_to_high">Price (Low to High)</string>
+    <string name="price_high_to_low">Price (High to Low)</string>
+    <string name="ratings_high_to_low">Ratings (High to Low)</string>
+
+    <!-- TODO: Sorting Screen -->
+    <string name="filters">Filters</string>
+
+    <!-- TODO: Order Screen -->
+    <string name="rate_this_product_now">Rate this product Now</string>
+
+    <!-- TODO: Order Details Screen -->
+    <string name="order_details">Order Details</string>
+    <string name="order_and_review">Order and Reviews</string>
+    <string name="order_id">Order Id - </string>
+    <string name="seller">Seller : </string>
+    <string name="ordered">Ordered </string>
+    <string name="delivered">Delivered </string>
+    <string name="you_might_be_also_intrested_in">You might be also intrested in</string>
+
+    <!-- TODO: Help Screen -->
+    <string name="contact_us">Contact Us</string>
+    <string name="faq">FAQ</string>
+    <string name="Call_support_timings_are_from_10am__7pm">Call support timings are from 10am - 7pm</string>
+    <string name="lorem_ipsum_is_simply_dummy_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
+    <string name="name">Name</string>
+    <string name="email_required">Email (Required)*</string>
+    <string name="help_topics">Help Topics</string>
+    <string name="message_required">Message (Required)*</string>
+
+    <!-- TODO: Notification Screen -->
+    <string name="notification_settings">Notification Settings</string>
+    <string name="languages">Languages</string>
+
+
+    <!-- TODO: Notification Settings Screen -->
+    <string name="enable_notifications_for">Enable notifications for</string>
+    <string name="all_collections">All Collections</string>
+    <string name="unselect_all">UNSELECT ALL</string>
+    <string name="save_changes">SAVE CHANGES</string>
+    <string name="for_you">For you</string>
+    <string name="would_you_like_to_rate_us">Would you like to rate us on Play Store?</string>
+    <string name="your_feedback_help_us_make_your">Your feedback helps us make your experience better.</string>
+    <string name="your_refferal_code">Your Refferal Code</string>
+    <string name="my_total_coins">My Total Coins</string>
+    <string name="download_uoons_app_refferal_code">Download Uoons App &amp; use this Referral code get Up to 500 coins</string>
+    <string name="get_up_to_100_coins">Get up to 5000 coins</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+
+
+    <!-- TODO: Legal and Policies Screen -->
+    <string name="and">And</string>
+    <string name="terms_conditions">Terms &amp; Conditions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <!--Make your own-->
+    <string name="makeurown">Make your own</string>
+    <!-- TODO: Category Items Details Screen -->
+    <string name="suggestions_to_enhance">Please give us suggestions to enhance your shopping experience</string>
+    <string name="question_answer">Question and Answer</string>
+    <string name="recently_viewed">Recently Viewed</string>
+    <string name="load_more">Load More</string>
+    <string name="search">Search</string>
+    <string name="more">More</string>
+    <string name="less">Less</string>
+    <string name="sold_buy">Sold by:</string>
+    <string name="write_a_review">WRITE A REVIEW</string>
+    <string name="rating_and_review">Rating &amp; Review</string>
+    <string name="earn_uoons_loyalty_coins">Earn Uoons Loyalty Coins with every purchase</string>
+    <string name="frequently_bought_together">Frequently Bought Together</string>
+    <string name="place_order">Place Order</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="salient_features">SALIENT FEATURES :</string>
+    <string name="description">DESCRIPTION</string>
+    <string name="addition_info">ADDITIONAL INFORMATION</string>
+    <string name="return_policy">RETURN POLICY</string>
+    <string name="more_like_this">More like this</string>
+    <string name="offer_price">OFFER PRICE:</string>
+    <string name="out_of_stock">OUT OF STOCK</string>
+    <string name="you_save">You Save:</string>
+    <string name="Discount">Discount:</string>
+    <string name="check">Check</string>
+    <string name="m_r_p">M.R.P:</string>
+    <string name="available_plans">Available Plans</string>
+    <string name="get_flat_off_to_make_use_code">Get flat off to make this order prepaid.</string>
+    <string name="use_code">Use Code</string>
+    <string name="More_offers_coupons">More Offers &amp; Coupons</string>
+    <string name="color">Colours:</string>
+    <string name="variant">Variant:</string>
+    <string name="secure_transaction">Secure transaction</string>
+    <string name="suggestion_to_enhance">SUGGESTIONS TO ENHANCE</string>
+    <string name="feedback">Feedback Question</string>
+    <string name="q">Q :</string>
+    <string name="write_a_feedback">Write a Feedback</string>
+
+    <string name="selling_price">Selling price</string>
+    <string name="discount">Discount</string>
+    <string name="offer_prices">Offer price</string>
+    <string name="shipping_fee">Shipping fee</string>
+    <string name="shipping_address_details">Shipping address details</string>
+    <string name="shipping_details">Shipping Details</string>
+    <string name="add_photos">ADD PHOTOS</string>
+    <string name="stand_a_chance_to_get">Stand a chance to get featured with the product and become an inspiration for millions of customers.</string>
+    <string name="upload_photo">Upload Photos</string>
+    <string name="write_your_review">Write your review here</string>
+    <string name="please_write_product_review">Please write product review here.</string>
+
+    <!-- TODO: My Cart Screen  -->
+    <string name="add">ADD</string>
+    <string name="my_cart">My Cart</string>
+    <string name="enter_coupon_code">Enter Coupon Code</string>
+    <string name="enter_pin_code">Enter Pin Code</string>
+    <string name="apply_coupon">Apply Coupon</string>
+    <string name="check_pincode">Check Pin Code</string>
+    <string name="price_details">Price Details</string>
+    <string name="delivery_fee">Delivery Fee</string>
+    <string name="product_discoount_price">Product Discount Price</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="new_total_amount">New Total Amount</string>
+    <string name="free">Free</string>
+    <string name="price">Price </string>
+    <string name="items">Items </string>
+    <string name="checkout">CHECKOUT</string>
+    <string name="delivery_address">DELIVERY ADDRESS</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="your_cart_is_empty">Your cart is empty</string>
+    <string name="you_haven_placed_any_order">You have not placed any orders</string>
+    <string name="All_your_orders_will_appear_here">All your orders will appear here</string>
+    <string name="this_quite_empty">This quite empty here!</string>
+    <string name="not_save_product_wishlist">You have not saved any product to Wishlist!</string>
+    <string name="view_products">View Products</string>
+    <string name="add_new_address">+ ADD NEW ADDRESS</string>
+    <string name="edit">EDIT</string>
+    <string name="deliver_to_this_address">Deliver to this Address</string>
+    <string name="set_primiry_account">Set as primary account</string>
+    <string name="enter_coupen_code">Please enter coupen code</string>
+
+    <!-- TODO: Check Out Address Screen -->
+    <string name="address">Address</string>
+    <string name="road_name_area">Road name, Area, Colony</string>
+    <string name="house_no_building_name">House No., Building Name</string>
+    <string name="type_of_address">Type of Address</string>
+    <string name="payment">Payment</string>
+    <string name="save_shipping_address">Save shipping address</string>
+    <string name="next">NEXT</string>
+
+    <!-- TODO: Check Out Payment Screen -->
+    <string name="select_payment_method">Select payment method</string>
+    <string name="confirm_and_pay">CONFIRM AND PAY</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="pay">PAY</string>
+    <string name="add_new_card">Add New Card</string>
+    <string name="save_this_card">Save this Card</string>
+
+
+    <!-- TODO: Confirm Pay Screen -->
+    <string name="thank_you">Thank You!</string>
+    <string name="your_rating_review">Your rating and review</string>
+    <string name="your_order_is_confirmed">Your Order is confirmed</string>
+    <string name="your_order_id">Your Order ID</string>
+    <string name="your_order_amount">Order Amount:</string>
+    <string name="order_detail">Order Detail</string>
+    <string name="payment_mode">Payment Mode:</string>
+    <string name="order_success">Order Success</string>
+    <string name="back_to_home">BACK TO HOME</string>
+    <string name="thank_you_for_shopping_with_uoons_application">Thank you for shopping with Uoons application.</string>
+    <string name="reason_for_cancellation" translatable="false">Reason for cancellation</string>
+    <string name="i_have_changed_my_mind" translatable="false">I have changed my mind</string>
+    <string name="expected_delivery_time_is_very_long" translatable="false">Expected delivery time is very long.</string>
+    <string name="price_for_the_product_has_decreased" translatable="false">Price for the product has decreased</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

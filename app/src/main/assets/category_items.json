@@ -1,0 +1,41 @@
+[
+  {
+    "Earphones": [
+      {
+        "earphoneID": 1,
+        "earphoneName": "Wired Headphones",
+        "price": "$30"
+      },
+      {
+        "earphoneID": 2,
+        "earphoneName": "Wired Headphones",
+        "price": "$30"
+      },
+      {
+        "earphoneID": 3,
+        "earphoneName": "Wired Headphones",
+        "price": "$30"
+      },
+      {
+        "earphoneID": 4,
+        "earphoneName": "Wired Headphones",
+        "price": "$30"
+      },
+      {
+        "earphoneID": 5,
+        "earphoneName": "Wired Headphones",
+        "price": "$30"
+      },
+      {
+        "earphoneID": 6,
+        "earphoneName": "Wired Headphones",
+        "price": "$30"
+      },
+      {
+        "earphoneID": 7,
+        "earphoneName": "Wired Headphones",
+        "price": "$30"
+      }
+    ]
+  }
+]

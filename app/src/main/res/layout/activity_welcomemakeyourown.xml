@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back1"
+    android:orientation="vertical">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/robot" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/poppinsregular"
+        android:text="I am JINNY "
+        android:textColor="#ffffff"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/poppinsregular"
+        android:text="A virtual artificial intelligence and I am here to assist you with a variety of tasks that I can do 24 hours a day, 7 days a week. I can help you to develop a desktop, drone or any electronic device which you need."
+        android:textColor="#ffffff"
+        android:textSize="14dp" />
+
+    <ImageView
+        android:id="@+id/img_go"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/go" />
+</LinearLayout>

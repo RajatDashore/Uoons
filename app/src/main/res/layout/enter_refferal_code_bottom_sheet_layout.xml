@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="enterRefferalCodeFragmentVM"
+            type="com.uoons.india.ui.refferal_code.enter_code.EnterRefferalCodeFragmentVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/enter_referral_code"
+            android:textAllCaps="true"
+            android:layout_margin="@dimen/_20sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="@dimen/text_size16"
+            android:id="@+id/txvTitle"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:id="@+id/ivButtonClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->enterRefferalCodeFragmentVM.navigator.dismissDialog()}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="@dimen/_20sdp"
+            app:srcCompat="@drawable/ic_close"
+            app:tint="@color/primary_color"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:id="@+id/viewClose"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/ivButtonClose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/bottom_navigation_background"
+            android:backgroundTint="@color/gray_bg"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/viewClose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivButtonClose"
+            android:id="@+id/txvEnterRefferalCode"
+            android:layout_margin="@dimen/_20sdp"
+            android:text="@string/Please_enter_the_exact_code_in_the_space_below"
+            android:textSize="@dimen/text_size16"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"/>
+
+        <EditText
+            android:id="@+id/edtEnterRefferalCode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/txvEnterRefferalCode"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/enter_referral_code"
+            android:imeOptions="actionNext"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+            android:singleLine="true"
+            android:maxLength="10"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size16" />
+
+        <TextView
+            android:id="@+id/txtSendOtpBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtEnterRefferalCode"
+            android:onClick="@{()->enterRefferalCodeFragmentVM.navigator.submitRefferalCode()}"
+            android:layout_margin="@dimen/_20sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/bottob_bg"
+            android:gravity="center"
+            android:text="@string/submit"
+            android:padding="@dimen/_15sdp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size14"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

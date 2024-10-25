@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="material_grey_500">#9E9E9E</color>
+    <color name="accent" tools:ignore="MissingDefaultResource">#FF4081</color>
+    <color name="colorPrimary" tools:ignore="MissingDefaultResource">#3F51B5</color>
+    <color name="colorPrimaryDark" tools:ignore="MissingDefaultResource">#303F9F</color>
+    <declare-styleable name="ReadMoreTextView"><attr format="string" name="trimExpandedText"/><attr format="string" name="trimCollapsedText"/><attr format="integer" name="trimLength"/><attr format="boolean" name="showTrimExpandedText"/><attr format="color" name="colorClickableText"/><attr format="integer" name="trimLines"/><attr name="trimMode">
+        <enum name="trimModeLine" value="0"/>
+        <enum name="trimModeLength" value="1"/>
+    </attr></declare-styleable>
+    <string name="read_less" tools:ignore="ExtraTranslation,MissingTranslation"><font size="10">Show Less</font></string>
+    <string name="read_more" tools:ignore="ExtraTranslation,MissingTranslation"><font size="10">Show More</font></string>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="filterData"
+            type="com.uoons.india.ui.product_list.model.FilterModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            app:cardBackgroundColor="@color/gray_editext_bg"
+            android:id="@+id/crdCategory"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <View
+                android:layout_width="@dimen/_3sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/primary_color"
+                android:id="@+id/viewVertical"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:textAllCaps="true"
+                android:id="@+id/txvCategory"
+                android:gravity="center_vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/gray_light"
+                android:text="@{filterData.name}" />
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/gray_light"
+            app:layout_constraintTop_toBottomOf="@+id/crdCategory"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

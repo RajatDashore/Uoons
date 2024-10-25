@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="loginMobileNoBottomSheetVM"
+            type="com.uoons.india.ui.login_module.login_mobile_no.LoginMobileNoBottomSheetVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        android:theme="@style/MyEditText"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <ImageView
+            android:id="@+id/ivButtonClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="@dimen/_20sdp"
+            app:srcCompat="@drawable/ic_close"
+            app:tint="@color/primary_color"
+            android:onClick="@{()->loginMobileNoBottomSheetVM.navigator.dismissDialog()}"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivButtonClose"
+            android:id="@+id/txvSingUpToCheck"
+            android:layout_margin="@dimen/_20sdp"
+            android:text="@string/Sign_up_to_check_your_order_details"
+            android:textSize="@dimen/text_size16"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_20sdp"
+            android:id="@+id/llPhoneNumber"
+            app:layout_constraintTop_toBottomOf="@+id/txvSingUpToCheck"
+            android:orientation="horizontal">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/countryCodePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                app:ccp_contentColor="@color/black"
+                app:ccp_showFlag="true"
+                app:ccp_showNameCode="false"
+                app:ccp_showPhoneCode="true"
+                app:ccp_textSize="@dimen/text_size18" />
+
+            <EditText
+                android:id="@+id/MobileNo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/phone_number"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:singleLine="true"
+                android:maxLength="10"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size16" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txvReferralByFriend"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llPhoneNumber"
+            android:text="@string/referral_by_friend"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="@{()->loginMobileNoBottomSheetVM.navigator.referralCode()}"
+            android:textSize="@dimen/text_size16"
+            android:textColor="@color/black"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/roboto_regular"/>
+
+        <EditText
+            android:id="@+id/EnterCode"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/enter_referral_code"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:visibility="gone"
+            android:inputType="text"
+            android:maxLength="10"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size16"
+            app:layout_constraintTop_toBottomOf="@+id/txvReferralByFriend"/>
+
+        <TextView
+            android:id="@+id/txtSendOtpBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/EnterCode"
+            android:layout_margin="@dimen/_20sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/bottob_bg"
+            android:gravity="center"
+            android:text="@string/send_otp"
+            android:padding="@dimen/_15sdp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size14"
+            android:onClick="@{()->loginMobileNoBottomSheetVM.navigator.sendOTP()}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/txvByContinuing"
+            app:layout_constraintTop_toBottomOf="@+id/txtSendOtpBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/_20sdp"
+            android:textSize="@dimen/text_size16"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/by_continuing_you_agree_to_uoons"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txvByContinuing"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txvTermsAndCondition"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="@{()->loginMobileNoBottomSheetVM.navigator.termAndCondition()}"
+                android:gravity="center"
+                android:textSize="@dimen/text_size16"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/primary_color"
+                android:text="@string/terms_conditions"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txvAnd"
+                android:textSize="@dimen/text_size16"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"
+                android:text="@string/and"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txvPrivacyPolicy"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="@{()->loginMobileNoBottomSheetVM.navigator.privacyPolicy()}"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:gravity="center"
+                android:textSize="@dimen/text_size16"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/primary_color"
+                android:text="@string/privacy_policy"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

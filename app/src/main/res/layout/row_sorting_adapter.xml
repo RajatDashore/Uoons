@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <data>
+        <variable
+            name="sortingDataModel"
+            type="com.uoons.india.ui.product_list.model.SortByNameModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+<!--        <RadioGroup-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/rdoButtonGroup"-->
+<!--            android:layout_margin="@dimen/_10sdp"-->
+<!--            android:theme="@style/RadioButtonStyle"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent">-->
+
+            <RadioButton
+                android:id="@+id/rdoBtnSorting"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20sdp"
+                android:text="@{sortingDataModel.name}"
+                android:textSize="@dimen/text_size14"
+                android:theme="@style/RadioButtonStyle"
+                android:layout_margin="@dimen/_10sdp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layoutDirection="rtl"
+                android:fontFamily="@font/roboto_medium"/>
+<!--        </RadioGroup>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="items"
+            type="com.uoons.india.ui.product_list.model.FilterItemsListModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/chkBoxItem"
+            android:textColor="@color/black"
+            android:theme="@style/RadioButtonStyle"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingStart="@dimen/_10sdp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

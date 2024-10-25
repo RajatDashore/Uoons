@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="profileDetails"
+            type="com.uoons.india.ui.profile.ProfileFragmentVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_color"
+        tools:context=".ui.profile.ProfileFragment">
+
+        <include layout="@layout/common_toolbar"
+            android:id="@+id/toolbar"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/accountView"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/bottom_navigation_background"
+            android:backgroundTint="@color/gray_bg"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            android:id="@+id/shimmerProfileLayout">
+
+            <include layout="@layout/shimmer_profile_layout"/>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/cstLayoutProfile"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.uoons.india.utils.CircleImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_margin="@dimen/_55sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/crdProfileIcon" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_margin="@dimen/_10sdp"
+                android:id="@+id/crdUserName"
+                app:layout_constraintTop_toBottomOf="@+id/crdProfileIcon">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:id="@+id/ivProfileVector"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/txvUserName"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:src="@drawable/ic_profile" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_20sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivProfileVector"
+                        android:gravity="center_vertical"
+                        android:id="@+id/txvUserName"
+                        android:singleLine="true"
+                        android:maxLines="1"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_margin="@dimen/_10sdp"
+                android:id="@+id/crdMobileNumber"
+                app:layout_constraintTop_toBottomOf="@+id/crdUserName">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:id="@+id/ivCallVector"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/txvMobileNumber"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:src="@drawable/ic_call_vector"
+                        app:tint="@color/primary_color" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_20sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivCallVector"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:maxLines="1"
+                        android:id="@+id/txvMobileNumber"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:text=""
+                        android:fontFamily="@font/roboto_regular"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_margin="@dimen/_10sdp"
+                android:id="@+id/crdEMail"
+                app:layout_constraintTop_toBottomOf="@+id/crdMobileNumber">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:id="@+id/ivEmailVector"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/txvEmail"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:src="@drawable/ic_email"
+                        app:tint="@color/primary_color" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_20sdp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivEmailVector"
+                        android:gravity="center_vertical"
+                        android:id="@+id/txvEmail"
+                        android:singleLine="true"
+                        android:maxLines="1"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_margin="@dimen/_10sdp"
+                android:id="@+id/crdAddress"
+                app:layout_constraintTop_toBottomOf="@+id/crdEMail">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:id="@+id/ivAddressVector"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/txvAddress"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:src="@drawable/ic_location"
+                        app:tint="@color/primary_color" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_20sdp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivAddressVector"
+                        android:gravity="center_vertical"
+                        android:id="@+id/txvAddress"
+                        android:singleLine="true"
+                        android:maxLines="1"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_30sdp"
+                app:cardBackgroundColor="@color/primary_color"
+                android:layout_margin="@dimen/_20sdp"
+                android:id="@+id/crdEditProfile"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:onClick="@{()->profileDetails.navigator.naviGateToEditProfileFragment()}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/crdAddress">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/edit_profile"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textSize="@dimen/text_size16"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

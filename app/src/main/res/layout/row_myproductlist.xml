@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/crdProduct"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/_10sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivProductImage"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_2sdp"
+            android:src="@drawable/image_gray_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:id="@+id/llOutOfStock"
+            android:background="@color/gray_line">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/primary_color"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_regular"
+                android:maxLines="1"
+                android:minLines="1"
+                android:id="@+id/txvOutOfStock"
+                android:text="@string/out_of_stock"
+                android:textSize="@dimen/text_size16"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txvProductName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:maxLines="2"
+            android:text="@{productListModel.productName}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/crdRating"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:cardBackgroundColor="@color/green"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+            app:layout_constraintTop_toBottomOf="@+id/txvProductName">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txvRatingPoint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size12" />
+
+                <ImageView
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:src="@drawable/ic_star_rate" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txvAVGRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size12"
+            app:layout_constraintStart_toEndOf="@+id/crdRating"
+            app:layout_constraintTop_toBottomOf="@+id/txvProductName" />
+
+        <TextView
+            android:id="@+id/txvMRPPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:background="@drawable/strike"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size12"
+            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+            app:layout_constraintTop_toBottomOf="@+id/txvAVGRating" />
+
+        <TextView
+            android:id="@+id/txvSellingPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/green"
+            android:textSize="@dimen/text_size12"
+            app:layout_constraintStart_toEndOf="@+id/txvMRPPrice"
+            app:layout_constraintTop_toBottomOf="@+id/txvAVGRating" />
+
+        <TextView
+            android:id="@+id/txvDisountOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/green"
+            android:textSize="@dimen/text_size12"
+            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+            app:layout_constraintTop_toBottomOf="@+id/txvMRPPrice" />
+
+        <TextView
+            android:id="@+id/txvFreeDelivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size12"
+            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+            app:layout_constraintTop_toBottomOf="@+id/txvDisountOff" />
+
+        <TextView
+            android:id="@+id/txvNoCostEMI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size12"
+            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+            app:layout_constraintTop_toBottomOf="@+id/txvFreeDelivery" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvSalientFeatures"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivProductImage"
+            app:spanCount="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,33 @@
+language: android
+
+android:
+  components:
+    - tools
+    - tools
+    - platform-tools
+    - build-tools-27.0.3
+    - android-27
+
+jdk:
+  - oraclejdk8
+
+sudo: false
+
+before_cache:
+  - rm -rf $HOME/.m2/repository/io/michaelrocks/paranoid-
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
+cache:
+  directories:
+    - $HOME/.m2
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+before_install:
+  - yes | sdkmanager "platforms;android-27"
+
+install:
+  - ./gradlew assemble publishToMavenLocal -Pbootstrap=true --no-daemon --rerun-tasks
+
+script:
+  - ./gradlew check --no-daemon

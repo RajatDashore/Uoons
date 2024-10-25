@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:id="@+id/crdProduct"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_10sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:id="@+id/ivProductImage"
+                    android:src="@drawable/new_logo_uoons_name"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    android:id="@+id/txvProductName"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="@dimen/text_size14"
+                    android:text="Wired Headphones"
+                    android:textColor="@color/grey"
+                    android:layout_margin="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@id/ivProductImage"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textSize="@dimen/text_size14"
+                    android:gravity="center_vertical"
+                    android:text="@string/rupees"
+                    android:id="@+id/txvRuppies"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@id/txvProductName"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/txvProductNewPrice"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textSize="@dimen/text_size14"
+                    android:text="300"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    app:layout_constraintTop_toBottomOf="@id/txvProductName"
+                    app:layout_constraintStart_toStartOf="@id/txvRuppies"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textSize="@dimen/text_size14"
+                    android:gravity="center_vertical"
+                    android:text="@string/rupees"
+                    android:id="@+id/txvNewRupees"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:textColor="@color/grey"
+                    android:background="@drawable/strike"
+                    app:layout_constraintTop_toBottomOf="@id/txvProductName"
+                    app:layout_constraintStart_toEndOf="@id/txvProductNewPrice"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/txvProductPrice"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textSize="@dimen/text_size14"
+                    android:text="400"
+                    android:textColor="@color/grey"
+                    android:background="@drawable/strike"
+                    app:layout_constraintTop_toBottomOf="@id/txvProductName"
+                    app:layout_constraintStart_toEndOf="@id/txvNewRupees"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/txvDisountOff"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textSize="@dimen/text_size14"
+                    android:singleLine="true"
+                    android:text="10"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textColor="@color/primary_color"
+                    app:layout_constraintTop_toBottomOf="@id/txvProductNewPrice"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textSize="@dimen/text_size14"
+                    android:text="@string/disount"
+                    android:textColor="@color/primary_color"
+                    app:layout_constraintTop_toBottomOf="@id/txvProductNewPrice"
+                    app:layout_constraintStart_toEndOf="@id/txvDisountOff"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_30sdp"
+                    android:visibility="visible"
+                    android:id="@+id/crdFreeDelivery"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:cardBackgroundColor="@color/gray_editext_bg"
+                    app:layout_constraintTop_toBottomOf="@id/txvDisountOff">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/grey"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="@dimen/text_size14"
+                        android:text="Free Delivery"/>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_15sdp"
+                    android:visibility="visible"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_30sdp"
+                    android:id="@+id/crdRating"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:cardBackgroundColor="@color/green"
+                    app:layout_constraintTop_toBottomOf="@id/crdFreeDelivery">
+
+                    <TextView
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="@dimen/text_size14"
+                        android:text="3.9"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_13sdp"
+                        android:layout_marginTop="@dimen/_1sdp"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:src="@drawable/ic_star_rate"/>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(62)"
+                    android:textColor="@color/grey"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="@dimen/text_size14"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintStart_toEndOf="@id/crdRating"
+                    app:layout_constraintTop_toBottomOf="@id/crdFreeDelivery"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

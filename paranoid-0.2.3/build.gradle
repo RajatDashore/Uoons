@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library' // Apply the library plugin
+
+// Set group and version
+group = 'io.michaelrocks'
+version = '0.2.3'
+
+// Define dependency versions
+ext.kotlinVersion = '1.2.41'
+ext.pabloVersion = '1.0.2'
+ext.asmVersion = '6.1.1'
+ext.gripVersion = '0.6.2-beta'
+ext.logbackVersion = '1.2.3'
+ext.junitVersion = '4.12'
+ext.androidToolsVersion = '3.1.2'
+ext.supportVersion = '27.1.1'
+ext.androidBuildToolsVersion = '27.0.3'
+ext.androidCompileSdkVersion = 27
+ext.androidMinSdkVersion = 16
+ext.androidTargetSdkVersion = ext.androidCompileSdkVersion
+
+// Android configuration
+android {
+  compileSdkVersion androidCompileSdkVersion
+  namespace 'com.uoons.india'  // Add this line
+
+  defaultConfig {
+    // Library specific configuration
+    minSdkVersion androidMinSdkVersion
+    targetSdkVersion androidTargetSdkVersion
+  }
+
+  buildTypes {
+    release {
+      // Configure release build type if needed
+    }
+    debug {
+      // Configure debug build type if needed
+    }
+  }
+}
+
+repositories {
+  mavenLocal()
+  google()
+  jcenter()
+}
+
+// Declare library dependencies
+dependencies {
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+  // Add other necessary dependencies here
+  implementation "io.michaelrocks.pablo:pablo:$pabloVersion"
+  // Add other dependencies as needed
+}

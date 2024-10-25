@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_navigation_graph"
+    app:startDestination="@id/homeFragment">
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.uoons.india.ui.home.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_categoryItemsFragment"
+            app:destination="@id/categoryItemsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchingItemFragment"
+            app:destination="@id/searchingItemFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryItemDetailsFragment"
+            app:destination="@id/categoryItemDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_sliderItemsFragment"
+            app:destination="@id/sliderItemsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryItemsFragment2"
+            app:destination="@id/categoryItemsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.uoons.india.ui.category.CategoryFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_category">
+
+        <action
+            android:id="@+id/action_categoryFragment_to_categoryItemsFragment"
+            app:destination="@id/categoryItemsFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="com.uoons.india.ui.order.order_list.OrderFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_order">
+        <action
+            android:id="@+id/action_orderFragment_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_searchingItemFragment"
+            app:destination="@id/searchingItemFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_orderFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.uoons.india.ui.account.AccountFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_account">
+        <action
+            android:id="@+id/action_accountFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_myBankDeatilsFragment"
+            app:destination="@id/myBankDeatilsFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_helpFragment"
+            app:destination="@id/helpFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_accountFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_legalAndPoliciesFragment"
+            app:destination="@id/legalAndPoliciesFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.uoons.india.ui.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.uoons.india.ui.profile.editprofile.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profiles">
+        <action
+            android:id="@+id/action_editProfileFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myBankDeatilsFragment"
+        android:name="com.uoons.india.ui.bank.MyBankDeatilsFragment"
+        android:label="MyBankDeatilsFragment"
+        tools:layout="@layout/fragment_my_bank_details">
+        <action
+            android:id="@+id/action_myBankDeatilsFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.uoons.india.ui.order.order_details.OrderDetailsFragment"
+        android:label="OrderDetailsFragment"
+        tools:layout="@layout/fragment_order_details">
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_orderReviewRatingFragment"
+            app:destination="@id/orderReviewRatingFragment" />
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_orderTrackerFragment"
+            app:destination="@id/orderTrackerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.uoons.india.ui.help.HelpFragment"
+        android:label="HelpFragment"
+        tools:layout="@layout/fragment_help">
+        <action
+            android:id="@+id/action_helpFragment_to_myCartFragment2"
+            app:destination="@id/myCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.uoons.india.ui.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_notificationsSettingsFragment"
+            app:destination="@id/notificationsSettingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationsSettingsFragment"
+        android:name="com.uoons.india.ui.notification_settings.NotificationsSettingsFragment"
+        android:label="NotificationsSettingsFragment"
+        tools:layout="@layout/fragment_notifications_settings">
+        <action
+            android:id="@+id/action_notificationsSettingsFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/legalAndPoliciesFragment"
+        android:name="com.uoons.india.ui.legal_policies.LegalAndPoliciesFragment"
+        android:label="LegalAndPoliciesFragment"
+        tools:layout="@layout/fragment_legal_and_policies">
+        <action
+            android:id="@+id/action_legalAndPoliciesFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryItemsFragment"
+        android:name="com.uoons.india.ui.category.category_items.CategoryItemsFragment"
+        android:label="CategoryItemsFragment"
+        tools:layout="@layout/fragment_category_items">
+        <action
+            android:id="@+id/action_categoryItemsFragment_to_categoryItemDetailsFragment"
+            app:destination="@id/categoryItemDetailsFragment" />
+        <action
+            android:id="@+id/action_categoryItemsFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_categoryItemsFragment_to_searchingItemFragment"
+            app:destination="@id/searchingItemFragment" />
+        <action
+            android:id="@+id/action_categoryItemsFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryItemDetailsFragment"
+        android:name="com.uoons.india.ui.category.category_items.category_items_details.CategoryItemDetailsFragment"
+        android:label="CategoryItemDetailsFragment"
+        tools:layout="@layout/fragment_category_item_details">
+        <action
+            android:id="@+id/action_categoryItemDetailsFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_categoryItemDetailsFragment_to_checkOutAddressFragment"
+            app:destination="@id/checkOutAddressFragment" />
+        <action
+            android:id="@+id/action_categoryItemDetailsFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myCartFragment"
+        android:name="com.uoons.india.ui.my_cart.MyCartFragment"
+        android:label="MyCartFragment"
+        tools:layout="@layout/fragment_my_cart">
+        <action
+            android:id="@+id/action_myCartFragment_to_checkOutAddressFragment"
+            app:destination="@id/checkOutAddressFragment" />
+        <action
+            android:id="@+id/action_myCartFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
+        <action
+            android:id="@+id/action_myCartFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/checkOutAddressFragment"
+        android:name="com.uoons.india.ui.checkout.checkout_address.CheckOutAddressFragment"
+        android:label="CheckOutAddressFragment"
+        tools:layout="@layout/fragment_check_out_address">
+        <action
+            android:id="@+id/action_checkOutAddressFragment_to_checkOutPaymentFragment"
+            app:destination="@id/checkOutPaymentFragment" />
+        <action
+            android:id="@+id/action_checkOutAddressFragment_to_updatecheckOutAddressFragment"
+            app:destination="@id/updatecheckOutAddressFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/updatecheckOutAddressFragment"
+        android:name="com.uoons.india.ui.checkout.checkout_address_update.UpdateCheckOutAddressFragment"
+        android:label="CheckOutAddressFragment"
+        tools:layout="@layout/fragment_update_delivery_address">
+     </fragment>
+
+
+
+    <fragment
+        android:id="@+id/checkOutPaymentFragment"
+        android:name="com.uoons.india.ui.checkout.checkout_payment.CheckOutPaymentFragment"
+        android:label="fragment_check_out_payment"
+        tools:layout="@layout/fragment_check_out_payment" >
+        <action
+            android:id="@+id/action_checkOutPaymentFragment_to_confirmPayFragment"
+            app:destination="@id/confirmPayFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_checkOutPaymentFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmPayFragment"
+        android:name="com.uoons.india.ui.checkout.confirm_pay.ConfirmPayFragment"
+        android:label="ConfirmPayFragment"
+        tools:layout="@layout/fragment_confirm_pay">
+        <action
+            android:id="@+id/action_confirmPayFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/searchingItemFragment"
+        android:name="com.uoons.india.ui.searching.SearchingItemFragment"
+        android:label="SearchingItemFragment"
+        tools:layout="@layout/fragment_searching_item">
+        <action
+            android:id="@+id/action_searchingItemFragment_to_searchItemsFragment"
+            app:destination="@id/searchItemsFragment" />
+        <action
+            android:id="@+id/action_searchingItemFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
+        <action
+            android:id="@+id/action_searchingItemFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/searchItemsFragment"
+        android:name="com.uoons.india.ui.searching.search_items.SearchItemsFragment"
+        android:label="SearchItemsFragment"
+        tools:layout="@layout/fragment_search_items"/>
+    <fragment
+        android:id="@+id/sliderItemsFragment"
+        android:name="com.uoons.india.ui.slider.SliderItemsFragment"
+        android:label="SliderItemsFragment"
+        tools:layout="@layout/fragment_slider_items">
+        <action
+            android:id="@+id/action_sliderItemsFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_sliderItemsFragment_to_searchingItemFragment"
+            app:destination="@id/searchingItemFragment" />
+        <action
+            android:id="@+id/action_sliderItemsFragment_to_categoryItemDetailsFragment"
+            app:destination="@id/categoryItemDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wishListFragment"
+        android:name="com.uoons.india.ui.wishlist.WishListFragment"
+        android:label="WishListFragment"
+        tools:layout="@layout/fragment_wish_list">
+        <action
+            android:id="@+id/action_wishListFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_wishListFragment_to_categoryItemDetailsFragment"
+            app:destination="@id/categoryItemDetailsFragment" />
+        <action
+            android:id="@+id/action_wishListFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+
+    </fragment>
+    <dialog
+        android:id="@+id/loginMobileNoBottomSheet"
+        android:name="com.uoons.india.ui.login_module.login_mobile_no.LoginMobileNoBottomSheet"
+        android:label="LoginMobileNoBottomSheet"
+        tools:layout="@layout/login_mobile_no_bottom_sheet">
+        <action
+            android:id="@+id/action_loginMobileNoBottomSheet_to_legalAndPoliciesFragment"
+            app:destination="@id/legalAndPoliciesFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="com.uoons.india.ui.product_list.ProductListFragment"
+        android:label="ProductListFragment"
+        tools:layout="@layout/fragment_product_list">
+        <action
+            android:id="@+id/action_productListFragment_to_productFilterFragment"
+            app:destination="@id/productFilterFragment" />
+        <action
+            android:id="@+id/action_productListFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_productListFragment_to_searchingItemFragment"
+            app:destination="@id/searchingItemFragment" />
+        <action
+            android:id="@+id/action_productListFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_productListFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productFilterFragment"
+        android:name="com.uoons.india.ui.product_list.filter.ProductFilterFragment"
+        android:label="ProductFilterFragment" />
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.uoons.india.ui.product_detail.ProductDetailFragment"
+        android:label="ProductDetailFragment"
+        tools:layout="@layout/fragment_product_detail">
+        <action
+            android:id="@+id/action_productDetailFragment_to_productDetailsQuestionAndAnswerFragment"
+            app:destination="@id/productDetailsQuestionAndAnswerFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_searchQuestionAnswerFragment"
+            app:destination="@id/searchQuestionAnswerFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_checkOutAddressFragment"
+            app:destination="@id/checkOutAddressFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_suggestionForEnhanceFragment"
+            app:destination="@id/suggestionForEnhanceFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_orderBundleFragment"
+            app:destination="@id/orderBundleFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_self"
+            app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_fullScreenImageShowFragment"
+            app:destination="@id/fullScreenImageShowFragment" />
+
+        <!--        <deeplink-->
+<!--            android:id="@+id/deepLink"-->
+<!--            app:uri="www.uoons.com"-->
+<!--            app:action="android.intent.action.MY_ACTION"-->
+<!--            app:mimeType="type/subtype"/>-->
+
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsQuestionAndAnswerFragment"
+        android:name="com.uoons.india.ui.product_detail.quetion_and_answer.ProductDetailsQuestionAndAnswerFragment"
+        android:label="ProductDetailsQuestionAndAnswerFragment"
+        tools:layout="@layout/fragment_product_details_question_and_answer">
+        <action
+            android:id="@+id/action_productDetailsQuestionAndAnswerFragment_to_searchQuestionAnswerFragment"
+            app:destination="@id/searchQuestionAnswerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchQuestionAnswerFragment"
+        android:name="com.uoons.india.ui.question_answers.SearchQuestionAnswerFragment"
+        android:label="SearchQuestionAnswerFragment"
+        tools:layout="@layout/fragment_search_question_answer">
+        <action
+            android:id="@+id/action_searchQuestionAnswerFragment_to_postYourQuestionFragment"
+            app:destination="@id/postYourQuestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postYourQuestionFragment"
+        android:name="com.uoons.india.ui.question_answers.post_question.PostYourQuestionFragment"
+        android:label="PostYourQuestionFragment"
+        tools:layout="@layout/fragment_post_your_question">
+        <action
+            android:id="@+id/action_postYourQuestionFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/suggestionForEnhanceFragment"
+        android:name="com.uoons.india.ui.product_detail.suggestion_for_enhance.SuggestionForEnhanceFragment"
+        android:label="SuggestionForEnhanceFragment"
+        tools:layout="@layout/fragment_suggestion_for_enhance">
+        <action
+            android:id="@+id/action_suggestionForEnhanceFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/orderBundleFragment"
+        android:name="com.uoons.india.ui.order.OrderBundleFragment"
+        android:label="OrderBundleFragment"
+        tools:layout="@layout/fragment_order_bundle">
+        <action
+            android:id="@+id/action_orderBundleFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_orderBundleFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_orderBundleFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_orderBundleFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderReviewRatingFragment"
+        android:name="com.uoons.india.ui.order.order_review_rating.OrderReviewRatingFragment"
+        android:label="OrderReviewRatingFragment"
+        tools:layout="@layout/fragment_order_review_rating">
+        <action
+            android:id="@+id/action_orderReviewRatingFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+        <action
+            android:id="@+id/action_orderReviewRatingFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
+        <action
+            android:id="@+id/action_orderReviewRatingFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_orderReviewRatingFragment_to_reviewAndRatingThankyouScreenFragment"
+            app:destination="@id/reviewAndRatingThankyouScreenFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.uoons.india.ui.help.view_pager_fragment.ContactUsFragment"
+        android:label="ContactUsFragment"
+        tools:layout="@layout/fragment_contact_us">
+        <action
+            android:id="@+id/action_contactUsFragment_to_accountFragment"
+            app:destination="@id/accountFragment"
+            app:popUpTo="@+id/accountFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/reviewAndRatingThankyouScreenFragment"
+        android:name="com.uoons.india.ui.order.order_review_rating.review_thanks_screen.ReviewAndRatingThankyouScreenFragment"
+        android:label="ReviewAndRatingThankyouScreenFragment"
+        tools:layout="@layout/fragment_review_and_rating_thankyou_screen">
+        <action
+            android:id="@+id/action_reviewAndRatingThankyouScreenFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fullScreenImageShowFragment"
+        android:name="com.uoons.india.ui.product_detail.full_screen_image.FullScreenImageShowFragment"
+        android:label="FullScreenImageShowFragment"
+        tools:layout="@layout/fragment_full_screen_image_show"/>
+
+    <fragment
+        android:id="@+id/orderTrackerFragment"
+        android:name="com.uoons.india.ui.order.order_tracker.OrderTrackerFragment"
+        android:label="OrderTrackerFragment"
+        tools:layout="@layout/fragment_order_tracker"/>
+
+</navigation>

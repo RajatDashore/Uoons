@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/gray_bg"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:cardElevation="6dp"
+        app:contentPadding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/ivUoonsLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:text="@string/reason_for_cancellation"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size18" />
+
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/rb_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <RadioButton
+                    android:id="@+id/rb_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="I have purchased the product elsewhere"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size16" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/i_have_changed_my_mind"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size16" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/expected_delivery_time_is_very_long"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size16" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/price_for_the_product_has_decreased"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size16" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="I want to cancel due to product quality issues"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size16" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_others"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Others please specify"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size16" />
+
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/edtMassage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:inputType="textMultiLine"
+                android:textSize="@dimen/text_size16"
+                android:visibility="gone" />
+
+                <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_30sdp"
+                    android:background="@drawable/update_border"
+                    android:backgroundTint="@color/primary_color"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/btnLatter"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:text="Cancel"
+                        android:textColor="@color/primary_color"
+                        android:textSize="@dimen/text_size16" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_30sdp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/primary_color"
+                    app:cardCornerRadius="@dimen/_11sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Submit"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size16" />
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

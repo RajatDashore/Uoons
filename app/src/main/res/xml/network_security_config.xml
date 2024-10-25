@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true"></domain>
+    </domain-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>-->
+
+
+<network-security-config xmlns:tools="http://schemas.android.com/tools">
+    <domain-config>
+        <domain includeSubdomains="true">https://uoons.com</domain>
+        <trust-anchors>
+            <certificates src="system"
+                />
+            <certificates src="user"
+                />
+        </trust-anchors>
+
+        <!--<pin-set expiration="2023-12-10">
+            <pin digest="SHA-256">uRy+n1nfHAYK/1Zy42zxIEn9BbfeTt8RDSAo641Vge0=</pin>
+            &lt;!&ndash; backup pin &ndash;&gt;
+            <pin digest="SHA-256">uRy+n1nfHAYK/1Zy42zxIEn9BbfeTt8RDSAo641Vge0=</pin>
+        </pin-set>-->
+
+        <pin-set expiration="2024-12-10">
+            <pin digest="SHA-256">ReEGXY0pnGBAqrASIqBCmOjSELZno6Vv++TuaIekQ9s=</pin>
+            <!-- backup pin -->
+            <pin digest="SHA-256">ReEGXY0pnGBAqrASIqBCmOjSELZno6Vv++TuaIekQ9s=</pin>
+        </pin-set>
+    </domain-config>
+</network-security-config>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txvSelectPaymentMethodeText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/_10sdp"
+            android:text="@string/select_payment_method"
+            android:textSize="@dimen/text_size15"
+            android:textColor="@color/gray_bg"
+            android:background="@color/gray_bg"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:id="@+id/crdSppiner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txvSelectPaymentMethodeText">
+
+            <Spinner
+                android:id="@+id/sppinerPaymentMethode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/gray_bg"
+                android:background="@drawable/bg_sppiner"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="@string/price_details"
+            android:id="@+id/txvPriceDetails"
+            android:textColor="@color/gray_bg"
+            android:textSize="@dimen/text_size16"
+            android:background="@color/gray_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/crdSppiner"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:padding="@dimen/_20sdp"
+            android:visibility="visible"
+            android:id="@+id/crdPriceDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txvPriceDetails">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="@dimen/text_size14"
+                    android:background="@color/gray_bg"
+                    android:id="@+id/txvPriceItems"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@color/gray_bg"
+                    android:textSize="@dimen/text_size14"
+                    android:id="@+id/txvPriceRupees"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/txvPriceItems"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="@dimen/text_size14"
+                    android:background="@color/gray_bg"
+                    android:id="@+id/txvTotalPriceItems"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:textColor="@color/gray_bg"
+                    android:text="@string/disount_items"/>
+
+                <TextView
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/txvPriceRupees"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@color/gray_bg"
+                    android:textSize="@dimen/text_size14"
+                    android:id="@+id/txvTotalPriceDicount" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@id/txvTotalPriceDicount"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@color/gray_bg"
+                    android:textSize="@dimen/text_size14"
+                    android:id="@+id/txvFreeDelivery"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:textColor="@color/gray_bg"
+                    android:text="@string/delivery_fee"/>
+
+                <TextView
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/txvTotalPriceDicount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:textSize="@dimen/text_size14"
+                    android:id="@+id/txvFree"
+                    android:background="@color/gray_bg"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/gray_bg"
+                    android:id="@+id/viewFreeText"
+                    app:layout_constraintTop_toBottomOf="@id/txvFree"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:textColor="@color/gray_bg"
+                    android:text="@string/total_amount"
+                    android:id="@+id/txvTotalPriceText"
+                    android:background="@color/gray_bg"
+                    android:textSize="@dimen/text_size16"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/viewFreeText"/>
+
+                <TextView
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:id="@+id/txvTotalPrice"
+                    android:background="@color/gray_bg"
+                    android:textSize="@dimen/text_size16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/viewFreeText"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/grey"
+                    android:visibility="gone"
+                    android:id="@+id/viewCoupen"
+                    app:layout_constraintTop_toBottomOf="@id/txvTotalPrice"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:cardCornerRadius="@dimen/_20sdp"
+            android:id="@+id/crdCheckoutProduct"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crdPriceDetails"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                app:cardBackgroundColor="@color/gray_bg"
+                app:cardCornerRadius="@dimen/_15sdp"
+                android:textSize="@dimen/text_size18" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="freqProdModel"
+            type="com.uoons.india.ui.product_detail.model.FreqProdModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:id="@+id/cstLayoutFrequentBoutgh">
+
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/image_gray_color"
+            android:id="@+id/ivProductImage"
+            app:loadImage='@{freqProdModel.productImages}'/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+            android:text="@{freqProdModel.productName}"
+            android:textSize="@dimen/text_size12"
+            android:fontFamily="@font/roboto_regular"
+            android:maxLines="2"
+            android:id="@+id/txvProductName"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:id="@+id/crdRating"
+            app:layout_constraintTop_toBottomOf="@+id/txvProductName"
+            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:cardBackgroundColor="@color/green"
+            app:cardCornerRadius="@dimen/_8sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txvRatingPoint"
+                    android:text=""
+                    android:textSize="@dimen/text_size12"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/white"/>
+
+                <ImageView
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:src="@drawable/ic_star_rate"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:id="@+id/txvAllRating"
+            app:layout_constraintTop_toBottomOf="@+id/txvProductName"
+            app:layout_constraintStart_toEndOf="@+id/crdRating"
+            android:text=""
+            android:textSize="@dimen/text_size12"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/gray"/>
+
+        <TextView
+            android:id="@+id/txvMRPPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:background="@drawable/strike"
+            android:fontFamily="@font/roboto_regular"
+            android:text=""
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size12"
+            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+            app:layout_constraintTop_toBottomOf="@+id/txvAllRating" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txvAllRating"
+            app:layout_constraintStart_toEndOf="@+id/txvMRPPrice"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:id="@+id/txvSellingPrice"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:textSize="@dimen/text_size12"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/green"
+            android:text=""/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txvDisountOff"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="@dimen/text_size12"
+            android:text="@string/disount"
+            android:textColor="@color/green"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintTop_toBottomOf="@+id/txvMRPPrice"
+            app:layout_constraintStart_toEndOf="@+id/ivProductImage"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txvOrPay"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textSize="@dimen/text_size12"
+            android:text=""
+            app:layout_constraintTop_toBottomOf="@+id/txvDisountOff"
+            app:layout_constraintStart_toEndOf="@+id/ivProductImage"/>
+
+        <ImageView
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:src="@drawable/rupee_coins"
+            android:id="@+id/ivMyDoller"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:layout_marginStart="@dimen/_2sdp"
+            app:layout_constraintTop_toBottomOf="@+id/txvDisountOff"
+            app:layout_constraintStart_toEndOf="@+id/txvOrPay"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txvMyCoins"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="@dimen/text_size12"
+            android:text=""
+            app:layout_constraintTop_toBottomOf="@+id/txvDisountOff"
+            app:layout_constraintStart_toEndOf="@+id/ivMyDoller"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_26sdp"
+            android:layout_height="@dimen/_26sdp"
+            app:cardCornerRadius="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/primary_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crdRating"
+            android:id="@+id/crdAddToCart">
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/ic_plus"
+                app:tint="@color/white"
+                android:layout_gravity="center"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/crdAddToCart"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="@string/add"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/primary_color"
+            android:textSize="@dimen/text_size14"/>
+
+        <View
+            android:id="@+id/viewFrequentlyBought"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/gray_line"
+            app:layout_constraintTop_toBottomOf="@+id/ivProductImage"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

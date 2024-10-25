@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="similarProductsModel"
+            type="com.uoons.india.ui.product_detail.model.SimilarProductsModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:id="@+id/cstLayout"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_marginTop="@dimen/_1sdp"
+        android:layout_marginBottom="@dimen/_1sdp"
+        android:layout_marginEnd="@dimen/_1sdp"
+        android:layout_marginStart="@dimen/_1sdp">
+
+        <ImageView
+            android:id="@+id/ivProductImage"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:src="@drawable/image_gray_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:moreProducts='@{similarProductsModel.productImages}' />
+
+        <TextView
+            android:id="@+id/txvProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:maxLines="2"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="@{similarProductsModel.productName}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivProductImage" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:id="@+id/crdRating"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/txvProductName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:cardBackgroundColor="@color/green"
+            app:cardCornerRadius="@dimen/_10sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txvRatingPoint"
+                    android:text=""
+                    android:textSize="@dimen/text_size12"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/white"/>
+
+                <ImageView
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:src="@drawable/ic_star_rate"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:id="@+id/txvAllRating"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/txvProductName"
+            app:layout_constraintStart_toEndOf="@+id/crdRating"
+            android:text=""
+            android:textSize="@dimen/text_size12"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/gray"/>
+
+        <TextView
+            android:id="@+id/txvSellingPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:maxLines="2"
+            android:text="$ 75,255"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crdRating" />
+
+        <TextView
+            android:id="@+id/txvMRPPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:background="@drawable/strike"
+            android:fontFamily="@font/roboto_regular"
+            android:maxLines="2"
+            android:text="MRP: $ 88,750"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size16"
+            app:layout_constraintStart_toEndOf="@id/txvSellingPrice"
+            app:layout_constraintTop_toBottomOf="@id/crdRating" />
+
+        <TextView
+            android:id="@+id/txvDisountOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="41% off"
+            android:textColor="@color/green"
+            android:textSize="@dimen/text_size16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txvSellingPrice"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

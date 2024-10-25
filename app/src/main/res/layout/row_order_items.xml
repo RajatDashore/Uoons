@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="orderListModel"
+            type="com.uoons.india.ui.order.order_list.model.OrderListModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:elevation="@dimen/_10sdp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:id="@+id/crdMyOrders"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_15sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/ivProductImage"
+                android:src="@drawable/image_gray_color"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/txvProductName"
+                android:text="@{orderListModel.productName}"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size16"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivProductImage"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/txvTotalAmmount"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text=""
+                android:textSize="@dimen/text_size14"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/grey"
+                app:layout_constraintTop_toBottomOf="@+id/txvProductName"
+                app:layout_constraintStart_toEndOf="@id/ivProductImage"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/txvBundleDate"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text=""
+                android:textSize="@dimen/text_size14"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/grey"
+                app:layout_constraintTop_toBottomOf="@+id/txvTotalAmmount"
+                app:layout_constraintStart_toEndOf="@id/ivProductImage"/>
+
+          <!--  <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/ratingBar"
+                style="@style/MyRatingBar"
+                android:isIndicator="false"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:theme="@style/MyRatingBar"
+                app:layout_constraintStart_toEndOf="@id/ivProductImage"
+                app:layout_constraintTop_toBottomOf="@id/txvProductName"/>-->
+
+          <!--  <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/txvRateThisProduct"
+                android:text="Rate this product Now"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/grey"
+                app:layout_constraintStart_toEndOf="@id/ivProductImage"
+                app:layout_constraintTop_toBottomOf="@id/ratingBar"/>-->
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_70sdp"
+                android:src="@drawable/ic_right"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@color/primary_color" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

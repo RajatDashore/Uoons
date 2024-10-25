@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="accountFragmentVM"
+            type="com.uoons.india.ui.account.AccountFragmentVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_color"
+        tools:context=".ui.account.AccountFragment">
+
+        <include layout="@layout/common_toolbar"
+            android:id="@+id/toolbar"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:id="@+id/accountView"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/bottom_navigation_background"
+            android:backgroundTint="@color/gray_bg"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/scrollView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_100sdp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/crdProfile"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:elevation="@dimen/_10sdp"
+                    android:padding="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.uoons.india.utils.CircleImageView
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="@dimen/_60sdp"
+                            android:layout_margin="@dimen/_10sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:id="@+id/crdProfileIcon"
+                            android:src="@drawable/ic_profile" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            app:cardCornerRadius="@dimen/_8sdp"
+
+                            android:id="@+id/crdSignUp"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:onClick="@{()->accountFragmentVM.navigator.onSignUpClick()}"
+                            app:cardBackgroundColor="@color/primary_color_light_1"
+                            app:layout_constraintStart_toEndOf="@+id/crdProfileIcon"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_margin="@dimen/_20sdp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textColor="@color/primary_color"
+                                android:textSize="@dimen/text_size16"
+                                android:layout_gravity="center"
+                                android:text="@string/sign_up"/>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_60sdp"
+                            android:layout_margin="@dimen/_10sdp"
+                            app:layout_constraintEnd_toStartOf="@id/ivRight"
+                            app:layout_constraintStart_toEndOf="@+id/crdProfileIcon"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:id="@+id/txvMobileNumber"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size16"
+                            android:visibility="gone"
+                            android:gravity="center_vertical"
+                            android:text="@{accountFragmentVM.userNumber}"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_60sdp"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:id="@+id/llProfileDetails"
+                            app:layout_constraintEnd_toStartOf="@id/ivRight"
+                            app:layout_constraintStart_toEndOf="@+id/crdProfileIcon"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_20sdp"
+                                android:id="@+id/txvGetUserName"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text_size16"
+                                android:visibility="visible"
+                                android:gravity="center_vertical"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_20sdp"
+                                android:id="@+id/txvGetUserNEmail"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text_size16"
+                                android:maxLines="1"
+                                android:minLines="1"
+                                android:visibility="visible"
+                                android:gravity="center_vertical"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_20sdp"
+                                android:id="@+id/txvGetMobileNumber"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text_size16"
+                                android:visibility="visible"
+                                android:gravity="center_vertical"/>
+                        </LinearLayout>
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/ivRight"
+                            android:src="@drawable/ic_right"
+                            android:layout_margin="@dimen/_10sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/primary_color" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/crdAccountDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:padding="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/crdProfile">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:visibility="gone"
+                            android:id="@+id/ivCallVector"
+                            android:background="?android:attr/selectableItemBackground"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/ic_call_vector"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center"
+                            android:id="@+id/txvCallUsAtText"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ivCallVector"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:text="@string/call_us_at"
+                            android:visibility="gone"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:gravity="center_vertical"
+                            android:id="@+id/txvMobileNumberCallUs"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            app:layout_constraintStart_toEndOf="@+id/txvCallUsAtText"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:visibility="gone"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewCallUsContact"
+                            app:layout_constraintTop_toBottomOf="@+id/txvMobileNumberCallUs"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/ivBankVector"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/viewCallUsContact"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/ic_bank_vector"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/txvMyBankDetails"
+                            android:visibility="visible"
+                            android:gravity="center_vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/viewCallUsContact"
+                            app:layout_constraintStart_toEndOf="@+id/ivBankVector"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:text="@string/my_bank_details"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:onClick="@{()->accountFragmentVM.navigator.naviGateToMyBankDetailsFragment()}"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:visibility="visible"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewMyCoins"
+                            app:layout_constraintTop_toBottomOf="@+id/txvMyBankDetails"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/ivMyCoins"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/viewMyCoins"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/coin_wallet"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            android:id="@+id/txvMyCoins"
+                            android:visibility="visible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            app:layout_constraintTop_toBottomOf="@+id/viewMyCoins"
+                            app:layout_constraintStart_toEndOf="@+id/ivMyCoins"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:onClick="@{()->accountFragmentVM.navigator.naviGateToMyCoinsFragment()}"
+                            android:text="@string/my_coins"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:visibility="visible"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewMyBankDetails"
+                            app:layout_constraintTop_toBottomOf="@+id/txvMyCoins"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/ivReferEarn"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/viewMyBankDetails"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/refar_and_ear"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            android:id="@+id/txvReferEarn"
+                            android:visibility="visible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:onClick="@{()->accountFragmentVM.navigator.naviGateToMyRefferalAndEarn()}"
+                            android:background="?android:attr/selectableItemBackground"
+                            app:layout_constraintTop_toBottomOf="@+id/viewMyBankDetails"
+                            app:layout_constraintStart_toEndOf="@+id/ivReferEarn"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:text="@string/refer_and_earn"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewReferEarn"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/txvReferEarn"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+
+                            app:layout_constraintTop_toBottomOf="@+id/viewReferEarn"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:id="@+id/ivEnterReferralCode"
+                            android:src="@drawable/ic_new_project"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            android:visibility="visible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:id="@+id/txvEnterRefferalCode"
+                            android:onClick="@{()->accountFragmentVM.navigator.enterRefferalCode()}"
+                            app:layout_constraintTop_toBottomOf="@+id/viewReferEarn"
+                            app:layout_constraintStart_toEndOf="@+id/ivEnterReferralCode"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:text="@string/enter_referral_code"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewEnterRefferalCode"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/txvEnterRefferalCode"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/ivRefferalCode"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/viewEnterRefferalCode"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/ic_refer_gift"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            android:visibility="visible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:onClick="@{()->accountFragmentVM.navigator.naviGateToMyRefferalCode()}"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:id="@+id/txvRefferalCode"
+                            app:layout_constraintTop_toBottomOf="@+id/viewEnterRefferalCode"
+                            app:layout_constraintStart_toEndOf="@+id/ivRefferalCode"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:text="@string/my_referral_code"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewRefferalCode"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/txvRefferalCode"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/ivHelpVector"
+                            app:layout_constraintTop_toBottomOf="@+id/viewRefferalCode"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/ic_help"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:id="@+id/txvHelp"
+                            app:layout_constraintTop_toBottomOf="@+id/viewRefferalCode"
+                            app:layout_constraintStart_toEndOf="@+id/ivHelpVector"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:onClick="@{()->accountFragmentVM.navigator.naviGateToHelpFragment()}"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:text="@string/help"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewHelp"
+                            app:layout_constraintTop_toBottomOf="@+id/txvHelp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/ivSettingsVector"
+                            app:layout_constraintTop_toBottomOf="@+id/viewHelp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/ic_settings"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:id="@+id/txvSettings"
+                            app:layout_constraintTop_toBottomOf="@+id/viewHelp"
+                            app:layout_constraintStart_toEndOf="@+id/ivSettingsVector"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:text="@string/settings"
+                            android:onClick="@{()->accountFragmentVM.naviGateToSettingsFragment()}"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewSecurity"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@+id/txvSettings"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/ivSecurityVector"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@+id/viewSecurity"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/ic_security"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:id="@+id/txvSecurity"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@+id/viewSecurity"
+                            app:layout_constraintStart_toEndOf="@+id/ivSecurityVector"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:text="@string/security"
+                            android:onClick="@{()->accountFragmentVM.naviGateToSecurityFragment()}"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewSettings"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/txvSecurity"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/ivRatingVector"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/viewSettings"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/ic_rating_vector"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            android:visibility="visible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:id="@+id/txvRatings"
+                            android:onClick="@{()->accountFragmentVM.navigator.onRateUsPlayStore()}"
+                            app:layout_constraintTop_toBottomOf="@+id/viewSettings"
+                            app:layout_constraintStart_toEndOf="@+id/ivRatingVector"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:text="@string/rate_us"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewRatings"
+                            app:layout_constraintTop_toBottomOf="@+id/txvRatings"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/ivLegalAndPoliciesVector"
+                            app:layout_constraintTop_toBottomOf="@+id/viewRatings"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/terms_condition"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            android:id="@+id/txvLegalAndPolicies"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            app:layout_constraintTop_toBottomOf="@+id/viewRatings"
+                            app:layout_constraintStart_toEndOf="@+id/ivLegalAndPoliciesVector"
+                            android:onClick="@{()->accountFragmentVM.navigator.termAndCondition()}"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:text="@string/terms_conditions"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewLegalAndPolicies"
+                            app:layout_constraintTop_toBottomOf="@+id/txvLegalAndPolicies"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/ivPrivacyPolicy"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/viewLegalAndPolicies"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/terms_condition"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            android:id="@+id/txvPrivacyPolicy"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            app:layout_constraintTop_toBottomOf="@+id/viewLegalAndPolicies"
+                            app:layout_constraintStart_toEndOf="@+id/ivPrivacyPolicy"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:onClick="@{()->accountFragmentVM.navigator.privacyPolicy()}"
+                            android:text="@string/privacy_policy"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <View
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                             android:id="@+id/viewPrivacyPolicyt"
+                            app:layout_constraintTop_toBottomOf="@+id/ivPrivacyPolicy"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+
+                            android:backgroundTint="@color/gray_bg"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/viewMakeyourown"
+                            app:layout_constraintTop_toBottomOf="@+id/viewPrivacyPolicyt"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:id="@+id/ivMakeyourown"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/viewMakeyourown"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/terms_condition"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            android:id="@+id/txvMakeyourown"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            app:layout_constraintTop_toBottomOf="@+id/viewMakeyourown"
+                            app:layout_constraintStart_toEndOf="@+id/ivMakeyourown"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:onClick="@{()->accountFragmentVM.navigator.GotoMakeyourown()}"
+
+                            android:text="Make your own"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size15"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_5sdp"
+
+                            app:layout_constraintTop_toBottomOf="@+id/ivMakeyourown"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:background="@drawable/bottom_navigation_background"
+                            android:backgroundTint="@color/gray_bg"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_95sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:padding="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/crdAccountDetails">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_50sdp"
+                            android:src="@drawable/new_logo_uoons_name"
+                            android:id="@+id/iv_logo_name"
+                            android:background="?android:attr/selectableItemBackground"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_margin="@dimen/_10sdp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/apkVersion"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_logo_name"
+                            android:layout_margin="@dimen/_10sdp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

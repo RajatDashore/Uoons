@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="inputType" format="enum">
+        <enum name="text" value="0" />
+        <enum name="number" value="1" />
+    </attr>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomTextView">
+        <attr name="fontName" format="string" />
+    </declare-styleable>
+
+
+    <declare-styleable name="SwipeLayout">
+        <attr name="drag_edge">
+            <flag name="left" value="1" />
+            <flag name="right" value="2" />
+            <flag name="top" value="4" />
+            <flag name="bottom" value="8" />
+        </attr>
+        <attr name="leftEdgeSwipeOffset" format="dimension" />
+        <attr name="rightEdgeSwipeOffset" format="dimension" />
+        <attr name="topEdgeSwipeOffset" format="dimension" />
+        <attr name="bottomEdgeSwipeOffset" format="dimension" />
+        <attr name="show_mode" format="enum">
+            <enum name="lay_down" value="0" />
+            <enum name="pull_out" value="0" />
+        </attr>
+        <attr name="clickToClose" format="boolean" />
+    </declare-styleable>
+
+
+    <attr name="calendarViewStyle" format="reference" />
+    <declare-styleable name="day">
+        <attr name="state_current" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="FancyCoverFlow">
+        <attr name="unselectedAlpha" format="float" />
+        <attr name="unselectedSaturation" format="float" />
+        <attr name="unselectedScale" format="float" />
+        <attr name="maxRotation" format="integer" />
+        <attr name="scaleDownGravity" format="float" />
+        <attr name="actionDistance" format="integer">
+            <enum name="auto" value="2147483647" />
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="ExpandableLayout">
+        <attr name="expDuration" format="integer|reference" />
+        <attr name="expWithParentScroll" format="boolean" />
+        <attr name="expExpandScrollTogether" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="android:gravity" />
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_Layout">
+        <attr name="android:layout_gravity" />
+    </declare-styleable>
+</resources>

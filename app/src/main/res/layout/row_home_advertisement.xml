@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="homeAdvertisement"
+            type="com.uoons.india.ui.home.fragment.model.DeshBoardItems" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/_142sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_3sdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/crdAdertisement">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                app:loadImage='@{homeAdvertisement.image}'
+                android:id="@+id/ivAdvertisementOne"
+                android:src="@drawable/image_gray_color"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crdAdertisement"
+            android:text="@{homeAdvertisement.sponsoredBy}"
+            android:maxLines="1"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:id="@+id/txvSponserdNameOne"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:textSize="@dimen/text_size15"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/black"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,61 @@
+buildscript {
+    ext.kotlin_version = '1.9.22' // Keep or update to "1.9.22"
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+
+        // Optional Paytm repository
+        maven {
+            url "https://artifactory.paytm.in/libs-release-local"
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.6.1'  // Use latest stable version
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.4.2'  // Update to latest stable version
+        classpath 'io.sentry:sentry-android-gradle-plugin:1.7.28'
+        // Remove the following line as you are using a local module now
+        // classpath 'io.michaelrocks:paranoid-gradle-plugin:0.2.3'
+    }
+
+    subprojects {
+        project.configurations.configureEach {
+            resolutionStrategy.eachDependency { details ->
+                if (details.requested.group == 'com.android.support'
+                        && !details.requested.name.contains('multidex') ) {
+                    details.useVersion "27.1.1"
+                }
+
+//                if (details.requested.group == 'androidx.core'
+//                        && !details.requested.name.contains('androidx') ) {
+//                    details.useVersion "1.0.1"
+//                }
+            }
+        }
+    }
+}
+
+plugins {
+    id("org.lsposed.lsparanoid") version "0.6.0" apply false
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()  // Use mavenCentral instead of jcenter
+        maven { url 'https://jitpack.io' }
+
+        // Optional Paytm repository
+        maven {
+            url "https://artifactory.paytm.in/libs-release-local"
+        }
+    }
+}
+
+
+/*
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}
+*/

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardElevation="6dp"
+        app:contentPadding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd ="10dp"
+                    android:textSize="@dimen/_16sdp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/select_language"/>
+
+                <RelativeLayout
+                    android:layout_below="@id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_grey"
+                    android:padding="2dp">
+
+                    <View
+                        android:id="@+id/underLine"
+                        android:layout_width="155dp"
+                        android:layout_height="1dp"
+                        android:background="@color/black"/>
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/ivButtonClose"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:srcCompat="@drawable/ic_close" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txvBtnEnglish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd ="10dp"
+                android:textSize="@dimen/_14sdp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableEnd="@drawable/ic_check"
+                android:drawableStart="@drawable/tab_unselected"
+                android:drawablePadding="10dp"
+                android:text="@string/english"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/txvBtnHindi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd ="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableStart="@drawable/tab_unselected"
+                android:drawablePadding="10dp"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/hindi"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/txvBtnGujarati"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd ="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableStart="@drawable/tab_unselected"
+                android:drawablePadding="10dp"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/gujarati"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/txvBtnMarathi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd ="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableStart="@drawable/tab_unselected"
+                android:drawablePadding="10dp"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/marathi"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/txvBtnTelugu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd ="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableStart="@drawable/tab_unselected"
+                android:drawablePadding="10dp"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/telugu"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/txvBtnTamil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd ="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableStart="@drawable/tab_unselected"
+                android:drawablePadding="10dp"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/tamil"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/txvBtnPunjabi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd ="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableStart="@drawable/tab_unselected"
+                android:drawablePadding="10dp"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/punjabi"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/txvBtnKannada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd ="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableStart="@drawable/tab_unselected"
+                android:drawablePadding="10dp"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/kannada"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/txvBtnMalayalam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd ="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableStart="@drawable/tab_unselected"
+                android:drawablePadding="10dp"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/Malayalam"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

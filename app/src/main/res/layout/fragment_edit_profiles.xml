@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="editProfileFragmentVM"
+            type="com.uoons.india.ui.profile.editprofile.EditProfileFragmentVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_color"
+        android:theme="@style/MyEditText">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/common_toolbar" />
+
+        <View
+            android:id="@+id/accountView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bottom_navigation_background"
+            android:backgroundTint="@color/gray_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_100sdp">
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"
+                    android:background="@color/white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginBottom="@dimen/_100sdp"
+                    android:id="@+id/shimmerEditProfileLayout">
+
+                    <include layout="@layout/shimmer_edit_profile_layout"/>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="gone"
+                    android:id="@+id/cstLayoutProfileDetails">
+
+                    <com.uoons.india.utils.CircleImageView
+                        android:id="@+id/ivProfile"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_80sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txvAddPictureName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:onClick="@{()->editProfileFragmentVM.navigator.opneGalleryCamera()}"
+                        android:text="@string/add_picture"
+                        android:textColor="@color/primary_color"
+                        android:textSize="@dimen/text_size16"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivProfile" />
+
+                    <TextView
+                        android:id="@+id/txvFullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_20sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/full_name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvAddPictureName" />
+
+                    <EditText
+                        android:id="@+id/edtFullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:background="@drawable/bottob_bg"
+                        android:backgroundTint="@color/gray_editext_bg"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvFullName" />
+
+                    <TextView
+                        android:id="@+id/txvEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/email"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtFullName" />
+
+                    <EditText
+                        android:id="@+id/edtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:background="@drawable/bottob_bg"
+                        android:backgroundTint="@color/gray_editext_bg"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvEmail" />
+
+                    <TextView
+                        android:id="@+id/txvPhoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/phone_number"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+
+                    <EditText
+                        android:id="@+id/edtPhoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:background="@drawable/bottob_bg"
+                        android:backgroundTint="@color/gray_editext_bg"
+                        android:maxLength="10"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvPhoneNumber" />
+
+                    <TextView
+                        android:id="@+id/txvGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/gender"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPhoneNumber" />
+
+                    <!--<EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:id="@+id/edtGender"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvGender"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@drawable/bottob_bg"
+                        android:backgroundTint="@color/gray_editext_bg"/>-->
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/crdGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvGender">
+
+                        <Spinner
+                            android:id="@+id/sppinerGender"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_sppiner" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/txvLanguageSpoken"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/languages_spoken"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/crdGender" />
+
+                    <EditText
+                        android:id="@+id/edtLanguageSpoken"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:background="@drawable/bottob_bg"
+                        android:backgroundTint="@color/gray_editext_bg"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvLanguageSpoken" />
+
+                    <TextView
+                        android:id="@+id/txvOccupation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/occupation"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtLanguageSpoken" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/crdOccupation"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvOccupation">
+
+                        <Spinner
+                            android:id="@+id/sppinerOccupation"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_sppiner" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/txvAboutMe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/landmark"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/crdOccupation" />
+
+                    <EditText
+                        android:id="@+id/edtAboutMe"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:background="@drawable/bottob_bg"
+                        android:backgroundTint="@color/gray_editext_bg"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        android:paddingEnd="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvAboutMe" />
+
+                    <TextView
+                        android:id="@+id/txvAddressText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/address"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtAboutMe" />
+
+                    <EditText
+                        android:id="@+id/edtAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:background="@drawable/bottob_bg"
+                        android:backgroundTint="@color/gray_editext_bg"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        android:paddingEnd="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvAddressText" />
+
+                    <LinearLayout
+                        android:id="@+id/llPinCodeAndCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtAddress">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txvPinCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="@string/pin_code"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size15" />
+
+                            <EditText
+                                android:id="@+id/edtPincode"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:background="@drawable/bottob_bg"
+                                android:backgroundTint="@color/gray_editext_bg"
+                                android:maxLength="6"
+                                android:imeOptions="actionNext"
+                                android:inputType="textCapSentences"
+                                android:paddingStart="@dimen/_5sdp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txvCity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="@string/city"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size15" />
+
+                            <EditText
+                                android:id="@+id/edtCity"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:background="@drawable/bottob_bg"
+                                android:backgroundTint="@color/gray_editext_bg"
+                                android:imeOptions="actionNext"
+                                android:inputType="textCapSentences"
+                                android:paddingStart="@dimen/_5sdp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txvState"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/state"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/llPinCodeAndCity" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/crdState"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvState">
+
+                        <Spinner
+                            android:id="@+id/sppinerState"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_sppiner" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/crdSave"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_margin="@dimen/_20sdp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="@{()->editProfileFragmentVM.navigator.saveUserData()}"
+                        app:cardBackgroundColor="@color/primary_color"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/crdState">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_bold"
+                            android:gravity="center"
+                            android:text="@string/save"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size16" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
