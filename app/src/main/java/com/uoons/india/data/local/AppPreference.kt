@@ -26,7 +26,8 @@ object AppPreference {
      * Create DataStore with Shared Preference Migration
      * */
     fun getInstance(context: Context) {
-//        dataStore = context.createDataStore(name = "uoons")
+//     dataStore = context.createDataStore(name = "uoons")
+        dataStore = context.contextDataStore
     }
 
     fun getInstance(dataStore: DataStore<Preferences>) {
@@ -210,12 +211,9 @@ object AppPreference {
     }
 
 
-    fun clearSharedPreference(){
+    fun clearSharedPreference() {
         clearDataStore()
     }
-
-
-
 
 
     /*private const val prefName = "ridepro_student"
@@ -281,7 +279,8 @@ object AppPreference {
         return gson.fromJson<ArrayList<Any>>(json, type)
     }
 
-    *//**
+    */
+    /**
      * Saves object into the Preferences.
      *
      * @param `object` Object of model class (of type [T]) to save
@@ -294,7 +293,8 @@ object AppPreference {
         sharedPreferences!!.edit().putString(key, jsonString).apply()
     }
 
-    *//**
+    */
+    /**
      * Used to retrieve object from the Preferences.
      *
      * @param key Shared Preference key with which object was saved.

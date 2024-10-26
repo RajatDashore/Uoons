@@ -1,9 +1,12 @@
 package com.uoons.india.ui.language
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.uoons.india.BR
 import com.uoons.india.R
 import com.uoons.india.data.local.AppPreference
@@ -12,7 +15,13 @@ import com.uoons.india.data.local.contextDataStore
 import com.uoons.india.databinding.ActivitySelectLanguageBinding
 import com.uoons.india.ui.base.BaseActivity
 import com.uoons.india.ui.onboardingscreen.OnBoardingScreenActivity
-import com.uoons.india.utils.*
+import com.uoons.india.utils.ActivityNavigator
+import com.uoons.india.utils.AppConstants
+import com.uoons.india.utils.CustomProgressDialog
+import com.uoons.india.utils.DialogConstant
+import com.uoons.india.utils.PropertiChangeListener
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
@@ -23,7 +32,7 @@ class SelectLanguageActivity : BaseActivity<ActivitySelectLanguageBinding, Selec
     override val layoutId: Int = R.layout.activity_select_language
     override val viewModelClass: Class<SelectLanguageVM> = SelectLanguageVM::class.java
     private val languageChangeTimmer = 2000L
-    override   fun init() {
+    override fun init() {
         mViewModel.navigator = this
     }
 
@@ -46,17 +55,43 @@ class SelectLanguageActivity : BaseActivity<ActivitySelectLanguageBinding, Selec
 
     // Load language saved in shared preferences
     private fun loadLocalLanguage() {
-        // val textSize = runBlocking { AppPreference.dataStore?.data?.first() }?.get(PreferenceKeys.MY_LANGUAGE)
+       // val textSize = runBlocking { AppPreference.dataStore?.data?.first() }?.get(PreferenceKeys.MY_LANGUAGE)
         val languageCode: String = AppPreference.getValue(PreferenceKeys.MY_LANGUAGE)
+
+        // if(languageCode.equals(AppConstants))
+        //   var sp:SharedPreferences = getSharedPreferences("")
+
+
         if (languageCode.equals(AppConstants.LANGUAGE_HINDI, ignoreCase = true)) {
+            if (languageCode.contains(AppConstants.LANGUAGE_HINDI)) {
+                Toast.makeText(this, "Please choose another language", Toast.LENGTH_LONG).show()
+                return
+            }
             viewDataBinding?.txvDialogLanguage?.text = AppConstants.HINDI
         } else if (languageCode.equals(AppConstants.LANGUAGE_ENGLISH, ignoreCase = true)) {
+            if (languageCode.contains(AppConstants.LANGUAGE_ENGLISH)) {
+                Toast.makeText(this, "Please choose another language", Toast.LENGTH_LONG).show()
+                return
+            }
             viewDataBinding?.txvDialogLanguage?.text = AppConstants.ENGLISH
+
         } else if (languageCode.equals(AppConstants.LANGUAGE_GUJARATI, ignoreCase = true)) {
+            if (languageCode.contains(AppConstants.LANGUAGE_GUJARATI)) {
+                Toast.makeText(this, "Please choose another language", Toast.LENGTH_LONG).show()
+                return
+            }
             viewDataBinding?.txvDialogLanguage?.text = AppConstants.GUJARATI
         } else if (languageCode.equals(AppConstants.LANGUAGE_MARATHI, ignoreCase = true)) {
+            if (languageCode.contains(AppConstants.LANGUAGE_MARATHI)) {
+                Toast.makeText(this, "Please choose another language", Toast.LENGTH_LONG).show()
+                return
+            }
             viewDataBinding?.txvDialogLanguage?.text = AppConstants.MARATHI
         } else if (languageCode.equals(AppConstants.LANGUAGE_TELUGU, ignoreCase = true)) {
+            if (languageCode.contains(AppConstants.LANGUAGE_TELUGU)) {
+                Toast.makeText(this, "Please choose another language", Toast.LENGTH_LONG).show()
+                return
+            }
             viewDataBinding?.txvDialogLanguage?.text = AppConstants.TELUGU
         } else if (languageCode.equals(AppConstants.LANGUAGE_TAMIL, ignoreCase = true)) {
             viewDataBinding?.txvDialogLanguage?.text = AppConstants.Tamil
@@ -70,8 +105,16 @@ class SelectLanguageActivity : BaseActivity<ActivitySelectLanguageBinding, Selec
     }
 
     override fun naviGateToAppInformationActivity() {
-        ActivityNavigator.startActivity(this@SelectLanguageActivity, OnBoardingScreenActivity::class.java)
+        ActivityNavigator.startActivity(
+            this@SelectLanguageActivity,
+            OnBoardingScreenActivity::class.java
+        )
     }
+
+    val sp: SharedPreferences = getSharedPreferences(
+        AppPreference.getValue(PreferenceKeys.MY_LANGUAGE),
+        MODE_PRIVATE
+    )
 
     override fun onPropertiChanged(isChanged: Boolean) {
         if (isChanged) {
@@ -80,6 +123,7 @@ class SelectLanguageActivity : BaseActivity<ActivitySelectLanguageBinding, Selec
                 CustomProgressDialog(this).hideProgressDialog()
                 AppPreference.getInstance(contextDataStore)
                 val languageCode: String = AppPreference.getValue(PreferenceKeys.MY_LANGUAGE)
+                Log.d("Crash", languageCode)
                 DialogConstant.setLocalLanguage(this, languageCode)
                 this.recreate()
             }, languageChangeTimmer)

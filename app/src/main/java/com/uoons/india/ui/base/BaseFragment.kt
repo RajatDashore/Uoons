@@ -3,25 +3,29 @@ package com.uoons.india.ui.base
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uoons.india.data.local.AppPreference
 import com.uoons.india.data.local.PreferenceKeys
-import com.tbruyelle.rxpermissions2.RxPermissions
 import com.uoons.india.data.remote.error.Failure
 import io.reactivex.disposables.CompositeDisposable
 import org.lsposed.lsparanoid.Obfuscate
 
+@Suppress("DEPRECATION", "DEPRECATION")
 @Obfuscate
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragment(),
     CommonNavigator {
-
     lateinit var baseActivity: BaseActivity<*, *>
-    private var  mRootView: View? = null
+    private var mRootView: View? = null
     lateinit var viewDataBinding: T
     abstract val bindingVariable: Int
     abstract val layoutId: Int
@@ -36,17 +40,18 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
         }
     }
 
-    override fun hideStatusBar(){
-        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+    override fun hideStatusBar() {
+        requireActivity().window.decorView.systemUiVisibility =
+            View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         requireActivity().window.statusBarColor = Color.TRANSPARENT
     }
 
     override fun setStatusBarColor(color: Int) {
-        val window: Window =  requireActivity().window
+        val window: Window = requireActivity().window
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = ContextCompat.getColor( requireActivity(), color);
+        window.statusBarColor = ContextCompat.getColor(requireActivity(), color);
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +60,12 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
         mViewModel = getViewModel2()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        //   viewDataBinding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         viewDataBinding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         viewDataBinding.lifecycleOwner = this
         mRootView = viewDataBinding.root
@@ -71,7 +81,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
 
     }
 
-    protected open fun getViewModel2() : V {
+    protected open fun getViewModel2(): V {
         val factory = ViewModelFactory()
         return ViewModelProvider(this, factory).get(viewModelClass)
     }
@@ -116,7 +126,12 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
         return baseActivity.getIntegerResource(id)
     }
 
-    override fun showAlertDialog1Button(alertTitle: String, alertMsg: String, buttonTitle: String, onClick: () -> Unit) {
+    override fun showAlertDialog1Button(
+        alertTitle: String,
+        alertMsg: String,
+        buttonTitle: String,
+        onClick: () -> Unit,
+    ) {
         baseActivity.showAlertDialog1Button(
             alertTitle = alertTitle,
             alertMsg = alertMsg,
@@ -125,7 +140,14 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
         )
     }
 
-    override fun showAlertDialog2Button(alertTitle: String, alertMsg: String, button1Title: String, button2Title: String, onClick1: () -> Unit, onClick2: () -> Unit) {
+    override fun showAlertDialog2Button(
+        alertTitle: String,
+        alertMsg: String,
+        button1Title: String,
+        button2Title: String,
+        onClick1: () -> Unit,
+        onClick2: () -> Unit,
+    ) {
         baseActivity.showAlertDialog2Button(
             alertTitle = alertTitle,
             alertMsg = alertMsg,
@@ -152,7 +174,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
 
     /*invoked when permission granted*/
     protected open fun rxPermissionGranted() {
-        AppPreference.addValue(PreferenceKeys.GRANTED_PERMISSION,"true")
+        AppPreference.addValue(PreferenceKeys.GRANTED_PERMISSION, "true")
     }
 
     /*invoked when permission denied*/

@@ -1,8 +1,6 @@
 package com.uoons.india.data.remote
 
 import arrow.core.Either
-import arrow.core.Left
-import arrow.core.Right
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.uoons.india.BuildConfig
@@ -465,14 +463,14 @@ open class NetworkRetrofit : Repository() {
     private suspend fun <T> callAPI(apiCallingMethod: suspend () -> T): Either<Failure, T> {
         return withContext(Dispatchers.IO) {
             try {
-                Right(apiCallingMethod.invoke())
+                Either.Right(apiCallingMethod.invoke())
             } catch (e: Exception) {
                 e.printStackTrace()
                 if (e is HttpException) {
 //                    Log.e("=========@@", e.message())
                     try {
                         val errorMsgAndData = ParserUtils.getErrorMsgAndData(e)
-                        Left(
+                        Either.Left(
                             ServerError(
                                 data = errorMsgAndData.second,
                                 statusCode = e.code(),
@@ -481,19 +479,19 @@ open class NetworkRetrofit : Repository() {
                         )
                     } catch (e: Exception) {
                         e.printStackTrace()
-                        Left(UnknownError(statusCode = 0, message = e.message.toString()))
+                        Either.Left(UnknownError(statusCode = 0, message = e.message.toString()))
                     }
                 } else if (e is SocketException) {
-                    Left(
+                    Either.Left(
                         NoInternetError(
                             statusCode = 0,
                             message = "something went wrong while connecting to server! Please try again later."
                         )
                     )
                 } else if (e is SocketTimeoutException || e is ConnectException) {
-                    Left(TimeoutError(statusCode = 0, message = "request time out"))
+                    Either.Left(TimeoutError(statusCode = 0, message = "request time out"))
                 } else if (e is UnknownHostException) {
-                    Left(
+                    Either.Left(
                         UnknownHostError(
                             statusCode = 0,
                             message = "something went wrong while connecting to server! Please try again later."
@@ -502,7 +500,7 @@ open class NetworkRetrofit : Repository() {
                 } else {
                     e.printStackTrace()
 //                    Log.e("", "apiCallingMethod:- " + e.message.toString())
-                    Left(UnknownError(statusCode = 0, message = e.message.toString()))
+                    Either.Left(UnknownError(statusCode = 0, message = e.message.toString()))
                 }
             }
         }

@@ -231,12 +231,12 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
 
             } else {
                 mViewModel.addWishListApiCall(pId.toInt())
-                val logger = AppEventsLogger.newLogger(activity)
+                val logger = activity?.let { AppEventsLogger.newLogger(it) }
                 val params = Bundle()
                 params.putString(AppEventsConstants.EVENT_PARAM_CONTENT_ID, pId)
                 params.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, AppConstants.ECOMMERCE)
                 params.putString(AppEventsConstants.EVENT_PARAM_CURRENCY, AppConstants.INR)
-                logger.logEvent(AppEventsConstants.EVENT_NAME_ADDED_TO_WISHLIST, 10.0, params)
+                logger?.logEvent(AppEventsConstants.EVENT_NAME_ADDED_TO_WISHLIST, 10.0, params)
 
             }
         } else if (mViewModel.navigator!!.isConnectedToInternet()) {
@@ -512,12 +512,12 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
         pImage = data.Data?.productImages.toString()
         pName = data.Data?.productName.toString()
         val price = data.Data?.productPrice.toString()
-        val logger = AppEventsLogger.newLogger(activity)
+        val logger = activity?.let { AppEventsLogger.newLogger(it) }
         val params = Bundle()
         params.putString(AppEventsConstants.EVENT_PARAM_CONTENT_ID, pId)
         params.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, pName)
         params.putString(AppEventsConstants.EVENT_PARAM_CURRENCY, price)
-        logger.logEvent(AppEventsConstants.EVENT_NAME_VIEWED_CONTENT, price.toDouble(), params)
+        logger?.logEvent(AppEventsConstants.EVENT_NAME_VIEWED_CONTENT, price.toDouble(), params)
 
 
         if (data.Data?.productStock?.toInt() == AppConstants.zero.toInt()) {

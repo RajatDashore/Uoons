@@ -32,7 +32,6 @@ object PreferenceKeys{
     val FIREBASE_LINK = stringPreferencesKey("Firebaselink")
     val ORDER_ID = stringPreferencesKey("Order_id")
     val ORDER_amount = stringPreferencesKey("Order_amount")
-
     val ONE_TIME_REQUEST = stringPreferencesKey("true")
 
 }

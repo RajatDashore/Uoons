@@ -16,6 +16,9 @@ import com.uoons.india.BuildConfig
 import com.uoons.india.R
 import com.uoons.india.data.local.AppPreference
 import com.uoons.india.data.local.PreferenceKeys
+import com.uoons.india.databinding.ActivityHomeBinding
+import com.uoons.india.databinding.ActivityHomeBinding.*
+import com.uoons.india.databinding.ActivityHomeBindingImpl
 import com.uoons.india.databinding.FragmentHomeBinding
 import com.uoons.india.ui.base.BaseFragment
 import com.uoons.india.ui.filter.FiltersBottomSheet
