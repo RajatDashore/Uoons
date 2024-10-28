@@ -3,30 +3,29 @@ package com.uoons.india.ui.home.fragment.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import android.view.View
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.smarteist.autoimageslider.SliderView
 import com.uoons.india.R
 import com.uoons.india.data.local.AppPreference
 import com.uoons.india.data.local.PreferenceKeys
 import com.uoons.india.ui.home.fragment.model.DeshBoardItems
 import com.uoons.india.ui.home.fragment.model.DeshBoardModel
 import com.uoons.india.utils.CommonUtils
-import com.smarteist.autoimageslider.SliderView
 import org.lsposed.lsparanoid.Obfuscate
 import java.text.NumberFormat
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Locale
 
 @Obfuscate
-class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var LOG_TAG = DeshBoardRecyclerAdapter.javaClass.name
 
 
@@ -50,6 +49,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     // Slider Two Items
     private val sliderTwoAdapter = SliderTwoAdapter()
+    val imgList: ArrayList<Int> = arrayListOf<Int>()
 
     // Slider Two Items
     private val sliderThreeAdapter = SliderThreeAdapter()
@@ -67,14 +67,14 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     private var mainCustomClickListener: OnItemClickListener? = null
 
     interface OnItemClickListener {
-        fun onItemClicked(subId: String, parentID : Int, categoryName: String)
+        fun onItemClicked(subId: String, parentID: Int, categoryName: String)
     }
 
     fun setOnItemClickListener(mItemClick: OnItemClickListener) {
         this.mainCustomClickListener = mItemClick
     }
 
-    fun setItemsList(data: DeshBoardModel, context: Context){
+    fun setItemsList(data: DeshBoardModel, context: Context) {
         this.allHomeItemsList = data
         this.context = context
     }
@@ -89,7 +89,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         this.customProductIdClickListener = mItemClick
     }
 
-    companion object{
+    companion object {
         const val CATEGORIES_TYPE = 1
         const val SLIDERS_ONE_TYPE = 2
         const val PRICE_STORE_TYPE = 3
@@ -110,65 +110,94 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-      return  when (viewType) {
-          CATEGORIES_TYPE ->{
-              val layout1: View = LayoutInflater.from(context).inflate(R.layout.home_categories_layout,parent,false)
-              LayoutCategoriesViewHolder(layout1)
-          }
-          SLIDERS_ONE_TYPE -> {
-              val layout2: View = LayoutInflater.from(context).inflate(R.layout.home_slider_layout, parent, false)
-              LayoutSliderOneViewHolder(layout2)
-          }
-          PRICE_STORE_TYPE -> {
-              val layout3: View = LayoutInflater.from(context).inflate(R.layout.home_price_store_layout, parent, false)
-              LayoutPriceStoreViewHolder(layout3)
-          }
-          DEAL_OF_THE_DAY_TYPE -> {
-              val layout4: View = LayoutInflater.from(context).inflate(R.layout.home_deal_of_the_day_layout,parent,false)
-              LayoutDealOfTheDayViewHolder(layout4)
-          }
-          SLIDERS_TWO_TYPE -> {
-              val layout5: View = LayoutInflater.from(context).inflate(R.layout.home_slider_two_layout,parent,false)
-              LayoutSliderTwoViewHolder(layout5)
-          }
-          RECOMMENDED_ITEMS_TYPE -> {
-              val layout6: View = LayoutInflater.from(context).inflate(R.layout.home_recommended_item_layout,parent,false)
-              LayoutRecommendedViewHolder(layout6)
-          }
-          ADVERTISEMENT_TYPE -> {
-              val layout7: View = LayoutInflater.from(context).inflate(R.layout.home_advertisement_layout,parent,false)
-              LayoutAdvertisementViewHolder(layout7)
-          }
-          RECENTLY_VIEW_TYPE -> {
-              if (AppPreference.getValue(PreferenceKeys.ACCESS_TOKEN).isEmpty()){
-                  val layout8: View = LayoutInflater.from(context).inflate(R.layout.empty_view,parent,false)
-                  LayoutRecentlyViewsViewHolder(layout8)
-              }else{
-                  val layout8: View = LayoutInflater.from(context).inflate(R.layout.home_recently_views_layout,parent,false)
-                  LayoutRecentlyViewsViewHolder(layout8)
-              }
-          }
-          SLIDERS_THREE_TYPE -> {
-              val layout9: View = LayoutInflater.from(context).inflate(R.layout.home_slider_three_layout,parent,false)
-              LayoutSliderThreeViewHolder(layout9)
-          }
-          SUGGESTION_FOR_TYPE -> {
-              val layout10: View = LayoutInflater.from(context).inflate(R.layout.home_suggestion_item_layout,parent,false)
-              LayoutSuggestionViewHolder(layout10)
-          }
-          NEW_ARRIVALS_TYPE -> {
-              val layout11: View = LayoutInflater.from(context).inflate(R.layout.home_new_arrivals_layout,parent,false)
-              LayoutNewArrivalsViewHolder(layout11)
-          }
-          MORE_ITEMS_TYPE -> {
-              val layout12: View = LayoutInflater.from(context).inflate(R.layout.home_some_item_layout,parent,false)
-              LayoutSomeProductsViewHolder(layout12)
-          }
-          TRENDING_NOW_TYPE -> {
-              val layout13: View = LayoutInflater.from(context).inflate(R.layout.home_trending_now_layout,parent,false)
-              LayoutTrendingNowViewHolder(layout13)
-          }
-            else -> emptyViewHolder(LayoutInflater.from(context).inflate(R.layout.empty_view,parent,false))
+        return when (viewType) {
+            CATEGORIES_TYPE -> {
+                val layout1: View = LayoutInflater.from(context)
+                    .inflate(R.layout.home_categories_layout, parent, false)
+                LayoutCategoriesViewHolder(layout1)
+            }
+
+            SLIDERS_ONE_TYPE -> {
+                val layout2: View =
+                    LayoutInflater.from(context).inflate(R.layout.home_slider_layout, parent, false)
+                LayoutSliderOneViewHolder(layout2)
+            }
+
+            PRICE_STORE_TYPE -> {
+                val layout3: View = LayoutInflater.from(context)
+                    .inflate(R.layout.home_price_store_layout, parent, false)
+                LayoutPriceStoreViewHolder(layout3)
+            }
+
+            DEAL_OF_THE_DAY_TYPE -> {
+                val layout4: View = LayoutInflater.from(context)
+                    .inflate(R.layout.home_deal_of_the_day_layout, parent, false)
+                LayoutDealOfTheDayViewHolder(layout4)
+            }
+
+            SLIDERS_TWO_TYPE -> {
+                val layout5: View = LayoutInflater.from(context)
+                    .inflate(R.layout.home_slider_two_layout, parent, false)
+                LayoutSliderTwoViewHolder(layout5)
+            }
+
+            RECOMMENDED_ITEMS_TYPE -> {
+                val layout6: View = LayoutInflater.from(context)
+                    .inflate(R.layout.home_recommended_item_layout, parent, false)
+                LayoutRecommendedViewHolder(layout6)
+            }
+
+            ADVERTISEMENT_TYPE -> {
+                val layout7: View = LayoutInflater.from(context)
+                    .inflate(R.layout.home_advertisement_layout, parent, false)
+                LayoutAdvertisementViewHolder(layout7)
+            }
+
+            RECENTLY_VIEW_TYPE -> {
+                if (AppPreference.getValue(PreferenceKeys.ACCESS_TOKEN).isEmpty()) {
+                    val layout8: View =
+                        LayoutInflater.from(context).inflate(R.layout.empty_view, parent, false)
+                    LayoutRecentlyViewsViewHolder(layout8)
+                } else {
+                    val layout8: View = LayoutInflater.from(context)
+                        .inflate(R.layout.home_recently_views_layout, parent, false)
+                    LayoutRecentlyViewsViewHolder(layout8)
+                }
+            }
+
+            SLIDERS_THREE_TYPE -> {
+                val layout9: View = LayoutInflater.from(context)
+                    .inflate(R.layout.home_slider_three_layout, parent, false)
+                LayoutSliderThreeViewHolder(layout9)
+            }
+
+            SUGGESTION_FOR_TYPE -> {
+                val layout10: View = LayoutInflater.from(context)
+                    .inflate(R.layout.home_suggestion_item_layout, parent, false)
+                LayoutSuggestionViewHolder(layout10)
+            }
+
+            NEW_ARRIVALS_TYPE -> {
+                val layout11: View = LayoutInflater.from(context)
+                    .inflate(R.layout.home_new_arrivals_layout, parent, false)
+                LayoutNewArrivalsViewHolder(layout11)
+            }
+
+            MORE_ITEMS_TYPE -> {
+                val layout12: View = LayoutInflater.from(context)
+                    .inflate(R.layout.home_some_item_layout, parent, false)
+                LayoutSomeProductsViewHolder(layout12)
+            }
+
+            TRENDING_NOW_TYPE -> {
+                val layout13: View = LayoutInflater.from(context)
+                    .inflate(R.layout.home_trending_now_layout, parent, false)
+                LayoutTrendingNowViewHolder(layout13)
+            }
+
+            else -> emptyViewHolder(
+                LayoutInflater.from(context).inflate(R.layout.empty_view, parent, false)
+            )
         }
     }
 
@@ -181,7 +210,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         homeCategoryFragmentAdapter.setOnItemClickListener(object :
             HomeCategoryFragmentAdapter.OnItemClickListener {
             override fun onItemClicked(position: String, type: String) {
-                mainCustomClickListener?.onItemClicked(position, CATEGORIES_TYPE,type)
+                mainCustomClickListener?.onItemClicked(position, CATEGORIES_TYPE, type)
             }
         })
 
@@ -189,7 +218,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         sliderOneAdapter.setOnItemClickListener(object :
             SliderOneAdapter.OnItemClickListener {
             override fun onItemClicked(position: String, type: String) {
-                mainCustomClickListener?.onItemClicked(position, SLIDERS_ONE_TYPE,type)
+                mainCustomClickListener?.onItemClicked(position, SLIDERS_ONE_TYPE, type)
             }
         })
 
@@ -197,13 +226,13 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         priceStoreItemRecyclerAdapter.setOnItemClickListener(object :
             PriceStoreItemRecyclerAdapter.OnItemClickListener {
             override fun onItemClicked(position: String, type: String) {
-                mainCustomClickListener?.onItemClicked(position, PRICE_STORE_TYPE,type)
+                mainCustomClickListener?.onItemClicked(position, PRICE_STORE_TYPE, type)
             }
         })
 
         // Deal of the Day Items
         dealOfTheDayItemRecyclerAdapter.setOnItemClickListener(object :
-            DealOfTheDayItemRecyclerAdapter.OnProductIdClickListener{
+            DealOfTheDayItemRecyclerAdapter.OnProductIdClickListener {
             override fun onProductIdClicked(pId: String) {
                 customProductIdClickListener?.onProductIdClicked(pId)
             }
@@ -211,7 +240,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         // Recently Views Items
         homeRecentlyViewRecyclerAdapter.setOnItemClickListener(object :
-            HomeRecentlyViewRecyclerAdapter.OnProductIdClickListener{
+            HomeRecentlyViewRecyclerAdapter.OnProductIdClickListener {
             override fun onProductIdClicked(pId: String) {
                 customProductIdClickListener?.onProductIdClicked(pId)
             }
@@ -219,9 +248,9 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         // Advertisement Home page
         homeAdvertisementAdapter.setOnItemClickListener(object :
-            HomeAdvertisementAdapter.OnProductIdClickListener{
+            HomeAdvertisementAdapter.OnProductIdClickListener {
             override fun onProductIdClicked(pId: String, sponsoredName: String) {
-                mainCustomClickListener?.onItemClicked(pId, ADVERTISEMENT_TYPE,sponsoredName)
+                mainCustomClickListener?.onItemClicked(pId, ADVERTISEMENT_TYPE, sponsoredName)
             }
         })
 
@@ -229,7 +258,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         sliderTwoAdapter.setOnItemClickListener(object :
             SliderTwoAdapter.OnItemClickListener {
             override fun onItemClicked(position: String, type: String) {
-                mainCustomClickListener?.onItemClicked(position, SLIDERS_TWO_TYPE,type)
+                mainCustomClickListener?.onItemClicked(position, SLIDERS_TWO_TYPE, type)
             }
         })
 
@@ -237,7 +266,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         sliderThreeAdapter.setOnItemClickListener(object :
             SliderThreeAdapter.OnItemClickListener {
             override fun onItemClicked(position: String, type: String) {
-                mainCustomClickListener?.onItemClicked(position, SLIDERS_THREE_TYPE,type)
+                mainCustomClickListener?.onItemClicked(position, SLIDERS_THREE_TYPE, type)
             }
         })
 
@@ -269,39 +298,51 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
             CATEGORIES_TYPE -> {
                 (holder as LayoutCategoriesViewHolder).bind(position)
             }
+
             SLIDERS_ONE_TYPE -> {
                 (holder as LayoutSliderOneViewHolder).bind(position)
             }
+
             PRICE_STORE_TYPE -> {
                 (holder as LayoutPriceStoreViewHolder).bind(position)
             }
+
             DEAL_OF_THE_DAY_TYPE -> {
                 (holder as LayoutDealOfTheDayViewHolder).bind(position)
             }
+
             SLIDERS_TWO_TYPE -> {
                 (holder as LayoutSliderTwoViewHolder).bind(position)
             }
+
             RECOMMENDED_ITEMS_TYPE -> {
                 (holder as LayoutRecommendedViewHolder).bind(position)
             }
+
             ADVERTISEMENT_TYPE -> {
                 (holder as LayoutAdvertisementViewHolder).bind(position)
             }
+
             RECENTLY_VIEW_TYPE -> {
                 (holder as LayoutRecentlyViewsViewHolder).bind(position)
             }
+
             SLIDERS_THREE_TYPE -> {
                 (holder as LayoutSliderThreeViewHolder).bind(position)
             }
+
             SUGGESTION_FOR_TYPE -> {
                 (holder as LayoutSuggestionViewHolder).bind(position)
             }
+
             NEW_ARRIVALS_TYPE -> {
                 (holder as LayoutNewArrivalsViewHolder).bind(position)
             }
+
             MORE_ITEMS_TYPE -> {
                 (holder as LayoutSomeProductsViewHolder).bind(position)
             }
+
             TRENDING_NOW_TYPE -> {
                 (holder as LayoutTrendingNowViewHolder).bind(position)
             }
@@ -344,7 +385,8 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    private inner class LayoutRecommendedViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    private inner class LayoutRecommendedViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
         var title: TextView? = itemView.findViewById(R.id.txtCategoryName)
         var crdViewAllProducts: CardView = itemView.findViewById(R.id.crdViewAllProducts)
 
@@ -371,25 +413,59 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         @SuppressLint("SetTextI18n")
         fun bind(position: Int) {
             title?.text = allHomeItemsList.Data[position].name
-            if (allHomeItemsList.Data[position].items.size >=2){
-                CommonUtils.loadImage(ivRecommendedImageOne, allHomeItemsList.Data[position].items[0].productImages, ivRecommendedImageOne.id)
-                CommonUtils.loadImage(ivRecommendedImageTwo, allHomeItemsList.Data[position].items[1].productImages, ivRecommendedImageTwo.id)
-                CommonUtils.loadImage(ivRecommendedImageThree, allHomeItemsList.Data[position].items[2].productImages, ivRecommendedImageThree.id)
+            if (allHomeItemsList.Data[position].items.size >= 2) {
+                CommonUtils.loadImage(
+                    ivRecommendedImageOne,
+                    allHomeItemsList.Data[position].items[0].productImages,
+                    ivRecommendedImageOne.id
+                )
+                CommonUtils.loadImage(
+                    ivRecommendedImageTwo,
+                    allHomeItemsList.Data[position].items[1].productImages,
+                    ivRecommendedImageTwo.id
+                )
+                CommonUtils.loadImage(
+                    ivRecommendedImageThree,
+                    allHomeItemsList.Data[position].items[2].productImages,
+                    ivRecommendedImageThree.id
+                )
 
                 txvProductNameOne.text = allHomeItemsList.Data[position].items[0].productName
                 txvProductNameTwo.text = allHomeItemsList.Data[position].items[1].productName
                 txvProductNameThree.text = allHomeItemsList.Data[position].items[2].productName
 
-                txvSellingPriceOne.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[0].productSalePrice?.toInt())
-                txvSellingPriceTwo.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[1].productSalePrice?.toInt())
-                txvSellingPriceThree.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[2].productSalePrice?.toInt())
+                txvSellingPriceOne.text =
+                    context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[0].productSalePrice?.toInt())
+                txvSellingPriceTwo.text =
+                    context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[1].productSalePrice?.toInt())
+                txvSellingPriceThree.text =
+                    context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[2].productSalePrice?.toInt())
 
-                txvMRPPriceOne.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[0].productPrice?.toInt())
-                txvMRPPriceTwo.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[1].productPrice?.toInt())
-                txvMRPPriceThree.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[2].productPrice?.toInt())
+                txvMRPPriceOne.text =
+                    context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[0].productPrice?.toInt())
+                txvMRPPriceTwo.text =
+                    context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[1].productPrice?.toInt())
+                txvMRPPriceThree.text =
+                    context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[2].productPrice?.toInt())
 
                 crdViewAllProducts.setOnClickListener(View.OnClickListener {
-                    mainCustomClickListener?.onItemClicked(allHomeItemsList.Data[position].id.toString(), RECOMMENDED_ITEMS_TYPE, allHomeItemsList.Data[position].name.toString())
+                    mainCustomClickListener?.onItemClicked(
+                        allHomeItemsList.Data[position].id.toString(),
+                        RECOMMENDED_ITEMS_TYPE,
+                        allHomeItemsList.Data[position].name.toString()
+                    )
                 })
 
                 llRecommendedOne.setOnClickListener(View.OnClickListener {
@@ -404,26 +480,48 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 llRecommendedThree.setOnClickListener(View.OnClickListener {
                     customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[2].pid.toString())
                 })
-            }else{
+            } else {
                 try {
-                    CommonUtils.loadImage(ivRecommendedImageOne, allHomeItemsList.Data[position].items[0].productImages, ivRecommendedImageOne.id)
-                    CommonUtils.loadImage(ivRecommendedImageTwo, allHomeItemsList.Data[position].items[0].productImages, ivRecommendedImageTwo.id)
-                    CommonUtils.loadImage(ivRecommendedImageThree, allHomeItemsList.Data[position].items[0].productImages, ivRecommendedImageThree.id)
+                    CommonUtils.loadImage(
+                        ivRecommendedImageOne,
+                        allHomeItemsList.Data[position].items[0].productImages,
+                        ivRecommendedImageOne.id
+                    )
+                    CommonUtils.loadImage(
+                        ivRecommendedImageTwo,
+                        allHomeItemsList.Data[position].items[0].productImages,
+                        ivRecommendedImageTwo.id
+                    )
+                    CommonUtils.loadImage(
+                        ivRecommendedImageThree,
+                        allHomeItemsList.Data[position].items[0].productImages,
+                        ivRecommendedImageThree.id
+                    )
 
                     txvProductNameOne.text = allHomeItemsList.Data[position].items[0].productName
                     txvProductNameTwo.text = allHomeItemsList.Data[position].items[0].productName
                     txvProductNameThree.text = allHomeItemsList.Data[position].items[0].productName
 
-                    txvSellingPriceOne.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productSalePrice
-                    txvSellingPriceTwo.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productSalePrice
-                    txvSellingPriceThree.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productSalePrice
+                    txvSellingPriceOne.text =
+                        context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productSalePrice
+                    txvSellingPriceTwo.text =
+                        context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productSalePrice
+                    txvSellingPriceThree.text =
+                        context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productSalePrice
 
-                    txvMRPPriceOne.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productPrice
-                    txvMRPPriceTwo.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productPrice
-                    txvMRPPriceThree.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productPrice
+                    txvMRPPriceOne.text =
+                        context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productPrice
+                    txvMRPPriceTwo.text =
+                        context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productPrice
+                    txvMRPPriceThree.text =
+                        context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productPrice
 
                     crdViewAllProducts.setOnClickListener(View.OnClickListener {
-                        mainCustomClickListener?.onItemClicked(allHomeItemsList.Data[position].id.toString(), RECOMMENDED_ITEMS_TYPE, allHomeItemsList.Data[position].name.toString())
+                        mainCustomClickListener?.onItemClicked(
+                            allHomeItemsList.Data[position].id.toString(),
+                            RECOMMENDED_ITEMS_TYPE,
+                            allHomeItemsList.Data[position].name.toString()
+                        )
                     })
 
                     llRecommendedOne.setOnClickListener(View.OnClickListener {
@@ -438,15 +536,16 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                     llRecommendedThree.setOnClickListener(View.OnClickListener {
                         customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[0].pid.toString())
                     })
-                } catch (e : IndexOutOfBoundsException){
-                    Log.e("TAG", "bind: "+e.printStackTrace() )
+                } catch (e: IndexOutOfBoundsException) {
+                    Log.e("TAG", "bind: " + e.printStackTrace())
                 }
 
             }
         }
     }
 
-    private inner class LayoutSuggestionViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    private inner class LayoutSuggestionViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
         var title: TextView? = itemView.findViewById(R.id.txtCategoryName)
         var crdViewAllProducts: CardView = itemView.findViewById(R.id.crdViewAllProducts)
 
@@ -473,25 +572,59 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         @SuppressLint("SetTextI18n")
         fun bind(position: Int) {
             title?.text = allHomeItemsList.Data[position].name
-            if (allHomeItemsList.Data[position].items.size >=2){
-                CommonUtils.loadImage(ivRecommendedImageOne, allHomeItemsList.Data[position].items[0].productImages, ivRecommendedImageOne.id)
-                CommonUtils.loadImage(ivRecommendedImageTwo, allHomeItemsList.Data[position].items[1].productImages, ivRecommendedImageTwo.id)
-                CommonUtils.loadImage(ivRecommendedImageThree, allHomeItemsList.Data[position].items[2].productImages, ivRecommendedImageThree.id)
+            if (allHomeItemsList.Data[position].items.size >= 2) {
+                CommonUtils.loadImage(
+                    ivRecommendedImageOne,
+                    allHomeItemsList.Data[position].items[0].productImages,
+                    ivRecommendedImageOne.id
+                )
+                CommonUtils.loadImage(
+                    ivRecommendedImageTwo,
+                    allHomeItemsList.Data[position].items[1].productImages,
+                    ivRecommendedImageTwo.id
+                )
+                CommonUtils.loadImage(
+                    ivRecommendedImageThree,
+                    allHomeItemsList.Data[position].items[2].productImages,
+                    ivRecommendedImageThree.id
+                )
 
                 txvProductNameOne.text = allHomeItemsList.Data[position].items[0].productName
                 txvProductNameTwo.text = allHomeItemsList.Data[position].items[1].productName
                 txvProductNameThree.text = allHomeItemsList.Data[position].items[2].productName
 
-                txvSellingPriceOne.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[0].productSalePrice?.toInt())
-                txvSellingPriceTwo.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[1].productSalePrice?.toInt())
-                txvSellingPriceThree.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[2].productSalePrice?.toInt())
+                txvSellingPriceOne.text =
+                    context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[0].productSalePrice?.toInt())
+                txvSellingPriceTwo.text =
+                    context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[1].productSalePrice?.toInt())
+                txvSellingPriceThree.text =
+                    context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[2].productSalePrice?.toInt())
 
-                txvMRPPriceOne.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[0].productPrice?.toInt())
-                txvMRPPriceTwo.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[1].productPrice?.toInt())
-                txvMRPPriceThree.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(allHomeItemsList.Data[position].items[2].productPrice?.toInt())
+                txvMRPPriceOne.text =
+                    context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[0].productPrice?.toInt())
+                txvMRPPriceTwo.text =
+                    context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[1].productPrice?.toInt())
+                txvMRPPriceThree.text =
+                    context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                        Locale.getDefault()
+                    ).format(allHomeItemsList.Data[position].items[2].productPrice?.toInt())
 
                 crdViewAllProducts.setOnClickListener(View.OnClickListener {
-                    mainCustomClickListener?.onItemClicked(allHomeItemsList.Data[position].id.toString(), SUGGESTION_FOR_TYPE,allHomeItemsList.Data[position].name.toString())
+                    mainCustomClickListener?.onItemClicked(
+                        allHomeItemsList.Data[position].id.toString(),
+                        SUGGESTION_FOR_TYPE,
+                        allHomeItemsList.Data[position].name.toString()
+                    )
                 })
 
                 llSuggestionOne.setOnClickListener(View.OnClickListener {
@@ -506,25 +639,47 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 llSuggestionThree.setOnClickListener(View.OnClickListener {
                     customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[2].pid.toString())
                 })
-            }else{
-                CommonUtils.loadImage(ivRecommendedImageOne, allHomeItemsList.Data[position].items[0].productImages, ivRecommendedImageOne.id)
-                CommonUtils.loadImage(ivRecommendedImageTwo, allHomeItemsList.Data[position].items[0].productImages, ivRecommendedImageTwo.id)
-                CommonUtils.loadImage(ivRecommendedImageThree, allHomeItemsList.Data[position].items[0].productImages, ivRecommendedImageThree.id)
+            } else {
+                CommonUtils.loadImage(
+                    ivRecommendedImageOne,
+                    allHomeItemsList.Data[position].items[0].productImages,
+                    ivRecommendedImageOne.id
+                )
+                CommonUtils.loadImage(
+                    ivRecommendedImageTwo,
+                    allHomeItemsList.Data[position].items[0].productImages,
+                    ivRecommendedImageTwo.id
+                )
+                CommonUtils.loadImage(
+                    ivRecommendedImageThree,
+                    allHomeItemsList.Data[position].items[0].productImages,
+                    ivRecommendedImageThree.id
+                )
 
                 txvProductNameOne.text = allHomeItemsList.Data[position].items[0].productName
                 txvProductNameTwo.text = allHomeItemsList.Data[position].items[0].productName
                 txvProductNameThree.text = allHomeItemsList.Data[position].items[0].productName
 
-                txvSellingPriceOne.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productSalePrice
-                txvSellingPriceTwo.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productSalePrice
-                txvSellingPriceThree.text = context.getString(R.string.offer_price)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productSalePrice
+                txvSellingPriceOne.text =
+                    context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productSalePrice
+                txvSellingPriceTwo.text =
+                    context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productSalePrice
+                txvSellingPriceThree.text =
+                    context.getString(R.string.offer_price) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productSalePrice
 
-                txvMRPPriceOne.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productPrice
-                txvMRPPriceTwo.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productPrice
-                txvMRPPriceThree.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+allHomeItemsList.Data[position].items[0].productPrice
+                txvMRPPriceOne.text =
+                    context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productPrice
+                txvMRPPriceTwo.text =
+                    context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productPrice
+                txvMRPPriceThree.text =
+                    context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productPrice
 
                 crdViewAllProducts.setOnClickListener(View.OnClickListener {
-                    mainCustomClickListener?.onItemClicked(allHomeItemsList.Data[position].id.toString(), SUGGESTION_FOR_TYPE,allHomeItemsList.Data[position].name.toString())
+                    mainCustomClickListener?.onItemClicked(
+                        allHomeItemsList.Data[position].id.toString(),
+                        SUGGESTION_FOR_TYPE,
+                        allHomeItemsList.Data[position].name.toString()
+                    )
                 })
 
                 llSuggestionOne.setOnClickListener(View.OnClickListener {
@@ -543,12 +698,16 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    private inner class LayoutPriceStoreViewHolder(itemView: View):
+    private inner class LayoutPriceStoreViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        var priceStoreItemsRecycler: RecyclerView = itemView.findViewById(R.id.rvcPriceStoreDeshboard)
+        var priceStoreItemsRecycler: RecyclerView =
+            itemView.findViewById(R.id.rvcPriceStoreDeshboard)
         var title: TextView? = itemView.findViewById(R.id.txtCategoryName)
         fun bind(position: Int) {
-              setPriceStoreItemRecycler(priceStoreItemsRecycler, allHomeItemsList.Data[position].items)
+            setPriceStoreItemRecycler(
+                priceStoreItemsRecycler,
+                allHomeItemsList.Data[position].items
+            )
             title?.text = allHomeItemsList.Data[position].name
         }
     }
@@ -561,28 +720,31 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var crdView: CardView? = itemView.findViewById(R.id.crdRecentlyView)
         var title: TextView? = itemView.findViewById(R.id.txtCategoryName)
         fun bind(position: Int) {
-            if (allHomeItemsList.Data[position].items.isEmpty()){
+            if (allHomeItemsList.Data[position].items.isEmpty()) {
                 crdSeeAllCategory.visibility = View.GONE
                 crdRecentlyView.visibility = View.GONE
-            }else{
+            } else {
                 crdSeeAllCategory.visibility = View.VISIBLE
                 crdRecentlyView.visibility = View.VISIBLE
             }
             setRecentlyViewsRecycler(rcvRecentlyViews, allHomeItemsList.Data[position].items)
             title?.text = allHomeItemsList.Data[position].name
-            if (allHomeItemsList.Data[position].items.size <=0){
+            if (allHomeItemsList.Data[position].items.size <= 0) {
                 crdView?.visibility = View.GONE
-            }else{
+            } else {
                 title?.text = allHomeItemsList.Data[position].name
             }
         }
     }
 
-    private inner class LayoutSomeProductsViewHolder(itemView: View):
-        RecyclerView.ViewHolder(itemView){
+    private inner class LayoutSomeProductsViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
         var someProductsItemsRecycler: RecyclerView = itemView.findViewById(R.id.rcvSomeProducts)
         fun bind(position: Int) {
-            setSomeProductItemRecycler(someProductsItemsRecycler, allHomeItemsList.Data[position].items)
+            setSomeProductItemRecycler(
+                someProductsItemsRecycler,
+                allHomeItemsList.Data[position].items
+            )
         }
     }
 
@@ -593,14 +755,22 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var categoryTitle: TextView? = itemView.findViewById(R.id.txtCategoryName)
         var itemRecycler: RecyclerView? = itemView.findViewById(R.id.rcvAllCategory)
         fun bind(position: Int) {
-            itemRecycler?.let { setNewArrivalsItemRecycler(it, allHomeItemsList.Data[position].items) }
+            itemRecycler?.let {
+                setNewArrivalsItemRecycler(
+                    it,
+                    allHomeItemsList.Data[position].items
+                )
+            }
             categoryTitle?.text = allHomeItemsList.Data[position].name
             crdViewAllProducts.setOnClickListener(View.OnClickListener {
-                mainCustomClickListener?.onItemClicked(position.toString(), NEW_ARRIVALS_TYPE,allHomeItemsList.Data[position].name.toString())
+                mainCustomClickListener?.onItemClicked(
+                    position.toString(),
+                    NEW_ARRIVALS_TYPE,
+                    allHomeItemsList.Data[position].name.toString()
+                )
             })
         }
     }
-
 
 
     private inner class LayoutDealOfTheDayViewHolder(itemView: View) :
@@ -612,12 +782,17 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
             setDealOfTheDayItemRecycler(itemRecycler, allHomeItemsList.Data[position].items)
             categoryTitle.text = allHomeItemsList.Data[position].name
             crdViewAllProducts.setOnClickListener(View.OnClickListener {
-                mainCustomClickListener?.onItemClicked(position.toString(), DEAL_OF_THE_DAY_TYPE,allHomeItemsList.Data[position].name.toString())
+                mainCustomClickListener?.onItemClicked(
+                    position.toString(),
+                    DEAL_OF_THE_DAY_TYPE,
+                    allHomeItemsList.Data[position].name.toString()
+                )
             })
         }
     }
 
-    private inner class LayoutAdvertisementViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    private inner class LayoutAdvertisementViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
         var rcvAdvertisement: RecyclerView = itemView.findViewById(R.id.rcvAdvertisement)
         fun bind(position: Int) {
             setAdvertisementRecycler(rcvAdvertisement, allHomeItemsList.Data[position].items)
@@ -634,41 +809,82 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
             setTrendingNowItemRecycler(itemRecycler, allHomeItemsList.Data[position].items)
             categoryTitle.text = allHomeItemsList.Data[position].name
             crdViewAllProducts.setOnClickListener(View.OnClickListener {
-                mainCustomClickListener?.onItemClicked(position.toString(), TRENDING_NOW_TYPE,allHomeItemsList.Data[position].name.toString())
+                mainCustomClickListener?.onItemClicked(
+                    position.toString(),
+                    TRENDING_NOW_TYPE,
+                    allHomeItemsList.Data[position].name.toString()
+                )
             })
         }
     }
 
-    private fun setCategoriesItemRecycler(itemRecycler: RecyclerView, categoryItemList: ArrayList<DeshBoardItems>) {
-        homeCategoryFragmentAdapter.setAllCategoriesList(categoryItemList, context)
+    private fun setCategoriesItemRecycler(
+        itemRecycler: RecyclerView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
+        imgList.add(R.drawable.audio)
+        imgList.add(R.drawable.gaming)
+        imgList.add(R.drawable.refurnish)
+        imgList.add(R.drawable.pheripheral)
+        imgList.add(R.drawable.mobile_accessories)
+        imgList.add(R.drawable.appliances)
+        imgList.add(R.drawable.smart_home_icon)
+        imgList.add(R.drawable.laptop_icon)
+        imgList.add(R.drawable.camera)
+        imgList.add(R.drawable.smart_gedget)
+        imgList.add(R.drawable.personal_and_health)
+        imgList.add(R.drawable.mobile)
+        imgList.add(R.drawable.industry_zone)
+        imgList.add(R.drawable.computer_and_desktop)
+        imgList.add(R.drawable.automotive)
+        imgList.add(R.drawable.services)
+        imgList.add(R.drawable.jwellary)
+        homeCategoryFragmentAdapter.setAllCategoriesList(categoryItemList, context, imgList)
         itemRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         itemRecycler.adapter = homeCategoryFragmentAdapter
     }
 
-    private fun setPriceStoreItemRecycler(priceStoreItemsRecycler: RecyclerView, categoryItemList: ArrayList<DeshBoardItems>){
+    private fun setPriceStoreItemRecycler(
+        priceStoreItemsRecycler: RecyclerView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
         priceStoreItemRecyclerAdapter.setAllPriceStoreList(categoryItemList, context)
-        priceStoreItemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        priceStoreItemsRecycler.layoutManager =
+            LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         priceStoreItemsRecycler.adapter = priceStoreItemRecyclerAdapter
     }
 
-    private fun setRecentlyViewsRecycler(recentlyViewItemsRecycler: RecyclerView, categoryItemList: ArrayList<DeshBoardItems>){
+    private fun setRecentlyViewsRecycler(
+        recentlyViewItemsRecycler: RecyclerView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
         homeRecentlyViewRecyclerAdapter.setRecentlyViewsList(categoryItemList, context)
-        recentlyViewItemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        recentlyViewItemsRecycler.layoutManager =
+            LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recentlyViewItemsRecycler.adapter = homeRecentlyViewRecyclerAdapter
     }
 
-    private fun setSomeProductItemRecycler(someProductItemsRecycler: RecyclerView, categoryItemList: ArrayList<DeshBoardItems>){
+    private fun setSomeProductItemRecycler(
+        someProductItemsRecycler: RecyclerView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
         someProductsRecyclerAdapter.setAllPriceStoreList(categoryItemList, context)
         someProductItemsRecycler.adapter = someProductsRecyclerAdapter
     }
 
-    private fun setNewArrivalsItemRecycler(recyclerView: RecyclerView, categoryItemList: ArrayList<DeshBoardItems>) {
+    private fun setNewArrivalsItemRecycler(
+        recyclerView: RecyclerView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
         newArrivalsItemRecyclerAdapter.setData(categoryItemList, context)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recyclerView.adapter = newArrivalsItemRecyclerAdapter
     }
 
-    private fun setSliderItemRecycler(sliderView: SliderView, categoryItemList: ArrayList<DeshBoardItems>) {
+    private fun setSliderItemRecycler(
+        sliderView: SliderView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
         sliderOneAdapter.setData(categoryItemList, context)
         sliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
         sliderView.setSliderAdapter(sliderOneAdapter)
@@ -677,7 +893,10 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         sliderView.startAutoCycle()
     }
 
-    private fun setSliderTwoItemRecycler(sliderTwoView: SliderView, categoryItemList: ArrayList<DeshBoardItems>) {
+    private fun setSliderTwoItemRecycler(
+        sliderTwoView: SliderView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
         sliderTwoAdapter.setData(categoryItemList, context)
         sliderTwoView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
         sliderTwoView.setSliderAdapter(sliderTwoAdapter)
@@ -686,7 +905,10 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         sliderTwoView.startAutoCycle()
     }
 
-    private fun setSliderThreeItemRecycler(sliderThreeView: SliderView, categoryItemList: ArrayList<DeshBoardItems>) {
+    private fun setSliderThreeItemRecycler(
+        sliderThreeView: SliderView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
         sliderThreeAdapter.setData(categoryItemList, context)
         sliderThreeView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
         sliderThreeView.setSliderAdapter(sliderThreeAdapter)
@@ -695,19 +917,28 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         sliderThreeView.startAutoCycle()
     }
 
-    private fun setDealOfTheDayItemRecycler(recyclerView: RecyclerView, categoryItemList: ArrayList<DeshBoardItems>) {
+    private fun setDealOfTheDayItemRecycler(
+        recyclerView: RecyclerView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
         dealOfTheDayItemRecyclerAdapter.setData(categoryItemList, context)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recyclerView.adapter = dealOfTheDayItemRecyclerAdapter
     }
 
-    private fun setAdvertisementRecycler(recyclerView: RecyclerView, categoryItemList: ArrayList<DeshBoardItems>) {
+    private fun setAdvertisementRecycler(
+        recyclerView: RecyclerView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
         homeAdvertisementAdapter.setData(categoryItemList, context)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recyclerView.adapter = homeAdvertisementAdapter
     }
 
-    private fun setTrendingNowItemRecycler(recyclerView: RecyclerView, categoryItemList: ArrayList<DeshBoardItems>) {
+    private fun setTrendingNowItemRecycler(
+        recyclerView: RecyclerView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
         trendingNowItemRecyclerAdapter.setData(categoryItemList, context)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recyclerView.adapter = trendingNowItemRecyclerAdapter

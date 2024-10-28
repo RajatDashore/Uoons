@@ -1,7 +1,7 @@
 package com.uoons.india.ui.home.fragment.more_products.adapter
+
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,29 +17,40 @@ import com.uoons.india.utils.CommonUtils
 import org.lsposed.lsparanoid.Obfuscate
 import java.text.DecimalFormat
 import java.text.NumberFormat
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Locale
 
 @Obfuscate
-class DeshBordMoreProductsAdapter(var moreProductsItemList: ArrayList<MoreProducts>,
-                                  var context: Context, var onclick:(value: String)->Unit) :
+class DeshBordMoreProductsAdapter(
+    var moreProductsItemList: ArrayList<MoreProducts>,
+    var context: Context, var onclick: (value: String) -> Unit,
+) :
     BaseRecyclerAdapter<RowHomeDeshbordMoreProductsBinding, Any, DeshBordMoreProductsAdapter.ViewHolder>() {
 
-   // private var moreProductsItemList: ArrayList<MoreProducts> = ArrayList<MoreProducts>()
-  //private var moreProductsItemList: MoreData = MoreData()
-  //  lateinit var context: Context
+    // private var moreProductsItemList: ArrayList<MoreProducts> = ArrayList<MoreProducts>()
+    //private var moreProductsItemList: MoreData = MoreData()
+    //  lateinit var context: Context
 
-   /* fun setMoreProductsDate(data:  ArrayList<MoreProducts>, context: Context){
-        this.moreProductsItemList = data
-        this.context = context
-    }*/
+    /* fun setMoreProductsDate(data:  ArrayList<MoreProducts>, context: Context){
+         this.moreProductsItemList = data
+         this.context = context
+     }*/
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, type: Int) {
         holder.bind(moreProductsItemList[position])
     }
 
-    override fun onCreateViewHolder(viewDataBinding: RowHomeDeshbordMoreProductsBinding, parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(RowHomeDeshbordMoreProductsBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(
+        viewDataBinding: RowHomeDeshbordMoreProductsBinding,
+        parent: ViewGroup,
+        viewType: Int,
+    ): ViewHolder {
+        return ViewHolder(
+            RowHomeDeshbordMoreProductsBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getLayoutId(viewType: Int): Int {
@@ -50,33 +61,43 @@ class DeshBordMoreProductsAdapter(var moreProductsItemList: ArrayList<MoreProduc
         return moreProductsItemList.size
     }
 
-  inner  class ViewHolder(val binding: RowHomeDeshbordMoreProductsBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding: RowHomeDeshbordMoreProductsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun bind(data: MoreProducts){
+        fun bind(data: MoreProducts) {
             binding.recyclerMomeProducts = data
 
-            binding.txvSellingPrice.text = context.getString(R.string.offer_price)+" "+ context.getString(
-                R.string.rupees)+NumberFormat.getNumberInstance(Locale.getDefault()).format(moreProductsItemList[position].productSalePrice?.toInt())
-            binding.txvMRPPrice.text = context.getString(R.string.m_r_p)+" "+ context.getString(R.string.rupees)+ NumberFormat.getNumberInstance(Locale.getDefault()).format(moreProductsItemList[position].productPrice?.toInt())
+            binding.txvSellingPrice.text =
+                context.getString(R.string.offer_price) + " " + context.getString(
+                    R.string.rupees
+                ) + NumberFormat.getNumberInstance(Locale.getDefault())
+                    .format(moreProductsItemList[position].productSalePrice?.toInt())
+            binding.txvMRPPrice.text =
+                context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + NumberFormat.getNumberInstance(
+                    Locale.getDefault()
+                ).format(moreProductsItemList[position].productPrice?.toInt())
 
-            val productPrice = Integer.parseInt(moreProductsItemList[position].productPrice.toString())
-            val productSellPrice = Integer.parseInt(moreProductsItemList[position].productSalePrice.toString())
+            val productPrice =
+                Integer.parseInt(moreProductsItemList[position].productPrice.toString())
+            val productSellPrice =
+                Integer.parseInt(moreProductsItemList[position].productSalePrice.toString())
             val youSavePrice = productPrice - productSellPrice
 
-            val percentage = calculatePercentageChange(productPrice.toDouble(), productSellPrice.toDouble())
+            val percentage =
+                calculatePercentageChange(productPrice.toDouble(), productSellPrice.toDouble())
 
             val str: String = percentage.toString()
             val float1: Float = str.toFloat()
             val discount = DecimalFormat(AppConstants.hash).format(float1)
 
-            if(youSavePrice.toString() == AppConstants.zero || youSavePrice.toString() == AppConstants.EMPTY){
-                binding.txvDisountOff.visibility= View.GONE
-            }else{
+            if (youSavePrice.toString() == AppConstants.zero || youSavePrice.toString() == AppConstants.EMPTY) {
+                binding.txvDisountOff.visibility = View.GONE
+            } else {
                 binding.txvDisountOff.text = "($discount%) OFF"
             }
 
 
-           binding.cstLayout.setOnClickListener(View.OnClickListener {
+            binding.cstLayout.setOnClickListener(View.OnClickListener {
                 onclick.invoke(moreProductsItemList[position].pid.toString())
             })
         }

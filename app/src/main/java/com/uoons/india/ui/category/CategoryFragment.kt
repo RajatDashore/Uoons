@@ -31,6 +31,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryFragmentV
     override val layoutId: Int = R.layout.fragment_category
     override val viewModelClass: Class<CategoryFragmentVM> = CategoryFragmentVM::class.java
     private var navController: NavController? = null
+    private var imgList: ArrayList<Int> = arrayListOf<Int>()
     lateinit var categoryFragmentAdapter: CategoryFragmentAdapter
 
     override fun init() {
@@ -40,17 +41,24 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryFragmentV
             if (mViewModel.navigator!!.checkIfInternetOn()) {
                 mViewModel.getAllCategoriesApiCall()
             } else {
-                mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection), onClick = {
-                    init()
-                })
+                mViewModel.navigator!!.showAlertDialog1Button(
+                    AppConstants.Uoons,
+                    resources.getString(R.string.please_check_internet_connection),
+                    onClick = {
+                        init()
+                    })
             }
         } else {
             if (mViewModel.navigator!!.checkIfInternetOn()) {
-                CategoryDataSingleton.getAllCategoryData()?.let { setCategoriesFragmentAdapterDate(it) }
+                CategoryDataSingleton.getAllCategoryData()
+                    ?.let { setCategoriesFragmentAdapterDate(it) }
             } else {
-                mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection), onClick = {
-                    init()
-                })
+                mViewModel.navigator!!.showAlertDialog1Button(
+                    AppConstants.Uoons,
+                    resources.getString(R.string.please_check_internet_connection),
+                    onClick = {
+                        init()
+                    })
             }
         }
     }
@@ -73,9 +81,12 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryFragmentV
                 mViewModel.getMyCartItemsApiCall()
                 mViewModel.getWishListProductApiCall()
             } else {
-                mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection), onClick = {
-                    mViewModel.navigator!!.checkIfInternetOn()
-                })
+                mViewModel.navigator!!.showAlertDialog1Button(
+                    AppConstants.Uoons,
+                    resources.getString(R.string.please_check_internet_connection),
+                    onClick = {
+                        mViewModel.navigator!!.checkIfInternetOn()
+                    })
             }
         }
 
@@ -129,23 +140,32 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryFragmentV
     }
 
     override fun naviGateToCategoryItemsFragment(cId: String, cName: String) {
-        val bundle = bundleOf(AppConstants.ParentId to "1", AppConstants.SubId to cId, AppConstants.CName to cName)
+        val bundle = bundleOf(
+            AppConstants.ParentId to "1",
+            AppConstants.SubId to cId,
+            AppConstants.CName to cName
+        )
         navController?.navigate(R.id.action_categoryFragment_to_productListFragment, bundle)
     }
 
     override fun getAllCategoriesData() {
         if (view != null) {
-            mViewModel.allCategoriesDataResponse.observe(viewLifecycleOwner, Observer<AllCategoryModel> {
+            mViewModel.allCategoriesDataResponse.observe(
+                viewLifecycleOwner,
+                Observer<AllCategoryModel> {
                     if (it != null) {
-                        if (it.status.equals(AppConstants.SUCCESS,ignoreCase = true)){
+                        if (it.status.equals(AppConstants.SUCCESS, ignoreCase = true)) {
                             CategoryDataSingleton.setAllCategoryData(it)
 //                            Log.e("TAG", "getAllCategoriesData: "+CategoryDataSingleton.getAllCategoryData().toString() )
                             setCategoriesFragmentAdapterDate(it)
-                        }else if (it.status.equals(AppConstants.FAILURE,ignoreCase = true)){
+                        } else if (it.status.equals(AppConstants.FAILURE, ignoreCase = true)) {
                             CommonUtils.showToastMessage(requireContext(), it.message.toString())
                         }
                     } else {
-                        CommonUtils.showToastMessage(requireContext(), resources.getString(R.string.error_in_fetching_data))
+                        CommonUtils.showToastMessage(
+                            requireContext(),
+                            resources.getString(R.string.error_in_fetching_data)
+                        )
                     }
                 })
         }
@@ -153,7 +173,18 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryFragmentV
 
     @SuppressLint("NotifyDataSetChanged")
     fun setCategoriesFragmentAdapterDate(data: AllCategoryModel) {
-        categoryFragmentAdapter.setAllCategoriesList(data, requireActivity())
+        imgList.add(R.drawable.audio)
+        imgList.add(R.drawable.gaming)
+        imgList.add(R.drawable.refurnish)
+        imgList.add(R.drawable.pheripheral)
+        imgList.add(R.drawable.mobile_accessories)
+        imgList.add(R.drawable.appliances)
+        imgList.add(R.drawable.smart_home_icon)
+        imgList.add(R.drawable.laptop_icon)
+        imgList.add(R.drawable.smart_gedget)
+        imgList.add(R.drawable.personal_and_health)
+        imgList.add(R.drawable.mobile)
+        categoryFragmentAdapter.setAllCategoriesList(data, requireActivity(), imgList)
         viewDataBinding.rvCategories.adapter = categoryFragmentAdapter
         categoryFragmentAdapter.notifyDataSetChanged()
         viewDataBinding.shimmerCategoriesLayout.stopShimmer()
@@ -162,7 +193,9 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryFragmentV
 
     override fun getMyCartItemsResponse() {
         if (view != null) {
-            mViewModel.getMyCartItemsDataResponse.observe(viewLifecycleOwner, Observer<GetMyCartDataModel> {
+            mViewModel.getMyCartItemsDataResponse.observe(
+                viewLifecycleOwner,
+                Observer<GetMyCartDataModel> {
                     if (it != null) {
                         setMyCartItemsAdapterData(it)
                     }
@@ -171,7 +204,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryFragmentV
     }
 
     private fun setMyCartItemsAdapterData(data: GetMyCartDataModel) {
-        if (data.status.equals(AppConstants.SUCCESS,ignoreCase = true)) {
+        if (data.status.equals(AppConstants.SUCCESS, ignoreCase = true)) {
             viewDataBinding.toolbar.crdCountMyCart.visibility = View.VISIBLE
             viewDataBinding.toolbar.txvCountMyCartItems.text = data.Data?.itemCount.toString()
         } else {
@@ -186,14 +219,17 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryFragmentV
                     if (it != null) {
                         setWishListData(it)
                     } else {
-                        CommonUtils.showToastMessage(requireContext(), resources.getString(R.string.error_in_fetching_data))
+                        CommonUtils.showToastMessage(
+                            requireContext(),
+                            resources.getString(R.string.error_in_fetching_data)
+                        )
                     }
                 })
         }
     }
 
     private fun setWishListData(getWishListDataModel: GetWishListDataModel) {
-        if (getWishListDataModel.status.equals(AppConstants.SUCCESS,ignoreCase = true)) {
+        if (getWishListDataModel.status.equals(AppConstants.SUCCESS, ignoreCase = true)) {
             viewDataBinding.toolbar.crdCountWishList.visibility = View.VISIBLE
             viewDataBinding.toolbar.txvCountWishList.text =
                 getWishListDataModel.Data.size.toString()
@@ -202,17 +238,17 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryFragmentV
         }
     }
 
-/*
-    fun getEncryptedSharedprefs(context: Context): SharedPreferences {
+    /*
+        fun getEncryptedSharedprefs(context: Context): SharedPreferences {
 
-        val masterkeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
-        return EncryptedSharedPreferences.create(
-            "secured_prefs", masterkeyAlias, context ,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
+            val masterkeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+            return EncryptedSharedPreferences.create(
+                "secured_prefs", masterkeyAlias, context ,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
 
-    }
-*/
+        }
+    */
 
 }

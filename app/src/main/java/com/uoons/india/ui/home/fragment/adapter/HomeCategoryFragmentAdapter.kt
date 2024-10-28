@@ -8,7 +8,15 @@ import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import coil3.ImageLoader
+import coil3.request.ImageRequest
+import coil3.request.crossfade
+import coil3.request.error
+import coil3.request.placeholder
+import coil3.request.target
+import coil3.size.Scale
+import coil3.svg.SvgDecoder
+import com.squareup.picasso.Picasso
 import com.uoons.india.R
 import com.uoons.india.databinding.RowHomeCategoryAdapterBinding
 import com.uoons.india.ui.base.BaseRecyclerAdapter
@@ -24,7 +32,10 @@ class HomeCategoryFragmentAdapter :
     lateinit var context: Context
     private var customClickListener: OnItemClickListener? = null
     private var httpClient: OkHttpClient? = null
+    private var imgList: ArrayList<Int> = arrayListOf<Int>()
+
     lateinit var url: String
+
 
     interface OnItemClickListener {
         fun onItemClicked(position: String, type: String)
@@ -34,9 +45,14 @@ class HomeCategoryFragmentAdapter :
         this.customClickListener = mItemClick
     }
 
-    fun setAllCategoriesList(data: ArrayList<DeshBoardItems>, context: Context) {
+    fun setAllCategoriesList(
+        data: ArrayList<DeshBoardItems>,
+        context: Context,
+        imgList: ArrayList<Int>,
+    ) {
         this.categoryItemList = data
         this.context = context
+        this.imgList = imgList
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, type: Int) {
@@ -44,6 +60,7 @@ class HomeCategoryFragmentAdapter :
         val alpha = AlphaAnimation(1.0f, 1.0f)
         alpha.duration = 0
         alpha.fillAfter = true
+
         holder.binding.cstLayout.setOnClickListener(View.OnClickListener {
             customClickListener?.onItemClicked(
                 categoryItemList!![position].cId.toString(),
@@ -51,15 +68,28 @@ class HomeCategoryFragmentAdapter :
             )
         })
 
+        if (position < imgList.size) {
+
+            Picasso.get().load(imgList[position]).placeholder(R.drawable.ic_error)
+                .error(R.drawable.ic_error)
+                .into(holder.binding.ivCategory)
+        } else {
+            Log.e(
+                "Adapter Error",
+                "Attempted to access position $position but list size is ${imgList.size}"
+            )
+            // Optionally, handle this case (e.g., by setting a placeholder or leaving it empty)
+        }
+
 
 
         url = "https://uoons.com/" + categoryItemList!![position].catIcon.toString()
-//        Log.e("TAG", "url: "+url )
-        println("url:>>>>>>>>>>>>       " + url)
+        //     Log.e("TAG", "url: " + url)
+        //  println("url:>>>>>>>>>>>>       " + url)
         //  var url1: String = url.replace("svg", "png")
-        // holder.binding.ivCategory.loadSvg(url1)
+        //  holder.binding.ivCategory.loadSvg(url)
         //   Log.d("url1",url1)
-        Glide.with(context).load(R.drawable.ic_error).centerCrop().into(holder.binding.ivCategory)
+//        Glide.with(context).load(arrImg[position]).centerCrop().into(holder.binding.ivCategory)
         //  fetchSVG(context, url, holder.binding.ivCategory)
         Log.d("UrlPhoto", url)
     }
@@ -94,23 +124,25 @@ class HomeCategoryFragmentAdapter :
     }
 
     fun ImageView.loadSvg(url: String) {
-        /* val imageLoader = ImageLoader.Builder(this.context)
-             .components {
-                 add(SvgDecoder.Factory())
-                 Log.d("Helo", url)
-             }
-             .build()
+        // Create an ImageLoader with SvgDecoder enabled
+        val imageLoader = ImageLoader.Builder(this.context)
+            .components {
+                add(SvgDecoder.Factory())
+            }
+            .build()
 
-         val request = ImageRequest.Builder(this.context)
-             .crossfade(true)
-             .placeholder(R.drawable.ic_error)
-             .data(url)
-             .target(this)
-             .build()
-         imageLoader.enqueue(request)
-         Log.d("helo2", url)
-         */
+        // Create an ImageRequest with the target as this ImageView
+        val request = ImageRequest.Builder(this.context)
+            .crossfade(true)
+            .scale(Scale.FIT)
+            .placeholder(R.drawable.ic_error) // Replace with your actual placeholder
+            .error(R.drawable.ic_error) // Replace with your actual error drawable
+            .data(url)
+            .target(this)
+            .build()
 
+        // Enqueue the request with the imageLoader
+        imageLoader.enqueue(request)
     }
 
 
