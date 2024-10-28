@@ -66,8 +66,8 @@ android {
             //variables that are common in all flavors
         }
         dev {
-            versionCode 37
-            versionName "2.4.5"
+            versionCode 38
+            versionName "2.5.3"
             buildConfigField "String", "BASE_URL", "\"https://uoons.com/\""
 
 
