@@ -49,6 +49,8 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     // Slider Two Items
     private val sliderTwoAdapter = SliderTwoAdapter()
+
+    //Image from HomeCategory
     val imgList: ArrayList<Int> = arrayListOf<Int>()
 
     // Slider Two Items
@@ -103,6 +105,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         const val NEW_ARRIVALS_TYPE = 11
         const val MORE_ITEMS_TYPE = 12
         const val TRENDING_NOW_TYPE = 13
+        const val SAAS_LAYOUT = 14
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -117,6 +120,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 LayoutCategoriesViewHolder(layout1)
             }
 
+
             SLIDERS_ONE_TYPE -> {
                 val layout2: View =
                     LayoutInflater.from(context).inflate(R.layout.home_slider_layout, parent, false)
@@ -128,6 +132,10 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                     .inflate(R.layout.home_price_store_layout, parent, false)
                 LayoutPriceStoreViewHolder(layout3)
             }
+
+
+            // I have to make changes here
+            // Here the adapter thing will come
 
             DEAL_OF_THE_DAY_TYPE -> {
                 val layout4: View = LayoutInflater.from(context)
