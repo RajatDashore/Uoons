@@ -35,6 +35,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     // Slider One Items
     private val sliderOneAdapter = SliderOneAdapter()
 
+
     // Price Store Items
     private val priceStoreItemRecyclerAdapter = PriceStoreItemRecyclerAdapter()
 
@@ -870,6 +871,10 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         recentlyViewItemsRecycler.layoutManager =
             LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recentlyViewItemsRecycler.adapter = homeRecentlyViewRecyclerAdapter
+    }
+
+    private fun SaasFunction(){
+
     }
 
     private fun setSomeProductItemRecycler(

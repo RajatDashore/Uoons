@@ -15,12 +15,12 @@
           <targets>
             <Target type="DEFAULT_BOOT">
               <handle>
-                <DeviceId pluginId="PhysicalDevice" identifier="serial=ZF652764VS" />
+                <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Rajat Dashore\.android\avd\PIr_Virtual_28.avd" />
               </handle>
             </Target>
             <Target type="DEFAULT_BOOT">
               <handle>
-                <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Rajat Dashore\.android\avd\PIr_Virtual_28.avd" />
+                <DeviceId pluginId="PhysicalDevice" identifier="serial=ZF652764VS" />
               </handle>
             </Target>
           </targets>
