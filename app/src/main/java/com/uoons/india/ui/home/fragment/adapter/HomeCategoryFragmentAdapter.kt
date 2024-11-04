@@ -123,7 +123,7 @@ class HomeCategoryFragmentAdapter :
         }
     }
 
-    fun ImageView.loadSvg(url: String) {
+   /* fun ImageView.loadSvg(url: String) {
         // Create an ImageLoader with SvgDecoder enabled
         val imageLoader = ImageLoader.Builder(this.context)
             .components {
@@ -144,6 +144,7 @@ class HomeCategoryFragmentAdapter :
         // Enqueue the request with the imageLoader
         imageLoader.enqueue(request)
     }
+    */
 
 
     /* fun fetchSVG(context: Context, url: String, image: ImageView) {

@@ -37,6 +37,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     // Slider One Items
     private val sliderOneAdapter = SliderOneAdapter()
 
+
     // Price Store Items
     private val priceStoreItemRecyclerAdapter = PriceStoreItemRecyclerAdapter()
 
@@ -59,9 +60,13 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     // Slider Two Items
     private val sliderTwoAdapter = SliderTwoAdapter()
 
+<<<<<<< HEAD
     private var fourPhotoesAdapter = FourPhotoesAdapter()
 
     //For the Top Slider of the App in Home Screen
+=======
+    //Image from HomeCategory
+>>>>>>> 436133ac435b7e17bfcba8826c42e6bed58d47f4
     val imgList: ArrayList<Int> = arrayListOf<Int>()
 
     // Slider Two Items
@@ -116,7 +121,11 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         const val NEW_ARRIVALS_TYPE = 11
         const val MORE_ITEMS_TYPE = 12
         const val TRENDING_NOW_TYPE = 13
+<<<<<<< HEAD
         const val FOUR_PHOTOES = 14
+=======
+        const val SAAS_LAYOUT = 14
+>>>>>>> 436133ac435b7e17bfcba8826c42e6bed58d47f4
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -131,6 +140,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 LayoutCategoriesViewHolder(layout1)
             }
 
+
             SLIDERS_ONE_TYPE -> {
                 val layout2: View =
                     LayoutInflater.from(context).inflate(R.layout.home_slider_layout, parent, false)
@@ -143,11 +153,17 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 LayoutPriceStoreViewHolder(layout3)
             }
 
+<<<<<<< HEAD
             FOUR_PHOTOES -> {
                 val layout14: View =
                     LayoutInflater.from(context).inflate(R.layout.four_images, parent, false)
                 LayoutFourPhotoes(layout14)
             }
+=======
+
+            // I have to make changes here
+            // Here the adapter thing will come
+>>>>>>> 436133ac435b7e17bfcba8826c42e6bed58d47f4
 
             DEAL_OF_THE_DAY_TYPE -> {
                 val layout4: View = LayoutInflater.from(context)
@@ -927,6 +943,12 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         recentlyViewItemsRecycler.adapter = homeRecentlyViewRecyclerAdapter
     }
 
+<<<<<<< HEAD
+=======
+    private fun SaasFunction(){
+
+    }
+>>>>>>> 436133ac435b7e17bfcba8826c42e6bed58d47f4
 
     private fun setSomeProductItemRecycler(
         someProductItemsRecycler: RecyclerView,
