@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.smarteist.autoimageslider.SliderView
@@ -21,6 +22,7 @@ import com.uoons.india.ui.home.fragment.model.DeshBoardItems
 import com.uoons.india.ui.home.fragment.model.DeshBoardModel
 import com.uoons.india.utils.CommonUtils
 import org.lsposed.lsparanoid.Obfuscate
+import java.lang.reflect.Array
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -47,8 +49,19 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     // Advertisement home page
     private val homeAdvertisementAdapter = HomeAdvertisementAdapter()
 
+    private val imageListFourPhotoes: ArrayList<Int> = arrayListOf(
+        R.drawable.ic_settings,
+        R.drawable.ic_error,
+        R.drawable.avg_rating_bg,
+        R.drawable.ic_error
+    )
+
     // Slider Two Items
     private val sliderTwoAdapter = SliderTwoAdapter()
+
+    private var fourPhotoesAdapter = FourPhotoesAdapter()
+
+    //For the Top Slider of the App in Home Screen
     val imgList: ArrayList<Int> = arrayListOf<Int>()
 
     // Slider Two Items
@@ -103,6 +116,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         const val NEW_ARRIVALS_TYPE = 11
         const val MORE_ITEMS_TYPE = 12
         const val TRENDING_NOW_TYPE = 13
+        const val FOUR_PHOTOES = 14
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -129,11 +143,18 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 LayoutPriceStoreViewHolder(layout3)
             }
 
+            FOUR_PHOTOES -> {
+                val layout14: View =
+                    LayoutInflater.from(context).inflate(R.layout.four_images, parent, false)
+                LayoutFourPhotoes(layout14)
+            }
+
             DEAL_OF_THE_DAY_TYPE -> {
                 val layout4: View = LayoutInflater.from(context)
                     .inflate(R.layout.home_deal_of_the_day_layout, parent, false)
                 LayoutDealOfTheDayViewHolder(layout4)
             }
+
 
             SLIDERS_TWO_TYPE -> {
                 val layout5: View = LayoutInflater.from(context)
@@ -230,6 +251,11 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
             }
         })
 
+
+        // Setting the click listner for images
+        //fourPhotoesAdapter.set
+
+
         // Deal of the Day Items
         dealOfTheDayItemRecyclerAdapter.setOnItemClickListener(object :
             DealOfTheDayItemRecyclerAdapter.OnProductIdClickListener {
@@ -237,6 +263,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 customProductIdClickListener?.onProductIdClicked(pId)
             }
         })
+
 
         // Recently Views Items
         homeRecentlyViewRecyclerAdapter.setOnItemClickListener(object :
@@ -311,6 +338,12 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 (holder as LayoutDealOfTheDayViewHolder).bind(position)
             }
 
+            // This will work for that four images into the Home activity
+            FOUR_PHOTOES -> {
+                Log.d("RajatTag","3")
+                (holder as LayoutFourPhotoes).bind(position)
+            }
+
             SLIDERS_TWO_TYPE -> {
                 (holder as LayoutSliderTwoViewHolder).bind(position)
             }
@@ -350,7 +383,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     override fun getItemCount(): Int {
-        return allHomeItemsList.Data.size
+        return allHomeItemsList.Data!!.size
     }
 
     private inner class LayoutCategoriesViewHolder(itemView: View) :
@@ -360,6 +393,22 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
             setCategoriesItemRecycler(itemRecycler, allHomeItemsList.Data[position].items)
         }
     }
+
+
+    private inner class LayoutFourPhotoes(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
+        var recycler: RecyclerView = itemView.findViewById(R.id.FourPhotoRecyclerView)
+        fun bind(position: Int) {
+            SetFourPhotoesRecycler(
+                recycler,
+                allHomeItemsList.Data[position].items,
+                imageListFourPhotoes
+            )
+            Log.d("RajatTag","1")
+        }
+
+    }
+
 
     private inner class LayoutSliderOneViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
@@ -854,6 +903,20 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         priceStoreItemsRecycler.adapter = priceStoreItemRecyclerAdapter
     }
 
+
+    // Used to show that four items on the Home Screen
+    private fun SetFourPhotoesRecycler(
+        recycler: RecyclerView,
+        info: ArrayList<DeshBoardItems>,
+        items: ArrayList<Int>,
+    ) {
+        Log.d("RajatTag","2")
+        fourPhotoesAdapter.SetAllCategoryListFourPhotoes(items, info, context)
+        recycler.layoutManager = GridLayoutManager(context, 2, RecyclerView.HORIZONTAL, false)
+        recycler.adapter = fourPhotoesAdapter
+    }
+
+
     private fun setRecentlyViewsRecycler(
         recentlyViewItemsRecycler: RecyclerView,
         categoryItemList: ArrayList<DeshBoardItems>,
@@ -864,6 +927,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         recentlyViewItemsRecycler.adapter = homeRecentlyViewRecyclerAdapter
     }
 
+
     private fun setSomeProductItemRecycler(
         someProductItemsRecycler: RecyclerView,
         categoryItemList: ArrayList<DeshBoardItems>,
@@ -871,6 +935,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         someProductsRecyclerAdapter.setAllPriceStoreList(categoryItemList, context)
         someProductItemsRecycler.adapter = someProductsRecyclerAdapter
     }
+
 
     private fun setNewArrivalsItemRecycler(
         recyclerView: RecyclerView,
@@ -880,6 +945,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recyclerView.adapter = newArrivalsItemRecyclerAdapter
     }
+
 
     private fun setSliderItemRecycler(
         sliderView: SliderView,
@@ -892,6 +958,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         sliderView.isAutoCycle = true // adapter
         sliderView.startAutoCycle()
     }
+
 
     private fun setSliderTwoItemRecycler(
         sliderTwoView: SliderView,

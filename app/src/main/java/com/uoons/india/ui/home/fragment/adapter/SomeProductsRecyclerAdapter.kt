@@ -24,7 +24,7 @@ class SomeProductsRecyclerAdapter :
     BaseRecyclerAdapter<RowHomeSomeProductBinding, Any, SomeProductsRecyclerAdapter.ViewHolder>(){
 
     private var customProductIdClickListener: OnProductIdClickListener? = null
-    var someProductsItemList: ArrayList<DeshBoardItems>? = null
+    private var someProductsItemList: ArrayList<DeshBoardItems>? = null
     lateinit var context: Context
 
     interface OnProductIdClickListener {

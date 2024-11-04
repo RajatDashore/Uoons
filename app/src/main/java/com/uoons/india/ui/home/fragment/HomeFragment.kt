@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.core.widget.NestedScrollView
@@ -16,9 +17,6 @@ import com.uoons.india.BuildConfig
 import com.uoons.india.R
 import com.uoons.india.data.local.AppPreference
 import com.uoons.india.data.local.PreferenceKeys
-import com.uoons.india.databinding.ActivityHomeBinding
-import com.uoons.india.databinding.ActivityHomeBinding.*
-import com.uoons.india.databinding.ActivityHomeBindingImpl
 import com.uoons.india.databinding.FragmentHomeBinding
 import com.uoons.india.ui.base.BaseFragment
 import com.uoons.india.ui.filter.FiltersBottomSheet
@@ -44,7 +42,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
     override val viewModelClass: Class<HomeFragmentRecyclerVM> = HomeFragmentRecyclerVM::class.java
     private var navController: NavController? = null
     private lateinit var deshBoardRecyclerAdapter: DeshBoardRecyclerAdapter
-    private  var deshBordMoreProductsAdapter: DeshBordMoreProductsAdapter? = null
+    private var deshBordMoreProductsAdapter: DeshBordMoreProductsAdapter? = null
     private var currentPage = 1
     private var visit = 0
     private var noMoreProductBoolean: Boolean = false
@@ -64,10 +62,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
         const val NEW_ARRIVALS_TYPE = 11
         const val MORE_ITEMS_TYPE = 12
         const val TRENDING_NOW_TYPE = 13
+        const val FOUR_IMAGES = 14
 
     }
 
-    override  fun init() {
+    override fun init() {
         mViewModel.navigator = this
         deshBoardRecyclerAdapter = DeshBoardRecyclerAdapter()
         if (dashBoardData == null && DashBoardDataListSingleton.getDastBoardData() == null && DashBoardDataListSingleton.getMoreProductsItemList().size <= 0) {
@@ -76,7 +75,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
             if (mViewModel.navigator!!.checkIfInternetOn()) {
                 mViewModel.getDeshBoardAPICaLL()
             } else {
-                mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection), onClick = {})
+                mViewModel.navigator!!.showAlertDialog1Button(
+                    AppConstants.Uoons,
+                    resources.getString(R.string.please_check_internet_connection),
+                    onClick = {})
             }
         } else {
             if (dashBoardData == null) {
@@ -108,34 +110,41 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
         val versionCode = BuildConfig.VERSION_CODE
         val versionName = BuildConfig.VERSION_NAME
 
-        val VersionCode = requireContext().packageManager.getPackageInfo(requireContext().packageName, 0).versionCode
+        val VersionCode = requireContext().packageManager.getPackageInfo(
+            requireContext().packageName,
+            0
+        ).versionCode
         Log.e(
             LOG_TAG,
             "release:- $release and sdkVersion:- $sdkVersion versionCode:- $versionCode versionName:- $versionName VersionCode:- $VersionCode"
         )
 
         try {
-            val appVersion: String = requireContext().packageManager.getPackageInfo(requireContext().packageName, 0).versionName
+            val appVersion: String = requireContext().packageManager.getPackageInfo(
+                requireContext().packageName,
+                0
+            ).versionName
 //            Log.e(LOG_TAG, "appVersion:- $appVersion")
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
         }
 
         viewDataBinding.deshBoardViewRecycler.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
 
         viewDataBinding.setVariable(bindingVariable, mViewModel)
         viewDataBinding.homeToolBar.crdSorting.visibility = View.GONE
         viewDataBinding.homeToolBar.crdFilters.visibility = View.GONE
 
-        viewDataBinding.homeToolBar.crdSorting.setOnClickListener{
+        viewDataBinding.homeToolBar.crdSorting.setOnClickListener {
             if (CommonUtils.isInternetOn(context)) {
                 openSortBottomSheet()
             }
         }
 
-        viewDataBinding.homeToolBar.crdFilters.setOnClickListener{
+        viewDataBinding.homeToolBar.crdFilters.setOnClickListener {
             if (CommonUtils.isInternetOn(context)) {
                 openFiltersBottomSheet()
             }
@@ -163,49 +172,123 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                 if (mViewModel.navigator!!.checkIfInternetOn()) {
                     when (parentID) {
                         CATEGORIES_TYPE -> {
-                            naviGateToCategoryItemsFragment(subId, parentID.toString(), categoryName)
+                            naviGateToCategoryItemsFragment(
+                                subId,
+                                parentID.toString(),
+                                categoryName
+                            )
                         }
+
                         SLIDERS_ONE_TYPE -> {
-                            if (subId.equals(AppConstants.Null,ignoreCase = true)) {
-                                CommonUtils.showToastMessage(requireContext(), AppConstants.SorryNoProductFound)
+                            if (subId.equals(AppConstants.Null, ignoreCase = true)) {
+                                CommonUtils.showToastMessage(
+                                    requireContext(),
+                                    AppConstants.SorryNoProductFound
+                                )
                             } else {
-                                naviGateToCategoryItemsFragment(subId, parentID.toString(), AppConstants.SliderProducts)
+                                naviGateToCategoryItemsFragment(
+                                    subId,
+                                    parentID.toString(),
+                                    AppConstants.SliderProducts
+                                )
                             }
                         }
 
                         PRICE_STORE_TYPE -> {
-                            naviGateToCategoryItemsFragment(subId, parentID.toString(), categoryName)
+                            naviGateToCategoryItemsFragment(
+                                subId,
+                                parentID.toString(),
+                                categoryName
+                            )
                         }
+
                         DEAL_OF_THE_DAY_TYPE -> {
-                            naviGateToCategoryItemsFragment(AppConstants.EMPTY, parentID.toString(), categoryName)
+                            naviGateToCategoryItemsFragment(
+                                AppConstants.EMPTY,
+                                parentID.toString(),
+                                categoryName
+                            )
                         }
+
+                        FOUR_IMAGES -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Four Images Coming Soon",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
                         SLIDERS_TWO_TYPE -> {
-                            if (subId.equals(AppConstants.Null,ignoreCase = true)) {
-                                context?.let { CommonUtils.showToastMessage(it, AppConstants.SorryNoProductFound) }
+                            if (subId.equals(AppConstants.Null, ignoreCase = true)) {
+                                context?.let {
+                                    CommonUtils.showToastMessage(
+                                        it,
+                                        AppConstants.SorryNoProductFound
+                                    )
+                                }
                             } else {
-                                naviGateToCategoryItemsFragment(subId, parentID.toString(), AppConstants.SliderProducts)
+                                naviGateToCategoryItemsFragment(
+                                    subId,
+                                    parentID.toString(),
+                                    AppConstants.SliderProducts
+                                )
                             }
                         }
+
                         RECOMMENDED_ITEMS_TYPE -> {
-                            naviGateToCategoryItemsFragment(AppConstants.EMPTY, parentID.toString(), categoryName)
+                            naviGateToCategoryItemsFragment(
+                                AppConstants.EMPTY,
+                                parentID.toString(),
+                                categoryName
+                            )
                         }
+
                         ADVERTISEMENT_TYPE -> {
-                            naviGateToCategoryItemsFragment(subId, parentID.toString(), categoryName)
+                            naviGateToCategoryItemsFragment(
+                                subId,
+                                parentID.toString(),
+                                categoryName
+                            )
                         }
+
                         SUGGESTION_FOR_TYPE -> {
-                            naviGateToCategoryItemsFragment(AppConstants.EMPTY, parentID.toString(), categoryName)
+                            naviGateToCategoryItemsFragment(
+                                AppConstants.EMPTY,
+                                parentID.toString(),
+                                categoryName
+                            )
                         }
+
                         NEW_ARRIVALS_TYPE -> {
-                            naviGateToCategoryItemsFragment(AppConstants.EMPTY, parentID.toString(), categoryName)
+                            naviGateToCategoryItemsFragment(
+                                AppConstants.EMPTY,
+                                parentID.toString(),
+                                categoryName
+                            )
                         }
+
                         TRENDING_NOW_TYPE -> {
-                            naviGateToCategoryItemsFragment(AppConstants.EMPTY, parentID.toString(), categoryName)
+                            naviGateToCategoryItemsFragment(
+                                AppConstants.EMPTY,
+                                parentID.toString(),
+                                categoryName
+                            )
                         }
+
                         SLIDERS_THREE_TYPE -> {
-                            if (subId.equals(AppConstants.Null,ignoreCase = true)) {
-                                context?.let { CommonUtils.showToastMessage(it, AppConstants.SorryNoProductFound) }
+                            if (subId.equals(AppConstants.Null, ignoreCase = true)) {
+                                context?.let {
+                                    CommonUtils.showToastMessage(
+                                        it,
+                                        AppConstants.SorryNoProductFound
+                                    )
+                                }
                             } else {
-                                naviGateToCategoryItemsFragment(subId, parentID.toString(), AppConstants.SliderProducts)
+                                naviGateToCategoryItemsFragment(
+                                    subId,
+                                    parentID.toString(),
+                                    AppConstants.SliderProducts
+                                )
                             }
                         }
                     }
@@ -221,7 +304,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                 if (noMoreProductBoolean) {
                     CommonUtils.showToastMessage(requireContext(), AppConstants.SorryNoMoreProduct)
                 } else {
-                    if (currentPage == 17) {
+                    if (currentPage == 18) {
 //                        Log.e(LOG_TAG, "currentPage:- $currentPage")
                     } else {
                         currentPage++
@@ -237,7 +320,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                 if (mViewModel.navigator!!.checkIfInternetOn()) {
                     naviGateToProductDetail(pId)
                 } else {
-                    mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection), onClick = {})
+                    mViewModel.navigator!!.showAlertDialog1Button(
+                        AppConstants.Uoons,
+                        resources.getString(R.string.please_check_internet_connection),
+                        onClick = {})
                 }
             }
         })
@@ -310,13 +396,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
     }
 
     private fun setMoreProductsAdapterDataItems() {
-        if(deshBordMoreProductsAdapter == null) {
+        if (deshBordMoreProductsAdapter == null) {
             deshBordMoreProductsAdapter =
                 DeshBordMoreProductsAdapter(moreProductsItemList, requireContext(), onclick = {
                     if (mViewModel.navigator!!.checkIfInternetOn()) {
                         naviGateToProductDetail(it)
                     } else {
-                        mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection), onClick = {})
+                        mViewModel.navigator!!.showAlertDialog1Button(
+                            AppConstants.Uoons,
+                            resources.getString(R.string.please_check_internet_connection),
+                            onClick = {})
                     }
                 })
         }
@@ -324,10 +413,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
             DashBoardDataListSingleton.setMoreProductsItemList(moreProductsItemList)
             viewDataBinding.moreProductViewRecycler.adapter = deshBordMoreProductsAdapter
         } else {
-            deshBordMoreProductsAdapter?.notifyItemRangeInserted(moreProductsItemList.size, 10)
+            deshBordMoreProductsAdapter?.notifyItemRangeInserted(moreProductsItemList.size, 11)
         }
 
-        if(viewDataBinding.moreProductViewRecycler.adapter == null) viewDataBinding.moreProductViewRecycler.adapter = deshBordMoreProductsAdapter
+        if (viewDataBinding.moreProductViewRecycler.adapter == null) viewDataBinding.moreProductViewRecycler.adapter =
+            deshBordMoreProductsAdapter
 
         viewDataBinding.shimmerLayout.stopShimmer()
         viewDataBinding.shimmerLayout.visibility = View.GONE
@@ -347,7 +437,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
         if (mViewModel.navigator!!.checkIfInternetOn()) {
             navController?.navigate(R.id.action_homeFragment_to_searchingItemFragment)
         } else {
-            mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection), onClick = {})
+            mViewModel.navigator!!.showAlertDialog1Button(
+                AppConstants.Uoons,
+                resources.getString(R.string.please_check_internet_connection),
+                onClick = {})
         }
     }
 
@@ -356,20 +449,33 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
             val bundle = bundleOf(AppConstants.PId to pId)
             navController?.navigate(R.id.action_homeFragment_to_productDetailFragment, bundle)
         } else {
-            mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection), onClick = {})
+            mViewModel.navigator!!.showAlertDialog1Button(
+                AppConstants.Uoons,
+                resources.getString(R.string.please_check_internet_connection),
+                onClick = {})
         }
     }
 
-    override fun naviGateToCategoryItemsFragment(subID: String, parentID: String, categoryName: String) {
+    override fun naviGateToCategoryItemsFragment(
+        subID: String,
+        parentID: String,
+        categoryName: String,
+    ) {
         AppPreference.addValue(PreferenceKeys.HOME_SUB_ID, subID)
         if (mViewModel.navigator!!.checkIfInternetOn()) {
-            val bundle = bundleOf(AppConstants.ParentId to parentID, AppConstants.SubId to subID, AppConstants.CName to categoryName)
+            val bundle = bundleOf(
+                AppConstants.ParentId to parentID,
+                AppConstants.SubId to subID,
+                AppConstants.CName to categoryName
+            )
             navController?.navigate(R.id.action_homeFragment_to_productListFragment, bundle)
         } else {
-            mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection), onClick = {})
+            mViewModel.navigator!!.showAlertDialog1Button(
+                AppConstants.Uoons,
+                resources.getString(R.string.please_check_internet_connection),
+                onClick = {})
         }
     }
-
 
 
     override fun naviGateToSliderItemsFragment(cId: String) {
@@ -377,7 +483,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
             val bundle = bundleOf(AppConstants.CId to cId)
             navController?.navigate(R.id.action_homeFragment_to_sliderItemsFragment, bundle)
         } else {
-            mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection), onClick = {})
+            mViewModel.navigator!!.showAlertDialog1Button(
+                AppConstants.Uoons,
+                resources.getString(R.string.please_check_internet_connection),
+                onClick = {})
         }
     }
 }
