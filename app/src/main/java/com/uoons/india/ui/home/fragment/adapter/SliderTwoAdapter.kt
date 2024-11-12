@@ -14,7 +14,7 @@ import org.lsposed.lsparanoid.Obfuscate
 class SliderTwoAdapter : SliderViewAdapter<SliderTwoAdapter.ViewHolder>(){
 
     private var customClickListener: OnItemClickListener? = null
-    var sliderTwoItemList: ArrayList<DeshBoardItems>? = null
+    private var sliderTwoItemList: ArrayList<DeshBoardItems>? = null
     lateinit var context: Context
 
     interface OnItemClickListener {
@@ -38,7 +38,7 @@ class SliderTwoAdapter : SliderViewAdapter<SliderTwoAdapter.ViewHolder>(){
         return ViewHolder(RowHomeSliderTwoBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    //this method is binding the data on the list
+    // This method is binding the data on the list
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItems(sliderTwoItemList!![position])
 

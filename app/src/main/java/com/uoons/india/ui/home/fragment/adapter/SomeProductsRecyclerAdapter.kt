@@ -87,7 +87,7 @@ class SomeProductsRecyclerAdapter :
 
     companion object {
         @JvmStatic
-        @BindingAdapter("loadImage")
+        @BindingAdapter("loadImageSomeProducts")
         fun loadImage(thubmImage: ImageView, url: String) {
             if (url.isEmpty()){
                 CommonUtils.loadImage(thubmImage, "", thubmImage.id)

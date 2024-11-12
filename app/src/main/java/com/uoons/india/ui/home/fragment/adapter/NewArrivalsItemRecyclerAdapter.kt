@@ -7,16 +7,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.uoons.india.BuildConfig
 import com.uoons.india.R
 import com.uoons.india.databinding.RowHomeCategoryBinding
 import com.uoons.india.ui.base.BaseRecyclerAdapter
 import com.uoons.india.ui.home.fragment.model.DeshBoardItems
-import com.uoons.india.utils.CommonUtils
 import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
-class NewArrivalsItemRecyclerAdapter:
-    BaseRecyclerAdapter<RowHomeCategoryBinding, Any, NewArrivalsItemRecyclerAdapter.ViewHolder>(){
+class NewArrivalsItemRecyclerAdapter :
+    BaseRecyclerAdapter<RowHomeCategoryBinding, Any, NewArrivalsItemRecyclerAdapter.ViewHolder>() {
 
     private var customProductIdClickListener: OnProductIdClickListener? = null
     var categoryItemList: ArrayList<DeshBoardItems>? = null
@@ -30,7 +32,7 @@ class NewArrivalsItemRecyclerAdapter:
         this.customProductIdClickListener = mItemClick
     }
 
-    fun setData(data:  ArrayList<DeshBoardItems>, context: Context){
+    fun setData(data: ArrayList<DeshBoardItems>, context: Context) {
         this.categoryItemList = data
         this.context = context
     }
@@ -44,8 +46,18 @@ class NewArrivalsItemRecyclerAdapter:
         })
     }
 
-    override fun onCreateViewHolder(viewDataBinding: RowHomeCategoryBinding, parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(RowHomeCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(
+        viewDataBinding: RowHomeCategoryBinding,
+        parent: ViewGroup,
+        viewType: Int,
+    ): ViewHolder {
+        return ViewHolder(
+            RowHomeCategoryBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getLayoutId(viewType: Int): Int {
@@ -56,20 +68,54 @@ class NewArrivalsItemRecyclerAdapter:
         return categoryItemList!!.size
     }
 
-    class ViewHolder(val binding:RowHomeCategoryBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(data: DeshBoardItems){
+    class ViewHolder(val binding: RowHomeCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: DeshBoardItems) {
             binding.recyclerDataItems = data
         }
     }
 
     companion object {
         @JvmStatic
-        @BindingAdapter("loadImage")
-        fun loadImage(thubmImage: ImageView, url: String) {
-            if (url.isEmpty()){
-                CommonUtils.loadImage(thubmImage, "", thubmImage.id)
-            }else{
-                CommonUtils.loadImage(thubmImage, url, thubmImage.id)
+        @BindingAdapter("loadImageNewArrival")
+        fun loadImage(view: ImageView, url: String) {
+            if (url.isEmpty()) {
+                try {
+                    if (url != null) {
+                        val newImageURL = BuildConfig.BASE_URL + url
+                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                            .load(newImageURL)
+                            .apply(
+                                RequestOptions().override(
+                                    view.layoutParams.width,
+                                    view.layoutParams.height
+                                )
+                            )
+                            .placeholder(R.drawable.image_gray_color).into(view)
+                    } else {
+                        view!!.setImageResource(R.drawable.image_gray_color)
+                    }
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
+            } else {
+                try {
+                    if (url != null) {
+                        val newImageURL = BuildConfig.BASE_URL + url
+                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                            .load(newImageURL)
+                            .apply(
+                                RequestOptions().override(
+                                    view.layoutParams.width,
+                                    view.layoutParams.height
+                                )
+                            )
+                            .placeholder(R.drawable.image_gray_color).into(view)
+                    } else {
+                        view!!.setImageResource(R.drawable.image_gray_color)
+                    }
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
             }
         }
     }

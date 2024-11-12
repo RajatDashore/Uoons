@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.uoons.india.BuildConfig
 import com.uoons.india.R
 import com.uoons.india.databinding.RowHomeAdvertisementBinding
 import com.uoons.india.ui.base.BaseRecyclerAdapter
@@ -15,7 +18,8 @@ import com.uoons.india.utils.CommonUtils
 import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
-class HomeAdvertisementAdapter : BaseRecyclerAdapter<RowHomeAdvertisementBinding, Any, HomeAdvertisementAdapter.ViewHolder>(){
+class HomeAdvertisementAdapter :
+    BaseRecyclerAdapter<RowHomeAdvertisementBinding, Any, HomeAdvertisementAdapter.ViewHolder>() {
 
     private var customProductIdClickListener: OnProductIdClickListener? = null
     var advertisementItemList: ArrayList<DeshBoardItems>? = null
@@ -29,7 +33,7 @@ class HomeAdvertisementAdapter : BaseRecyclerAdapter<RowHomeAdvertisementBinding
         this.customProductIdClickListener = mItemClick
     }
 
-    fun setData(data:  ArrayList<DeshBoardItems>, context: Context){
+    fun setData(data: ArrayList<DeshBoardItems>, context: Context) {
         this.advertisementItemList = data
         this.context = context
     }
@@ -38,12 +42,25 @@ class HomeAdvertisementAdapter : BaseRecyclerAdapter<RowHomeAdvertisementBinding
         holder.bind(advertisementItemList!![position])
 
         holder.binding.crdAdertisement.setOnClickListener(View.OnClickListener {
-            customProductIdClickListener?.onProductIdClicked(advertisementItemList!![position].id.toString(),advertisementItemList!![position].sponsoredBy.toString())
+            customProductIdClickListener?.onProductIdClicked(
+                advertisementItemList!![position].id.toString(),
+                advertisementItemList!![position].sponsoredBy.toString()
+            )
         })
     }
 
-    override fun onCreateViewHolder(viewDataBinding: RowHomeAdvertisementBinding, parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(RowHomeAdvertisementBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(
+        viewDataBinding: RowHomeAdvertisementBinding,
+        parent: ViewGroup,
+        viewType: Int,
+    ): ViewHolder {
+        return ViewHolder(
+            RowHomeAdvertisementBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getLayoutId(viewType: Int): Int {
@@ -54,20 +71,55 @@ class HomeAdvertisementAdapter : BaseRecyclerAdapter<RowHomeAdvertisementBinding
         return advertisementItemList!!.size
     }
 
-    class ViewHolder(val binding: RowHomeAdvertisementBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(data: DeshBoardItems){
+    class ViewHolder(val binding: RowHomeAdvertisementBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: DeshBoardItems) {
             binding.homeAdvertisement = data
         }
     }
 
     companion object {
         @JvmStatic
-        @BindingAdapter("loadImage")
-        fun loadImage(thubmImage: ImageView, url: String) {
-            if (url.isEmpty()){
-                CommonUtils.loadImage(thubmImage, "", thubmImage.id)
-            }else{
-                CommonUtils.loadImage(thubmImage, url, thubmImage.id)
+        @BindingAdapter("loadImageHomeAdvertisement")
+        fun loadImage(view: ImageView, url: String) {
+            if (url.isEmpty()) {
+                try {
+                    if (url != null) {
+                        val newImageURL = BuildConfig.BASE_URL + url
+                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                            .load(newImageURL)
+                            .apply(
+                                RequestOptions().override(
+                                    view.layoutParams.width,
+                                    view.layoutParams.height
+                                )
+                            )
+                            .placeholder(R.drawable.image_gray_color).into(view)
+                    } else {
+                        view!!.setImageResource(R.drawable.image_gray_color)
+                    }
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
+            } else {
+                try {
+                    if (url != null) {
+                        val newImageURL = BuildConfig.BASE_URL + url
+                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                            .load(newImageURL)
+                            .apply(
+                                RequestOptions().override(
+                                    view.layoutParams.width,
+                                    view.layoutParams.height
+                                )
+                            )
+                            .placeholder(R.drawable.image_gray_color).into(view)
+                    } else {
+                        view!!.setImageResource(R.drawable.image_gray_color)
+                    }
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
             }
         }
     }

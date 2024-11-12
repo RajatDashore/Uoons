@@ -9,6 +9,7 @@ object PreferenceKeys{
     val MY_LANGUAGE = stringPreferencesKey("My_Lang")
     val GET_STARTED = stringPreferencesKey("GET_STARTED")
     val ONLINE = stringPreferencesKey("ONLINE")
+    var PHOTOES_FOUR = stringPreferencesKey("FOUR_PHOTOES")
     val COD = stringPreferencesKey("COD")
     val CHANNEL_CODE = stringPreferencesKey("CHANNEL_CODE")
     val ACCESS_TOKEN = stringPreferencesKey("ACCESS_TOKEN")

@@ -7,17 +7,20 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.uoons.india.BuildConfig
 import com.uoons.india.R
 import com.uoons.india.databinding.RowHomeDealOfTheDayBinding
 import com.uoons.india.ui.base.BaseRecyclerAdapter
 import com.uoons.india.ui.home.fragment.model.DeshBoardItems
-import com.uoons.india.utils.CommonUtils
 import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
-class DealOfTheDayItemRecyclerAdapter: BaseRecyclerAdapter<RowHomeDealOfTheDayBinding, Any, DealOfTheDayItemRecyclerAdapter.ViewHolder>(){
+class DealOfTheDayItemRecyclerAdapter :
+    BaseRecyclerAdapter<RowHomeDealOfTheDayBinding, Any, DealOfTheDayItemRecyclerAdapter.ViewHolder>() {
     private var customProductIdClickListener: OnProductIdClickListener? = null
-    var bestSellerItemList: ArrayList<DeshBoardItems>? = null
+    private var bestSellerItemList: ArrayList<DeshBoardItems>? = null
     lateinit var context: Context
 
     interface OnProductIdClickListener {
@@ -28,7 +31,7 @@ class DealOfTheDayItemRecyclerAdapter: BaseRecyclerAdapter<RowHomeDealOfTheDayBi
         this.customProductIdClickListener = mItemClick
     }
 
-    fun setData(data:  ArrayList<DeshBoardItems>, context: Context){
+    fun setData(data: ArrayList<DeshBoardItems>, context: Context) {
         this.bestSellerItemList = data
         this.context = context
     }
@@ -41,8 +44,18 @@ class DealOfTheDayItemRecyclerAdapter: BaseRecyclerAdapter<RowHomeDealOfTheDayBi
         })
     }
 
-    override fun onCreateViewHolder(viewDataBinding: RowHomeDealOfTheDayBinding, parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(RowHomeDealOfTheDayBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(
+        viewDataBinding: RowHomeDealOfTheDayBinding,
+        parent: ViewGroup,
+        viewType: Int,
+    ): ViewHolder {
+        return ViewHolder(
+            RowHomeDealOfTheDayBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getLayoutId(viewType: Int): Int {
@@ -53,8 +66,9 @@ class DealOfTheDayItemRecyclerAdapter: BaseRecyclerAdapter<RowHomeDealOfTheDayBi
         return bestSellerItemList!!.size
     }
 
-    class ViewHolder(val binding: RowHomeDealOfTheDayBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(data: DeshBoardItems){
+    class ViewHolder(val binding: RowHomeDealOfTheDayBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: DeshBoardItems) {
             binding.homeBestSeller = data
             binding.executePendingBindings()
         }
@@ -62,12 +76,46 @@ class DealOfTheDayItemRecyclerAdapter: BaseRecyclerAdapter<RowHomeDealOfTheDayBi
 
     companion object {
         @JvmStatic
-        @BindingAdapter("loadImage")
-        fun loadImage(thubmImage: ImageView, url: String) {
-            if (url.isEmpty()){
-                CommonUtils.loadImage(thubmImage, "", thubmImage.id)
-            }else {
-                CommonUtils.loadImage(thubmImage, url, thubmImage.id)
+        @BindingAdapter("loadImageDealOfThe")
+        fun loadImage(view: ImageView, url: String) {
+            if (url.isEmpty()) {
+                try {
+                    if (url != null) {
+                        val newImageURL = BuildConfig.BASE_URL + url
+                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                            .load(newImageURL)
+                            .apply(
+                                RequestOptions().override(
+                                    view.layoutParams.width,
+                                    view.layoutParams.height
+                                )
+                            )
+                            .placeholder(R.drawable.image_gray_color).into(view)
+                    } else {
+                        view!!.setImageResource(R.drawable.image_gray_color)
+                    }
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
+            } else {
+                try {
+                    if (url != null) {
+                        val newImageURL = BuildConfig.BASE_URL + url
+                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                            .load(newImageURL)
+                            .apply(
+                                RequestOptions().override(
+                                    view.layoutParams.width,
+                                    view.layoutParams.height
+                                )
+                            )
+                            .placeholder(R.drawable.image_gray_color).into(view)
+                    } else {
+                        view!!.setImageResource(R.drawable.image_gray_color)
+                    }
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
             }
         }
     }

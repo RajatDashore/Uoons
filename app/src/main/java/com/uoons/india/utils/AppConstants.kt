@@ -158,6 +158,7 @@ object AppConstants {
     const val No_Order_Found = "No order found"
     const val Authorization_Failed = "Authorization Failed"
     const val Auth = "Auth"
+    const val FourImage = "fourImage"
     const val SingleProduct = "101"
     const val Categories = "1"
     const val Slider = "2"

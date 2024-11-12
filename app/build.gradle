@@ -24,6 +24,8 @@ android {
         versionCode 38
         versionName "2.5.3"
         multiDexEnabled true
+
+        // This Lines are not Working with the Latest AGP 8.5.2
         String formattedDate = new Date().format('dd_MMMM_yyyy')
         setProperty("archivesBaseName", "Uoons-$versionName" + "_" + formattedDate)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -105,8 +107,8 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
 
     //livedata
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.6")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
 
 
     //Gson for parsing
@@ -135,6 +137,7 @@ dependencies {
 
     // Dependency for Glide
     implementation ("com.github.bumptech.glide:glide:4.15.1")
+    //noinspection KaptUsageInsteadOfKsp
     kapt ("com.github.bumptech.glide:compiler:4.15.1")
     // implementation 'com.kyleduo.switchbutton:library:1.4.4'
 

@@ -9,7 +9,7 @@ data class DeshBoardItems(
     @SerializedName("category") var category: String? = null,
     @SerializedName("show") var show: String? = null,
     @SerializedName("image") var image: String? = null,
-    @SerializedName("four_images") var fourimage: Int? = null,
+    @SerializedName("four_image") var fourImage: String? = null,
     @SerializedName("banner_image") var bannerImage: String? = null,
     @SerializedName("back_image") var backImage: String? = null,
     @SerializedName("back_color") var backColor: String? = null,

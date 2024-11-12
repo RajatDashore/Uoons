@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.uoons.india.BuildConfig
 import com.uoons.india.R
 import com.uoons.india.databinding.RowMyCartProductBinding
 import com.uoons.india.ui.base.BaseRecyclerAdapter
@@ -96,11 +99,28 @@ class MyCartFragmentAdapter(data: GetMyCartDataModel, context: Context,onListIte
     companion object {
         @JvmStatic
         @BindingAdapter("myCartProductLoadImage")
-        fun myCartProductLoadImage(thubmImage: ImageView, url: String) {
+        fun myCartProductLoadImage(view: ImageView, url: String) {
             if (url.isEmpty()){
-                CommonUtils.loadImage(thubmImage, "", thubmImage.id)
+                CommonUtils.loadImage(view, "", view.id)
             }else{
-                CommonUtils.loadImage(thubmImage, url, thubmImage.id)
+                try {
+                    if (url != null) {
+                        val newImageURL = BuildConfig.BASE_URL+url
+                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                            .load(newImageURL)
+                            .apply(RequestOptions().override(view.layoutParams.width, view.layoutParams.height))
+                            .placeholder(R.drawable.image_gray_color).into(view)
+                        //  Log.e("","loadImage:- $newImageURL")
+                        /*GlideApp.with(view!!.context)
+                            .load(newImageURL)
+                            .apply(RequestOptions().override(view.layoutParams.width, view.layoutParams.height))
+                            .placeholder(R.drawable.new_logo_uoons_name).into(view)*/
+                    }else{
+                        view!!.setImageResource(R.drawable.image_gray_color)
+                    }
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
             }
         }
     }

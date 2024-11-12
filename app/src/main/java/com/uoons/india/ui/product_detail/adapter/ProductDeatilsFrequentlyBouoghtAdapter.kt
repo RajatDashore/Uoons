@@ -93,7 +93,7 @@ class ProductDeatilsFrequentlyBouoghtAdapter(private val freqProd: ArrayList<Fre
 
     companion object {
         @JvmStatic
-        @BindingAdapter("loadImage")
+        @BindingAdapter("loadImageProductDetailsFrequentyBought")
         fun loadImage(thubmImage: ImageView, url: String) {
             if (url.isEmpty()){
                 CommonUtils.catIoadImage(thubmImage, "", thubmImage.id)

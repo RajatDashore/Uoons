@@ -180,7 +180,7 @@ object AppPreference {
     }
 
 
-    open fun putByGSON(key: Preferences.Key<String>, `object`: Any?) {
+    fun putByGSON(key: Preferences.Key<String>, `object`: Any?) {
         val gson = Gson()
         val json = gson.toJson(`object`)
         addValue(key, json)

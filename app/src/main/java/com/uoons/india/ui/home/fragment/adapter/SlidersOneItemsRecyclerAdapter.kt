@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.uoons.india.BuildConfig
 import com.uoons.india.R
 import com.uoons.india.databinding.RowHomeSliderBinding
 import com.uoons.india.ui.base.BaseRecyclerAdapter
@@ -66,9 +69,26 @@ class SlidersOneItemsRecyclerAdapter : BaseRecyclerAdapter<RowHomeSliderBinding,
 
     companion object {
         @JvmStatic
-        @BindingAdapter("sliderOneLoadImage")
-        fun sliderOneLoadImage(thubmImage: ImageView, url: String) {
-            CommonUtils.loadImage(thubmImage, url, thubmImage.id)
+        @BindingAdapter("sliderOneLoadImageSliderOneAdapter")
+        fun sliderOneLoadImage(view: ImageView, url: String) {
+            try {
+                if (url  != null) {
+                    val newImageURL = BuildConfig.BASE_URL+url
+                    Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                        .load(newImageURL)
+                        .apply(RequestOptions().override(view.layoutParams.width, view.layoutParams.height))
+                        .placeholder(R.drawable.image_gray_color).into(view)
+                    //  Log.e("","loadImage:- $newImageURL")
+                    /*GlideApp.with(view!!.context)
+                        .load(newImageURL)
+                        .apply(RequestOptions().override(view.layoutParams.width, view.layoutParams.height))
+                        .placeholder(R.drawable.new_logo_uoons_name).into(view)*/
+                }else{
+                    view!!.setImageResource(R.drawable.image_gray_color)
+                }
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
+            }
         }
     }
 }

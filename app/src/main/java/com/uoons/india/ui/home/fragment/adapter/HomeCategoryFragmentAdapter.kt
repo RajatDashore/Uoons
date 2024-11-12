@@ -6,16 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import coil3.ImageLoader
-import coil3.request.ImageRequest
-import coil3.request.crossfade
-import coil3.request.error
-import coil3.request.placeholder
-import coil3.request.target
-import coil3.size.Scale
-import coil3.svg.SvgDecoder
 import com.squareup.picasso.Picasso
 import com.uoons.india.R
 import com.uoons.india.databinding.RowHomeCategoryAdapterBinding
@@ -74,14 +65,8 @@ class HomeCategoryFragmentAdapter :
                 .error(R.drawable.ic_error)
                 .into(holder.binding.ivCategory)
         } else {
-            Log.e(
-                "Adapter Error",
-                "Attempted to access position $position but list size is ${imgList.size}"
-            )
-            // Optionally, handle this case (e.g., by setting a placeholder or leaving it empty)
+            holder.binding.ivCategory.setImageResource(R.drawable.ic_error)
         }
-
-
 
         url = "https://uoons.com/" + categoryItemList!![position].catIcon.toString()
         //     Log.e("TAG", "url: " + url)
@@ -170,5 +155,4 @@ class HomeCategoryFragmentAdapter :
          })
      }
      */
-
 }

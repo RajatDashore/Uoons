@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.core.widget.NestedScrollView
@@ -32,6 +31,7 @@ import com.uoons.india.utils.DashBoardDataListSingleton
 import org.lsposed.lsparanoid.Obfuscate
 
 
+@Suppress("DEPRECATION")
 @Obfuscate
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>(),
     HomeFragmentNavigator {
@@ -211,11 +211,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                         }
 
                         FOUR_IMAGES -> {
-                            Toast.makeText(
-                                requireContext(),
-                                "Four Images Coming Soon",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            navigateToFourPhoto(
+                                AppConstants.FourImage,
+                                parentID.toString(),
+                                categoryName
+                            )
                         }
 
                         SLIDERS_TWO_TYPE -> {
@@ -353,6 +353,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
         }
     }
 
+    override fun navigateToFourPhoto(
+        subID: String,
+        parentID: String,
+        categoryName: String,
+    ) {
+        if (mViewModel.navigator!!.checkIfInternetOn()) {
+
+        }
+    }
+
+
     override fun getDeshBoardMoreProductsData() {
         if (view != null) {
             mViewModel.deshBoardMoreProductsDataResponse.observe(viewLifecycleOwner) {
@@ -455,6 +466,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                 onClick = {})
         }
     }
+
 
     override fun naviGateToCategoryItemsFragment(
         subID: String,
