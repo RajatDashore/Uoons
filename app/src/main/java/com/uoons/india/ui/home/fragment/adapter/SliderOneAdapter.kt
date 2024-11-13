@@ -15,7 +15,7 @@ import org.lsposed.lsparanoid.Obfuscate
 class SliderOneAdapter : SliderViewAdapter<SliderOneAdapter.ViewHolder>() {
 
     private var customClickListener: OnItemClickListener? = null
-    var bennerItemList: ArrayList<DeshBoardItems>? = null
+    private var bennerItemList: ArrayList<DeshBoardItems>? = null
     lateinit var context: Context
 
     interface OnItemClickListener {

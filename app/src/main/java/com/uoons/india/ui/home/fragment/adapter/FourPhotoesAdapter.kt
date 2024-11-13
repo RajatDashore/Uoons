@@ -1,78 +1,126 @@
 package com.uoons.india.ui.home.fragment.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import com.uoons.india.R
 import com.uoons.india.databinding.PhotoesBinding
+import com.uoons.india.ui.base.BaseRecyclerAdapter
 import com.uoons.india.ui.home.fragment.model.DeshBoardItems
 import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
-class FourPhotoesAdapter : RecyclerView.Adapter<FourPhotoesAdapter.MyViewHolder>() {
+class FourPhotoesAdapter :
+    BaseRecyclerAdapter<PhotoesBinding, Any, FourPhotoesAdapter.MyViewHolder>() {
+    private var customProductIdClickListener: OnProductIdClickListener? = null
+    private var bestSellerItemList: ArrayList<DeshBoardItems>? = null
     private lateinit var photoes: ArrayList<Int>
-    private var customClickListener: OnItemClickListener? = null
-    private lateinit var context: Context
-    private var categoryItemList: ArrayList<DeshBoardItems>? = null
-    private lateinit var info: ArrayList<DeshBoardItems>
+    lateinit var context: Context
 
-
-    fun setOnItemClickListener(mItemClick: OnItemClickListener) {
-        this.customClickListener = mItemClick
+    interface OnProductIdClickListener {
+        fun onProductIdClicked(pId: String)
     }
 
-    interface OnItemClickListener {
-        fun onItemClicked(position: String, type: String)
+    fun setOnItemClickListener(mItemClick: OnProductIdClickListener) {
+        this.customProductIdClickListener = mItemClick
     }
 
     fun setAllCategoryListFourPhotos(
-        photoes: ArrayList<Int>,
+        items: ArrayList<Int>,
         catogory: ArrayList<DeshBoardItems>,
         context: Context,
     ) {
-        this.photoes = photoes
+        this.bestSellerItemList = catogory
+        this.photoes = items
         this.context = context
-        this.info = catogory
     }
 
-    /*  fun setOnItemClickListener(mItemClick: OnProductIdClickListener) {
-          //  this.customProductIdClickListener = mItemClick
-      }
-     */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        // Log.d("getViewId", viewType.toString())
-        return MyViewHolder(
-            PhotoesBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int, type: Int) {
+        holder.bind(bestSellerItemList!![position])
+        holder.binding.ivItemsImagePhotoes.setImageResource(photoes[position])
+
+        holder.binding.ivItemsImagePhotoes.setOnClickListener(View.OnClickListener {
+            customProductIdClickListener?.onProductIdClicked(bestSellerItemList!![position].pid.toString())
+        })
+    }
+
+
+    override fun onCreateViewHolder(
+        viewDataBinding: PhotoesBinding,
+        parent: ViewGroup,
+        viewType: Int,
+    ): MyViewHolder {
+        val view: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.photoes, parent, false)
+        return MyViewHolder(PhotoesBinding.bind(view))
+    }
+
+
+    override fun getLayoutId(viewType: Int): Int {
+        return R.layout.photoes
     }
 
     override fun getItemCount(): Int {
-        return photoes!!.size
+        return bestSellerItemList!!.size
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Log.d("RajatTag", photoes[position].toString())
-        notifyDataSetChanged()
-
-        if (position < photoes.size) {
-            Picasso.get().load(photoes[position]).placeholder(R.drawable.ic_error)
-                .into(holder.image)
-        } else {
-
+    class MyViewHolder(val binding: PhotoesBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: DeshBoardItems) {
+            binding.homeBestSellerPhotoes = data
+            binding.executePendingBindings()
         }
     }
 
+    /*  companion object {
+           @JvmStatic
+           @BindingAdapter("loadImageDealOfThe")
+           fun loadImage(view: ImageView, url: String) {
+               if (url.isEmpty()) {
+                   try {
+                       if (url != null) {
+                           val newImageURL = BuildConfig.BASE_URL + url
+                           Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                               .load(newImageURL)
+                               .apply(
+                                   RequestOptions().override(
+                                       view.layoutParams.width,
+                                       view.layoutParams.height
+                                   )
+                               )
+                               .placeholder(R.drawable.image_gray_color).into(view)
+                       } else {
+                           view!!.setImageResource(R.drawable.image_gray_color)
+                       }
+                   } catch (e: java.lang.Exception) {
+                       e.printStackTrace()
+                   }
+               } else {
+                   try {
+                       if (url != null) {
+                           val newImageURL = BuildConfig.BASE_URL + url
+                           Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                               .load(newImageURL)
+                               .apply(
+                                   RequestOptions().override(
+                                       view.layoutParams.width,
+                                       view.layoutParams.height
+                                   )
+                               )
+                               .placeholder(R.drawable.image_gray_color).into(view)
+                       } else {
+                           view!!.setImageResource(R.drawable.image_gray_color)
+                       }
+                   } catch (e: java.lang.Exception) {
+                       e.printStackTrace()
+                   }
+               }
+           }
+       }
 
-    inner class MyViewHolder(val binding: PhotoesBinding) : RecyclerView.ViewHolder(binding.root) {
-        var image: ImageView = binding.ShowFourImages
+     */
 
-    }
+
 }

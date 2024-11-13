@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
     id 'kotlin-parcelize'
-//    id 'io.michaelrocks.paranoid'
     id 'org.lsposed.lsparanoid'
 }
 

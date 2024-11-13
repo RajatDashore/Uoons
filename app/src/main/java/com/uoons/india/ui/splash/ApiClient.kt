@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiClient {
     var BASE_URL = "https://uoons.com/"
 
-    val okHttpClient = OkHttpClient.Builder().apply {
+    private val okHttpClient = OkHttpClient.Builder().apply {
         addInterceptor(
             Interceptor { chain ->
                 val builder = chain.request().newBuilder()
