@@ -1,53 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <data>
-        <variable
-            name="homeBestSellerPhotoes"
-            type="com.uoons.india.ui.home.fragment.model.DeshBoardItems" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_margin="@dimen/_5sdp"
-        android:layout_height="wrap_content">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:padding="@dimen/_2sdp"
+    android:layout_height="wrap_content">
 
 
 
-        <ImageView
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_gravity="center"
-            android:scaleType="fitXY"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:id="@+id/ivItemsImage_photoes"
-            app:loadImage='@{homeBestSellerPhotoes.productImages}'
-            android:src="@drawable/image_gray_color" />
+    <ImageView
+        android:id="@+id/ShowFourImages"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:src="@color/light_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <!-- </androidx.cardview.widget.CardView>-->
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/txvItemsName_photoes"
-            app:layout_constraintTop_toBottomOf="@+id/ivItemsImage_photoes"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="@dimen/_5sdp"
-            android:singleLine="true"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit ="marquee_forever"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:scrollHorizontally="true"
-            android:textColor="@color/black"
-            android:fontFamily="@font/roboto_medium"
-            android:textSize="@dimen/text_size12"
-            android:text="@{homeBestSellerPhotoes.productName}" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>
