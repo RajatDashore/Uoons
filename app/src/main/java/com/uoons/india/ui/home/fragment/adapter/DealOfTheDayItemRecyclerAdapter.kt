@@ -9,7 +9,6 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.uoons.india.BuildConfig
 import com.uoons.india.R
 import com.uoons.india.databinding.RowHomeDealOfTheDayBinding
 import com.uoons.india.ui.base.BaseRecyclerAdapter
@@ -74,49 +73,53 @@ class DealOfTheDayItemRecyclerAdapter :
         }
     }
 
-    companion object {
-        @JvmStatic
-        @BindingAdapter("loadImageDealOfThe")
-        fun loadImage(view: ImageView, url: String) {
-            if (url.isEmpty()) {
-                try {
-                    if (url != null) {
-                        val newImageURL = BuildConfig.BASE_URL + url
-                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
-                            .load(newImageURL)
-                            .apply(
-                                RequestOptions().override(
-                                    view.layoutParams.width,
-                                    view.layoutParams.height
-                                )
-                            )
-                            .placeholder(R.drawable.image_gray_color).into(view)
-                    } else {
-                        view!!.setImageResource(R.drawable.image_gray_color)
-                    }
-                } catch (e: java.lang.Exception) {
-                    e.printStackTrace()
-                }
-            } else {
-                try {
-                    if (url != null) {
-                        val newImageURL = BuildConfig.BASE_URL + url
-                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
-                            .load(newImageURL)
-                            .apply(
-                                RequestOptions().override(
-                                    view.layoutParams.width,
-                                    view.layoutParams.height
-                                )
-                            )
-                            .placeholder(R.drawable.image_gray_color).into(view)
-                    } else {
-                        view!!.setImageResource(R.drawable.image_gray_color)
-                    }
-                } catch (e: java.lang.Exception) {
-                    e.printStackTrace()
-                }
-            }
-        }
-    }
+    /*   companion object {
+           @JvmStatic
+           @BindingAdapter("loadImageDealOfThe")
+           fun loadImage(view: ImageView, url: String) {
+               if (url.isEmpty()) {
+                   try {
+                       if (url != null) {
+                           val newImageURL = BuildConfig.BASE_URL + url
+                           Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                               .load(newImageURL)
+                               .apply(
+                                   RequestOptions().override(
+                                       view.layoutParams.width,
+                                       view.layoutParams.height
+                                   )
+                               )
+                               .placeholder(R.drawable.image_gray_color).into(view)
+                       } else {
+                           view!!.setImageResource(R.drawable.image_gray_color)
+                       }
+                   } catch (e: java.lang.Exception) {
+                       e.printStackTrace()
+                   }
+               } else {
+                   try {
+                       if (url != null) {
+                           val newImageURL = BuildConfig.BASE_URL + url
+                           Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                               .load(newImageURL)
+                               .apply(
+                                   RequestOptions().override(
+                                       view.layoutParams.width,
+                                       view.layoutParams.height
+                                   )
+                               )
+                               .placeholder(R.drawable.image_gray_color).into(view)
+                       } else {
+                           view!!.setImageResource(R.drawable.image_gray_color)
+                       }
+                   } catch (e: java.lang.Exception) {
+                       e.printStackTrace()
+                   }
+               }
+           }
+       }
+
+     */
+
+
 }

@@ -97,7 +97,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
         viewDataBinding.shimmerLayout.visibility = View.GONE
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
