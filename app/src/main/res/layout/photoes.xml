@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="homeBestSellerPhotoes"
+            name="homeBestSeller"
             type="com.uoons.india.ui.home.fragment.model.DeshBoardItems" />
     </data>
 
@@ -13,7 +13,17 @@
         android:layout_margin="@dimen/_5sdp"
         android:layout_height="wrap_content">
 
-
+        <!--<androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:id="@+id/crdImage"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/primary_color_light_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">-->
 
         <ImageView
             android:layout_width="@dimen/_50sdp"
@@ -24,8 +34,8 @@
             android:layout_gravity="center"
             android:scaleType="fitXY"
             android:foreground="?android:attr/selectableItemBackground"
-            android:id="@+id/ivItemsImage_photoes"
-            app:loadImage='@{homeBestSellerPhotoes.productImages}'
+            android:id="@+id/ivItemsImagePhotoes"
+            app:loadImage='@{homeBestSeller.productImages}'
             android:src="@drawable/image_gray_color" />
 
         <!-- </androidx.cardview.widget.CardView>-->
@@ -33,8 +43,8 @@
         <TextView
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:id="@+id/txvItemsName_photoes"
-            app:layout_constraintTop_toBottomOf="@+id/ivItemsImage_photoes"
+            android:id="@+id/txvItemsNamePhotoes"
+            app:layout_constraintTop_toBottomOf="@+id/ivItemsImagePhotoes"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="@dimen/_5sdp"
@@ -47,7 +57,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/roboto_medium"
             android:textSize="@dimen/text_size12"
-            android:text="@{homeBestSellerPhotoes.productName}" />
+            android:text="@{homeBestSeller.productName}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

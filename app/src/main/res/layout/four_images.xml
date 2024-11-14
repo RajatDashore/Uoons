@@ -6,12 +6,12 @@
     android:layout_marginTop="@dimen/_5sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/crdSeeAllCategory_photoes"
+        android:id="@+id/crdSeeAllCategoryPhotoes"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/txtCategoryName_photoes"
+            android:id="@+id/txtCategoryNamePhotoes"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_18sdp"
             android:layout_marginStart="@dimen/_10sdp"
@@ -26,14 +26,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/PhotoesViewAll"
+            android:id="@+id/crdViewAllProductsPhotoes"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_7sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:foreground="?android:attr/selectableItemBackground"
             android:padding="@dimen/_20sdp"
-            app:cardBackgroundColor="@color/black"
+            app:cardBackgroundColor="@color/primary_color"
             app:cardCornerRadius="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -48,7 +48,7 @@
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="center"
-                    android:text="PhotoesAl"
+                    android:text="@string/view_all"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size15" />
 
@@ -86,19 +86,19 @@
             android:textColor="@color/primary_color"/>-->
 
         <View
-            android:id="@+id/view_offset_helper_photoes"
+            android:id="@+id/view_offset_helper"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_2sdp"
             android:layout_marginTop="@dimen/_7sdp"
             android:background="@color/gray_line"
-            app:layout_constraintTop_toBottomOf="@+id/txtCategoryName_photoes" />
+            app:layout_constraintTop_toBottomOf="@+id/txtCategoryNamePhotoes" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvAllCategory_photoes"
+            android:id="@+id/rcvAllCategoryPhotoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:splitMotionEvents="false"
-            app:layout_constraintTop_toBottomOf="@+id/view_offset_helper_photoes" />
+            app:layout_constraintTop_toBottomOf="@+id/view_offset_helper" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

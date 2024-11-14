@@ -11,7 +11,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.smarteist.autoimageslider.SliderView
@@ -64,6 +63,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     //For the Top Slider of the App in Home Screen
     val imgList: ArrayList<Int> = arrayListOf<Int>()
+    val image: ArrayList<Int> = arrayListOf<Int>()
 
     // Slider Two Items
     private val sliderThreeAdapter = SliderThreeAdapter()
@@ -147,7 +147,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
             FOUR_PHOTOES -> {
                 val layout14: View =
                     LayoutInflater.from(context).inflate(R.layout.four_images, parent, false)
-                LayoutFourPhotoesViewHolder(layout14)
+                LayoutDealOfTheDayViewHolderPhotoes(layout14)
             }
 
             DEAL_OF_THE_DAY_TYPE -> {
@@ -253,18 +253,18 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         })
 
 
-        // Setting the click listner for images
+        // Setting the click listner for images in HomeUI
         //fourPhotoesAdapter.set
         /*   fourPhotoesAdapter.setOnItemClickListener(object :
-               FourPhotoesAdapter.onItemClickListener  {
-                   override fun onItemClicked(position: String, type: String) {
-
-                  }
-               }
+                FourPhotoesAdapter.onItemClickListener  {
+                    override fun onItemClicked(position: String, type: String) {
+                       customProductIdClickListener?.onProductIdClicked(pId)
+                   }
+                }
          */
 
 
-        // Deal of the Day Items
+        // Deal of the Day Items in Home UI
         dealOfTheDayItemRecyclerAdapter.setOnItemClickListener(object :
             DealOfTheDayItemRecyclerAdapter.OnProductIdClickListener {
             override fun onProductIdClicked(pId: String) {
@@ -349,7 +349,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
             // This will work for that four images into the Home activity
             FOUR_PHOTOES -> {
                 Log.d("RajatTag", "3")
-                (holder as LayoutFourPhotoesViewHolder).bind(position)
+                (holder as LayoutDealOfTheDayViewHolderPhotoes).bind(position)
             }
 
             SLIDERS_TWO_TYPE -> {
@@ -406,19 +406,20 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
 
-    private inner class LayoutFourPhotoesViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-        var recycler: RecyclerView = itemView.findViewById(R.id.rcvAllCategory_photoes)
-        fun bind(position: Int) {
-            SetFourPhotoesRecycler(
-                recycler,
-                allHomeItemsList.Data[position].items,
-                imageListFourPhotoes
-            )
-            Log.d("RajatTag", "1")
-        }
+    /*   private inner class LayoutFourPhotoesViewHolder(itemView: View) :
+           RecyclerView.ViewHolder(itemView) {
+           var recycler: RecyclerView = itemView.findViewById(R.id.rcvAllCategoryPhotoes)
+           fun bind(position: Int) {
+               LayoutDealOfTheDayViewHolderPhotoes(
+                   recycler,
+                   imageListFourPhotoes,
+                   allHomeItemsList.Data[position].items
+               )
+               Log.d("RajatTag", "1")
+           }
 
-    }
+       }
+     */
 
 
     private inner class LayoutSliderOneViewHolder(itemView: View) :
@@ -860,6 +861,25 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
+    // Four images Layout //
+    private inner class LayoutDealOfTheDayViewHolderPhotoes(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
+        var crdViewAllProducts: CardView = itemView.findViewById(R.id.crdViewAllProducts)
+        var categoryTitle: TextView = itemView.findViewById(R.id.txtCategoryName)
+        var itemRecycler: RecyclerView = itemView.findViewById(R.id.rcvAllCategory)
+        fun bind(position: Int) {
+            setDealOfTheDayItemRecyclerPhotoes(itemRecycler, allHomeItemsList.Data[position].items)
+            categoryTitle.text = allHomeItemsList.Data[position].name
+            crdViewAllProducts.setOnClickListener({
+                mainCustomClickListener?.onItemClicked(
+                    position.toString(),
+                    DEAL_OF_THE_DAY_TYPE,
+                    allHomeItemsList.Data[position].name.toString()
+                )
+            })
+        }
+    }
+
 
     private inner class LayoutTrendingNowViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
@@ -916,15 +936,17 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     // Used to show that four images on the Home Activity
-    private fun SetFourPhotoesRecycler(
-        recycler: RecyclerView,
-        catogory: ArrayList<DeshBoardItems>,
-        items: ArrayList<Int>,
-    ) {
-        fourPhotoesAdapter.setAllCategoryListFourPhotos(items, catogory, context)
-        recycler.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
-        recycler.adapter = fourPhotoesAdapter
-    }
+    /*  private fun SetFourPhotoesRecycler(
+          recycler: RecyclerView,
+          items: ArrayList<Int>,
+          itemCategory: ArrayList<DeshBoardItems>,
+      ) {
+          fourPhotoesAdapter.setData(itemCategory, context)
+          recycler.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+          recycler.adapter = fourPhotoesAdapter
+      }
+     */
+
 
     private fun setRecentlyViewsRecycler(
         recentlyViewItemsRecycler: RecyclerView,
@@ -991,6 +1013,21 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         sliderThreeView.scrollTimeInSec = 3
         sliderThreeView.isAutoCycle = true
         sliderThreeView.startAutoCycle()
+    }
+
+
+    private fun setDealOfTheDayItemRecyclerPhotoes(
+        recyclerView: RecyclerView,
+        categoryItemList: ArrayList<DeshBoardItems>,
+    ) {
+        image.add(R.drawable.ic_settings)
+        image.add(R.drawable.ic_settings)
+        image.add(R.drawable.ic_settings)
+        image.add(R.drawable.ic_settings)
+        fourPhotoesAdapter.setDataPhotes(categoryItemList, image, context)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        recyclerView.adapter = dealOfTheDayItemRecyclerAdapter
+        fourPhotoesAdapter.notifyDataSetChanged()
     }
 
     private fun setDealOfTheDayItemRecycler(
