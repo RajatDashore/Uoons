@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.smarteist.autoimageslider.SliderView
@@ -64,6 +65,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     //For the Top Slider of the App in Home Screen
     val imgList: ArrayList<Int> = arrayListOf<Int>()
     val image: ArrayList<Int> = arrayListOf<Int>()
+    var TextData: ArrayList<String> = arrayListOf<String>()
 
     // Slider Two Items
     private val sliderThreeAdapter = SliderThreeAdapter()
@@ -146,9 +148,11 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             FOUR_PHOTOES -> {
                 val layout14: View =
-                    LayoutInflater.from(context).inflate(R.layout.four_images, parent, false)
-                LayoutDealOfTheDayViewHolderPhotoes(layout14)
+                    LayoutInflater.from(context)
+                        .inflate(R.layout.home_deal_of_the_day_layout, parent, false)
+                LayoutDealOfTheDayViewHolder(layout14)
             }
+
 
             DEAL_OF_THE_DAY_TYPE -> {
                 val layout4: View = LayoutInflater.from(context)
@@ -349,7 +353,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
             // This will work for that four images into the Home activity
             FOUR_PHOTOES -> {
                 Log.d("RajatTag", "3")
-                (holder as LayoutDealOfTheDayViewHolderPhotoes).bind(position)
+                (holder as LayoutDealOfTheDayViewHolder).bind(position)
             }
 
             SLIDERS_TWO_TYPE -> {
@@ -840,8 +844,13 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var crdViewAllProducts: CardView = itemView.findViewById(R.id.crdViewAllProducts)
         var categoryTitle: TextView = itemView.findViewById(R.id.txtCategoryName)
         var itemRecycler: RecyclerView = itemView.findViewById(R.id.rcvAllCategory)
+        var recyclerViewPhotoes: RecyclerView = itemView.findViewById(R.id.fourPhotoesRecycler)
         fun bind(position: Int) {
-            setDealOfTheDayItemRecycler(itemRecycler, allHomeItemsList.Data[position].items)
+            setDealOfTheDayItemRecycler(
+                itemRecycler,
+                recyclerViewPhotoes,
+                allHomeItemsList.Data[position].items
+            )
             categoryTitle.text = allHomeItemsList.Data[position].name
             crdViewAllProducts.setOnClickListener({
                 mainCustomClickListener?.onItemClicked(
@@ -862,23 +871,15 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     // Four images Layout //
-    private inner class LayoutDealOfTheDayViewHolderPhotoes(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-        var crdViewAllProducts: CardView = itemView.findViewById(R.id.crdViewAllProducts)
-        var categoryTitle: TextView = itemView.findViewById(R.id.txtCategoryName)
-        var itemRecycler: RecyclerView = itemView.findViewById(R.id.rcvAllCategory)
-        fun bind(position: Int) {
-            setDealOfTheDayItemRecyclerPhotoes(itemRecycler, allHomeItemsList.Data[position].items)
-            categoryTitle.text = allHomeItemsList.Data[position].name
-            crdViewAllProducts.setOnClickListener({
-                mainCustomClickListener?.onItemClicked(
-                    position.toString(),
-                    DEAL_OF_THE_DAY_TYPE,
-                    allHomeItemsList.Data[position].name.toString()
-                )
-            })
-        }
-    }
+    /* private inner class LayoutDealOfTheDayViewHolderPhotoes(itemView: View) :
+         RecyclerView.ViewHolder(itemView) {
+         var itemRecycler: RecyclerView = itemView.findViewById(R.id.fourPhotoesRecycler)
+         fun bind(position: Int) {
+             setDealOfTheDayItemRecycler(itemRecycler, allHomeItemsList.Data[position].items)
+         }
+     }
+
+     */
 
 
     private inner class LayoutTrendingNowViewHolder(itemView: View) :
@@ -1016,27 +1017,53 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
 
-    private fun setDealOfTheDayItemRecyclerPhotoes(
-        recyclerView: RecyclerView,
-        categoryItemList: ArrayList<DeshBoardItems>,
-    ) {
-        image.add(R.drawable.ic_settings)
-        image.add(R.drawable.ic_settings)
-        image.add(R.drawable.ic_settings)
-        image.add(R.drawable.ic_settings)
-        fourPhotoesAdapter.setDataPhotes(categoryItemList, image, context)
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        recyclerView.adapter = dealOfTheDayItemRecyclerAdapter
-        fourPhotoesAdapter.notifyDataSetChanged()
-    }
+    /*  private fun setDealOfTheDayItemRecyclerPhotoes(
+          recyclerView: RecyclerView,
+          categoryItemList: ArrayList<DeshBoardItems>,
+      ) {
+          image.add(R.drawable.ic_settings)
+          image.add(R.drawable.ic_settings)
+          image.add(R.drawable.ic_settings)
+          image.add(R.drawable.ic_settings)
+          Log.d("fourPhoto", "setDealOfTheDayItemRecyclerPhotoes: $image")
+          fourPhotoesAdapter.setDataPhotes(categoryItemList,image,context)
+          recyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.HORIZONTAL, false)
+          recyclerView.adapter = fourPhotoesAdapter
+      }
+
+     */
 
     private fun setDealOfTheDayItemRecycler(
         recyclerView: RecyclerView,
+        recyclerViewPhotoes: RecyclerView,
         categoryItemList: ArrayList<DeshBoardItems>,
     ) {
+        getImageAndTextData()
         dealOfTheDayItemRecyclerAdapter.setData(categoryItemList, context)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recyclerView.adapter = dealOfTheDayItemRecyclerAdapter
+
+
+        // For Four Photoes Adapter
+        fourPhotoesAdapter.setDataPhotes(categoryItemList, TextData, image, context)
+        recyclerViewPhotoes.layoutManager =
+            GridLayoutManager(context, 2, RecyclerView.HORIZONTAL, false)
+        recyclerViewPhotoes.adapter = fourPhotoesAdapter
+
+
+
+
+    }
+
+    private fun getImageAndTextData() {
+        image.add(R.drawable.computer_and_desktop)
+        image.add(R.drawable.automotive)
+        image.add(R.drawable.services)
+        image.add(R.drawable.jwellary)
+        TextData.add("Computer & Desktop")
+        TextData.add("Automotive")
+        TextData.add("Services")
+        TextData.add("Jewellery")
     }
 
     private fun setAdvertisementRecycler(

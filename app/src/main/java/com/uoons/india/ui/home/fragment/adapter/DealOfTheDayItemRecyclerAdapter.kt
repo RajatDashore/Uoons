@@ -2,7 +2,6 @@ package com.uoons.india.ui.home.fragment.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -22,10 +21,16 @@ class DealOfTheDayItemRecyclerAdapter :
     private var customProductIdClickListener: OnProductIdClickListener? = null
     private var bestSellerItemList: ArrayList<DeshBoardItems>? = null
     lateinit var context: Context
+    private var imgList: ArrayList<Int> = arrayListOf()
 
     interface OnProductIdClickListener {
         fun onProductIdClicked(pId: String)
     }
+
+   /* fun setDataPhotes(imagelist: ArrayList<Int>) {
+        this.imgList = imagelist
+    }
+    */
 
     fun setOnItemClickListener(mItemClick: OnProductIdClickListener) {
         this.customProductIdClickListener = mItemClick
@@ -38,10 +43,11 @@ class DealOfTheDayItemRecyclerAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, type: Int) {
         holder.bind(bestSellerItemList!![position])
+     //   holder.binding.ivItemsImage.setImageResource(imgList[position])
 
-        holder.binding.ivItemsImage.setOnClickListener(View.OnClickListener {
+        holder.binding.ivItemsImage.setOnClickListener {
             customProductIdClickListener?.onProductIdClicked(bestSellerItemList!![position].pid.toString())
-        })
+        }
     }
 
     override fun onCreateViewHolder(
@@ -62,6 +68,7 @@ class DealOfTheDayItemRecyclerAdapter :
         return R.layout.row_home_deal_of_the_day
     }
 
+
     override fun getItemCount(): Int {
         return bestSellerItemList!!.size
     }
@@ -80,39 +87,31 @@ class DealOfTheDayItemRecyclerAdapter :
         fun loadImage(view: ImageView, url: String) {
             if (url.isEmpty()) {
                 try {
-                    if (url != null) {
-                        val newImageURL = BuildConfig.BASE_URL + url
-                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
-                            .load(newImageURL)
-                            .apply(
-                                RequestOptions().override(
-                                    view.layoutParams.width,
-                                    view.layoutParams.height
-                                )
+                    val newImageURL = BuildConfig.BASE_URL + url
+                    Glide.with(view.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                        .load(newImageURL)
+                        .apply(
+                            RequestOptions().override(
+                                view.layoutParams.width,
+                                view.layoutParams.height
                             )
-                            .placeholder(R.drawable.image_gray_color).into(view)
-                    } else {
-                        view!!.setImageResource(R.drawable.image_gray_color)
-                    }
+                        )
+                        .placeholder(R.drawable.image_gray_color).into(view)
                 } catch (e: java.lang.Exception) {
                     e.printStackTrace()
                 }
             } else {
                 try {
-                    if (url != null) {
-                        val newImageURL = BuildConfig.BASE_URL + url
-                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
-                            .load(newImageURL)
-                            .apply(
-                                RequestOptions().override(
-                                    view.layoutParams.width,
-                                    view.layoutParams.height
-                                )
+                    val newImageURL = BuildConfig.BASE_URL + url
+                    Glide.with(view.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                        .load(newImageURL)
+                        .apply(
+                            RequestOptions().override(
+                                view.layoutParams.width,
+                                view.layoutParams.height
                             )
-                            .placeholder(R.drawable.image_gray_color).into(view)
-                    } else {
-                        view!!.setImageResource(R.drawable.image_gray_color)
-                    }
+                        )
+                        .placeholder(R.drawable.image_gray_color).into(view)
                 } catch (e: java.lang.Exception) {
                     e.printStackTrace()
                 }
