@@ -12,35 +12,32 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-
 import com.uoons.india.BuildConfig
 import com.uoons.india.R
-import com.uoons.india.ui.home.fragment.model.DeshBoardItems
 import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
 class FourPhotoesAdapter : RecyclerView.Adapter<FourPhotoesAdapter.ViewHolder>() {
-    private var bestSellerItemList: ArrayList<DeshBoardItems>? = null
     lateinit var context: Context
     private lateinit var imagelist: ArrayList<Int>
     private lateinit var textData: ArrayList<String>
 
     fun setDataPhotes(
-        data: ArrayList<DeshBoardItems>,
         textData: ArrayList<String>,
         imagelist: ArrayList<Int>,
         context: Context,
     ) {
-        this.bestSellerItemList = data
         this.textData = textData
         this.imagelist = imagelist
         this.context = context
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("fourPhoto", "onBindViewHolder:  ${imagelist[position]}   $textData")
-        Glide.with(context).load(imagelist[position]).into(holder.image)
-        holder.text.text = textData[position]
+      if(position < imagelist.size){
+          Glide.with(context).load(imagelist[position]).into(holder.image)
+          holder.text.text = textData[position]
+          Log.e("TAG", "four: "+imagelist[position]).toString()
+      }
         holder.itemView.setOnClickListener {
             Toast.makeText(context, "Item Clicked $position", Toast.LENGTH_SHORT).show()
         }
@@ -69,14 +66,11 @@ class FourPhotoesAdapter : RecyclerView.Adapter<FourPhotoesAdapter.ViewHolder>()
                     if (url != null) {
                         val newImageURL = BuildConfig.BASE_URL + url
                         Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
-                            .load(newImageURL)
-                            .apply(
+                            .load(newImageURL).apply(
                                 RequestOptions().override(
-                                    view.layoutParams.width,
-                                    view.layoutParams.height
+                                    view.layoutParams.width, view.layoutParams.height
                                 )
-                            )
-                            .placeholder(R.drawable.image_gray_color).into(view)
+                            ).placeholder(R.drawable.image_gray_color).into(view)
                     } else {
                         view!!.setImageResource(R.drawable.image_gray_color)
                     }
@@ -88,14 +82,11 @@ class FourPhotoesAdapter : RecyclerView.Adapter<FourPhotoesAdapter.ViewHolder>()
                     if (url != null) {
                         val newImageURL = BuildConfig.BASE_URL + url
                         Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
-                            .load(newImageURL)
-                            .apply(
+                            .load(newImageURL).apply(
                                 RequestOptions().override(
-                                    view.layoutParams.width,
-                                    view.layoutParams.height
+                                    view.layoutParams.width, view.layoutParams.height
                                 )
-                            )
-                            .placeholder(R.drawable.image_gray_color).into(view)
+                            ).placeholder(R.drawable.image_gray_color).into(view)
                     } else {
                         view!!.setImageResource(R.drawable.image_gray_color)
                     }
@@ -105,6 +96,4 @@ class FourPhotoesAdapter : RecyclerView.Adapter<FourPhotoesAdapter.ViewHolder>()
             }
         }
     }
-
-
 }

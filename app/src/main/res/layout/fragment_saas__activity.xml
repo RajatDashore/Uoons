@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.SaasActivity">
+
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/SaasSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/searching_item_bg"
+        app:layout_constraintBottom_toTopOf="@id/SaasTopRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/SaasTopRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_margin="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@id/SaasSearchView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

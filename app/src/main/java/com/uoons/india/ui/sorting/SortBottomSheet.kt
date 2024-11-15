@@ -17,6 +17,7 @@ import com.uoons.india.ui.product_list.model.SortByNameModel
 import com.uoons.india.ui.sorting.model.SortingModel
 import org.lsposed.lsparanoid.Obfuscate
 
+@Suppress("DEPRECATION")
 @Obfuscate
 class SortBottomSheet(var onclick:(sortId:String)->Unit) : BaseBottomSheetDialogFrag<SortBottomSheetBinding, SortBottomSheetVM>(),
     SortBottomSheetNavigator {

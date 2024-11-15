@@ -9,8 +9,8 @@
 
         <ImageView
             android:id="@+id/ivItemsImagePhotoes"
-            android:layout_width="@dimen/_45sdp"
-            android:layout_height="@dimen/_45sdp"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
             android:layout_gravity="center"
             android:foreground="?android:attr/selectableItemBackground"
             android:scaleType="fitCenter"
@@ -21,12 +21,12 @@
 
         <TextView
             android:id="@+id/fourPhotoesText"
-            android:layout_width="@dimen/_70sdp"
+            android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivItemsImagePhotoes"
-            android:layout_margin="@dimen/_5sdp"
+            android:layout_margin="@dimen/_4sdp"
             android:singleLine="true"
             android:ellipsize="marquee"
             android:gravity="center_horizontal"

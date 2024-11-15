@@ -48,9 +48,9 @@ class SliderTwoAdapter : SliderViewAdapter<SliderTwoAdapter.ViewHolder>(){
             CommonUtils.loadImage(  holder.binding.ivItemsImage, sliderTwoItemList!![position].mobileImage,   holder.binding.ivItemsImage.id)
         }
 
-        holder.binding.ivItemsImage.setOnClickListener(View.OnClickListener {
+        holder.binding.ivItemsImage.setOnClickListener {
             customClickListener?.onItemClicked(sliderTwoItemList!![position].catId.toString(),sliderTwoItemList!![position].type.toString())
-        })
+        }
     }
 
     class ViewHolder(val binding: RowHomeSliderTwoBinding): SliderViewAdapter.ViewHolder(binding.root){

@@ -50,12 +50,8 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     // Advertisement home page
     private val homeAdvertisementAdapter = HomeAdvertisementAdapter()
 
-    private val imageListFourPhotoes: ArrayList<Int> = arrayListOf(
-        R.drawable.ic_settings,
-        R.drawable.ic_settings,
-        R.drawable.ic_settings,
-        R.drawable.ic_settings
-    )
+    // SaasAdapter
+    private val saasAdapter = SaasAdapter()
 
     // Slider Two Items
     private val sliderTwoAdapter = SliderTwoAdapter()
@@ -120,6 +116,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         const val MORE_ITEMS_TYPE = 12
         const val TRENDING_NOW_TYPE = 13
         const val FOUR_PHOTOES = 14
+        const val SAAS_IMAGE = 15
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -845,9 +842,11 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var categoryTitle: TextView = itemView.findViewById(R.id.txtCategoryName)
         var itemRecycler: RecyclerView = itemView.findViewById(R.id.rcvAllCategory)
         var recyclerViewPhotoes: RecyclerView = itemView.findViewById(R.id.fourPhotoesRecycler)
+        var recyclerSaas: RecyclerView = itemView.findViewById(R.id.recyclerSaas)
         fun bind(position: Int) {
             setDealOfTheDayItemRecycler(
                 itemRecycler,
+                recyclerSaas,
                 recyclerViewPhotoes,
                 allHomeItemsList.Data[position].items
             )
@@ -1035,6 +1034,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private fun setDealOfTheDayItemRecycler(
         recyclerView: RecyclerView,
+        recyclerSaas: RecyclerView,
         recyclerViewPhotoes: RecyclerView,
         categoryItemList: ArrayList<DeshBoardItems>,
     ) {
@@ -1045,14 +1045,16 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
         // For Four Photoes Adapter
-        fourPhotoesAdapter.setDataPhotes(categoryItemList, TextData, image, context)
+        fourPhotoesAdapter.setDataPhotes(TextData, image, context)
         recyclerViewPhotoes.layoutManager =
             GridLayoutManager(context, 2, RecyclerView.HORIZONTAL, false)
         recyclerViewPhotoes.adapter = fourPhotoesAdapter
 
-
-
-
+        // Saas Adapter for Company Image & Logo
+        saasAdapter.setData(context)
+        recyclerSaas.layoutManager =
+            LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        recyclerSaas.adapter = saasAdapter
     }
 
     private fun getImageAndTextData() {
