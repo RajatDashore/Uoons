@@ -7,20 +7,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.uoons.india.R
-import com.uoons.india.ui.home.SaasActivity
 
-class SaasAdapter : RecyclerView.Adapter<SaasAdapter.ViewHolder>() {
-    private lateinit var context: Context
+class SaasOneImageAdapter : RecyclerView.Adapter<SaasOneImageAdapter.ViewHolder>() {
+
+    lateinit var context: Context
+    lateinit var contextHome: Context
+    lateinit var navController: NavController
 
     fun setData(context: Context) {
         this.context = context
     }
 
+    /*  fun setContextfromHomeFragment(contextHome: Context) {
+          this.contextHome = contextHome
+      }
+     */
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(context).inflate(R.layout.slider_saas, parent, false)
+        val view: View =
+            LayoutInflater.from(context).inflate(R.layout.row_home_saas_image, parent, false)
         return ViewHolder(view)
     }
 
@@ -32,11 +42,20 @@ class SaasAdapter : RecyclerView.Adapter<SaasAdapter.ViewHolder>() {
         if (position == 0) {
             Glide.with(context).load(R.drawable.saasnew).into(holder.image)
         }
+        try {
+
+        } catch (e: Exception) {
+
+        }
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, "Item Clicked $position", Toast.LENGTH_SHORT).show()
-            holder.itemView.context.startActivity(Intent(context, SaasActivity::class.java))
-
+            try {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, SaasActivity::class.java)
+                context.startActivity(intent)
+            } catch (e: Exception) {
+                  Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

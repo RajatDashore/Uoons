@@ -6,11 +6,14 @@
     app:startDestination="@id/homeFragment">
 
 
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.uoons.india.ui.home.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
+
+
         <action
             android:id="@+id/action_homeFragment_to_categoryItemsFragment"
             app:destination="@id/categoryItemsFragment" />
@@ -72,7 +75,7 @@
             android:id="@+id/action_orderFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_orderFragment_to_wishListFragment"
             app:destination="@id/wishListFragment" />
@@ -92,7 +95,7 @@
         <action
             android:id="@+id/action_accountFragment_to_helpFragment"
             app:destination="@id/helpFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_accountFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -246,7 +249,7 @@
             android:id="@+id/action_myCartFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/checkOutAddressFragment"
@@ -265,21 +268,19 @@
         android:id="@+id/updatecheckOutAddressFragment"
         android:name="com.uoons.india.ui.checkout.checkout_address_update.UpdateCheckOutAddressFragment"
         android:label="CheckOutAddressFragment"
-        tools:layout="@layout/fragment_update_delivery_address">
-     </fragment>
-
+        tools:layout="@layout/fragment_update_delivery_address"></fragment>
 
 
     <fragment
         android:id="@+id/checkOutPaymentFragment"
         android:name="com.uoons.india.ui.checkout.checkout_payment.CheckOutPaymentFragment"
         android:label="fragment_check_out_payment"
-        tools:layout="@layout/fragment_check_out_payment" >
+        tools:layout="@layout/fragment_check_out_payment">
         <action
             android:id="@+id/action_checkOutPaymentFragment_to_confirmPayFragment"
             app:destination="@id/confirmPayFragment"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_checkOutPaymentFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -293,7 +294,7 @@
             android:id="@+id/action_confirmPayFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/searchingItemFragment"
@@ -310,13 +311,13 @@
             android:id="@+id/action_searchingItemFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/searchItemsFragment"
         android:name="com.uoons.india.ui.searching.search_items.SearchItemsFragment"
         android:label="SearchItemsFragment"
-        tools:layout="@layout/fragment_search_items"/>
+        tools:layout="@layout/fragment_search_items" />
     <fragment
         android:id="@+id/sliderItemsFragment"
         android:name="com.uoons.india.ui.slider.SliderItemsFragment"
@@ -341,7 +342,7 @@
             android:id="@+id/action_wishListFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_wishListFragment_to_categoryItemDetailsFragment"
             app:destination="@id/categoryItemDetailsFragment" />
@@ -421,10 +422,10 @@
             app:destination="@id/fullScreenImageShowFragment" />
 
         <!--        <deeplink-->
-<!--            android:id="@+id/deepLink"-->
-<!--            app:uri="www.uoons.com"-->
-<!--            app:action="android.intent.action.MY_ACTION"-->
-<!--            app:mimeType="type/subtype"/>-->
+        <!--            android:id="@+id/deepLink"-->
+        <!--            app:uri="www.uoons.com"-->
+        <!--            app:action="android.intent.action.MY_ACTION"-->
+        <!--            app:mimeType="type/subtype"/>-->
 
     </fragment>
     <fragment
@@ -453,7 +454,7 @@
         <action
             android:id="@+id/action_postYourQuestionFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/suggestionForEnhanceFragment"
@@ -464,7 +465,7 @@
             android:id="@+id/action_suggestionForEnhanceFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/orderBundleFragment"
@@ -475,7 +476,7 @@
             android:id="@+id/action_orderBundleFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_orderBundleFragment_to_orderFragment"
             app:destination="@id/orderFragment" />
@@ -501,12 +502,12 @@
             android:id="@+id/action_orderReviewRatingFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_orderReviewRatingFragment_to_reviewAndRatingThankyouScreenFragment"
             app:destination="@id/reviewAndRatingThankyouScreenFragment"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/contactUsFragment"
@@ -517,7 +518,7 @@
             android:id="@+id/action_contactUsFragment_to_accountFragment"
             app:destination="@id/accountFragment"
             app:popUpTo="@+id/accountFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/reviewAndRatingThankyouScreenFragment"
@@ -528,18 +529,18 @@
             android:id="@+id/action_reviewAndRatingThankyouScreenFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/fullScreenImageShowFragment"
         android:name="com.uoons.india.ui.product_detail.full_screen_image.FullScreenImageShowFragment"
         android:label="FullScreenImageShowFragment"
-        tools:layout="@layout/fragment_full_screen_image_show"/>
+        tools:layout="@layout/fragment_full_screen_image_show" />
 
     <fragment
         android:id="@+id/orderTrackerFragment"
         android:name="com.uoons.india.ui.order.order_tracker.OrderTrackerFragment"
         android:label="OrderTrackerFragment"
-        tools:layout="@layout/fragment_order_tracker"/>
+        tools:layout="@layout/fragment_order_tracker" />
 
 </navigation>

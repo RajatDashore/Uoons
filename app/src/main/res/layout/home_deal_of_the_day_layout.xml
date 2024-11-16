@@ -104,7 +104,8 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_2sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/rcvAllCategory"
             android:background="@color/gray_line"
             app:layout_constraintBottom_toTopOf="@id/fourPhotoesRecycler" />
 
@@ -136,7 +137,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/view1"
-            app:layout_constraintTop_toTopOf="@id/view"
+            app:layout_constraintTop_toBottomOf="@id/rcvAllCategory"
             app:layout_constraintVertical_bias="0.666" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

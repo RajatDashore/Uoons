@@ -51,7 +51,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     private val homeAdvertisementAdapter = HomeAdvertisementAdapter()
 
     // SaasAdapter
-    private val saasAdapter = SaasAdapter()
+    private val saasAdapter = SaasOneImageAdapter()
 
     // Slider Two Items
     private val sliderTwoAdapter = SliderTwoAdapter()
@@ -60,6 +60,8 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     //For the Top Slider of the App in Home Screen
     val imgList: ArrayList<Int> = arrayListOf<Int>()
+
+    // For the four images on the homescreen and Saas Image
     val image: ArrayList<Int> = arrayListOf<Int>()
     var TextData: ArrayList<String> = arrayListOf<String>()
 
@@ -1051,18 +1053,18 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         recyclerViewPhotoes.adapter = fourPhotoesAdapter
 
         // Saas Adapter for Company Image & Logo
-        saasAdapter.setData(context)
+         saasAdapter.setData(context)
         recyclerSaas.layoutManager =
             LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recyclerSaas.adapter = saasAdapter
     }
 
     private fun getImageAndTextData() {
-        image.add(R.drawable.computer_and_desktop)
+        image.add(R.drawable.boat_logo)
         image.add(R.drawable.automotive)
         image.add(R.drawable.services)
         image.add(R.drawable.jwellary)
-        TextData.add("Computer & Desktop")
+        TextData.add("Boat")
         TextData.add("Automotive")
         TextData.add("Services")
         TextData.add("Jewellery")

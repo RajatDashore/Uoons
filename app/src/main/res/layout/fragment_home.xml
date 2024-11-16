@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="homeFragmentRecyclerVM"
             type="com.uoons.india.ui.home.fragment.HomeFragmentRecyclerVM" />
@@ -14,35 +16,36 @@
         android:background="@color/primary_color"
         tools:context=".ui.home.fragment.HomeFragment">
 
-        <include layout="@layout/comman_home_layout"
-            android:id="@+id/homeToolBar"/>
+        <include
+            android:id="@+id/homeToolBar"
+            layout="@layout/comman_home_layout" />
 
         <View
+            android:id="@+id/homeView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/homeView"
+            android:background="@drawable/bottom_navigation_background"
+            android:backgroundTint="@color/gray_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeToolBar"
-            android:background="@drawable/bottom_navigation_background"
-            android:backgroundTint="@color/gray_bg"/>
-        
+            app:layout_constraintTop_toBottomOf="@+id/homeToolBar" />
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/refreshLayout"
             android:layout_marginTop="@dimen/_15sdp"
-            app:layout_constraintTop_toBottomOf="@+id/homeToolBar"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/homeToolBar">
 
             <androidx.core.widget.NestedScrollView
+                android:id="@+id/nstScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:fillViewport="true"
-                android:id="@+id/nstScrollView">
+                android:fillViewport="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -50,37 +53,37 @@
                     android:orientation="vertical">
 
                     <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmerLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:visibility="visible"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_5sdp"
-                        android:id="@+id/shimmerLayout">
+                        android:background="@color/white"
+                        android:visibility="visible">
 
-                            <include layout="@layout/shimmer_home_page_layout"/>
+                        <include layout="@layout/shimmer_home_page_layout" />
 
                     </com.facebook.shimmer.ShimmerFrameLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/deshBoardViewRecycler"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/_2sdp"
-                        android:splitMotionEvents="false"
                         android:backgroundTint="@color/gray_bg"
-                        android:id="@+id/deshBoardViewRecycler" />
+                        android:padding="@dimen/_2sdp"
+                        android:splitMotionEvents="false" />
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/moreProductViewRecycler"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="@dimen/_3sdp"
-                        android:overScrollMode="never"
-                        android:orientation="vertical"
-                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        app:spanCount="2"
-                        android:splitMotionEvents="false"
                         android:backgroundTint="@color/gray_bg"
-                        android:id="@+id/moreProductViewRecycler"/>
+                        android:orientation="vertical"
+                        android:overScrollMode="never"
+                        android:padding="@dimen/_3sdp"
+                        android:splitMotionEvents="false"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2" />
 
                 </LinearLayout>
 

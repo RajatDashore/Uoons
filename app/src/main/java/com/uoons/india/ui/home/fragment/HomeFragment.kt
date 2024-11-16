@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.core.widget.NestedScrollView
 import androidx.navigation.NavController
@@ -20,6 +19,7 @@ import com.uoons.india.databinding.FragmentHomeBinding
 import com.uoons.india.ui.base.BaseFragment
 import com.uoons.india.ui.filter.FiltersBottomSheet
 import com.uoons.india.ui.home.fragment.adapter.DeshBoardRecyclerAdapter
+import com.uoons.india.ui.home.fragment.adapter.SaasOneImageAdapter
 import com.uoons.india.ui.home.fragment.model.DeshBoardModel
 import com.uoons.india.ui.home.fragment.more_products.adapter.DeshBordMoreProductsAdapter
 import com.uoons.india.ui.home.fragment.more_products.model.HomePageMoreItemsDataModel
@@ -63,6 +63,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
         const val MORE_ITEMS_TYPE = 12
         const val TRENDING_NOW_TYPE = 13
         const val FOUR_IMAGES = 14
+        const val SAAS_IMAGE_TYPE = 15
 
     }
 
@@ -209,11 +210,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                             )
                         }
 
+
                         FOUR_IMAGES -> {
                             navigateToFourPhoto(
                                 AppConstants.FourImage,
                                 parentID.toString(),
                                 categoryName
+                            )
+                        }
+
+                        SAAS_IMAGE_TYPE -> {
+                            navigateToSaasFragment(
+
                             )
                         }
 
@@ -298,10 +306,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
         })
 
 
-        viewDataBinding.nstScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+        viewDataBinding.nstScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener
+        { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             if (scrollY == v.getChildAt(0).measuredHeight - v.measuredHeight) {
                 if (noMoreProductBoolean) {
-                    CommonUtils.showToastMessage(requireContext(), AppConstants.SorryNoMoreProduct)
+                    CommonUtils.showToastMessage(
+                        requireContext(),
+                        AppConstants.SorryNoMoreProduct
+                    )
                 } else {
                     if (currentPage == 18) {
 //                        Log.e(LOG_TAG, "currentPage:- $currentPage")
@@ -313,19 +325,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
             }
         })
 
-        deshBoardRecyclerAdapter.setOnProductIdClickListener(object :
-            DeshBoardRecyclerAdapter.OnProductIdClickListener {
-            override fun onProductIdClicked(pId: String) {
-                if (mViewModel.navigator!!.checkIfInternetOn()) {
-                    naviGateToProductDetail(pId)
-                } else {
-                    mViewModel.navigator!!.showAlertDialog1Button(
-                        AppConstants.Uoons,
-                        resources.getString(R.string.please_check_internet_connection),
-                        onClick = {})
+        deshBoardRecyclerAdapter.setOnProductIdClickListener(
+            object :
+                DeshBoardRecyclerAdapter.OnProductIdClickListener {
+                override fun onProductIdClicked(pId: String) {
+                    if (mViewModel.navigator!!.checkIfInternetOn()) {
+                        naviGateToProductDetail(pId)
+                    } else {
+                        mViewModel.navigator!!.showAlertDialog1Button(
+                            AppConstants.Uoons,
+                            resources.getString(R.string.please_check_internet_connection),
+                            onClick = {})
+                    }
                 }
-            }
-        })
+            })
     }
 
     override fun getDeshBoardData() {
@@ -338,9 +351,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                             DashBoardDataListSingleton.setDastBoardData(dashBoardData)
                         setAdapterData(it)
                         mViewModel.getMoreDeshBoardProducts(currentPage, false)
-                        AppPreference.addValue(PreferenceKeys.ONE_TIME_REQUEST, AppConstants.FALSE)
+                        AppPreference.addValue(
+                            PreferenceKeys.ONE_TIME_REQUEST,
+                            AppConstants.FALSE
+                        )
                     } else if (it.status.equals(AppConstants.FAILURE, ignoreCase = true)) {
-                        CommonUtils.showToastMessage(requireContext(), it.message.toString())
+                        CommonUtils.showToastMessage(
+                            requireContext(),
+                            it.message.toString()
+                        )
                     }
                 } else {
                     CommonUtils.showToastMessage(
@@ -351,6 +370,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
             }
         }
     }
+
+
+    override fun navigateToSaasFragment() {
+
+    }
+
 
     override fun navigateToFourPhoto(
         subID: String,
@@ -387,8 +412,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
     }
 
     private fun setAdapterData(data: DeshBoardModel) {
+        //     deshBoardRecyclerAdapter.setItemsList(data, requireContext())
+        val saasOneImageAdapter = SaasOneImageAdapter()
+        // saasOneImageAdapter.setContextfromHomeFragment(requireActivity())
+
         deshBoardRecyclerAdapter.setItemsList(data, requireContext())
         viewDataBinding.deshBoardViewRecycler.adapter = deshBoardRecyclerAdapter
+
         viewDataBinding.shimmerLayout.stopShimmer()
         viewDataBinding.shimmerLayout.visibility = View.GONE
     }
@@ -408,22 +438,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
     private fun setMoreProductsAdapterDataItems() {
         if (deshBordMoreProductsAdapter == null) {
             deshBordMoreProductsAdapter =
-                DeshBordMoreProductsAdapter(moreProductsItemList, requireContext(), onclick = {
-                    if (mViewModel.navigator!!.checkIfInternetOn()) {
-                        naviGateToProductDetail(it)
-                    } else {
-                        mViewModel.navigator!!.showAlertDialog1Button(
-                            AppConstants.Uoons,
-                            resources.getString(R.string.please_check_internet_connection),
-                            onClick = {})
-                    }
-                })
+                DeshBordMoreProductsAdapter(
+                    moreProductsItemList,
+                    requireContext(),
+                    onclick = {
+                        if (mViewModel.navigator!!.checkIfInternetOn()) {
+                            naviGateToProductDetail(it)
+                        } else {
+                            mViewModel.navigator!!.showAlertDialog1Button(
+                                AppConstants.Uoons,
+                                resources.getString(R.string.please_check_internet_connection),
+                                onClick = {})
+                        }
+                    })
         }
         if (currentPage == 1) {
             DashBoardDataListSingleton.setMoreProductsItemList(moreProductsItemList)
             viewDataBinding.moreProductViewRecycler.adapter = deshBordMoreProductsAdapter
         } else {
-            deshBordMoreProductsAdapter?.notifyItemRangeInserted(moreProductsItemList.size, 11)
+            deshBordMoreProductsAdapter?.notifyItemRangeInserted(
+                moreProductsItemList.size,
+                11
+            )
         }
 
         if (viewDataBinding.moreProductViewRecycler.adapter == null) viewDataBinding.moreProductViewRecycler.adapter =
@@ -457,7 +493,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
     override fun naviGateToProductDetail(pId: String) {
         if (mViewModel.navigator!!.checkIfInternetOn()) {
             val bundle = bundleOf(AppConstants.PId to pId)
-            navController?.navigate(R.id.action_homeFragment_to_productDetailFragment, bundle)
+            navController?.navigate(
+                R.id.action_homeFragment_to_productDetailFragment,
+                bundle
+            )
         } else {
             mViewModel.navigator!!.showAlertDialog1Button(
                 AppConstants.Uoons,

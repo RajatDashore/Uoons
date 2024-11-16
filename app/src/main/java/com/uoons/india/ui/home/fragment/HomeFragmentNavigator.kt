@@ -5,11 +5,12 @@ import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
 interface HomeFragmentNavigator : CommonNavigator {
-    fun naviGateToProductDetail(pId : String)
+    fun naviGateToProductDetail(pId: String)
     fun naviGateToCategoryItemsFragment(subID: String, parentID: String, categoryName: String)
-    fun naviGateToSliderItemsFragment(cId : String)
+    fun naviGateToSliderItemsFragment(cId: String)
     fun getDeshBoardData()
     fun navigateToFourPhoto(subID: String, parentID: String, categoryName: String)
+    fun navigateToSaasFragment()
     fun getDeshBoardMoreProductsData()
-  //  fun addRecentlyViewProductResponse()
+    //  fun addRecentlyViewProductResponse()
 }

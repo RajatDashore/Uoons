@@ -13,7 +13,7 @@ object AppConstants {
     const val Uoons = "Uoons"
     const val IMAGE = "image/*"
     const val Update_PlayStore_App = "https://play.google.com/store/apps/details?id=com.uoons.india"
-
+    const val Saas_image = "Saas_Image"
     const val LANGUAGE_ENGLISH = "en"
     const val Selected = "selected"
     const val ENGLISH = "English"
@@ -31,7 +31,7 @@ object AppConstants {
     const val LANGUAGE_TAMIL = "ta"
     const val LANGUAGE_PUNJABI = "pa"
     const val LANGUAGE_KANNADA = "kn"
-    const val LANGUAGE_MALAYALAM= "ml"
+    const val LANGUAGE_MALAYALAM = "ml"
     const val HINDI = "हिंदी"
     const val CHANNEL_MODE = "ANDROID"
     const val CASH_ON_DELIVERY = "CASH ON DELIVERY"
@@ -189,16 +189,17 @@ object AppConstants {
     const val FetchOrder = "Fetch_Order"
     const val SHOW_PAYMENT_PAGE = "theia/api/v1/showPaymentPage"
     const val PAYTM_CALL_BACK = "theia/paytmCallback?ORDER_ID="
-    const val ShareDynamicLinkProduct = "https://uoons.page.link?link=https://uoons.com/ShowProduct/product?pid="
+    const val ShareDynamicLinkProduct =
+        "https://uoons.page.link?link=https://uoons.com/ShowProduct/product?pid="
     const val ShearLinkWebside = "&apn=com.uoons.india&product="
     const val NewShearLinkWebside = "&apn=com.uoons.india&product="
 
     const val ShareReferralLinkProduct = "https://uoons.page.link?link=https://uoons.com/referal"
     const val NewReferralWebside = "&apn=com.uoons.india"
 
-   // const val orderMassageLink = "https://uoons.page.link?link=https://uoons.com/ShowProduct/product?pid=Auth&apn=com.intelliatech.uoons&product=Auth"
-   // const val ShareDynamicLinkProduct = "https://uoons.page.link/showsingle?="
-   // const val ShareDynamicLinkProduct = "https://uoons.page.link/show-product/"
+    // const val orderMassageLink = "https://uoons.page.link?link=https://uoons.com/ShowProduct/product?pid=Auth&apn=com.intelliatech.uoons&product=Auth"
+    // const val ShareDynamicLinkProduct = "https://uoons.page.link/showsingle?="
+    // const val ShareDynamicLinkProduct = "https://uoons.page.link/show-product/"
     const val EcommerceApp = "Ecommerce App"
     const val TextPlain = "text/plain"
     const val ShareUsing = "Share Using"
@@ -218,13 +219,13 @@ object AppConstants {
     var IMAGE_DIRECTORY_NAME = "Uoons"
     var PRIVACY_POLICY = "https://uoons.com/privacy-policy"
     var TERM_AND_CONDITION = "https://uoons.com/terms"
-   // var PAYTM_HOST = "https://securegw-stage.paytm.in/"
+
+    // var PAYTM_HOST = "https://securegw-stage.paytm.in/"
     var PAYTM_HOST = "https://securegw.paytm.in/"
-   // var MID = "hdYcUL28119375123051"
+
+    // var MID = "hdYcUL28119375123051"
     var MID = "rVUATM80245920636243"
     var RAZORPAYKEY = "rzp_live_1U5ASJXM9dPCXN"
-
-
 
 
 }

@@ -139,6 +139,13 @@
     <string name="type_your_question">Type Your Question..</string>
     <string name="no_data_found">No Data Found !</string>
 
+
+    <!--   TODO: SAAS Screeen -->
+    <string name="sponsored">Sponsored</string>
+    <string name="search_innovation">Search innovations...</string>
+
+
+
     <!-- TODO: Account Screen -->
     <string name="sign_up">Sign Up</string>
     <string name="call_us_at">Call us at</string>
