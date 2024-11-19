@@ -96,7 +96,11 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+
+    // Don't change it to the latest version it will cause error
+    // Todays date : 18/11/2024
     implementation("androidx.core:core-ktx:1.13.1")
+
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -226,6 +230,9 @@ dependencies {
     implementation("media.kamel:kamel-image:1.0.0")
     // Compose Dependency
     implementation("androidx.activity:activity-compose:1.9.3")
+
+    // Lottie Animation
+    implementation("com.airbnb.android:lottie:6.1.0")
 
 
 }

@@ -3,11 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.uoons.india">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:name=".utils.UoonsAplication"
@@ -23,7 +29,7 @@
         tools:ignore="DataExtractionRules"
         tools:replace="android:allowBackup">
         <activity
-            android:name=".ui.home.SaasActivity"
+            android:name=".ui.saas.adapter.MainActivitySaas"
             android:exported="false" />
         <activity
             android:name=".ui.checkout.confirm_pay.ConfirmPaymentStatusActivity"
@@ -50,8 +56,11 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
-
+        </service> <!-- /* <activity android:name=".ui.saas.SaasMainFragment" -->
+        <!-- android:exported="true" -->
+        <!-- > -->
+        <!--  -->
+        <!-- </activity> -->
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="true"

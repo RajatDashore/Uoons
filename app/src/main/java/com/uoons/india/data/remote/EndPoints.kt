@@ -4,6 +4,8 @@ import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
 object EndPoints {
+    // For testing only
+    const val FAKEIMAGEURL = "api/?key=47159234-76a95307462cdac15f2880a2e&q=yellow+flowers&image_type=photo"
     const val SEND_OTP = "api/sendOTP"
     const val FORCE_UPDATE = "api/forceUpdate"
     const val OTP_VERIFICATION = "api/otpVerification"
@@ -57,6 +59,7 @@ object EndPoints {
     const val SOCKET = "socket"
     const val LOGIN = "login"
     const val FORGOT_PASSWORD = "account/forgot-password"
+
     // Dynamic link generate in shear product link on other app.
     const val DYNAMIC_LINK = "https://uoons.page.link"
 

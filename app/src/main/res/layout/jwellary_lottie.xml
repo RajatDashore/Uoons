@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -9,20 +8,22 @@
         android:layout_margin="@dimen/_5sdp"
         android:foreground="?android:attr/selectableItemBackground">
 
-        <ImageView
-            android:id="@+id/ivItemsImagePhotoes"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/ivJwellaryLottie"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_gravity="center"
-
             android:scaleType="fitCenter"
             android:src="@drawable/image_gray_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="jwellary.json"
+            app:lottie_loop="true" />
 
         <TextView
-            android:id="@+id/fourPhotoesText"
+            android:id="@+id/tvJwellaryLottieText"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
@@ -38,8 +39,7 @@
             android:textSize="@dimen/text_size12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivItemsImagePhotoes"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:layout_constraintTop_toBottomOf="@id/ivJwellaryLottie" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

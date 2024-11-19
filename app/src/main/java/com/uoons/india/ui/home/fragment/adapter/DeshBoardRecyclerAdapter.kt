@@ -118,7 +118,6 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         const val MORE_ITEMS_TYPE = 12
         const val TRENDING_NOW_TYPE = 13
         const val FOUR_PHOTOES = 14
-        const val SAAS_IMAGE = 15
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -256,17 +255,6 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         })
 
 
-        // Setting the click listner for images in HomeUI
-        //fourPhotoesAdapter.set
-        /*   fourPhotoesAdapter.setOnItemClickListener(object :
-                FourPhotoesAdapter.onItemClickListener  {
-                    override fun onItemClicked(position: String, type: String) {
-                       customProductIdClickListener?.onProductIdClicked(pId)
-                   }
-                }
-         */
-
-
         // Deal of the Day Items in Home UI
         dealOfTheDayItemRecyclerAdapter.setOnItemClickListener(object :
             DealOfTheDayItemRecyclerAdapter.OnProductIdClickListener {
@@ -351,12 +339,10 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             // This will work for that four images into the Home activity
             FOUR_PHOTOES -> {
-                Log.d("RajatTag", "3")
                 (holder as LayoutDealOfTheDayViewHolder).bind(position)
             }
 
             SLIDERS_TWO_TYPE -> {
-                Log.d("RajatTag", "r")
                 (holder as LayoutSliderTwoViewHolder).bind(position)
             }
 
@@ -853,13 +839,13 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 allHomeItemsList.Data[position].items
             )
             categoryTitle.text = allHomeItemsList.Data[position].name
-            crdViewAllProducts.setOnClickListener({
+            crdViewAllProducts.setOnClickListener {
                 mainCustomClickListener?.onItemClicked(
                     position.toString(),
                     DEAL_OF_THE_DAY_TYPE,
                     allHomeItemsList.Data[position].name.toString()
                 )
-            })
+            }
         }
     }
 
@@ -1053,7 +1039,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         recyclerViewPhotoes.adapter = fourPhotoesAdapter
 
         // Saas Adapter for Company Image & Logo
-         saasAdapter.setData(context)
+        saasAdapter.setData(context)
         recyclerSaas.layoutManager =
             LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recyclerSaas.adapter = saasAdapter

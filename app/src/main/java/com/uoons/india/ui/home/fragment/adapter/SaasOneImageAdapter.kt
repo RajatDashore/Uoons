@@ -7,26 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.uoons.india.R
+import com.uoons.india.ui.saas.adapter.MainActivitySaas
+
 
 class SaasOneImageAdapter : RecyclerView.Adapter<SaasOneImageAdapter.ViewHolder>() {
-
-    lateinit var context: Context
-    lateinit var contextHome: Context
-    lateinit var navController: NavController
+    private lateinit var context: Context
 
     fun setData(context: Context) {
         this.context = context
     }
-
-    /*  fun setContextfromHomeFragment(contextHome: Context) {
-          this.contextHome = contextHome
-      }
-     */
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
@@ -42,19 +34,14 @@ class SaasOneImageAdapter : RecyclerView.Adapter<SaasOneImageAdapter.ViewHolder>
         if (position == 0) {
             Glide.with(context).load(R.drawable.saasnew).into(holder.image)
         }
-        try {
-
-        } catch (e: Exception) {
-
-        }
 
         holder.itemView.setOnClickListener {
             try {
-                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
-                val intent = Intent(context, SaasActivity::class.java)
+                Toast.makeText(context, "Item Clicked $position", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, MainActivitySaas::class.java)
                 context.startActivity(intent)
             } catch (e: Exception) {
-                  Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Exception $e", Toast.LENGTH_SHORT).show()
             }
         }
     }
