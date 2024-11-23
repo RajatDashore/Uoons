@@ -59,7 +59,6 @@ class HomeCategoryFragmentAdapter :
         })
 
         if (position < imgList.size) {
-
             Picasso.get().load(imgList[position]).placeholder(R.drawable.ic_error)
                 .error(R.drawable.ic_error)
                 .into(holder.binding.ivCategory)
@@ -67,6 +66,8 @@ class HomeCategoryFragmentAdapter :
             holder.binding.ivCategory.setImageResource(R.drawable.ic_error)
         }
 
+
+        //  holder.bind(categoryItemList!![position].catIcon.toString())
         // url = "https://uoons.com/" + categoryItemList!![position].catIcon.toString()
         //     Log.e("TAG", "url: " + url)
         //  println("url:>>>>>>>>>>>>       " + url)

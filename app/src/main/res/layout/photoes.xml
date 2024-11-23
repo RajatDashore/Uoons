@@ -23,7 +23,7 @@
 
         <TextView
             android:id="@+id/fourPhotoesText"
-            android:layout_width="@dimen/_80sdp"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
             android:ellipsize="marquee"

@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shimmerContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/shimmerContainer"
-    android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/white">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/llCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -28,14 +27,15 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -49,14 +49,15 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,14 +71,15 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -91,14 +93,15 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -112,14 +115,15 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -133,14 +137,15 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -154,36 +159,37 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/ivSliderOne"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@+id/llCategories"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/gray_bg"
-        android:id="@+id/ivSliderOne"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llCategories" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/llPriceStore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@+id/ivSliderOne"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSliderOne">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -196,14 +202,15 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -217,14 +224,15 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -238,14 +246,15 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -259,26 +268,27 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/llDealOfTheDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@+id/llPriceStore"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llPriceStore">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -291,14 +301,15 @@
                 android:layout_height="@dimen/_50sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -312,14 +323,15 @@
                 android:layout_height="@dimen/_50sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -333,14 +345,15 @@
                 android:layout_height="@dimen/_50sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -354,36 +367,99 @@
                 android:layout_height="@dimen/_50sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_120sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@+id/llDealOfTheDay"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/image_gray_color"
-        android:id="@+id/ivSliderTwo"/>
-
     <LinearLayout
+        android:id="@+id/llsaas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llDealOfTheDay">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/image_gray_color" />
+
+                <ImageView
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:background="@drawable/image_gray_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/image_gray_color" />
+
+                <ImageView
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:background="@drawable/image_gray_color" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/_250sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:background="@drawable/image_gray_color"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_height="@dimen/_140sdp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/llRecommendedOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@+id/ivSliderTwo"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llsaas">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -396,14 +472,15 @@
                 android:layout_height="@dimen/_50sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -417,14 +494,15 @@
                 android:layout_height="@dimen/_50sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -438,14 +516,15 @@
                 android:layout_height="@dimen/_50sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
 
         <LinearLayout
@@ -459,39 +538,40 @@
                 android:layout_height="@dimen/_50sdp"
                 android:layerType="software"
                 android:src="@drawable/image_gray_color"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/gray_bg"
-                android:layout_height="@dimen/_15sdp"/>
+                android:background="@color/gray_bg" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/llRecommendedOne"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llRecommendedOne">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/_120sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_weight="1"
-            android:src="@drawable/image_gray_color"/>
+            android:src="@drawable/image_gray_color" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/_120sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_weight="1"
             android:layout_marginStart="@dimen/_5sdp"
-            android:src="@drawable/image_gray_color"/>
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:src="@drawable/image_gray_color" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
