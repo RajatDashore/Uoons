@@ -4,6 +4,7 @@ package com.uoons.india.ui.saas.adapter
 import RetrofitBuilderInstance
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,7 @@ class MainActivitySaas : AppCompatActivity() {
 
     private var list: ArrayList<CatImagesItem> = ArrayList()
     private var saasMainAdapter = SaasMainAdapter()
+    private lateinit var backButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,11 @@ class MainActivitySaas : AppCompatActivity() {
         setMainRecyclerView()
         //  setLowerRecyclerView()
         getApiDataImages()
+        backButton = findViewById(R.id.saasBackButton)
+
+        backButton.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     private fun setMainRecyclerView() {

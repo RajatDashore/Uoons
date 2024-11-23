@@ -8,21 +8,34 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
         android:layout_marginTop="@dimen/_20sdp"
-        android:background="@color/white">
+
+        android:background="@color/primary_color">
+
+        <ImageView
+            android:id="@+id/saasBackButton"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:src="@drawable/ic_left_side_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cdSearchItems"
             android:layout_width="0dp"
             android:layout_height="@dimen/_30sdp"
-            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_20sdp"
             android:layout_weight="300"
             android:foreground="?android:attr/selectableItemBackground"
             android:padding="5dp"
             app:cardCornerRadius="8dp"
+            app:layout_constraintStart_toEndOf="@id/saasBackButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
