@@ -4,7 +4,7 @@ package com.uoons.india.ui.saas.adapter
 import RetrofitBuilderInstance
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +21,7 @@ class MainActivitySaas : AppCompatActivity() {
 
     private var list: ArrayList<CatImagesItem> = ArrayList()
     private var saasMainAdapter = SaasMainAdapter()
-    private lateinit var backButton: Button
+    private lateinit var backButton: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,7 @@ class MainActivitySaas : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = retroftBuilder.getImages()
-                response?.let {
+                response!!.let {
                     list.addAll(it)
                     CoroutineScope(Dispatchers.Main).launch {
                         saasMainAdapter.setUpperData(this@MainActivitySaas, list)

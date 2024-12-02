@@ -158,13 +158,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
             }
         })
 
-        viewDataBinding.refreshLayout.setOnRefreshListener {
-            viewDataBinding.refreshLayout.isRefreshing = false
-            visit = 0
-            mViewModel.getDeshBoardAPICaLL()
-        }
 
-        viewDataBinding.refreshLayout.setColorSchemeColors(requireContext().getColor(R.color.primary_color))
+        // This code is causing in problem of the laoding in that four images on the Home UI
+        /*   viewDataBinding.refreshLayout.setOnRefreshListener {
+               viewDataBinding.refreshLayout.isRefreshing = false
+               visit = 0
+               mViewModel.getDeshBoardAPICaLL()
+           }
+
+       viewDataBinding.refreshLayout.setColorSchemeColors(requireContext().getColor(R.color.primary_color))
+
+         */
+
 
         deshBoardRecyclerAdapter.setOnItemClickListener(object :
             DeshBoardRecyclerAdapter.OnItemClickListener {
@@ -412,10 +417,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
     }
 
     private fun setAdapterData(data: DeshBoardModel) {
-        //     deshBoardRecyclerAdapter.setItemsList(data, requireContext())
-        val saasOneImageAdapter = SaasOneImageAdapter()
-        // saasOneImageAdapter.setContextfromHomeFragment(requireActivity())
-
         deshBoardRecyclerAdapter.setItemsList(data, requireContext())
         viewDataBinding.deshBoardViewRecycler.adapter = deshBoardRecyclerAdapter
 
