@@ -12,5 +12,6 @@ interface HomeFragmentNavigator : CommonNavigator {
     fun navigateToFourPhoto(subID: String, parentID: String, categoryName: String)
     fun navigateToSaasFragment()
     fun getDeshBoardMoreProductsData()
+    fun getJwellaryData()
     //  fun addRecentlyViewProductResponse()
 }

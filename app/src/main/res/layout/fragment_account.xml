@@ -669,24 +669,25 @@
                             android:layout_width="@dimen/_15sdp"
                             android:layout_height="@dimen/_20sdp"
                             android:id="@+id/ivMakeyourown"
+                            android:visibility="visible"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/viewMakeyourown"
                             android:layout_margin="@dimen/_10sdp"
-                            android:src="@drawable/terms_condition"/>
+                            android:src="@drawable/baseline_app_registration_24"/>
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="@dimen/_20sdp"
                             android:gravity="center_vertical"
-                            android:id="@+id/txvMakeyourown"
+                            android:id="@+id/txvRegister"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:background="?android:attr/selectableItemBackground"
                             app:layout_constraintTop_toBottomOf="@+id/viewMakeyourown"
                             app:layout_constraintStart_toEndOf="@+id/ivMakeyourown"
                             android:layout_margin="@dimen/_10sdp"
-                            android:onClick="@{()->accountFragmentVM.navigator.GotoMakeyourown()}"
-
-                            android:text="Make your own"
+                            android:visibility="visible"
+                            android:onClick="@{()->accountFragmentVM.navigator.GoToRegister()}"
+                            android:text="Register"
                             android:fontFamily="@font/roboto_regular"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size15"/>

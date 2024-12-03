@@ -19,7 +19,6 @@ import com.uoons.india.databinding.FragmentHomeBinding
 import com.uoons.india.ui.base.BaseFragment
 import com.uoons.india.ui.filter.FiltersBottomSheet
 import com.uoons.india.ui.home.fragment.adapter.DeshBoardRecyclerAdapter
-import com.uoons.india.ui.home.fragment.adapter.SaasOneImageAdapter
 import com.uoons.india.ui.home.fragment.model.DeshBoardModel
 import com.uoons.india.ui.home.fragment.more_products.adapter.DeshBordMoreProductsAdapter
 import com.uoons.india.ui.home.fragment.more_products.model.HomePageMoreItemsDataModel
@@ -37,6 +36,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
     HomeFragmentNavigator {
     private var LOG_TAG = "HomeFragment"
     private var dashBoardData: DeshBoardModel? = null
+    private var dashBoardJwellary: DeshBoardModel? = null
     override val bindingVariable: Int = BR.homeFragmentRecyclerVM
     override val layoutId: Int = R.layout.fragment_home
     override val viewModelClass: Class<HomeFragmentRecyclerVM> = HomeFragmentRecyclerVM::class.java
@@ -75,6 +75,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
             currentPage = 1
             if (mViewModel.navigator!!.checkIfInternetOn()) {
                 mViewModel.getDeshBoardAPICaLL()
+                mViewModel.getJwellaryData()
+                //   viewDataBinding.refreshLayout.visibility = View.GONE
             } else {
                 mViewModel.navigator!!.showAlertDialog1Button(
                     AppConstants.Uoons,
@@ -171,6 +173,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
          */
 
 
+
         deshBoardRecyclerAdapter.setOnItemClickListener(object :
             DeshBoardRecyclerAdapter.OnItemClickListener {
             override fun onItemClicked(subId: String, parentID: Int, categoryName: String) {
@@ -216,13 +219,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                         }
 
 
-                        FOUR_IMAGES -> {
-                            navigateToFourPhoto(
-                                AppConstants.FourImage,
-                                parentID.toString(),
-                                categoryName
-                            )
-                        }
+                        /*      FOUR_IMAGES -> {
+                                  navigateToFourPhoto(
+                                      AppConstants.FourImage,
+                                      parentID.toString(),
+                                      categoryName
+                                  )
+                              }
+
+                         */
 
                         SAAS_IMAGE_TYPE -> {
                             navigateToSaasFragment(
@@ -377,6 +382,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
     }
 
 
+    override fun getJwellaryData() {
+        if (view != null) {
+            mViewModel.fourImageDataResponse.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    if (it.status.equals(AppConstants.SUCCESS, ignoreCase = true)) {
+                        dashBoardData = it
+                        DashBoardDataListSingleton.setJwellaryData(dashBoardJwellary!!)
+                        AppPreference.addValue(PreferenceKeys.ONE_TIME_REQUEST, AppConstants.FALSE)
+
+                    } else if (it.status.equals(AppConstants.FAILURE, ignoreCase = true)) {
+                        CommonUtils.showToastMessage(
+                            requireContext(),
+                            it.message.toString()
+                        )
+                    } else {
+                        CommonUtils.showToastMessage(
+                            requireContext(),
+                            resources.getString(R.string.error_in_fetching_data)
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+
     override fun navigateToSaasFragment() {
 
     }
@@ -415,6 +446,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
             }
         }
     }
+
 
     private fun setAdapterData(data: DeshBoardModel) {
         deshBoardRecyclerAdapter.setItemsList(data, requireContext())

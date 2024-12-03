@@ -31,6 +31,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
     var allHomeItemsList: DeshBoardModel = DeshBoardModel()
+    var allJwelleryItemList: DeshBoardModel = DeshBoardModel()
 
     // Top most UI Component -> Home Category items
     private val homeCategoryFragmentAdapter = HomeCategoryFragmentAdapter()
@@ -90,6 +91,10 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     fun setItemsList(data: DeshBoardModel, context: Context) {
         this.allHomeItemsList = data
+        this.context = context
+    }
+    fun setJwellaryItemsList(data: DeshBoardModel, context: Context) {
+        this.allJwelleryItemList = data
         this.context = context
     }
 
@@ -416,16 +421,16 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var itemRecycler: RecyclerView = itemView.findViewById(R.id.rcvDeshboardCategory)
         fun bind(position: Int) {
             setCategoriesItemRecycler(itemRecycler, allHomeItemsList.Data[position].items)
-         //   sendListenerToFourImages(allHomeItemsList.Data[position].items)
+            //   sendListenerToFourImages(allHomeItemsList.Data[position].items)
         }
 
     }
 
-   /* private fun sendListenerToFourImages(items: ArrayList<DeshBoardItems>) {
+    /* private fun sendListenerToFourImages(items: ArrayList<DeshBoardItems>) {
 
-    }
+     }
 
-    */
+     */
 
 
     /*   private inner class LayoutFourPhotoesViewHolder(itemView: View) :

@@ -17,6 +17,7 @@ class SaasOneImageAdapter : RecyclerView.Adapter<SaasOneImageAdapter.ViewHolder>
     private lateinit var context: Context
 
 
+
     fun setData(context: Context) {
         this.context = context
     }

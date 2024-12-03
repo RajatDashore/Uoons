@@ -141,8 +141,9 @@
 
 
     <!--   TODO: SAAS Screeen -->
-    <string name="sponsored">Sponsored</string>
-    <string name="search_innovation">Search innovations...</string>
+    <string name="sponsored" translatable="false">Sponsored</string>
+    <string name="search_innovation" translatable="false">Search innovations...</string>
+    <string name="are_you_part_of" translatable="false">Are you the part of Start up India ?</string>
 
 
     <!-- TODO: Account Screen -->

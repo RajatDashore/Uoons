@@ -45,145 +45,272 @@ import com.uoons.india.ui.wishlist.model.GetWishListDataModel
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.lsposed.lsparanoid.Obfuscate
-import java.util.ArrayList
 
 @Obfuscate
 abstract class Repository {
 
     object get : NetworkRetrofit()
 
-    abstract suspend fun checkAPKUpdatedVersion(channelCode: String,versionCode: String) : Either<Failure, ForceUpdatedModel>
+    abstract suspend fun getJwellaryData(
+        channelCode: String,
+        versionCode: String,
+    ): Either<Failure, DeshBoardModel>
 
-    abstract suspend fun login(channelCode: String,body: HashMap<String, Any>) : Either<Failure, LogingResponseModel>
+    abstract suspend fun checkAPKUpdatedVersion(
+        channelCode: String,
+        versionCode: String,
+    ): Either<Failure, ForceUpdatedModel>
 
-    abstract suspend fun otp_Verification(channelCode: String,body: HashMap<String, Any>) : Either<Failure, OTPResponseModel>
+    abstract suspend fun login(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, LogingResponseModel>
 
-    abstract suspend fun saveUserDetails(channelCode: String, body: HashMap<String, Any>) : Either<Failure, SaveUserDetailsResponse>
+    abstract suspend fun otp_Verification(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, OTPResponseModel>
 
-    abstract suspend fun saveBankDetails(channelCode: String, body: HashMap<String, Any>) : Either<Failure, SaveBankDetailsModel>
+    abstract suspend fun saveUserDetails(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, SaveUserDetailsResponse>
 
-    abstract suspend fun fetchBankDetails(channelCode: String) : Either<Failure, FetchBankDetailsModel>
+    abstract suspend fun saveBankDetails(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, SaveBankDetailsModel>
 
-    abstract suspend fun deleteBankDetails(channelCode: String, body: HashMap<String, Any>) : Either<Failure, FetchBankDetailsModel>
+    abstract suspend fun fetchBankDetails(channelCode: String): Either<Failure, FetchBankDetailsModel>
 
-    abstract suspend fun selectPrimaryAccount(channelCode: String, body: HashMap<String, Any>) : Either<Failure, FetchBankDetailsModel>
+    abstract suspend fun deleteBankDetails(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, FetchBankDetailsModel>
 
-    abstract suspend fun getUserDetails(channelCode: String) : Either<Failure, UserDetailsModel>
+    abstract suspend fun selectPrimaryAccount(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, FetchBankDetailsModel>
 
-    abstract suspend fun getDeshBoardData(channelCode: String) : Either<Failure, DeshBoardModel>
+    abstract suspend fun getUserDetails(channelCode: String): Either<Failure, UserDetailsModel>
 
-    abstract suspend fun getMoreDeshBoardProducts(channelCode: String,page: Int) : Either<Failure, HomePageMoreItemsDataModel>
+    abstract suspend fun getDeshBoardData(channelCode: String): Either<Failure, DeshBoardModel>
 
-    abstract suspend fun getHomepageItemsData(channelCode: String,body: HashMap<String, Any>) : Either<Failure, ProductModel>
+    abstract suspend fun getMoreDeshBoardProducts(
+        channelCode: String,
+        page: Int,
+    ): Either<Failure, HomePageMoreItemsDataModel>
 
-    abstract suspend fun addRecentlyView(channelCode: String,body: HashMap<String, Any>) : Either<Failure, AddRecentlyViewModel>
+    abstract suspend fun getHomepageItemsData(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, ProductModel>
 
-    abstract suspend fun getFilterItemsData(channelCode: String,body: HashMap<String, Any>) : Either<Failure, ProductModel>
+    abstract suspend fun addRecentlyView(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, AddRecentlyViewModel>
 
-    abstract suspend fun getAllCategories(channelCode: String) : Either<Failure, AllCategoryModel>
+    abstract suspend fun getFilterItemsData(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, ProductModel>
 
-    abstract suspend fun getAllSubCategories(channelCode: String,sortById: Int,catId: Int,filters: String) : Either<Failure, SubCategoriesModel>
+    abstract suspend fun getAllCategories(channelCode: String): Either<Failure, AllCategoryModel>
 
-    abstract suspend fun getSingleProductDetail(channelCode: String,pid: Int) : Either<Failure, ProductDetailsModel>
+    abstract suspend fun getAllSubCategories(
+        channelCode: String,
+        sortById: Int,
+        catId: Int,
+        filters: String,
+    ): Either<Failure, SubCategoriesModel>
 
-    abstract suspend fun getAllQuestionsAnswers(channelCode: String,pid: Int) : Either<Failure, QuestionAnswerModel>
+    abstract suspend fun getSingleProductDetail(
+        channelCode: String,
+        pid: Int,
+    ): Either<Failure, ProductDetailsModel>
 
-    abstract suspend fun searchQuestionAnswers(channelCode: String,body: HashMap<String, Any>) : Either<Failure, QuestionAnswerModel>
+    abstract suspend fun getAllQuestionsAnswers(
+        channelCode: String,
+        pid: Int,
+    ): Either<Failure, QuestionAnswerModel>
 
-    abstract suspend fun postlikeUnlikeQuestion(channelCode: String,body: HashMap<String, Any>) : Either<Failure, QuestionLikeUnlikeModel>
+    abstract suspend fun searchQuestionAnswers(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, QuestionAnswerModel>
 
-    abstract suspend fun postlikeUnlikeReview(channelCode: String,body: HashMap<String, Any>) : Either<Failure, QuestionLikeUnlikeModel>
+    abstract suspend fun postlikeUnlikeQuestion(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, QuestionLikeUnlikeModel>
 
-    abstract suspend fun orderCancel(channelCode: String,body: HashMap<String, Any>) : Either<Failure, OrderCancelModel>
+    abstract suspend fun postlikeUnlikeReview(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, QuestionLikeUnlikeModel>
 
-    abstract suspend fun postYourQuestion(channelCode: String,body: HashMap<String, Any>) : Either<Failure, PostYourQuestionModel>
+    abstract suspend fun orderCancel(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, OrderCancelModel>
 
-    abstract suspend fun addItemToCart(channelCode: String,body: HashMap<String, Any>)  : Either<Failure, AddItemToCartDataResponse>
+    abstract suspend fun postYourQuestion(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, PostYourQuestionModel>
 
-    abstract suspend fun getSuggestionToEnhance(channelCode: String) : Either<Failure, SuggestionToEnhanceModel>
+    abstract suspend fun addItemToCart(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, AddItemToCartDataResponse>
 
-    abstract suspend fun postSuggestion(channelCode: String,body: HashMap<String, Any>) : Either<Failure, PostSuggestionResponse>
+    abstract suspend fun getSuggestionToEnhance(channelCode: String): Either<Failure, SuggestionToEnhanceModel>
 
-    abstract suspend fun addQuantityToCart(channelCode: String,body: HashMap<String, Any>)  : Either<Failure, AddQuantityModelResponse>
+    abstract suspend fun postSuggestion(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, PostSuggestionResponse>
 
-    abstract suspend fun getMyCartItems(channelCode: String)  : Either<Failure, GetMyCartDataModel>
+    abstract suspend fun addQuantityToCart(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, AddQuantityModelResponse>
 
-    abstract suspend fun getSearchItems(channelCode: String,searchKey: String) : Either<Failure, SubCategoriesModel>
+    abstract suspend fun getMyCartItems(channelCode: String): Either<Failure, GetMyCartDataModel>
 
-  //  abstract suspend fun getFilterOption(channelCode: String)  : Either<Failure, FilterDataModel>
+    abstract suspend fun getSearchItems(
+        channelCode: String,
+        searchKey: String,
+    ): Either<Failure, SubCategoriesModel>
 
-    abstract suspend fun addToWishList(channelCode: String,body: HashMap<String, Any>) : Either<Failure, AddWishListResponseModel>
+    //  abstract suspend fun getFilterOption(channelCode: String)  : Either<Failure, FilterDataModel>
 
-    abstract suspend fun getWishList(channelCode: String)  : Either<Failure, GetWishListDataModel>
+    abstract suspend fun addToWishList(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, AddWishListResponseModel>
 
-    abstract suspend fun getSortingOptions(channelCode: String)  : Either<Failure, SortingModel>
+    abstract suspend fun getWishList(channelCode: String): Either<Failure, GetWishListDataModel>
 
-    abstract suspend fun getFAQ(channelCode: String) : Either<Failure, FAQDataModel>
+    abstract suspend fun getSortingOptions(channelCode: String): Either<Failure, SortingModel>
 
-    abstract suspend fun getSortingData(channelCode: String,sortById: Int, filters: String): Either<Failure, SubCategoriesModel>
+    abstract suspend fun getFAQ(channelCode: String): Either<Failure, FAQDataModel>
 
-    abstract suspend fun removeCartItem(channelCode: String,body: HashMap<String, Any>) : Either<Failure, RemoveCartItemResponse>
+    abstract suspend fun getSortingData(
+        channelCode: String,
+        sortById: Int,
+        filters: String,
+    ): Either<Failure, SubCategoriesModel>
 
-    abstract suspend fun removeWishLitItem(channelCode: String,body: HashMap<String, Any>) : Either<Failure, RemoveCartItemResponse>
+    abstract suspend fun removeCartItem(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, RemoveCartItemResponse>
 
-    abstract suspend fun contactUs(channelCode: String,body: HashMap<String, Any>) : Either<Failure, ContactUsModel>
+    abstract suspend fun removeWishLitItem(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, RemoveCartItemResponse>
 
-    abstract suspend fun profileImageSave(channelCode: String,body: MultipartBody.Part) : Either<Failure, ProfileImageModel>
+    abstract suspend fun contactUs(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, ContactUsModel>
 
-    abstract suspend fun getUserDeliverAddress(channelCode: String) : Either<Failure, DeliverAllAddressModel>
+    abstract suspend fun profileImageSave(
+        channelCode: String,
+        body: MultipartBody.Part,
+    ): Either<Failure, ProfileImageModel>
 
-    abstract suspend fun insertNewDeliverAddress(channelCode: String,body: HashMap<String, Any>) : Either<Failure, DeliverAllAddressModel>
+    abstract suspend fun getUserDeliverAddress(channelCode: String): Either<Failure, DeliverAllAddressModel>
 
-    abstract suspend fun deleteDeliverAddress(channelCode: String,body: HashMap<String, Any>) : Either<Failure, DeliverAllAddressModel>
+    abstract suspend fun insertNewDeliverAddress(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, DeliverAllAddressModel>
 
-    abstract suspend fun checkProductLocationAvailable(channelCode: String,pinCode: Int,pId: Int) : Either<Failure, ProductAvailabilityResponseModel>
+    abstract suspend fun deleteDeliverAddress(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, DeliverAllAddressModel>
 
-    abstract suspend fun checkCoupenCode(channelCode: String,body: HashMap<String, Any>) : Either<Failure, CoupenCodeModel>
+    abstract suspend fun checkProductLocationAvailable(
+        channelCode: String,
+        pinCode: Int,
+        pId: Int,
+    ): Either<Failure, ProductAvailabilityResponseModel>
 
-    abstract suspend fun checkOutProduct(channelCode: String,body: HashMap<String, Any>) : Either<Failure, CheckOutModel>
+    abstract suspend fun checkCoupenCode(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, CoupenCodeModel>
 
-    abstract suspend fun checkOutProductUpdate(channelCode: String,body: HashMap<String, Any>) : Either<Failure, OnlinePaymentStatusModel>
+    abstract suspend fun checkOutProduct(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, CheckOutModel>
 
-    abstract suspend fun getAllFetchBundleOrders(channelCode: String) : Either<Failure, FecthAllBundleOrderModel>
+    abstract suspend fun checkOutProductUpdate(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, OnlinePaymentStatusModel>
 
-    abstract suspend fun getOrderBundlesList(channelCode: String,bundleId: String) : Either<Failure, OrderBundleListModel>
+    abstract suspend fun getAllFetchBundleOrders(channelCode: String): Either<Failure, FecthAllBundleOrderModel>
 
-    abstract suspend fun getOrderList(channelCode: String,orderId: String) : Either<Failure, OrderDetailModel>
+    abstract suspend fun getOrderBundlesList(
+        channelCode: String,
+        bundleId: String,
+    ): Either<Failure, OrderBundleListModel>
 
-    abstract suspend fun addRatingReview(channelCode: String,body: HashMap<String, Any>) : Either<Failure, RatingAndReviewModel>
+    abstract suspend fun getOrderList(
+        channelCode: String,
+        orderId: String,
+    ): Either<Failure, OrderDetailModel>
 
-    abstract suspend fun uploadReview(channelCode: String, partMap: HashMap<String, RequestBody>,
-                                      product_image: ArrayList<MultipartBody.Part>) : Either<Failure, RatingAndReviewModel>
+    abstract suspend fun addRatingReview(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, RatingAndReviewModel>
 
- //   abstract suspend fun uploadReview(channelCode: String, body:HashMap<String, RequestBody>) : Either<Failure, RatingAndReviewModel>
+    abstract suspend fun uploadReview(
+        channelCode: String, partMap: HashMap<String, RequestBody>,
+        product_image: ArrayList<MultipartBody.Part>,
+    ): Either<Failure, RatingAndReviewModel>
 
-    abstract suspend fun getToken(channelCode: String,body: HashMap<String, Any>) : Either<Failure, TokenModel>
+    //   abstract suspend fun uploadReview(channelCode: String, body:HashMap<String, RequestBody>) : Either<Failure, RatingAndReviewModel>
 
-  //  abstract suspend fun profileImageSave(authorizationToken: String, body: HashMap<String, Any>) : Either<Failure, ProfileImageModel>
+    abstract suspend fun getToken(
+        channelCode: String,
+        body: HashMap<String, Any>,
+    ): Either<Failure, TokenModel>
 
- /*   abstract suspend fun getDeshBoardData(body: HashMap<String, Any>) : Either<Failure, BaseResponse<HomePageDataModel>>*/
+    //  abstract suspend fun profileImageSave(authorizationToken: String, body: HashMap<String, Any>) : Either<Failure, ProfileImageModel>
 
-   /* abstract suspend fun login(body: HashMap<String, Any>) : Either<Failure, BaseResponse<LoginResponse>>
+    /*   abstract suspend fun getDeshBoardData(body: HashMap<String, Any>) : Either<Failure, BaseResponse<HomePageDataModel>>*/
 
-    abstract suspend fun doctorList(doctorId:String,body: HashMap<String, Any>) : Either<Failure, BaseResponse<DoctorListResponse>>
+    /* abstract suspend fun login(body: HashMap<String, Any>) : Either<Failure, BaseResponse<LoginResponse>>
 
-    abstract suspend fun favourite(body: HashMap<String, Any>) : Either<Failure, BaseResponse<Nothing>>
+     abstract suspend fun doctorList(doctorId:String,body: HashMap<String, Any>) : Either<Failure, BaseResponse<DoctorListResponse>>
 
-    abstract suspend fun logout() : Either<Failure, BaseResponse<Nothing>>
+     abstract suspend fun favourite(body: HashMap<String, Any>) : Either<Failure, BaseResponse<Nothing>>
 
-    abstract suspend fun changePassword(body: HashMap<String, Any>) : Either<Failure, BaseResponse<Nothing>>
+     abstract suspend fun logout() : Either<Failure, BaseResponse<Nothing>>
 
-    abstract suspend fun appointmentList(type:String,body: HashMap<String, Any>) : Either<Failure, BaseResponse<AppointmentResponse>>
+     abstract suspend fun changePassword(body: HashMap<String, Any>) : Either<Failure, BaseResponse<Nothing>>
 
-    abstract suspend fun clinicList(body: HashMap<String, Any>) : Either<Failure, BaseResponse<ClinicListResponse>>
+     abstract suspend fun appointmentList(type:String,body: HashMap<String, Any>) : Either<Failure, BaseResponse<AppointmentResponse>>
 
-    abstract suspend fun mediaUpload(mediaFor: String, mediaType: String, files: HashMap<String, File> = HashMap()) : Either<Failure, BaseResponse<MediaUploadResponse>>
+     abstract suspend fun clinicList(body: HashMap<String, Any>) : Either<Failure, BaseResponse<ClinicListResponse>>
 
-    abstract suspend fun addSchedule(body: HashMap<String, Any>) : Either<Failure, BaseResponse<Nothing>>*/
+     abstract suspend fun mediaUpload(mediaFor: String, mediaType: String, files: HashMap<String, File> = HashMap()) : Either<Failure, BaseResponse<MediaUploadResponse>>
+
+     abstract suspend fun addSchedule(body: HashMap<String, Any>) : Either<Failure, BaseResponse<Nothing>>*/
 
 
     abstract suspend fun ordercancelreason(
         channelCode: String,
-        body: HashMap<String, Any>
+        body: HashMap<String, Any>,
     ): Either<Failure, OrderCancelModel>
 }

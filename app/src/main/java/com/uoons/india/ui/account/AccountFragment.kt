@@ -58,7 +58,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
     private val VALID = 0
     private val INVALID = 1
 
-     override fun init() {
+    override fun init() {
         mViewModel.navigator = this
         initRxEvent()
         initRxEvent1()
@@ -68,33 +68,37 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
     @SuppressLint("CheckResult")
     private fun initRxEvent() {
         UoonsRxBus.listen(UoonsRxEvent.accountrefresh::class.java).subscribe {
-                if (mViewModel.navigator!!.checkIfInternetOn()) {
-                    callProfileAPI()
-                    Log.e("initRxEvent","initRxEvent_callProfileAPI")
-                } else {
-                    mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection),
-                        onClick = {})
-                }
+            if (mViewModel.navigator!!.checkIfInternetOn()) {
+                callProfileAPI()
+                Log.e("initRxEvent", "initRxEvent_callProfileAPI")
+            } else {
+                mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons,
+                    resources.getString(R.string.please_check_internet_connection),
+                    onClick = {})
             }
+        }
     }
 
 
     @SuppressLint("CheckResult")
     private fun initRxEvent1() {
         UoonsRxBus.refferalListen(UoonsRxEvent.accountrefreshRefferal::class.java).subscribe {
-                if (mViewModel.navigator!!.checkIfInternetOn()) {
-                    callProfileAPI()
-                } else {
-                    mViewModel.navigator!!.showAlertDialog1Button(
-                        AppConstants.Uoons,
-                        resources.getString(R.string.please_check_internet_connection),
-                        onClick = {})
-                }
+            if (mViewModel.navigator!!.checkIfInternetOn()) {
+                callProfileAPI()
+            } else {
+                mViewModel.navigator!!.showAlertDialog1Button(
+                    AppConstants.Uoons,
+                    resources.getString(R.string.please_check_internet_connection),
+                    onClick = {})
             }
+        }
     }
 
     private fun callProfileAPI() {
-        if (CommonUtils.isStringNullOrBlank(AppPreference.getValue(PreferenceKeys.MOBILE_NO)) || AppPreference.getValue(PreferenceKeys.MOBILE_NO).isEmpty()) {
+        if (CommonUtils.isStringNullOrBlank(AppPreference.getValue(PreferenceKeys.MOBILE_NO)) || AppPreference.getValue(
+                PreferenceKeys.MOBILE_NO
+            ).isEmpty()
+        ) {
             viewDataBinding.crdSignUp.visibility = View.VISIBLE
         } else {
             mViewModel.getUserDetailsApiCall(requireContext())
@@ -109,25 +113,30 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.e("onViewCreated","onViewCreated_MOBILE_NO_MOBILE_NO:: "+AppPreference.getValue(PreferenceKeys.MOBILE_NO))
+        Log.e(
+            "onViewCreated",
+            "onViewCreated_MOBILE_NO_MOBILE_NO:: " + AppPreference.getValue(PreferenceKeys.MOBILE_NO)
+        )
         navController = Navigation.findNavController(view)
         viewDataBinding.toolbar.txvTitleName.text = resources.getString(R.string.account)
-        viewDataBinding.apkVersion.text = resources.getString(R.string.varsionName) +" "+ BuildConfig.VERSION_NAME
-        name =    AppPreference.getValue(PreferenceKeys.USER_NAME)
+        viewDataBinding.apkVersion.text =
+            resources.getString(R.string.varsionName) + " " + BuildConfig.VERSION_NAME
+        name = AppPreference.getValue(PreferenceKeys.USER_NAME)
         viewDataBinding.toolbar.ivHeartVector.visibility = View.GONE
         viewDataBinding.toolbar.ivCartVector.visibility = View.GONE
         viewDataBinding.toolbar.ivCartVectorInvisible.visibility = View.GONE
         viewDataBinding.toolbar.crdCountMyCart.visibility = View.GONE
 
-        NEW_MOBILE_NO =    AppPreference.getValue(PreferenceKeys.MOBILE_NO)
+        NEW_MOBILE_NO = AppPreference.getValue(PreferenceKeys.MOBILE_NO)
 
-        PID =    AppPreference.getValue(PreferenceKeys.PROFILE_ID)
-        Log.e("","PROFILE_IDPROFILE_ID:: "+AppPreference.getValue(PreferenceKeys.PROFILE_ID))
+        PID = AppPreference.getValue(PreferenceKeys.PROFILE_ID)
+        Log.e("", "PROFILE_IDPROFILE_ID:: " + AppPreference.getValue(PreferenceKeys.PROFILE_ID))
         mViewModel.getDataObserver().observe(viewLifecycleOwner, Observer<String> {
             if (it != null) {
                 context?.let { mViewModel.checkUserNumber(NEW_MOBILE_NO) }
             } else {
-                Toast.makeText(requireActivity(), AppConstants.ErrorFetching, Toast.LENGTH_LONG).show()
+                Toast.makeText(requireActivity(), AppConstants.ErrorFetching, Toast.LENGTH_LONG)
+                    .show()
             }
         })
 
@@ -201,7 +210,8 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
         if (mViewModel.navigator!!.checkIfInternetOn()) {
             navController?.navigate(R.id.action_accountFragment_to_helpFragment)
         } else {
-            mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons, resources.getString(R.string.please_check_internet_connection),
+            mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons,
+                resources.getString(R.string.please_check_internet_connection),
                 onClick = {})
         }
     }
@@ -255,12 +265,12 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
                                     // Short link created
                                     val shortLink: Uri? = task.result.shortLink
                                     val flowchartLink: Uri? = task.result.previewLink
-/*
-                                    Log.e(
-                                        "shearLink",
-                                        "shortLink:- $shortLink and flowchartLink:- $flowchartLink"
-                                    )
-*/
+                                    /*
+                                                                        Log.e(
+                                                                            "shearLink",
+                                                                            "shortLink:- $shortLink and flowchartLink:- $flowchartLink"
+                                                                        )
+                                    */
                                     val shareIntent = Intent(Intent.ACTION_SEND)
                                     shareIntent.type = AppConstants.TextPlain
                                     var userName: String = ""
@@ -372,10 +382,13 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
         }
     }
 
-    override fun GotoMakeyourown() {
-
+    override fun GoToRegister() {
+        if (view != null) {
+            //   val intent = Intent(activity, Register::class.java)
+            // startActivity(intent)
+          //  navController.navigate(R.id.)
+        }
     }
-
 
 
     override fun getUserDetailsData() {
@@ -441,26 +454,25 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
     }
 
 
+    /*
+        fun getEncryptedSharedprefs(context: Context): SharedPreferences {
 
-/*
-    fun getEncryptedSharedprefs(context: Context): SharedPreferences {
+            val masterkeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+            return EncryptedSharedPreferences.create(
+                "secured_prefs", masterkeyAlias, context ,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
 
-        val masterkeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
-        return EncryptedSharedPreferences.create(
-            "secured_prefs", masterkeyAlias, context ,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
+        }
+    */
+    /*
+        fun savename(context: Context,pid: String) {
+            getEncryptedSharedprefs(context).edit()
+                .putString("USER_NAME",pid)
+                .apply()
 
-    }
-*/
-/*
-    fun savename(context: Context,pid: String) {
-        getEncryptedSharedprefs(context).edit()
-            .putString("USER_NAME",pid)
-            .apply()
-
-    }
-*/
+        }
+    */
 
 }

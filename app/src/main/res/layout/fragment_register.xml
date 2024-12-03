@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/primary_color"
+    android:layout_height="match_parent"
+    tools:context=".ui.account.Register">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/crdAccountDetails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/crdProfile">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/primary_color"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:id="@+id/backButton"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/ic_left_side_arrow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:gravity="center"
+                    android:text="Select image"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="@id/ivlogo"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@id/ivlogo"
+                    app:layout_constraintTop_toBottomOf="@id/ivlogo" />
+
+                <ImageView
+                    android:id="@+id/ivlogo"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/flag_zimbabwe"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <EditText
+                    android:id="@+id/edtCompanyName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@drawable/reg_saas_bg"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_vertical"
+                    android:hint="Enter company name"
+                    android:padding="@dimen/_7sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="@dimen/text_size15"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text" />
+
+                <View
+                    android:id="@+id/viewMyCoins"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/bottom_navigation_background"
+                    android:backgroundTint="@color/gray_bg"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtCompanyName" />
+
+
+                <EditText
+                    android:id="@+id/edtShortDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/reg_saas_bg"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_vertical"
+                    android:hint="Enter short description"
+                    android:padding="@dimen/_7sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="@dimen/text_size15"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewMyCoins" />
+
+                <View
+                    android:id="@+id/viewMyBankDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/bottom_navigation_background"
+                    android:backgroundTint="@color/gray_bg"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtShortDesc" />
+
+
+                <EditText
+                    android:id="@+id/edtLongDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/reg_saas_bg"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_vertical"
+                    android:hint="Enter long discription"
+                    android:padding="@dimen/_7sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="@dimen/text_size15"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewMyBankDetails" />
+
+                <View
+                    android:id="@+id/viewReferEarn"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/bottom_navigation_background"
+                    android:backgroundTint="@color/gray_bg"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtLongDesc" />
+
+
+                <EditText
+                    android:id="@+id/edtPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/reg_saas_bg"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_vertical"
+                    android:hint="Enter price"
+                    android:padding="@dimen/_7sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="@dimen/text_size15"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewReferEarn" />
+
+                <View
+                    android:id="@+id/viewEnterRefferalCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/bottom_navigation_background"
+                    android:backgroundTint="@color/gray_bg"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtPrice" />
+
+
+                <EditText
+                    android:id="@+id/edtUrl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/reg_saas_bg"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_vertical"
+                    android:hint="Enter URL"
+                    android:padding="@dimen/_7sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="@dimen/text_size15"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewEnterRefferalCode" />
+
+                <View
+                    android:id="@+id/viewRefferalCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/bottom_navigation_background"
+                    android:backgroundTint="@color/gray_bg"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtUrl" />
+
+                <TextView
+                    android:id="@+id/txtStartUpIndia"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/are_you_part_of"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/edtUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edtUrl" />
+
+                <CheckBox
+                    android:id="@+id/chechBoxYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Yes"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/txtStartUpIndia"
+                    app:layout_constraintStart_toStartOf="@id/txtStartUpIndia"
+                    app:layout_constraintTop_toBottomOf="@id/txtStartUpIndia" />
+
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@id/chechBoxYes"
+                    app:layout_constraintTop_toBottomOf="@id/chechBoxYes" />
+
+                <EditText
+                    android:id="@+id/edtDPIIT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:background="@drawable/reg_saas_bg"
+                    android:ems="12"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/black"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/checkBoxNo" />
+
+
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/reg_saas_bg"
+                    android:drawableRight="@drawable/baseline_check_24"
+                    android:fontFamily="@font/roboto_medium"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="Submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edtDPIIT" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

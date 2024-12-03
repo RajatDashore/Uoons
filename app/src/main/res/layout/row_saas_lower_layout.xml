@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_10sdp"
+    android:foreground="?attr/selectableItemBackground"
     android:background="@drawable/corner_black_bg">
 
     <!-- Hashtag TextView -->
@@ -142,6 +143,7 @@
                 android:text="See More"
                 android:textColor="@color/com_facebook_messenger_blue"
                 android:textSize="@dimen/_10ssp"
+                android:background="?attr/selectableItemBackground"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

@@ -19,5 +19,5 @@ interface AccountFrgamentNavigator : CommonNavigator {
     fun privacyPolicy()
     fun getUserDetailsData()
     fun naviGateToMyCoinsFragment()
-    fun GotoMakeyourown()
+    fun GoToRegister()
 }

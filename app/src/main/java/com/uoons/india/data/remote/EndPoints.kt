@@ -4,8 +4,7 @@ import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
 object EndPoints {
-    // For testing only
-    const val FAKEIMAGEURL = "search?limit=10"
+    const val JWELLERY = "api/getAllProductsByCategory?cat_id=445"
     const val SEND_OTP = "api/sendOTP"
     const val FORCE_UPDATE = "api/forceUpdate"
     const val OTP_VERIFICATION = "api/otpVerification"

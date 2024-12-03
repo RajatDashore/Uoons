@@ -6,7 +6,6 @@
     app:startDestination="@id/homeFragment">
 
 
-
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.uoons.india.ui.home.fragment.HomeFragment"
@@ -35,6 +34,16 @@
         <action
             android:id="@+id/action_homeFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.uoons.india.ui.account.Register"
+        android:label="fragent_account"
+        tools:layout="@layout/fragment_register">
+
+
     </fragment>
 
     <fragment
@@ -92,6 +101,9 @@
         <action
             android:id="@+id/action_accountFragment_to_myBankDeatilsFragment"
             app:destination="@id/myBankDeatilsFragment" />
+        <action
+            android:id="@id/action_accountFragment_to_registerFragment"
+            app:destination="@+id/registerFragment" />
         <action
             android:id="@+id/action_accountFragment_to_helpFragment"
             app:destination="@id/helpFragment"

@@ -8,11 +8,16 @@ import org.lsposed.lsparanoid.Obfuscate
 object DashBoardDataListSingleton {
 
     private var dashBoardData: DeshBoardModel? = null
+    private var deshBoardJwellary: DeshBoardModel? = null
     private var moreProductsItemList: ArrayList<MoreProducts> = ArrayList<MoreProducts>()
 
 
     fun setDastBoardData(dashBoardData: DeshBoardModel?) {
         this.dashBoardData = dashBoardData
+    }
+
+    fun setJwellaryData(deshBoardJwellary: DeshBoardModel?){
+        this.deshBoardJwellary = deshBoardJwellary
     }
 
     fun setMoreProductsItemList(moreProductsItemList: ArrayList<MoreProducts>) {
