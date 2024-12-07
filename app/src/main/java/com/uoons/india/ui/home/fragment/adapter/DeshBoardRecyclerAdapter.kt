@@ -93,6 +93,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         this.allHomeItemsList = data
         this.context = context
     }
+
     fun setJwellaryItemsList(data: DeshBoardModel, context: Context) {
         this.allJwelleryItemList = data
         this.context = context
@@ -122,7 +123,8 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         const val NEW_ARRIVALS_TYPE = 11
         const val MORE_ITEMS_TYPE = 12
         const val TRENDING_NOW_TYPE = 13
-        const val FOUR_PHOTOES = 14
+        const val FOUR_PHOTOES = 1
+        const val JWELLARY = 1
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -243,39 +245,35 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
             }
         })
 
+
         // Auto Sliders One Items
-        sliderOneAdapter.setOnItemClickListener(object :
-            SliderOneAdapter.OnItemClickListener {
-            override fun onItemClicked(position: String, type: String) {
-                mainCustomClickListener?.onItemClicked(position, SLIDERS_ONE_TYPE, type)
-            }
-        })
+        sliderOneAdapter.setOnItemClickListener(
+            object :
+                SliderOneAdapter.OnItemClickListener {
+                override fun onItemClicked(position: String, type: String) {
+                    mainCustomClickListener?.onItemClicked(position, SLIDERS_ONE_TYPE, type)
+                }
+            })
+
 
         // Price Store Items
-        priceStoreItemRecyclerAdapter.setOnItemClickListener(object :
-            PriceStoreItemRecyclerAdapter.OnItemClickListener {
-            override fun onItemClicked(position: String, type: String) {
-                mainCustomClickListener?.onItemClicked(position, PRICE_STORE_TYPE, type)
-            }
-        })
+        priceStoreItemRecyclerAdapter.setOnItemClickListener(
+            object :
+                PriceStoreItemRecyclerAdapter.OnItemClickListener {
+                override fun onItemClicked(position: String, type: String) {
+                    mainCustomClickListener?.onItemClicked(position, PRICE_STORE_TYPE, type)
+                }
+            })
 
 
         // Deal of the Day Items in Home UI
-        dealOfTheDayItemRecyclerAdapter.setOnItemClickListener(object :
-            DealOfTheDayItemRecyclerAdapter.OnProductIdClickListener {
-            override fun onProductIdClicked(pId: String) {
-                customProductIdClickListener?.onProductIdClicked(pId)
-            }
-        })
-
-        /* fourPhotoesAdapter.setOnItemClickListener(object :
-             HomeCategoryFragmentAdapter.OnItemClickListener {
-             override fun onItemClicked(position: String, type: String) {
-                 mainCustomClickListener?.onItemClicked(position, FOUR_PHOTOES, type)
-
-             })
-
-         */
+        dealOfTheDayItemRecyclerAdapter.setOnItemClickListener(
+            object :
+                DealOfTheDayItemRecyclerAdapter.OnProductIdClickListener {
+                override fun onProductIdClicked(pId: String) {
+                    customProductIdClickListener?.onProductIdClicked(pId)
+                }
+            })
 
 
         // Recently Views Items
@@ -341,13 +339,13 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 }
             })
 
-        /* fourPhotoesAdapter.setOnItemClickListener(object : FourPhotoesAdapter.OnItemClickListener {
-             override fun onItemClicked(position: String, type: String) {
-                 mainCustomClickListener?.onItemClicked(position, FOUR_PHOTOES, type)
-             }
-         }
-
-         */
+        fourPhotoesAdapter.setOnItemClickListener(
+            object : FourPhotoesAdapter.OnItemClickListener {
+                override fun onItemClicked(position: String, type: String) {
+                    mainCustomClickListener?.onItemClicked(position, CATEGORIES_TYPE, type)
+                }
+            }
+        )
 
 
         when (allHomeItemsList.Data[position].id) {
@@ -413,6 +411,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     override fun getItemCount(): Int {
+        //    Log.d("Click", "size is " + allHomeItemsList.Data.size)
         return allHomeItemsList.Data.size
     }
 
@@ -421,16 +420,10 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var itemRecycler: RecyclerView = itemView.findViewById(R.id.rcvDeshboardCategory)
         fun bind(position: Int) {
             setCategoriesItemRecycler(itemRecycler, allHomeItemsList.Data[position].items)
-            //   sendListenerToFourImages(allHomeItemsList.Data[position].items)
+            Log.d("Click", "${allHomeItemsList.Data[position].id}")
         }
 
     }
-
-    /* private fun sendListenerToFourImages(items: ArrayList<DeshBoardItems>) {
-
-     }
-
-     */
 
 
     /*   private inner class LayoutFourPhotoesViewHolder(itemView: View) :
@@ -454,7 +447,9 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var slider: SliderView = itemView.findViewById(R.id.slider)
         fun bind(position: Int) {
             setSliderItemRecycler(slider, allHomeItemsList.Data[position].items)
+            Log.d("Click", "${allHomeItemsList.Data[position].id}")
         }
+
     }
 
     private inner class LayoutSliderTwoViewHolder(itemView: View) :
@@ -462,6 +457,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var sliderTwo: SliderView = itemView.findViewById(R.id.sliderTwo)
         fun bind(position: Int) {
             setSliderTwoItemRecycler(sliderTwo, allHomeItemsList.Data[position].items)
+            Log.d("Click", "${allHomeItemsList.Data[position].id}")
         }
     }
 
@@ -801,6 +797,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 priceStoreItemsRecycler,
                 allHomeItemsList.Data[position].items
             )
+            Log.d("Click", "${allHomeItemsList.Data[position].id}")
             title?.text = allHomeItemsList.Data[position].name
         }
     }
@@ -881,7 +878,8 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 itemRecycler,
                 recyclerSaas,
                 recyclerViewPhotoes,
-                allHomeItemsList.Data[position].items
+                allHomeItemsList.Data[position].items,
+                allHomeItemsList.Data[1].items
             )
             categoryTitle.text = allHomeItemsList.Data[position].name
             crdViewAllProducts.setOnClickListener {
@@ -953,6 +951,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         imgList.add(R.drawable.automotive)
         imgList.add(R.drawable.services)
         imgList.add(R.drawable.jwellary)
+        imgList.add(R.drawable.artision)
         homeCategoryFragmentAdapter.setAllCategoriesList(categoryItemList, context, imgList)
         itemRecycler.layoutManager =
             LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -1072,6 +1071,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         recyclerSaas: RecyclerView,
         recyclerViewPhotoes: RecyclerView,
         categoryItemList: ArrayList<DeshBoardItems>,
+        categoryName: ArrayList<DeshBoardItems>
     ) {
         getImageAndTextData()
         dealOfTheDayItemRecyclerAdapter.setData(categoryItemList, context)
@@ -1081,7 +1081,8 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
         // For Four Photoes Adapter
-        fourPhotoesAdapter.setDataPhotes(TextData, image, context)
+        fourPhotoesAdapter.setDataPhotes(TextData, image, context, categoryName)
+        //  Log.d("Click",)
         recyclerViewPhotoes.layoutManager =
             GridLayoutManager(context, 2, RecyclerView.HORIZONTAL, false)
         recyclerViewPhotoes.adapter = fourPhotoesAdapter

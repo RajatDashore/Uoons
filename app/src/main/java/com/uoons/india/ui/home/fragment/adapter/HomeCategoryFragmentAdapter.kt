@@ -1,6 +1,8 @@
 package com.uoons.india.ui.home.fragment.adapter
 
 import android.content.Context
+import android.util.Log
+import android.util.Log.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,7 +67,10 @@ class HomeCategoryFragmentAdapter :
                 categoryItemList!![position].cId.toString(),
                 categoryItemList!![position].category.toString()
             )
+            Log.d("Click", "2 -> " + categoryItemList!![position].cId.toString())
+            Log.d("Click", "Type 2-> ${categoryItemList!![position].category.toString()}")
         })
+
 
         Picasso.get().load(imgList[position]).placeholder(R.drawable.ic_error)
             .error(R.drawable.ic_error)
@@ -73,11 +78,11 @@ class HomeCategoryFragmentAdapter :
 
 
         //  holder.bind(categoryItemList!![position].catIcon.toString())
-        url = "https://uoons.com/" + categoryItemList!![position].catIcon.toString()
+        //   url = "https://uoons.com/" + categoryItemList!![position].catIcon.toString()
         //     Log.e("TAG", "url: " + url)
         //  println("url:>>>>>>>>>>>>       " + url)
         //  var url1: String = url.replace("svg", "png")
-        holder.binding.ivCategory.loadSvg(url)
+        //     holder.binding.ivCategory.loadSvg(url)
         //   Log.d("url1",url1)
         // Glide.with(context).load([position]).centerCrop().into(holder.binding.ivCategory)
         // fetchSVG(context, url, holder.binding.ivCategory)
@@ -113,27 +118,29 @@ class HomeCategoryFragmentAdapter :
         }
     }
 
-    fun ImageView.loadSvg(url: String) {
-        // Create an ImageLoader with SvgDecoder enabled
-        val imageLoader = ImageLoader.Builder(this.context)
-            .components {
-                add(SvgDecoder.Factory())
-            }
-            .build()
+    /*  fun ImageView.loadSvg(url: String) {
+          // Create an ImageLoader with SvgDecoder enabled
+          val imageLoader = ImageLoader.Builder(this.context)
+              .components {
+                  add(SvgDecoder.Factory())
+              }
+              .build()
 
-        // Create an ImageRequest with the target as this ImageView
-        val request = ImageRequest.Builder(this.context)
-            .crossfade(true)
-            .scale(Scale.FIT)
-            .placeholder(R.drawable.ic_error) // Replace with your actual placeholder
-            .error(R.drawable.ic_error) // Replace with your actual error drawable
-            .data(url)
-            .target(this)
-            .build()
+          // Create an ImageRequest with the target as this ImageView
+          val request = ImageRequest.Builder(this.context)
+              .crossfade(true)
+              .scale(Scale.FIT)
+              .placeholder(R.drawable.ic_error) // Replace with your actual placeholder
+              .error(R.drawable.ic_error) // Replace with your actual error drawable
+              .data(url)
+              .target(this)
+              .build()
 
-        // Enqueue the request with the imageLoader
-        imageLoader.enqueue(request)
-    }
+          // Enqueue the request with the imageLoader
+          imageLoader.enqueue(request)
+      }
+
+     */
 
 
     /* fun fetchSVG(context: Context, url: String, image: ImageView) {

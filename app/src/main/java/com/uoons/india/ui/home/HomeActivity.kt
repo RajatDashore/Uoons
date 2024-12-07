@@ -37,15 +37,17 @@ import org.lsposed.lsparanoid.Obfuscate
 import java.lang.RuntimeException
 
 @Obfuscate
-class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeActivityNavigator{
+class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeActivityNavigator {
     override val bindingVariable: Int = BR.homeActivityVM
     override val layoutId: Int = R.layout.activity_home
     override val viewModelClass: Class<HomeActivityVM> = HomeActivityVM::class.java
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
     var pId: String = ""
-    private val debugModeSignature = "0722069da1de445ae2ab0a69931a57cf8c6460b7652c1913e021ed863e30fa4a"
-    private val releaseModeSignature = "94847dfbe1c115bd3201694fd606c0760b2401bb53b97866659f9933cbbc185e"
+    private val debugModeSignature =
+        "0722069da1de445ae2ab0a69931a57cf8c6460b7652c1913e021ed863e30fa4a"
+    private val releaseModeSignature =
+        "94847dfbe1c115bd3201694fd606c0760b2401bb53b97866659f9933cbbc185e"
 
     var appUpdateManager: AppUpdateManager? = null
     val RC_APP_UPDATE = 100
@@ -61,7 +63,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeAc
         checkAppUpdate()
         pId = AppPreference.getValue(PreferenceKeys.PROFILE_ID)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
         val navController = navHostFragment.navController
 
@@ -110,8 +113,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeAc
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_APP_UPDATE && resultCode != RESULT_OK){
-          showToast("Cancel Update")
+        if (requestCode == RC_APP_UPDATE && resultCode != RESULT_OK) {
+            showToast("Cancel Update")
         }
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
@@ -153,7 +156,13 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeAc
         reDirectNotification(type, title, body, id, name)
     }
 
-    private fun reDirectNotification(type: String, title: String, body: String, id: String, name: String) {
+    private fun reDirectNotification(
+        type: String,
+        title: String,
+        body: String,
+        id: String,
+        name: String
+    ) {
         when (type) {
             AppConstants.SingleProduct -> {
                 val bundle = bundleOf(AppConstants.PId to id)
@@ -162,41 +171,80 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeAc
                 navController.navigateUp()
                 navController.navigate(R.id.productDetailFragment, bundle)
             }
+
             AppConstants.Categories -> {
-                val bundle = bundleOf(AppConstants.ParentId to id, AppConstants.SubId to AppConstants.EMPTY, AppConstants.CName to name)
+                val bundle = bundleOf(
+                    AppConstants.ParentId to id,
+                    AppConstants.SubId to AppConstants.EMPTY,
+                    AppConstants.CName to name
+                )
                 val navController: NavController =
                     Navigation.findNavController(this@HomeActivity, R.id.nav_host_fragment)
                 navController.navigateUp()
                 navController.navigate(R.id.productDetailFragment, bundle)
             }
+
+            AppConstants.Jwellary -> {
+                val bundle = bundleOf(
+                    AppConstants.ParentId to id,
+                    AppConstants.SubId to AppConstants.EMPTY,
+                    AppConstants.CName to name
+                )
+                val navController: NavController =
+                    Navigation.findNavController(this@HomeActivity, R.id.nav_host_fragment)
+                navController.navigateUp()
+                navController.navigate(R.id.productDetailFragment, bundle)
+            }
+
+
             AppConstants.Slider -> {
-                val bundle = bundleOf(AppConstants.ParentId to AppConstants.Slider, AppConstants.SubId to id, AppConstants.CName to name)
+                val bundle = bundleOf(
+                    AppConstants.ParentId to AppConstants.Slider,
+                    AppConstants.SubId to id,
+                    AppConstants.CName to name
+                )
                 val navController: NavController =
                     Navigation.findNavController(this@HomeActivity, R.id.nav_host_fragment)
                 navController.navigateUp()
                 navController.navigate(R.id.productDetailFragment, bundle)
             }
+
             AppConstants.PriceStore -> {
-                val bundle = bundleOf(AppConstants.ParentId to AppConstants.PriceStore, AppConstants.SubId to id, AppConstants.CName to name)
+                val bundle = bundleOf(
+                    AppConstants.ParentId to AppConstants.PriceStore,
+                    AppConstants.SubId to id,
+                    AppConstants.CName to name
+                )
                 val navController: NavController =
                     Navigation.findNavController(this@HomeActivity, R.id.nav_host_fragment)
                 navController.navigateUp()
                 navController.navigate(R.id.productDetailFragment, bundle)
             }
+
             AppConstants.DealOfTheDay -> {
-                val bundle = bundleOf(AppConstants.ParentId to AppConstants.DealOfTheDay, AppConstants.SubId to id, AppConstants.CName to name)
+                val bundle = bundleOf(
+                    AppConstants.ParentId to AppConstants.DealOfTheDay,
+                    AppConstants.SubId to id,
+                    AppConstants.CName to name
+                )
                 val navController: NavController =
                     Navigation.findNavController(this@HomeActivity, R.id.nav_host_fragment)
                 navController.navigateUp()
                 navController.navigate(R.id.productDetailFragment, bundle)
             }
+
             AppConstants.NewArrivalProducts -> {
-                val bundle = bundleOf(AppConstants.ParentId to AppConstants.NewArrivalProducts, AppConstants.SubId to id, AppConstants.CName to name)
+                val bundle = bundleOf(
+                    AppConstants.ParentId to AppConstants.NewArrivalProducts,
+                    AppConstants.SubId to id,
+                    AppConstants.CName to name
+                )
                 val navController: NavController =
                     Navigation.findNavController(this@HomeActivity, R.id.nav_host_fragment)
                 navController.navigateUp()
                 navController.navigate(R.id.productDetailFragment, bundle)
             }
+
             AppConstants.OrderOfBundles -> {
                 val bundle = bundleOf(AppConstants.bundle_id to id)
                 val navController: NavController =
@@ -204,6 +252,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeAc
                 navController.navigateUp()
                 navController.navigate(R.id.orderFragment, bundle)
             }
+
             AppConstants.FetchOrder -> {
                 val bundle = bundleOf(AppConstants.PId to id)
                 val navController: NavController =
@@ -230,23 +279,31 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeAc
         }
     }
 
-    private fun checkAppUpdate(){
+    private fun checkAppUpdate() {
         appUpdateManager = AppUpdateManagerFactory.create(this@HomeActivity)
 
         val appUpdateInfoTask = appUpdateManager?.appUpdateInfo
 
         appUpdateInfoTask?.addOnSuccessListener { appUpdateInfo ->
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(
+                    AppUpdateType.FLEXIBLE
+                )
+            ) {
                 try {
-                    appUpdateManager?.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.FLEXIBLE, this@HomeActivity, RC_APP_UPDATE)
-                } catch (e : IntentSender.SendIntentException){
+                    appUpdateManager?.startUpdateFlowForResult(
+                        appUpdateInfo,
+                        AppUpdateType.FLEXIBLE,
+                        this@HomeActivity,
+                        RC_APP_UPDATE
+                    )
+                } catch (e: IntentSender.SendIntentException) {
                     throw RuntimeException(e)
                 }
             }
         }
 
         // Before starting an update, register a listener for updates.
-       // appUpdateManager?.registerListener(listener)
+        // appUpdateManager?.registerListener(listener)
     }
 
     val listener = InstallStateUpdatedListener { state ->
@@ -256,7 +313,11 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeAc
     }
 
     private fun popupSnackbarForCompleteUpdate() {
-        Snackbar.make(findViewById(android.R.id.content), "An update has just been downloaded.", Snackbar.LENGTH_INDEFINITE).apply {
+        Snackbar.make(
+            findViewById(android.R.id.content),
+            "An update has just been downloaded.",
+            Snackbar.LENGTH_INDEFINITE
+        ).apply {
             setAction("INSTALL") { appUpdateManager?.completeUpdate() }
             setActionTextColor(resources.getColor(R.color.primary_color))
             show()
@@ -293,22 +354,24 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeAc
         }
     */
 
-    fun showAlertDialogAndExitApp(message: String?) {
-        val alertDialog = AlertDialog.Builder(this@HomeActivity).create()
-        alertDialog.setTitle("Alert")
-        alertDialog.setMessage(message)
-        alertDialog.setButton(
-            AlertDialog.BUTTON_NEUTRAL, "OK"
-        ) { dialog, which ->
-            dialog.dismiss()
-            val intent = Intent(Intent.ACTION_MAIN)
-            intent.addCategory(Intent.CATEGORY_HOME)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
-            finish()
+    /*    fun showAlertDialogAndExitApp(message: String?) {
+            val alertDialog = AlertDialog.Builder(this@HomeActivity).create()
+            alertDialog.setTitle("Alert")
+            alertDialog.setMessage(message)
+            alertDialog.setButton(
+                AlertDialog.BUTTON_NEUTRAL, "OK"
+            ) { dialog, which ->
+                dialog.dismiss()
+                val intent = Intent(Intent.ACTION_MAIN)
+                intent.addCategory(Intent.CATEGORY_HOME)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+            }
+            alertDialog.show()
         }
-        alertDialog.show()
-    }
+
+     */
 
 }
 

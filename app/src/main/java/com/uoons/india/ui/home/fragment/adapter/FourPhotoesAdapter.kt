@@ -1,6 +1,7 @@
 package com.uoons.india.ui.home.fragment.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,10 +42,12 @@ class FourPhotoesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         textData: ArrayList<String>,
         imagelist: ArrayList<Int>,
         context: Context,
+        categoryItemList: ArrayList<DeshBoardItems>
     ) {
         this.textData = textData
         this.imagelist = imagelist
         this.context = context
+        this.categoryItemList = categoryItemList
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -65,9 +68,11 @@ class FourPhotoesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             lottieHolder.lottieImage.playAnimation()
             holder.itemView.setOnClickListener(View.OnClickListener {
                 customClickListener?.onItemClicked(
-                    categoryItemList!![0].cId.toString(),
-                    categoryItemList!![0].category.toString()
+                    categoryItemList!![position].cId.toString(),
+                    categoryItemList!![position].category.toString()
                 )
+                Log.d("Click", "6 -> ${categoryItemList!![position].cId.toString()}")
+                Log.d("Click", "6 -> ${categoryItemList!![position].category.toString()}")
                 Toast.makeText(context, "Clicked lottie", Toast.LENGTH_SHORT).show()
             })
         } else {
@@ -77,14 +82,24 @@ class FourPhotoesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     .load(CartisonUrl)
                     .into(simpleHolder.image)
                 simpleHolder.text.text = textData[position]
+
             } else {
                 Glide.with(holder.itemView.context)
                     .load(imagelist[position])
                     .into(simpleHolder.image)
                 simpleHolder.text.text = textData[position]
-                simpleHolder.itemView.setOnClickListener {
-                    Toast.makeText(context, "Clicked normal", Toast.LENGTH_SHORT).show()
-                }
+
+
+            }
+
+            simpleHolder.itemView.setOnClickListener {
+                customClickListener?.onItemClicked(
+                    categoryItemList!![position].cId.toString(),
+                    categoryItemList!![position].category.toString()
+                )
+                //   Log.d("Click", "7 -> ${categoryItemList!![position].cId.toString()}")
+                //Log.d("Click", "7 -> ${categoryItemList!![position].category.toString()}")
+
             }
         }
 
@@ -92,7 +107,8 @@ class FourPhotoesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return imagelist.size
+        Log.d("size","size${categoryItemList!!.size}")
+        return categoryItemList!!.size
     }
 
     override fun getItemViewType(position: Int): Int {

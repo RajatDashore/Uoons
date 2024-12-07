@@ -63,6 +63,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
         const val MORE_ITEMS_TYPE = 12
         const val TRENDING_NOW_TYPE = 13
         const val FOUR_IMAGES = 14
+        const val JWELLARYTYPE = 1
         const val SAAS_IMAGE_TYPE = 15
 
     }
@@ -185,6 +186,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                                 parentID.toString(),
                                 categoryName
                             )
+                            Log.d("Click", "3-> $CATEGORIES_TYPE")
+                        }
+
+                        JWELLARYTYPE -> {
+                            naviGateToCategoryItemsFragment(
+                                subId,
+                                parentID.toString(),
+                                categoryName
+                            )
+                            Log.d("Click", "4 ->  $JWELLARYTYPE")
                         }
 
                         SLIDERS_ONE_TYPE -> {
@@ -208,6 +219,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                                 parentID.toString(),
                                 categoryName
                             )
+
                         }
 
                         DEAL_OF_THE_DAY_TYPE -> {
@@ -392,19 +404,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                         AppPreference.addValue(PreferenceKeys.ONE_TIME_REQUEST, AppConstants.FALSE)
 
                     } else if (it.status.equals(AppConstants.FAILURE, ignoreCase = true)) {
-                        /*CommonUtils.showToastMessage(
+                        CommonUtils.showToastMessage(
                             requireContext(),
                             it.message.toString()
                         )
 
-                         */
                     } else {
-                        /*   CommonUtils.showToastMessage(
-                               requireContext(),
-                               resources.getString(R.string.error_in_fetching_data)
-                           )\
+                        CommonUtils.showToastMessage(
+                            requireContext(),
+                            resources.getString(R.string.error_in_fetching_data)
+                        )
 
-                         */
+
                     }
                 }
             }
@@ -414,17 +425,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
 
     override fun navigateToSaasFragment() {
 
-    }
-
-
-    override fun navigateToFourPhoto(
-        subID: String,
-        parentID: String,
-        categoryName: String,
-    ) {
-        if (mViewModel.navigator!!.checkIfInternetOn()) {
-
-        }
     }
 
 
@@ -534,6 +534,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                 R.id.action_homeFragment_to_productDetailFragment,
                 bundle
             )
+        } else {
+            mViewModel.navigator!!.showAlertDialog1Button(
+                AppConstants.Uoons,
+                resources.getString(R.string.please_check_internet_connection),
+                onClick = {})
+        }
+    }
+
+
+    override fun navigateToFourPhoto(
+        subID: String,
+        parentID: String,
+        categoryName: String,
+    ) {
+        if (mViewModel.navigator!!.checkIfInternetOn()) {
+            val bundle = bundleOf(
+                AppConstants.ParentId to parentID,
+                AppConstants.SubId to subID,
+                AppConstants.CName to categoryName
+            )
+            Log.d("Click", "10 -> Navigate")
+            navController?.navigate(R.id.action_homeFragment_to_productListFragment, bundle)
         } else {
             mViewModel.navigator!!.showAlertDialog1Button(
                 AppConstants.Uoons,
