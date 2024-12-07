@@ -144,6 +144,7 @@
     <string name="sponsored" translatable="false">Sponsored</string>
     <string name="search_innovation" translatable="false">Search innovations...</string>
     <string name="are_you_part_of" translatable="false">Are you the part of Start up India ?</string>
+    <string name="are_you_sure">Are you sure to submit the details. All the details will be used to show on the app.</string>
 
 
     <!-- TODO: Account Screen -->

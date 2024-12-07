@@ -12,7 +12,6 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
@@ -21,6 +20,7 @@ import androidx.core.content.ContextCompat;
 
 import com.uoons.india.R;
 
+/** @noinspection ALL*/
 @SuppressLint("AppCompatCustomView")
 public class ReadMoreTextView extends TextView {
 

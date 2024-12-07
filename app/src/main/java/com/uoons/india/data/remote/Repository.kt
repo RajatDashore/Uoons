@@ -53,7 +53,6 @@ abstract class Repository {
 
     abstract suspend fun getJwellaryData(
         channelCode: String,
-        versionCode: String,
     ): Either<Failure, DeshBoardModel>
 
     abstract suspend fun checkAPKUpdatedVersion(

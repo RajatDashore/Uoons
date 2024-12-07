@@ -4,7 +4,8 @@ import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
 object EndPoints {
-    const val JWELLERY = "api/getAllProductsByCategory?cat_id=445"
+    const val JWELLARY = "api/getAllProductsByCategory?cat_id=445"
+    const val FAKEIMAGEURL = "search?limit=10"
     const val SEND_OTP = "api/sendOTP"
     const val FORCE_UPDATE = "api/forceUpdate"
     const val OTP_VERIFICATION = "api/otpVerification"
@@ -17,7 +18,8 @@ object EndPoints {
     const val DESHBOARD_DATA = "api/homepageData"
     const val DESHBOARD_MORE_PRODUCTS = "api/dashboardAllProducts"
     const val HOME_PAGE_ITEMS_DATA = "api/getHomepageItemsData"
-    const val GET_ALL_CATEGORIES = "api/getAllCategories?offset=0"
+    const val GET_ALL_CATEGORIES =
+        "api/getAllCategories?offset=0"// this is only API working for data
     const val SEARCH_ALL_PRODUCTS = "api/searchAllProducts"
     const val ADD_RECENTLY_VIEW_PRODUCT = "api/addRecentyViewedProduct"
     const val PRODUCT_DETAIL = "api/productDetail"

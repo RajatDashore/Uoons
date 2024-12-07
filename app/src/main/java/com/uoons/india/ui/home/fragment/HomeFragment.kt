@@ -392,15 +392,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                         AppPreference.addValue(PreferenceKeys.ONE_TIME_REQUEST, AppConstants.FALSE)
 
                     } else if (it.status.equals(AppConstants.FAILURE, ignoreCase = true)) {
-                        CommonUtils.showToastMessage(
+                        /*CommonUtils.showToastMessage(
                             requireContext(),
                             it.message.toString()
                         )
+
+                         */
                     } else {
-                        CommonUtils.showToastMessage(
-                            requireContext(),
-                            resources.getString(R.string.error_in_fetching_data)
-                        )
+                        /*   CommonUtils.showToastMessage(
+                               requireContext(),
+                               resources.getString(R.string.error_in_fetching_data)
+                           )\
+
+                         */
                     }
                 }
             }

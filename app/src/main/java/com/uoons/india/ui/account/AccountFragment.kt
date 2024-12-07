@@ -57,6 +57,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
     lateinit var activity: Activity
     private val VALID = 0
     private val INVALID = 1
+    private var removeReg = false
 
     override fun init() {
         mViewModel.navigator = this
@@ -86,8 +87,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
             if (mViewModel.navigator!!.checkIfInternetOn()) {
                 callProfileAPI()
             } else {
-                mViewModel.navigator!!.showAlertDialog1Button(
-                    AppConstants.Uoons,
+                mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons,
                     resources.getString(R.string.please_check_internet_connection),
                     onClick = {})
             }
@@ -113,6 +113,14 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (requireActivity().intent.hasExtra("hideRegister")) {
+            removeReg = requireActivity().intent.getBooleanExtra("hideRegister", false)
+        }
+        if (removeReg) {
+            viewDataBinding.txvRegister.visibility = View.GONE
+        }
+
+
         Log.e(
             "onViewCreated",
             "onViewCreated_MOBILE_NO_MOBILE_NO:: " + AppPreference.getValue(PreferenceKeys.MOBILE_NO)
@@ -146,21 +154,19 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
             if (mViewModel.navigator!!.checkIfInternetOn()) {
                 mViewModel.getUserDetailsApiCall(requireContext())
             } else {
-                mViewModel.navigator!!.showAlertDialog1Button(
-                    AppConstants.Uoons,
+                mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons,
                     resources.getString(R.string.please_check_internet_connection),
                     onClick = {})
             }
 
             viewDataBinding.crdSignUp.visibility = View.GONE
             viewDataBinding.crdProfileIcon.setImageResource(R.drawable.image_gray_color)
-            viewDataBinding.txvMobileNumber.text =
-                NEW_MOBILE_NO
+            viewDataBinding.txvMobileNumber.text = NEW_MOBILE_NO
         }
 
-        viewDataBinding.toolbar.ivBackBtn.setOnClickListener(View.OnClickListener {
-            super.onBackClick()
-        })
+        viewDataBinding.toolbar.ivBackBtn.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
         viewDataBinding.toolbar.ivCartVector.setOnClickListener(View.OnClickListener {
             if (mViewModel.navigator!!.checkIfInternetOn()) {
@@ -257,15 +263,14 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
             } else {
                 FirebaseDynamicLinks.getInstance().createDynamicLink()
                     .setLongLink(Uri.parse(AppConstants.ShareReferralLinkProduct + AppConstants.NewReferralWebside))
-                    .buildShortDynamicLink()
-                    .addOnCompleteListener(requireActivity(),
+                    .buildShortDynamicLink().addOnCompleteListener(
+                        requireActivity(),
                         OnCompleteListener<ShortDynamicLink?> { task ->
                             try {
                                 if (task.isSuccessful) {
                                     // Short link created
                                     val shortLink: Uri? = task.result.shortLink
-                                    val flowchartLink: Uri? = task.result.previewLink
-                                    /*
+                                    val flowchartLink: Uri? = task.result.previewLink/*
                                                                         Log.e(
                                                                             "shearLink",
                                                                             "shortLink:- $shortLink and flowchartLink:- $flowchartLink"
@@ -286,8 +291,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
                                         NEW_MOBILE_NO
                                     }
 
-                                    val habitnumber =
-                                        "<b>$referralCode</b>"
+                                    val habitnumber = "<b>$referralCode</b>"
 
                                     val s = buildSpannedString {
                                         bold { append(referralCode) }
@@ -296,19 +300,12 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
 
                                     shareIntent.putExtra(
                                         Intent.EXTRA_TEXT,
-                                        "Hi, " + userName + " has sent you an exclusive gift "
-                                                + unicodeHappy + unicodeGift + unicodeHappy + "\n" + "\n"
-                                                + "You earn 5000 coins " + unicodeFire + " using the code:\n" +
-                                                "*" + referralCode + "*" + "\n" + "\n"
-                                                + "Join Uoons and shop Best Quality Products at Lowest Prices and Free Delivery.\n" + "\n"
-                                                + "Download now " + unicodePointDownFinger + " :\n"
-                                                + shortLink.toString()
+                                        "Hi, " + userName + " has sent you an exclusive gift " + unicodeHappy + unicodeGift + unicodeHappy + "\n" + "\n" + "You earn 5000 coins " + unicodeFire + " using the code:\n" + "*" + referralCode + "*" + "\n" + "\n" + "Join Uoons and shop Best Quality Products at Lowest Prices and Free Delivery.\n" + "\n" + "Download now " + unicodePointDownFinger + " :\n" + shortLink.toString()
                                     )
                                     shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                                     startActivity(
                                         Intent.createChooser(
-                                            shareIntent,
-                                            AppConstants.ShareUsing
+                                            shareIntent, AppConstants.ShareUsing
                                         )
                                     )
                                 } else {
@@ -328,8 +325,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
         if (mViewModel.navigator!!.checkIfInternetOn()) {
             navController?.navigate(R.id.action_accountFragment_to_settingsFragment)
         } else {
-            mViewModel.navigator!!.showAlertDialog1Button(
-                AppConstants.Uoons,
+            mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons,
                 resources.getString(R.string.please_check_internet_connection),
                 onClick = {})
         }
@@ -363,8 +359,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
             val bundle = bundleOf("uri" to AppConstants.TERM_AND_CONDITION)
             navController?.navigate(R.id.action_accountFragment_to_legalAndPoliciesFragment, bundle)
         } else {
-            mViewModel.navigator!!.showAlertDialog1Button(
-                AppConstants.Uoons,
+            mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons,
                 resources.getString(R.string.please_check_internet_connection),
                 onClick = {})
         }
@@ -375,8 +370,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
             val bundle = bundleOf("uri" to AppConstants.PRIVACY_POLICY)
             navController?.navigate(R.id.action_accountFragment_to_legalAndPoliciesFragment, bundle)
         } else {
-            mViewModel.navigator!!.showAlertDialog1Button(
-                AppConstants.Uoons,
+            mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons,
                 resources.getString(R.string.please_check_internet_connection),
                 onClick = {})
         }
@@ -384,9 +378,8 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
 
     override fun GoToRegister() {
         if (view != null) {
-            //   val intent = Intent(activity, Register::class.java)
-            // startActivity(intent)
-          //  navController.navigate(R.id.)
+            val bundle = bundleOf("register" to AppConstants.Register)
+            navController?.navigate(R.id.action_accountFragment_to_registerFragment, bundle)
         }
     }
 
@@ -394,18 +387,16 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
     override fun getUserDetailsData() {
         if (view != null) {
             mViewModel.getUserDetailsResponse.observe(
-                viewLifecycleOwner,
-                Observer<UserDetailsModel> {
-                    if (it != null) {
-                        setUserDetails(it)
-                    } else {
-                        Toast.makeText(
-                            requireActivity(),
-                            AppConstants.ErrorFetching,
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                })
+                viewLifecycleOwner
+            ) {
+                if (it != null) {
+                    setUserDetails(it)
+                } else {
+                    Toast.makeText(
+                        requireActivity(), AppConstants.ErrorFetching, Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
         }
     }
 
@@ -465,8 +456,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountFragmentVM>(
             )
 
         }
-    */
-    /*
+    *//*
         fun savename(context: Context,pid: String) {
             getEncryptedSharedprefs(context).edit()
                 .putString("USER_NAME",pid)

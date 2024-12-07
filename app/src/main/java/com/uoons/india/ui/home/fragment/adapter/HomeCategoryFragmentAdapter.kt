@@ -5,7 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import coil3.ImageLoader
+import coil3.request.ImageRequest
+import coil3.request.crossfade
+import coil3.request.error
+import coil3.request.placeholder
+import coil3.request.target
+import coil3.size.Scale
+import coil3.svg.SvgDecoder
 import com.squareup.picasso.Picasso
 import com.uoons.india.R
 import com.uoons.india.databinding.RowHomeCategoryAdapterBinding
@@ -24,7 +33,7 @@ class HomeCategoryFragmentAdapter :
     private var httpClient: OkHttpClient? = null
     private var imgList: ArrayList<Int> = arrayListOf<Int>()
 
-    //   lateinit var url: String
+    private lateinit var url: String
 
 
     interface OnItemClickListener {
@@ -58,24 +67,20 @@ class HomeCategoryFragmentAdapter :
             )
         })
 
-        if (position < imgList.size) {
-            Picasso.get().load(imgList[position]).placeholder(R.drawable.ic_error)
-                .error(R.drawable.ic_error)
-                .into(holder.binding.ivCategory)
-        } else {
-            holder.binding.ivCategory.setImageResource(R.drawable.ic_error)
-        }
+        Picasso.get().load(imgList[position]).placeholder(R.drawable.ic_error)
+            .error(R.drawable.ic_error)
+            .into(holder.binding.ivCategory)
 
 
         //  holder.bind(categoryItemList!![position].catIcon.toString())
-        // url = "https://uoons.com/" + categoryItemList!![position].catIcon.toString()
+        url = "https://uoons.com/" + categoryItemList!![position].catIcon.toString()
         //     Log.e("TAG", "url: " + url)
         //  println("url:>>>>>>>>>>>>       " + url)
         //  var url1: String = url.replace("svg", "png")
-        //  holder.binding.ivCategory.loadSvg(url)
+        holder.binding.ivCategory.loadSvg(url)
         //   Log.d("url1",url1)
-//       Glide.with(context).load(arrImg[position]).centerCrop().into(holder.binding.ivCategory)
-        //  fetchSVG(context, url, holder.binding.ivCategory)
+        // Glide.with(context).load([position]).centerCrop().into(holder.binding.ivCategory)
+        // fetchSVG(context, url, holder.binding.ivCategory)
         //  Log.d("UrlPhoto", url)
     }
 
@@ -108,28 +113,27 @@ class HomeCategoryFragmentAdapter :
         }
     }
 
-    /* fun ImageView.loadSvg(url: String) {
-         // Create an ImageLoader with SvgDecoder enabled
-         val imageLoader = ImageLoader.Builder(this.context)
-             .components {
-                 add(SvgDecoder.Factory())
-             }
-             .build()
+    fun ImageView.loadSvg(url: String) {
+        // Create an ImageLoader with SvgDecoder enabled
+        val imageLoader = ImageLoader.Builder(this.context)
+            .components {
+                add(SvgDecoder.Factory())
+            }
+            .build()
 
-         // Create an ImageRequest with the target as this ImageView
-         val request = ImageRequest.Builder(this.context)
-             .crossfade(true)
-             .scale(Scale.FIT)
-             .placeholder(R.drawable.ic_error) // Replace with your actual placeholder
-             .error(R.drawable.ic_error) // Replace with your actual error drawable
-             .data(url)
-             .target(this)
-             .build()
+        // Create an ImageRequest with the target as this ImageView
+        val request = ImageRequest.Builder(this.context)
+            .crossfade(true)
+            .scale(Scale.FIT)
+            .placeholder(R.drawable.ic_error) // Replace with your actual placeholder
+            .error(R.drawable.ic_error) // Replace with your actual error drawable
+            .data(url)
+            .target(this)
+            .build()
 
-         // Enqueue the request with the imageLoader
-         imageLoader.enqueue(request)
-     }
-     */
+        // Enqueue the request with the imageLoader
+        imageLoader.enqueue(request)
+    }
 
 
     /* fun fetchSVG(context: Context, url: String, image: ImageView) {

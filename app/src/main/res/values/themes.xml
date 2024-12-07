@@ -15,6 +15,15 @@
         <!-- Customize your theme here. -->
     </style>
 
+    // for showing the Dialog from the bottom
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
     <!-- Rating bar style -->
     <style name="MyRatingBar" parent="Base.Widget.AppCompat.RatingBar.Small">
         <item name="colorControlNormal">@color/gray</item>

@@ -88,6 +88,7 @@ object AppConstants {
     const val nine = "9"
     const val hash = "#"
     const val PERCENTAGE = "%"
+    const val Register = "register"
 
     const val QuestionAnser = "Questions and Answers"
 
@@ -158,7 +159,7 @@ object AppConstants {
     const val No_Order_Found = "No order found"
     const val Authorization_Failed = "Authorization Failed"
     const val Auth = "Auth"
-    const val Jwellary = "10"
+    const val Jwellary = "jwellary"
     const val SingleProduct = "101"
     const val Categories = "1"
     const val Slider = "2"

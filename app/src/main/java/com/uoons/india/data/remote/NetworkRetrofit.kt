@@ -111,10 +111,15 @@ open class NetworkRetrofit : Repository() {
         return httpClientBuilder.build()
     }
 
+
     override suspend fun getJwellaryData(
-        channelCode: String
+        channelCode: String,
     ): Either<Failure, DeshBoardModel> {
-        TODO("Not yet implemented")
+        return callAPI { apiService.JwellaryData(channelCode) }
+    }
+
+    override suspend fun getDeshBoardData(channelCode: String): Either<Failure, DeshBoardModel> {
+        return callAPI { apiService.getDeshBoardData(channelCode) }
     }
 
     override suspend fun checkAPKUpdatedVersion(
@@ -174,9 +179,6 @@ open class NetworkRetrofit : Repository() {
         return callAPI { apiService.getUserDetails(channelCode) }
     }
 
-    override suspend fun getDeshBoardData(channelCode: String): Either<Failure, DeshBoardModel> {
-        return callAPI { apiService.getDeshBoardData(channelCode) }
-    }
 
     override suspend fun getMoreDeshBoardProducts(
         channelCode: String,

@@ -37,7 +37,7 @@ import kotlin.system.exitProcess
 @Obfuscate
 class SplashActivity_two : Activity() {
     lateinit var activity: Activity
-      val versionCode = BuildConfig.VERSION_CODE
+    val versionCode = BuildConfig.VERSION_CODE
     private val Debug_Mode_Signature =
         "0722069da1de445ae2ab0a69931a57cf8c6460b7652c1913e021ed863e30fa4a"
     private val Release_Mode_Signature =
@@ -49,34 +49,34 @@ class SplashActivity_two : Activity() {
         setContentView(R.layout.activity_splash)
         intent = Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)
-/*
-        if (checkForInternet(this)) {
+        /*
+                if (checkForInternet(this)) {
 
-            val myUtils = MyUtils()
-            if (!myUtils.validSignature(
-                    applicationContext,
-                    Debug_Mode_Signature.toString().uppercase(),
-                    Release_Mode_Signature.toString().uppercase()
-                )
-            ) {
-                showAlertDialogAndExitApp("Application Signature is not matched. You can not use this app.")
-            }
-
-
-            val rootBeer = RootBeer(this@SplashActivity_two)
-            if (rootBeer.isRooted) {
-                showAlertDialogAndExitApp("This device is rooted. You can not use this app.")
-            }else{
-
-//                apiCall()
-                runSplashScreenTimer()
-            }
-
-         } else {
+                    val myUtils = MyUtils()
+                    if (!myUtils.validSignature(
+                            applicationContext,
+                            Debug_Mode_Signature.toString().uppercase(),
+                            Release_Mode_Signature.toString().uppercase()
+                        )
+                    ) {
+                        showAlertDialogAndExitApp("Application Signature is not matched. You can not use this app.")
+                    }
 
 
-        }
-*/
+                    val rootBeer = RootBeer(this@SplashActivity_two)
+                    if (rootBeer.isRooted) {
+                        showAlertDialogAndExitApp("This device is rooted. You can not use this app.")
+                    }else{
+
+        //                apiCall()
+                        runSplashScreenTimer()
+                    }
+
+                 } else {
+
+
+                }
+        */
 
         try {
             throw Exception("testing SDK setup.")
@@ -92,7 +92,6 @@ class SplashActivity_two : Activity() {
 
 
     }
-
 
 
     fun runSplashScreenTimer() {
@@ -120,45 +119,63 @@ class SplashActivity_two : Activity() {
         val alertDialog = builder.create()
         alertDialog.show()
     }
+
     fun apiCall() {
-        Log.e(TAG, "apiCall:------ "+AppConstants.CHANNEL_MODE+"  =-=   "+versionCode.toString() )
-        val apiInterface = ApiClient.create().getUserList(AppConstants.CHANNEL_MODE,versionCode.toString())
+        Log.e(
+            TAG,
+            "apiCall:------ " + AppConstants.CHANNEL_MODE + "  =-=   " + versionCode.toString()
+        )
+        val apiInterface =
+            ApiClient.create().getUserList(AppConstants.CHANNEL_MODE, versionCode.toString())
         apiInterface.enqueue(object : Callback<ForceUpdateData> {
-            override fun onResponse(call: Call<ForceUpdateData>, response: Response<ForceUpdateData>) {
+            override fun onResponse(
+                call: Call<ForceUpdateData>,
+                response: Response<ForceUpdateData>,
+            ) {
 
                 try {
-                    Log.e(TAG, "response.----: "+ response.body()?.toString())
+                    Log.e(TAG, "response.----: " + response.body()?.toString())
 
-                    Log.e(TAG, "response.body()?.forceUpdateApp: "+ response.body()?.forceUpdateApp)
+                    Log.e(
+                        TAG,
+                        "response.body()?.forceUpdateApp: " + response.body()?.forceUpdateApp
+                    )
                     val versionCodeAPI = response.body()?.playStoreVersionCode
                     val versionCodeRequest: String = versionCode.toString()
-                    Log.e(TAG, "versionCodeAPI:------------     "+versionCodeAPI)
-                    Log.e(TAG, "versionCodeRequest:------------     "+versionCodeRequest)
+                    Log.e(TAG, "versionCodeAPI:------------     " + versionCodeAPI)
+                    Log.e(TAG, "versionCodeRequest:------------     " + versionCodeRequest)
                     if (versionCodeRequest == versionCodeAPI) {
 
-                        Log.e(TAG, "versionCodeRequest == versionCodeAPI: "  )
+                        Log.e(TAG, "versionCodeRequest == versionCodeAPI: ")
                         if (CommonUtils.isStringNullOrBlank(AppPreference.getValue(PreferenceKeys.GET_STARTED))) {
                             ActivityNavigator.clearAllActivity(
                                 this@SplashActivity_two,
                                 SelectLanguageActivity::class.java
                             )
                         } else {
-                            ActivityNavigator.clearAllActivity(this@SplashActivity_two, HomeActivity::class.java)
+                            ActivityNavigator.clearAllActivity(
+                                this@SplashActivity_two,
+                                HomeActivity::class.java
+                            )
                         }
                     } else if (true == response.body()?.forceUpdateApp) {
-                        Log.e(TAG, "else if: "+response.body()?.forceUpdateApp )
-                        Log.e(TAG, "true == response.body()?.forceUpdateApp"  )
+                        Log.e(TAG, "else if: " + response.body()?.forceUpdateApp)
+                        Log.e(TAG, "true == response.body()?.forceUpdateApp")
 
                         DialogConstant.showCheckUpdateDialog(this@SplashActivity_two,
                             resources.getString(R.string.please_update_this_app),
                             onClick1 = {
-                                if (CommonUtils.isStringNullOrBlank(AppPreference.getValue(PreferenceKeys.GET_STARTED))) {
+                                if (CommonUtils.isStringNullOrBlank(
+                                        AppPreference.getValue(
+                                            PreferenceKeys.GET_STARTED
+                                        )
+                                    )
+                                ) {
                                     ActivityNavigator.clearAllActivity(
                                         this@SplashActivity_two,
                                         SelectLanguageActivity::class.java
                                     )
-                                }
-                                else {
+                                } else {
                                     ActivityNavigator.clearAllActivity(
                                         this@SplashActivity_two,
                                         HomeActivity::class.java
@@ -193,12 +210,10 @@ class SplashActivity_two : Activity() {
                         showAlertDialogAndupdateApp("Update")
 
 
+                    } else {
 
 
-                     } else {
-
-
-                     }
+                    }
 
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -218,7 +233,8 @@ class SplashActivity_two : Activity() {
     private fun checkForInternet(context: Context): Boolean {
 
         // register activity with the connectivity manager service
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         // if the android version is equal to M
         // or greater we need to use the
