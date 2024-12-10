@@ -41,7 +41,7 @@ class NewArrivalsItemRecyclerAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int, type: Int) {
         holder.bind(categoryItemList!![position])
 
-        holder.binding.ivItemsImage.setOnClickListener(View.OnClickListener {
+        holder.itemView.setOnClickListener(View.OnClickListener {
             customProductIdClickListener?.onProductIdClicked(categoryItemList!![position].pid.toString())
         })
     }

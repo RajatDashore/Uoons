@@ -49,7 +49,7 @@ class HomeRecentlyViewRecyclerAdapter : BaseRecyclerAdapter<RowHomeRecentlyViews
 //            Log.e("HomeRecentlyViewRecyclerAdapter","Exception:- $e")
         }
 
-        holder.binding.ivItemsImage.setOnClickListener(View.OnClickListener {
+        holder.itemView.setOnClickListener(View.OnClickListener {
             customProductIdClickListener?.onProductIdClicked(recentlyViewsItemList!![position].pid.toString())
         })
     }

@@ -45,7 +45,7 @@ class DealOfTheDayItemRecyclerAdapter :
         holder.bind(bestSellerItemList!![position])
      //   holder.binding.ivItemsImage.setImageResource(imgList[position])
 
-        holder.binding.ivItemsImage.setOnClickListener {
+        holder.itemView.setOnClickListener {
             customProductIdClickListener?.onProductIdClicked(bestSellerItemList!![position].pid.toString())
         }
     }

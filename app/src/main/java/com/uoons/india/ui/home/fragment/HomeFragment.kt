@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.widget.NestedScrollView
 import androidx.navigation.NavController
@@ -163,15 +164,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
 
 
         // This code is causing in problem of the laoding in that four images on the Home UI
-        /*   viewDataBinding.refreshLayout.setOnRefreshListener {
-               viewDataBinding.refreshLayout.isRefreshing = false
-               visit = 0
-               mViewModel.getDeshBoardAPICaLL()
-           }
+        viewDataBinding.refreshLayout.setOnRefreshListener {
+            viewDataBinding.refreshLayout.isRefreshing = false
+            visit = 0
+            mViewModel.getDeshBoardAPICaLL()
+        }
 
-       viewDataBinding.refreshLayout.setColorSchemeColors(requireContext().getColor(R.color.primary_color))
+        viewDataBinding.refreshLayout.setColorSchemeColors(requireContext().getColor(R.color.primary_color))
 
-         */
 
 
 
@@ -357,6 +357,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                         mViewModel.navigator!!.showAlertDialog1Button(
                             AppConstants.Uoons,
                             resources.getString(R.string.please_check_internet_connection),
+                            // Toast.makeText(context,"Hello",Toast.Length)
                             onClick = {})
                     }
                 }

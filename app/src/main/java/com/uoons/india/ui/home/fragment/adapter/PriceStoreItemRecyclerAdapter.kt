@@ -42,7 +42,7 @@ class PriceStoreItemRecyclerAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int, type: Int) {
         holder.bind(priceStoreItemList!![position])
 
-        holder.binding.crdPriceStore.setOnClickListener(View.OnClickListener {
+        holder.itemView.setOnClickListener(View.OnClickListener {
             customClickListener?.onItemClicked(priceStoreItemList!![position].id.toString(),priceStoreItemList!![position].title.toString())
         })
     }

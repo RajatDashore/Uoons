@@ -62,7 +62,7 @@ class HomeCategoryFragmentAdapter :
         alpha.duration = 0
         alpha.fillAfter = true
 
-        holder.binding.cstLayout.setOnClickListener(View.OnClickListener {
+        holder.itemView.setOnClickListener(View.OnClickListener {
             customClickListener?.onItemClicked(
                 categoryItemList!![position].cId.toString(),
                 categoryItemList!![position].category.toString()

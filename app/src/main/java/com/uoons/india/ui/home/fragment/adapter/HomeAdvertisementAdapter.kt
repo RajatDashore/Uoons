@@ -41,7 +41,7 @@ class HomeAdvertisementAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int, type: Int) {
         holder.bind(advertisementItemList!![position])
 
-        holder.binding.crdAdertisement.setOnClickListener(View.OnClickListener {
+        holder.itemView.setOnClickListener(View.OnClickListener {
             customProductIdClickListener?.onProductIdClicked(
                 advertisementItemList!![position].id.toString(),
                 advertisementItemList!![position].sponsoredBy.toString()

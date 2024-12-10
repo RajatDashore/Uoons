@@ -26,7 +26,7 @@ class SliderOneAdapter : SliderViewAdapter<SliderOneAdapter.ViewHolder>() {
         this.customClickListener = mItemClick
     }
 
-    fun setData(data:  ArrayList<DeshBoardItems>, context: Context){
+    fun setData(data: ArrayList<DeshBoardItems>, context: Context) {
         this.bennerItemList = data
         this.context = context
     }
@@ -37,26 +37,43 @@ class SliderOneAdapter : SliderViewAdapter<SliderOneAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup): ViewHolder {
-        return ViewHolder(RowHomeSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(
+            RowHomeSliderBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     //this method is binding the data on the list
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItems(bennerItemList!![position])
-        if (bennerItemList!![position].mobileImage.isNullOrEmpty()){
-            CommonUtils.loadImage(  holder.binding.ivItemsImage, bennerItemList!![position].image,   holder.binding.ivItemsImage.id)
-        }else{
-            CommonUtils.loadImage(  holder.binding.ivItemsImage, bennerItemList!![position].mobileImage,   holder.binding.ivItemsImage.id)
+        if (bennerItemList!![position].mobileImage.isNullOrEmpty()) {
+            CommonUtils.loadImage(
+                holder.binding.ivItemsImage,
+                bennerItemList!![position].image,
+                holder.binding.ivItemsImage.id
+            )
+        } else {
+            CommonUtils.loadImage(
+                holder.binding.ivItemsImage,
+                bennerItemList!![position].mobileImage,
+                holder.binding.ivItemsImage.id
+            )
         }
 
-        holder.binding.ivItemsImage.setOnClickListener{
-            customClickListener?.onItemClicked(bennerItemList!![position].catId.toString(),
-                bennerItemList!![position].type.toString())
+        holder.itemView.setOnClickListener {
+            customClickListener?.onItemClicked(
+                bennerItemList!![position].catId.toString(),
+                bennerItemList!![position].type.toString()
+            )
         }
     }
 
-    class ViewHolder(val binding: RowHomeSliderBinding): SliderViewAdapter.ViewHolder(binding.root){
-        fun bindItems(data: DeshBoardItems){
+    class ViewHolder(val binding: RowHomeSliderBinding) :
+        SliderViewAdapter.ViewHolder(binding.root) {
+        fun bindItems(data: DeshBoardItems) {
             binding.homeBannerItems = data
         }
     }
