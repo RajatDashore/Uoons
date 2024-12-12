@@ -112,11 +112,13 @@ open class NetworkRetrofit : Repository() {
     }
 
 
-    override suspend fun getJwellaryData(
-        channelCode: String,
-    ): Either<Failure, DeshBoardModel> {
-        return callAPI { apiService.JwellaryData(channelCode) }
-    }
+    /*  override suspend fun getJwellaryData(
+          channelCode: String,
+      ): Either<Failure, DeshBoardModel> {
+          return callAPI { apiService.JwellaryData(channelCode) }
+      }
+
+     */
 
     override suspend fun getDeshBoardData(channelCode: String): Either<Failure, DeshBoardModel> {
         return callAPI { apiService.getDeshBoardData(channelCode) }

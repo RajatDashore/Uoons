@@ -51,9 +51,10 @@ abstract class Repository {
 
     object get : NetworkRetrofit()
 
-    abstract suspend fun getJwellaryData(
-        channelCode: String,
-    ): Either<Failure, DeshBoardModel>
+    /* abstract suspend fun getJwellaryData(
+         channelCode: String,
+     ): Either<Failure, DeshBoardModel>
+     */
 
     abstract suspend fun checkAPKUpdatedVersion(
         channelCode: String,

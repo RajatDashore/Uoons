@@ -103,6 +103,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_margin="@dimen/_43sdp"
+                    android:contentDescription="TODO"
                     app:layout_constraintTop_toBottomOf="@+id/rcvSubCategories"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

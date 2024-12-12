@@ -480,6 +480,7 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding, ProductList
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setWishListData(getWishListDataModel: GetWishListDataModel) {
         if (getWishListDataModel.status.equals(AppConstants.SUCCESS, ignoreCase = true)){
             viewDataBinding.toolbar.crdCountWishList.visibility = View.VISIBLE

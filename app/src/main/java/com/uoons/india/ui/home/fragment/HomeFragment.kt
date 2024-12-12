@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.widget.NestedScrollView
 import androidx.navigation.NavController
@@ -64,7 +63,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
         const val MORE_ITEMS_TYPE = 12
         const val TRENDING_NOW_TYPE = 13
         const val FOUR_IMAGES = 14
-        const val JWELLARYTYPE = 1
+        const val JWELLARY_TYPE = 1
         const val SAAS_IMAGE_TYPE = 15
 
     }
@@ -77,7 +76,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
             currentPage = 1
             if (mViewModel.navigator!!.checkIfInternetOn()) {
                 mViewModel.getDeshBoardAPICaLL()
-                mViewModel.getJwellaryData()
                 //   viewDataBinding.refreshLayout.visibility = View.GONE
             } else {
                 mViewModel.navigator!!.showAlertDialog1Button(
@@ -88,8 +86,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
         } else {
             if (dashBoardData == null) {
                 dashBoardData = DashBoardDataListSingleton.getDastBoardData()
+                dashBoardJwellary = DashBoardDataListSingleton.getJwellaryData()
                 moreProductsItemList = DashBoardDataListSingleton.getMoreProductsItemList()
             }
+            //  setJwellaryData(dashBoardJwellary!!)
             setAdapterData(dashBoardData!!)
             setMoreProductsAdapterDataItems()
         }
@@ -189,13 +189,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                             Log.d("Click", "3-> $CATEGORIES_TYPE")
                         }
 
-                        JWELLARYTYPE -> {
+                        JWELLARY_TYPE -> {
                             naviGateToCategoryItemsFragment(
                                 subId,
                                 parentID.toString(),
                                 categoryName
                             )
-                            Log.d("Click", "4 ->  $JWELLARYTYPE")
+                            Log.d("Click", "4 ->  $JWELLARY_TYPE")
                         }
 
                         SLIDERS_ONE_TYPE -> {
@@ -400,8 +400,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
             mViewModel.fourImageDataResponse.observe(viewLifecycleOwner) {
                 if (it != null) {
                     if (it.status.equals(AppConstants.SUCCESS, ignoreCase = true)) {
-                        dashBoardData = it
+                        dashBoardJwellary = it
                         DashBoardDataListSingleton.setJwellaryData(dashBoardJwellary!!)
+                        Log.d("result", "${dashBoardJwellary!!.Data[1].items}")
                         AppPreference.addValue(PreferenceKeys.ONE_TIME_REQUEST, AppConstants.FALSE)
 
                     } else if (it.status.equals(AppConstants.FAILURE, ignoreCase = true)) {
@@ -456,9 +457,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
     private fun setAdapterData(data: DeshBoardModel) {
         deshBoardRecyclerAdapter.setItemsList(data, requireContext())
         viewDataBinding.deshBoardViewRecycler.adapter = deshBoardRecyclerAdapter
-
         viewDataBinding.shimmerLayout.stopShimmer()
         viewDataBinding.shimmerLayout.visibility = View.GONE
+    }
+
+    private fun setJwellaryData(data: DeshBoardModel) {
+        deshBoardRecyclerAdapter.setJwellaryItemsList(data)
     }
 
     private fun setMoreProductsAdapterData(homePageMoreItemsDataModel: HomePageMoreItemsDataModel) {
@@ -578,6 +582,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentRecyclerVM>()
                 AppConstants.SubId to subID,
                 AppConstants.CName to categoryName
             )
+            Log.d("bundle","${AppConstants.ParentId to parentID}")
             navController?.navigate(R.id.action_homeFragment_to_productListFragment, bundle)
         } else {
             mViewModel.navigator!!.showAlertDialog1Button(

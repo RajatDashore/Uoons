@@ -2,21 +2,13 @@ package com.uoons.india.ui.home.fragment.adapter
 
 import android.content.Context
 import android.util.Log
-import android.util.Log.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import coil3.ImageLoader
-import coil3.request.ImageRequest
-import coil3.request.crossfade
-import coil3.request.error
-import coil3.request.placeholder
-import coil3.request.target
-import coil3.size.Scale
-import coil3.svg.SvgDecoder
+
 import com.squareup.picasso.Picasso
 import com.uoons.india.R
 import com.uoons.india.databinding.RowHomeCategoryAdapterBinding
@@ -62,14 +54,14 @@ class HomeCategoryFragmentAdapter :
         alpha.duration = 0
         alpha.fillAfter = true
 
-        holder.itemView.setOnClickListener(View.OnClickListener {
+        holder.itemView.setOnClickListener {
             customClickListener?.onItemClicked(
                 categoryItemList!![position].cId.toString(),
                 categoryItemList!![position].category.toString()
             )
-            Log.d("Click", "2 -> " + categoryItemList!![position].cId.toString())
-            Log.d("Click", "Type 2-> ${categoryItemList!![position].category.toString()}")
-        })
+//            Log.d("Click", "2 -> " + categoryItemList!![position].cId.toString())
+//            Log.d("Click", "Type 2-> ${categoryItemList!![position].category.toString()}")
+        }
 
 
         Picasso.get().load(imgList[position]).placeholder(R.drawable.ic_error)

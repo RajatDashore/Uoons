@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/_140sdp"
     android:layout_margin="@dimen/_10sdp"
+    android:fitsSystemWindows="true"
     android:background="@color/primary_color"
     android:foreground="?attr/selectableItemBackground"
     android:padding="@dimen/_10sdp">

@@ -16,7 +16,7 @@ object DashBoardDataListSingleton {
         this.dashBoardData = dashBoardData
     }
 
-    fun setJwellaryData(deshBoardJwellary: DeshBoardModel?){
+    fun setJwellaryData(deshBoardJwellary: DeshBoardModel?) {
         this.deshBoardJwellary = deshBoardJwellary
     }
 
@@ -27,6 +27,10 @@ object DashBoardDataListSingleton {
 
     fun getDastBoardData(): DeshBoardModel? {
         return dashBoardData
+    }
+
+    fun getJwellaryData(): DeshBoardModel? {
+        return deshBoardJwellary
     }
 
     fun getMoreProductsItemList(): ArrayList<MoreProducts> {

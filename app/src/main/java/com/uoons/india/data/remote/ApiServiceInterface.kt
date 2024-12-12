@@ -105,10 +105,12 @@ import retrofit2.http.Query
 @Obfuscate
 interface ApiServiceInterface {
 
-    @GET(JWELLARY)
-    suspend fun JwellaryData(
-        @Header("Channel-Code") ChannelCode: String
-    ): DeshBoardModel
+    /*  @GET(JWELLARY)
+      suspend fun JwellaryData(
+          @Header("Channel-Code") ChannelCode: String
+      ): DeshBoardModel
+
+     */
 
     @POST(SEND_OTP)
     suspend fun login(

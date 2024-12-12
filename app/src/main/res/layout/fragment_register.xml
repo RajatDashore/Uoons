@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_color"
     tools:context=".ui.account.Register">
-
-
 
 
     <androidx.core.widget.NestedScrollView
@@ -38,12 +37,14 @@
 
                 <ImageView
                     android:id="@+id/backButton"
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
                     android:background="?attr/selectableItemBackground"
+                    android:contentDescription="TODO"
                     android:src="@drawable/ic_left_side_arrow"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/text"
@@ -52,13 +53,14 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:gravity="center"
                     android:text="Select logo"
-                    android:visibility="visible"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="@id/ivlogo"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="@id/ivlogo"
-                    app:layout_constraintTop_toBottomOf="@id/ivlogo" />
+                    app:layout_constraintTop_toBottomOf="@id/ivlogo"
+                    tools:ignore="HardcodedText" />
 
                 <ImageView
                     android:id="@+id/ivlogo"
@@ -232,7 +234,8 @@
                     android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/viewEnterRefferalCode" />
+                    app:layout_constraintTop_toBottomOf="@+id/viewEnterRefferalCode"
+                    tools:ignore="HardcodedText" />
 
 
                 <View
@@ -249,6 +252,32 @@
 
 
                 <TextView
+                    android:id="@+id/txtBanner"
+                    android:text="Select banner"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/viewRefferalCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:id="@+id/ivBanner"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_75sdp"
+                    android:src="@drawable/ic_plus"
+                    android:scaleType="fitXY"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@id/txtBanner"
+                    app:layout_constraintStart_toStartOf="@id/txtBanner"
+                    app:layout_constraintEnd_toEndOf="@id/txtBanner"
+                     />
+
+
+                <TextView
                     android:id="@+id/txtStartUpIndia"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -259,9 +288,10 @@
                     android:text="@string/are_you_part_of"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp"
-                    app:layout_constraintEnd_toEndOf="@+id/edtUrl"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/edtUrl" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivBanner"/>
+
 
                 <CheckBox
                     android:id="@+id/chechBoxYes"
@@ -287,7 +317,7 @@
                     android:maxLines="1"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/black"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"

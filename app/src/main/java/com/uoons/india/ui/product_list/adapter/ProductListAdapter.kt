@@ -119,9 +119,9 @@ class ProductListAdapter(updatedProductsList: ArrayList<ProductListModel>, conte
                         .format(youSavePrice).toString() + " (" + discount + AppConstants.PERCENTAGE + ")" + " OFF"*/
             }
 
-            crdProduct.setOnClickListener(View.OnClickListener {
+            crdProduct.setOnClickListener{
                 onclick.invoke(productList!![position].pid.toString())
-            })
+            }
         }
     }
 

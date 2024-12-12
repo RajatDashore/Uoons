@@ -64,7 +64,6 @@ class Register : Fragment() {
         }
         binding!!.ivlogo.setOnClickListener {
             selectImage()
-
         }
         binding?.chechBoxYes?.setOnClickListener {
             count = count?.not()
@@ -101,11 +100,19 @@ class Register : Fragment() {
     private fun showSubmissionDialog() {
         val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.submit_register)
+        dialog.setCancelable(false)
         val cancel = dialog.findViewById<TextView>(R.id.cancel)
         val submit = dialog.findViewById<TextView>(R.id.submit)
 
         cancel.setOnClickListener { dialog.dismiss() }
         submit.setOnClickListener {
+            binding?.edtCompanyName!!.setText("")
+            binding?.edtPrice!!.setText("")
+            binding?.edtLongDesc!!.setText("")
+            binding?.edtShortDesc!!.setText("")
+            binding?.edtDPIIT!!.setText("")
+            binding?.ivlogo!!.setImageResource(R.drawable.ic_plus)
+            binding?.ivBanner!!.setImageResource(R.drawable.ic_plus)
             Toast.makeText(requireContext(), "Submitted successfully", Toast.LENGTH_SHORT).show()
             navController?.navigate(R.id.action_registerFragment_to_accountFragment)
             dialog.dismiss()

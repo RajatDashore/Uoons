@@ -12,7 +12,7 @@ import org.lsposed.lsparanoid.Obfuscate
 @Obfuscate
 class SalientFeaturesDataRecyclerAdapter : BaseRecyclerAdapter<RowProductSalientFeaturesBinding, Any, SalientFeaturesDataRecyclerAdapter.ViewHolder>(){
 
-    var salientFeaturesDataList: ArrayList<String> = ArrayList<String>()
+    private var salientFeaturesDataList: ArrayList<String> = ArrayList<String>()
     lateinit var context: Context
 
     fun setSalientFeaturesData(data: ArrayList<String>, context: Context){

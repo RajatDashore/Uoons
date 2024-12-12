@@ -94,9 +94,8 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         this.context = context
     }
 
-    fun setJwellaryItemsList(data: DeshBoardModel, context: Context) {
+    fun setJwellaryItemsList(data: DeshBoardModel) {
         this.allJwelleryItemList = data
-        this.context = context
     }
 
     private var customProductIdClickListener: OnProductIdClickListener? = null
@@ -241,9 +240,17 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         homeCategoryFragmentAdapter.setOnItemClickListener(object :
             HomeCategoryFragmentAdapter.OnItemClickListener {
             override fun onItemClicked(position: String, type: String) {
-                mainCustomClickListener?.onItemClicked(position, CATEGORIES_TYPE, type)
+                mainCustomClickListener?.onItemClicked(position, FOUR_PHOTOES, type)
             }
         })
+
+        fourPhotoesAdapter.setOnItemClickListener(
+            object : FourPhotoesAdapter.OnItemClickListener {
+                override fun onItemClicked(position: String, type: String) {
+                    mainCustomClickListener?.onItemClicked(position, CATEGORIES_TYPE, type)
+                }
+            }
+        )
 
 
         // Auto Sliders One Items
@@ -339,13 +346,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 }
             })
 
-        fourPhotoesAdapter.setOnItemClickListener(
-            object : FourPhotoesAdapter.OnItemClickListener {
-                override fun onItemClicked(position: String, type: String) {
-                    mainCustomClickListener?.onItemClicked(position, CATEGORIES_TYPE, type)
-                }
-            }
-        )
+
 
 
         when (allHomeItemsList.Data[position].id) {
@@ -420,7 +421,7 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var itemRecycler: RecyclerView = itemView.findViewById(R.id.rcvDeshboardCategory)
         fun bind(position: Int) {
             setCategoriesItemRecycler(itemRecycler, allHomeItemsList.Data[position].items)
-            Log.d("Click", "${allHomeItemsList.Data[position].id}")
+            //   Log.d("Click", "${allHomeItemsList.Data[position].id}")
         }
 
     }

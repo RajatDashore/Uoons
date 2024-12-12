@@ -2,7 +2,6 @@ package com.uoons.india.ui.home.fragment.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -14,7 +13,6 @@ import com.uoons.india.R
 import com.uoons.india.databinding.RowHomeAdvertisementBinding
 import com.uoons.india.ui.base.BaseRecyclerAdapter
 import com.uoons.india.ui.home.fragment.model.DeshBoardItems
-import com.uoons.india.utils.CommonUtils
 import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
@@ -22,7 +20,7 @@ class HomeAdvertisementAdapter :
     BaseRecyclerAdapter<RowHomeAdvertisementBinding, Any, HomeAdvertisementAdapter.ViewHolder>() {
 
     private var customProductIdClickListener: OnProductIdClickListener? = null
-    var advertisementItemList: ArrayList<DeshBoardItems>? = null
+    private var advertisementItemList: ArrayList<DeshBoardItems>? = null
     lateinit var context: Context
 
     interface OnProductIdClickListener {
@@ -41,12 +39,12 @@ class HomeAdvertisementAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int, type: Int) {
         holder.bind(advertisementItemList!![position])
 
-        holder.itemView.setOnClickListener(View.OnClickListener {
+        holder.itemView.setOnClickListener {
             customProductIdClickListener?.onProductIdClicked(
                 advertisementItemList!![position].id.toString(),
                 advertisementItemList!![position].sponsoredBy.toString()
             )
-        })
+        }
     }
 
     override fun onCreateViewHolder(
@@ -84,39 +82,31 @@ class HomeAdvertisementAdapter :
         fun loadImage(view: ImageView, url: String) {
             if (url.isEmpty()) {
                 try {
-                    if (url != null) {
-                        val newImageURL = BuildConfig.BASE_URL + url
-                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
-                            .load(newImageURL)
-                            .apply(
-                                RequestOptions().override(
-                                    view.layoutParams.width,
-                                    view.layoutParams.height
-                                )
+                    val newImageURL = BuildConfig.BASE_URL + url
+                    Glide.with(view.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                        .load(newImageURL)
+                        .apply(
+                            RequestOptions().override(
+                                view.layoutParams.width,
+                                view.layoutParams.height
                             )
-                            .placeholder(R.drawable.image_gray_color).into(view)
-                    } else {
-                        view!!.setImageResource(R.drawable.image_gray_color)
-                    }
+                        )
+                        .placeholder(R.drawable.image_gray_color).into(view)
                 } catch (e: java.lang.Exception) {
                     e.printStackTrace()
                 }
             } else {
                 try {
-                    if (url != null) {
-                        val newImageURL = BuildConfig.BASE_URL + url
-                        Glide.with(view!!.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
-                            .load(newImageURL)
-                            .apply(
-                                RequestOptions().override(
-                                    view.layoutParams.width,
-                                    view.layoutParams.height
-                                )
+                    val newImageURL = BuildConfig.BASE_URL + url
+                    Glide.with(view.context)  /*.setDefaultRequestOptions(RequestOptions().circleCrop())*/
+                        .load(newImageURL)
+                        .apply(
+                            RequestOptions().override(
+                                view.layoutParams.width,
+                                view.layoutParams.height
                             )
-                            .placeholder(R.drawable.image_gray_color).into(view)
-                    } else {
-                        view!!.setImageResource(R.drawable.image_gray_color)
-                    }
+                        )
+                        .placeholder(R.drawable.image_gray_color).into(view)
                 } catch (e: java.lang.Exception) {
                     e.printStackTrace()
                 }

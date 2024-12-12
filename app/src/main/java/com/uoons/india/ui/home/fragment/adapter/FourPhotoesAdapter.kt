@@ -24,7 +24,7 @@ class FourPhotoesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var customClickListener: OnItemClickListener? = null
     private var imagelist: ArrayList<Int> = ArrayList()
     private var textData: ArrayList<String> = ArrayList()
-    private val CartisonUrl =
+    private val cartisonUrl =
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrNc_6aYoQQ5NFzj6M9hbld1cXwCZepRILdg&s"
     private var categoryItemList: ArrayList<DeshBoardItems>? = null
     private val LottieView = 3
@@ -66,48 +66,52 @@ class FourPhotoesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             val lottieHolder = holder as LottieViewHolder
             lottieHolder.lottieText.text = textData[position]
             lottieHolder.lottieImage.playAnimation()
-            holder.itemView.setOnClickListener(View.OnClickListener {
+            categoryItemList!![position].cId.toString()
+            holder.itemView.setOnClickListener {
                 customClickListener?.onItemClicked(
-                    categoryItemList!![position].cId.toString(),
-                    categoryItemList!![position].category.toString()
+                    "445",
+                    "Jewellery"
                 )
-                Log.d("Click", "6 -> ${categoryItemList!![position].cId.toString()}")
-                Log.d("Click", "6 -> ${categoryItemList!![position].category.toString()}")
-                Toast.makeText(context, "Clicked lottie", Toast.LENGTH_SHORT).show()
-            })
+            }
+        } else if (position == 0) {
+            val simpleHolder = holder as SimpleViewHolder
+            Glide.with(holder.itemView.context)
+                .load(imagelist[position])
+                .into(simpleHolder.image)
+            simpleHolder.text.text = textData[position]
+            simpleHolder.itemView.setOnClickListener {
+                Toast.makeText(context, "Work in Progress", Toast.LENGTH_SHORT).show()
+            }
+
+            /* holder.itemView.setOnClickListener {
+                 customClickListener?.onItemClicked(
+                     "450",
+                     "Artisan Products"
+                 )
+             }
+             */
+        } else if (position == 1) {
+            val simpleHolder = holder as SimpleViewHolder
+            Glide.with(holder.itemView.context).load(cartisonUrl).into(simpleHolder.image)
+            simpleHolder.text.text = textData[position]
+            holder.itemView.setOnClickListener {
+                customClickListener?.onItemClicked("450", "Artisan Products")
+            }
         } else {
             val simpleHolder = holder as SimpleViewHolder
-            if (position == 1) {
-                Glide.with(holder.itemView.context)
-                    .load(CartisonUrl)
-                    .into(simpleHolder.image)
-                simpleHolder.text.text = textData[position]
-
-            } else {
-                Glide.with(holder.itemView.context)
-                    .load(imagelist[position])
-                    .into(simpleHolder.image)
-                simpleHolder.text.text = textData[position]
-
-
+            Glide.with(holder.itemView.context).load(imagelist[position]).into(simpleHolder.image)
+            simpleHolder.text.text = textData[position]
+            holder.itemView.setOnClickListener {
+                customClickListener?.onItemClicked("435", "Services")
             }
 
-            simpleHolder.itemView.setOnClickListener {
-                customClickListener?.onItemClicked(
-                    categoryItemList!![position].cId.toString(),
-                    categoryItemList!![position].category.toString()
-                )
-                //   Log.d("Click", "7 -> ${categoryItemList!![position].cId.toString()}")
-                //Log.d("Click", "7 -> ${categoryItemList!![position].category.toString()}")
-
-            }
         }
-
 
     }
 
+
     override fun getItemCount(): Int {
-        Log.d("size","size${categoryItemList!!.size}")
+        Log.d("size", "size${categoryItemList!!.size}")
         return categoryItemList!!.size
     }
 
