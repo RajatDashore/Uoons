@@ -4,7 +4,7 @@ import org.lsposed.lsparanoid.Obfuscate
 
 @Obfuscate
 object EndPoints {
-    const val JWELLARY = "api/getAllProductsByCategories?cat_id=445"
+    //const val JEWELLARY = "api/getAllProductsByCategories?cat_id=445"
     const val FAKE_IMAGE_API = "search?limit=10"
     const val SEND_OTP = "api/sendOTP"
     const val FORCE_UPDATE = "api/forceUpdate"

@@ -33,19 +33,32 @@ interface CommonNavigator {
 
     fun setStatusBarColor(color: Int)
 
-    fun showAlertDialog1Button(alertTitle: String = AppConstants.Uoons, alertMsg: String, buttonTitle: String = getStringResource(
-        R.string.ok), onClick: () -> Unit = {})
+    fun showAlertDialog1Button(
+        alertTitle: String = AppConstants.Uoons,
+        alertMsg: String,
+        buttonTitle: String = getStringResource(
+            R.string.ok
+        ),
+        onClick: () -> Unit = {}
+    )
 
     // fun showAlertCustomDialog1Button(alertTitle: String = AppConstants.Uoons, alertMsg: String, buttonTitle: String = getStringResource(R.string.update), onClick: () -> Unit = {})
 
-    fun showAlertDialog2Button(alertTitle: String = AppConstants.Uoons, alertMsg: String, button1Title: String = getStringResource(R.string.cancel), button2Title: String = getStringResource(R.string.ok), onClick1: () -> Unit = {}, onClick2: () -> Unit = {})
+    fun showAlertDialog2Button(
+        alertTitle: String = AppConstants.Uoons,
+        alertMsg: String,
+        button1Title: String = getStringResource(R.string.cancel),
+        button2Title: String = getStringResource(R.string.ok),
+        onClick1: () -> Unit = {},
+        onClick2: () -> Unit = {}
+    )
 
     //  fun showAlertCustomDialog2Button(alertTitle: String = AppConstants.Uoons, alertMsg: String, button1Title: String = getStringResource(R.string.Latter), button2Title: String = getStringResource(R.string.update), onClick1: () -> Unit = {}, onClick2: () -> Unit = {})
 
     fun onBackClick()
 
-    fun checkIfInternetOn() : Boolean
+    fun checkIfInternetOn(): Boolean
 
-    fun isConnectedToInternet() : Boolean
+    fun isConnectedToInternet(): Boolean
 
 }

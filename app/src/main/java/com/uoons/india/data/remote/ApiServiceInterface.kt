@@ -27,7 +27,6 @@ import com.uoons.india.data.remote.EndPoints.GET_USER_DETAILS
 import com.uoons.india.data.remote.EndPoints.GET_WISH_LIST
 import com.uoons.india.data.remote.EndPoints.HOME_PAGE_ITEMS_DATA
 import com.uoons.india.data.remote.EndPoints.INSERT_USER_DELIVER_ADDRESS
-import com.uoons.india.data.remote.EndPoints.JWELLARY
 import com.uoons.india.data.remote.EndPoints.LIKE_UNLIKE_QUESTION
 import com.uoons.india.data.remote.EndPoints.LIKE_UNLIKE_REVIEW
 import com.uoons.india.data.remote.EndPoints.ODERS_OF_BUNDLES
@@ -104,14 +103,6 @@ import retrofit2.http.Query
 
 @Obfuscate
 interface ApiServiceInterface {
-
-    /*  @GET(JWELLARY)
-      suspend fun JwellaryData(
-          @Header("Channel-Code") ChannelCode: String
-      ): DeshBoardModel
-
-     */
-
     @POST(SEND_OTP)
     suspend fun login(
         @Header("Channel-Code") ChannelCode: String,

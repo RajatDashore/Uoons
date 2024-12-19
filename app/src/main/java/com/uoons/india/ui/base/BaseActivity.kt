@@ -30,6 +30,7 @@ import com.uoons.india.data.remote.error.UnknownHostError
 import com.uoons.india.utils.*
 import org.lsposed.lsparanoid.Obfuscate
 
+@Suppress("DEPRECATION")
 @Obfuscate
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppCompatActivity(),
     CommonNavigator {

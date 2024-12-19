@@ -13,7 +13,6 @@ object AppConstants {
     const val Uoons = "Uoons"
     const val IMAGE = "image/*"
     const val Update_PlayStore_App = "https://play.google.com/store/apps/details?id=com.uoons.india"
-    const val Saas_image = "Saas_Image"
     const val LANGUAGE_ENGLISH = "en"
     const val Selected = "selected"
     const val ENGLISH = "English"

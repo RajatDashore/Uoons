@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
@@ -22,20 +21,38 @@ import org.lsposed.lsparanoid.Obfuscate
 class FourPhotoesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var context: Context? = null
     private var customClickListener: OnItemClickListener? = null
+    private var customProductIdClickListener: OnProductIdClickListener? = null
     private var imagelist: ArrayList<Int> = ArrayList()
     private var textData: ArrayList<String> = ArrayList()
     private val cartisonUrl =
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrNc_6aYoQQ5NFzj6M9hbld1cXwCZepRILdg&s"
     private var categoryItemList: ArrayList<DeshBoardItems>? = null
-    private val LottieView = 3
-    private val ViewTypes = 2
+    private var boatdataList: ArrayList<DeshBoardItems>? = null
+    private val lottieView = 3
+    private val viewTypes = 2
 
+
+    // For the Boat Advertisment
+    interface OnProductIdClickListener {
+        fun onProductIdClicked(pId: String, sponsoredName: String)
+    }
+
+    fun setOnItemClickListener(mItemClick: OnProductIdClickListener) {
+        this.customProductIdClickListener = mItemClick
+    }
+
+    // For the Categories of four images
     interface OnItemClickListener {
         fun onItemClicked(position: String, type: String)
     }
 
+
     fun setOnItemClickListener(mItemClick: OnItemClickListener) {
         this.customClickListener = mItemClick
+    }
+
+    fun setBoatData(data: ArrayList<DeshBoardItems>) {
+        this.boatdataList = data
     }
 
     fun setDataPhotes(
@@ -51,7 +68,7 @@ class FourPhotoesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == LottieView) {
+        return if (viewType == lottieView) {
             val view =
                 LayoutInflater.from(parent.context).inflate(R.layout.jwellary_lottie, parent, false)
             LottieViewHolder(view)
@@ -62,7 +79,7 @@ class FourPhotoesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (getItemViewType(position) == LottieView) {
+        if (getItemViewType(position) == lottieView) {
             val lottieHolder = holder as LottieViewHolder
             lottieHolder.lottieText.text = textData[position]
             lottieHolder.lottieImage.playAnimation()
@@ -79,17 +96,12 @@ class FourPhotoesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 .load(imagelist[position])
                 .into(simpleHolder.image)
             simpleHolder.text.text = textData[position]
-            simpleHolder.itemView.setOnClickListener {
-                Toast.makeText(context, "Work in Progress", Toast.LENGTH_SHORT).show()
+            holder.itemView.setOnClickListener {
+                customProductIdClickListener?.onProductIdClicked(
+                    "1", "Kayroo"
+                )
             }
 
-            /* holder.itemView.setOnClickListener {
-                 customClickListener?.onItemClicked(
-                     "450",
-                     "Artisan Products"
-                 )
-             }
-             */
         } else if (position == 1) {
             val simpleHolder = holder as SimpleViewHolder
             Glide.with(holder.itemView.context).load(cartisonUrl).into(simpleHolder.image)
@@ -117,9 +129,9 @@ class FourPhotoesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return if (position == imagelist.size - 1 && imagelist.size >= 4) {
-            LottieView
+            lottieView
         } else {
-            ViewTypes
+            viewTypes
         }
     }
 

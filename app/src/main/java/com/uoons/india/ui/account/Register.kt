@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -53,12 +54,12 @@ class Register : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        hideStatusBar()
 
-
-        // uri = createUri()
         binding!!.btnSubmit.setOnClickListener {
             checkForNullsValues()
         }
+
         binding!!.backButton.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
@@ -72,6 +73,13 @@ class Register : Fragment() {
 
 
         return binding?.root
+    }
+
+
+    fun hideStatusBar() {
+        requireActivity().window.decorView.systemUiVisibility =
+            View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        requireActivity().window.statusBarColor = Color.TRANSPARENT
     }
 
     private fun checkForNullsValues() {
@@ -138,7 +146,6 @@ class Register : Fragment() {
             checkAndOpenCamera()
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             startActivityForResult(intent, CAMERA_REQUEST_CODE)
-            // uri = createUri()
             bottomSheet.dismiss()
         }
 
@@ -148,12 +155,6 @@ class Register : Fragment() {
         }
 
         bottomSheet.show()
-    }
-
-
-    private fun createUri() {//: Uri? {
-        val uri = File(requireContext().filesDir, "camera_photo.png")
-        //return FileProvider.getUriForFile(requireContext(), "com.uoons.india", uri)
     }
 
 

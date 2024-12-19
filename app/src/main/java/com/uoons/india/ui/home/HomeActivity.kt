@@ -36,6 +36,7 @@ import com.uoons.india.utils.CommonUtils
 import org.lsposed.lsparanoid.Obfuscate
 import java.lang.RuntimeException
 
+@Suppress("DUPLICATE_LABEL_IN_WHEN")
 @Obfuscate
 class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeActivityNavigator {
     override val bindingVariable: Int = BR.homeActivityVM
@@ -173,18 +174,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityVM>(), HomeAc
             }
 
             AppConstants.Categories -> {
-                val bundle = bundleOf(
-                    AppConstants.ParentId to id,
-                    AppConstants.SubId to AppConstants.EMPTY,
-                    AppConstants.CName to name
-                )
-                val navController: NavController =
-                    Navigation.findNavController(this@HomeActivity, R.id.nav_host_fragment)
-                navController.navigateUp()
-                navController.navigate(R.id.productDetailFragment, bundle)
-            }
-
-            AppConstants.Jwellary -> {
                 val bundle = bundleOf(
                     AppConstants.ParentId to id,
                     AppConstants.SubId to AppConstants.EMPTY,

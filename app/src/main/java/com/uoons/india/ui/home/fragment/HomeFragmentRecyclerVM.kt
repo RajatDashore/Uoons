@@ -51,34 +51,6 @@ class HomeFragmentRecyclerVM : BaseViewModel<HomeFragmentNavigator>() {
     }
 
 
-    /*  fun getJwellaryData() {
-
-          if (!navigator!!.isConnectedToInternet()) {
-              return
-          }
-          viewModelScope.launch {
-              val result = Repository.get.getJwellaryData(AppConstants.CHANNEL_MODE)
-              result.fold(
-                  {
-                      navigator?.handleAPIFailure(it)
-
-                  },
-
-                  {
-                      if (it.status.equals(AppConstants.SUCCESS, ignoreCase = true)) {
-                          fourImageDataResponse.value = it
-                          navigator?.getJwellaryData()
-                      } else {
-                          it.status.equals(AppConstants.FAILURE, ignoreCase = true)
-                          navigator?.getJwellaryData()
-                      }
-                  })
-          }
-      }
-
-     */
-
-
     fun getMoreDeshBoardProducts(pageNo: Int, boolean: Boolean) {
         if (!navigator!!.isConnectedToInternet()) {
             return

@@ -9,9 +9,6 @@ interface HomeFragmentNavigator : CommonNavigator {
     fun naviGateToCategoryItemsFragment(subID: String, parentID: String, categoryName: String)
     fun naviGateToSliderItemsFragment(cId: String)
     fun getDeshBoardData()
-    fun navigateToFourPhoto(subID: String, parentID: String, categoryName: String)
-    fun navigateToSaasFragment()
     fun getDeshBoardMoreProductsData()
-    fun getJwellaryData()
     //  fun addRecentlyViewProductResponse()
 }

@@ -26,12 +26,12 @@ import java.text.NumberFormat
 import java.util.Locale
 
 @Obfuscate
-class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DeshBoardRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     //  private var LOG_TAG = DeshBoardRecyclerAdapter.Companion::class.Companion::class.java.name
 
 
     var allHomeItemsList: DeshBoardModel = DeshBoardModel()
-    var allJwelleryItemList: DeshBoardModel = DeshBoardModel()
+
 
     // Top most UI Component -> Home Category items
     private val homeCategoryFragmentAdapter = HomeCategoryFragmentAdapter()
@@ -60,11 +60,11 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     private var fourPhotoesAdapter = FourPhotoesAdapter()
 
     //For the Top Slider of the App in Home Screen
-    val imgList: ArrayList<Int> = arrayListOf<Int>()
+    private val imgList: ArrayList<Int> = arrayListOf()
 
     // For the four images on the homescreen and Saas Image
-    val image: ArrayList<Int> = arrayListOf<Int>()
-    var TextData: ArrayList<String> = arrayListOf<String>()
+    val image: ArrayList<Int> = arrayListOf()
+    private var TextData: ArrayList<String> = arrayListOf()
 
     // Slider Two Items
     private val sliderThreeAdapter = SliderThreeAdapter()
@@ -94,10 +94,6 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         this.context = context
     }
 
-    fun setJwellaryItemsList(data: DeshBoardModel) {
-        this.allJwelleryItemList = data
-    }
-
     private var customProductIdClickListener: OnProductIdClickListener? = null
 
     interface OnProductIdClickListener {
@@ -123,7 +119,6 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         const val MORE_ITEMS_TYPE = 12
         const val TRENDING_NOW_TYPE = 13
         const val FOUR_PHOTOES = 1
-        const val JWELLARY = 1
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -148,13 +143,6 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 val layout3: View = LayoutInflater.from(context)
                     .inflate(R.layout.home_price_store_layout, parent, false)
                 LayoutPriceStoreViewHolder(layout3)
-            }
-
-            FOUR_PHOTOES -> {
-                val layout14: View =
-                    LayoutInflater.from(context)
-                        .inflate(R.layout.home_deal_of_the_day_layout, parent, false)
-                LayoutDealOfTheDayViewHolder(layout14)
             }
 
 
@@ -232,18 +220,18 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     private inner class emptyViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-    }
+        RecyclerView.ViewHolder(itemView)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         // Home Categories Items
         homeCategoryFragmentAdapter.setOnItemClickListener(object :
             HomeCategoryFragmentAdapter.OnItemClickListener {
             override fun onItemClicked(position: String, type: String) {
-                mainCustomClickListener?.onItemClicked(position, FOUR_PHOTOES, type)
+                mainCustomClickListener?.onItemClicked(position, CATEGORIES_TYPE, type)
             }
         })
 
+        // For the click listener of the other three images
         fourPhotoesAdapter.setOnItemClickListener(
             object : FourPhotoesAdapter.OnItemClickListener {
                 override fun onItemClicked(position: String, type: String) {
@@ -251,6 +239,21 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 }
             }
         )
+        /*
+               **
+              //\\
+               ||
+        Four the that Boat icon click listener
+
+
+
+         */
+        fourPhotoesAdapter.setOnItemClickListener(object :
+            FourPhotoesAdapter.OnProductIdClickListener {
+            override fun onProductIdClicked(pId: String, sponsoredName: String) {
+                mainCustomClickListener?.onItemClicked(pId, ADVERTISEMENT_TYPE, sponsoredName)
+            }
+        })
 
 
         // Auto Sliders One Items
@@ -412,7 +415,6 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     override fun getItemCount(): Int {
-        //    Log.d("Click", "size is " + allHomeItemsList.Data.size)
         return allHomeItemsList.Data.size
     }
 
@@ -421,26 +423,9 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var itemRecycler: RecyclerView = itemView.findViewById(R.id.rcvDeshboardCategory)
         fun bind(position: Int) {
             setCategoriesItemRecycler(itemRecycler, allHomeItemsList.Data[position].items)
-            //   Log.d("Click", "${allHomeItemsList.Data[position].id}")
         }
 
     }
-
-
-    /*   private inner class LayoutFourPhotoesViewHolder(itemView: View) :
-           RecyclerView.ViewHolder(itemView) {
-           var recycler: RecyclerView = itemView.findViewById(R.id.rcvAllCategoryPhotoes)
-           fun bind(position: Int) {
-               LayoutDealOfTheDayViewHolderPhotoes(
-                   recycler,
-                   imageListFourPhotoes,
-                   allHomeItemsList.Data[position].items
-               )
-               Log.d("RajatTag", "1")
-           }
-
-       }
-     */
 
 
     private inner class LayoutSliderOneViewHolder(itemView: View) :
@@ -448,7 +433,6 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var slider: SliderView = itemView.findViewById(R.id.slider)
         fun bind(position: Int) {
             setSliderItemRecycler(slider, allHomeItemsList.Data[position].items)
-            Log.d("Click", "${allHomeItemsList.Data[position].id}")
         }
 
     }
@@ -458,7 +442,6 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var sliderTwo: SliderView = itemView.findViewById(R.id.sliderTwo)
         fun bind(position: Int) {
             setSliderTwoItemRecycler(sliderTwo, allHomeItemsList.Data[position].items)
-            Log.d("Click", "${allHomeItemsList.Data[position].id}")
         }
     }
 
@@ -546,26 +529,26 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                         Locale.getDefault()
                     ).format(allHomeItemsList.Data[position].items[2].productPrice?.toInt())
 
-                crdViewAllProducts.setOnClickListener({
+                crdViewAllProducts.setOnClickListener {
                     mainCustomClickListener?.onItemClicked(
                         allHomeItemsList.Data[position].id.toString(),
                         RECOMMENDED_ITEMS_TYPE,
                         allHomeItemsList.Data[position].name.toString()
                     )
-                })
+                }
 
                 llRecommendedOne.setOnClickListener {
 //                    Log.e(LOG_TAG,"ivRecommendedImageOne: "+allHomeItemsList.Data[position].items[0].pid.toString())
                     customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[0].pid.toString())
                 }
 
-                llRecommendedTwo.setOnClickListener({
+                llRecommendedTwo.setOnClickListener {
                     customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[1].pid.toString())
-                })
+                }
 
-                llRecommendedThree.setOnClickListener({
+                llRecommendedThree.setOnClickListener {
                     customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[2].pid.toString())
-                })
+                }
             } else {
                 try {
                     CommonUtils.loadImage(
@@ -605,26 +588,26 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                     txvMRPPriceThree.text =
                         context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productPrice
 
-                    crdViewAllProducts.setOnClickListener({
+                    crdViewAllProducts.setOnClickListener {
                         mainCustomClickListener?.onItemClicked(
                             allHomeItemsList.Data[position].id.toString(),
                             RECOMMENDED_ITEMS_TYPE,
                             allHomeItemsList.Data[position].name.toString()
                         )
-                    })
+                    }
 
-                    llRecommendedOne.setOnClickListener({
+                    llRecommendedOne.setOnClickListener {
 //                    Log.e(LOG_TAG,"ivRecommendedImageOne: "+allHomeItemsList.Data[position].items[0].pid.toString())
                         customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[0].pid.toString())
-                    })
+                    }
 
-                    llRecommendedTwo.setOnClickListener({
+                    llRecommendedTwo.setOnClickListener {
                         customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[0].pid.toString())
-                    })
+                    }
 
-                    llRecommendedThree.setOnClickListener({
+                    llRecommendedThree.setOnClickListener {
                         customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[0].pid.toString())
-                    })
+                    }
                 } catch (e: IndexOutOfBoundsException) {
                     Log.e("TAG", "bind: " + e.printStackTrace())
                 }
@@ -709,26 +692,26 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                         Locale.getDefault()
                     ).format(allHomeItemsList.Data[position].items[2].productPrice?.toInt())
 
-                crdViewAllProducts.setOnClickListener({
+                crdViewAllProducts.setOnClickListener {
                     mainCustomClickListener?.onItemClicked(
                         allHomeItemsList.Data[position].id.toString(),
                         SUGGESTION_FOR_TYPE,
                         allHomeItemsList.Data[position].name.toString()
                     )
-                })
+                }
 
-                llSuggestionOne.setOnClickListener({
+                llSuggestionOne.setOnClickListener {
 //  Log.e(LOG_TAG,"ivRecommendedImageOne: "+allHomeItemsList.Data[position].items[0].pid.toString())
                     customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[0].pid.toString())
-                })
+                }
 
-                llSuggestionTwo.setOnClickListener({
+                llSuggestionTwo.setOnClickListener {
                     customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[1].pid.toString())
-                })
+                }
 
-                llSuggestionThree.setOnClickListener({
+                llSuggestionThree.setOnClickListener {
                     customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[2].pid.toString())
-                })
+                }
             } else {
                 CommonUtils.loadImage(
                     ivRecommendedImageOne,
@@ -764,26 +747,26 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 txvMRPPriceThree.text =
                     context.getString(R.string.m_r_p) + " " + context.getString(R.string.rupees) + allHomeItemsList.Data[position].items[0].productPrice
 
-                crdViewAllProducts.setOnClickListener({
+                crdViewAllProducts.setOnClickListener {
                     mainCustomClickListener?.onItemClicked(
                         allHomeItemsList.Data[position].id.toString(),
                         SUGGESTION_FOR_TYPE,
                         allHomeItemsList.Data[position].name.toString()
                     )
-                })
+                }
 
-                llSuggestionOne.setOnClickListener({
+                llSuggestionOne.setOnClickListener {
 //                    Log.e(LOG_TAG,"ivRecommendedImageOne: "+allHomeItemsList.Data[position].items[0].pid.toString())
                     customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[0].pid.toString())
-                })
+                }
 
-                llSuggestionTwo.setOnClickListener({
+                llSuggestionTwo.setOnClickListener {
                     customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[0].pid.toString())
-                })
+                }
 
-                llSuggestionThree.setOnClickListener({
+                llSuggestionThree.setOnClickListener {
                     customProductIdClickListener?.onProductIdClicked(allHomeItemsList.Data[position].items[0].pid.toString())
-                })
+                }
             }
         }
     }
@@ -856,13 +839,13 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
                 )
             }
             categoryTitle?.text = allHomeItemsList.Data[position].name
-            crdViewAllProducts.setOnClickListener({
+            crdViewAllProducts.setOnClickListener {
                 mainCustomClickListener?.onItemClicked(
                     position.toString(),
                     NEW_ARRIVALS_TYPE,
                     allHomeItemsList.Data[position].name.toString()
                 )
-            })
+            }
         }
     }
 
@@ -898,19 +881,13 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var rcvAdvertisement: RecyclerView = itemView.findViewById(R.id.rcvAdvertisement)
         fun bind(position: Int) {
             setAdvertisementRecycler(rcvAdvertisement, allHomeItemsList.Data[position].items)
+            setBoatDataIn(allHomeItemsList.Data[position].items)
         }
     }
 
-    // Four images Layout //
-    /* private inner class LayoutDealOfTheDayViewHolderPhotoes(itemView: View) :
-         RecyclerView.ViewHolder(itemView) {
-         var itemRecycler: RecyclerView = itemView.findViewById(R.id.fourPhotoesRecycler)
-         fun bind(position: Int) {
-             setDealOfTheDayItemRecycler(itemRecycler, allHomeItemsList.Data[position].items)
-         }
-     }
-
-     */
+    private fun setBoatDataIn(data: ArrayList<DeshBoardItems>) {
+        fourPhotoesAdapter.setBoatData(data)
+    }
 
 
     private inner class LayoutTrendingNowViewHolder(itemView: View) :
@@ -921,13 +898,13 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         fun bind(position: Int) {
             setTrendingNowItemRecycler(itemRecycler, allHomeItemsList.Data[position].items)
             categoryTitle.text = allHomeItemsList.Data[position].name
-            crdViewAllProducts.setOnClickListener({
+            crdViewAllProducts.setOnClickListener {
                 mainCustomClickListener?.onItemClicked(
                     position.toString(),
                     TRENDING_NOW_TYPE,
                     allHomeItemsList.Data[position].name.toString()
                 )
-            })
+            }
         }
     }
 
@@ -968,18 +945,6 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
             LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         priceStoreItemsRecycler.adapter = priceStoreItemRecyclerAdapter
     }
-
-    // Used to show that four images on the Home Activity
-    /*  private fun SetFourPhotoesRecycler(
-          recycler: RecyclerView,
-          items: ArrayList<Int>,
-          itemCategory: ArrayList<DeshBoardItems>,
-      ) {
-          fourPhotoesAdapter.setData(itemCategory, context)
-          recycler.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
-          recycler.adapter = fourPhotoesAdapter
-      }
-     */
 
 
     private fun setRecentlyViewsRecycler(
@@ -1050,22 +1015,6 @@ class DeshBoardRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>
         sliderThreeView.startAutoCycle()
     }
 
-
-    /*  private fun setDealOfTheDayItemRecyclerPhotoes(
-          recyclerView: RecyclerView,
-          categoryItemList: ArrayList<DeshBoardItems>,
-      ) {
-          image.add(R.drawable.ic_settings)
-          image.add(R.drawable.ic_settings)
-          image.add(R.drawable.ic_settings)
-          image.add(R.drawable.ic_settings)
-          Log.d("fourPhoto", "setDealOfTheDayItemRecyclerPhotoes: $image")
-          fourPhotoesAdapter.setDataPhotes(categoryItemList,image,context)
-          recyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.HORIZONTAL, false)
-          recyclerView.adapter = fourPhotoesAdapter
-      }
-
-     */
 
     private fun setDealOfTheDayItemRecycler(
         recyclerView: RecyclerView,
