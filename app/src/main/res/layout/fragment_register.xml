@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_color"
-    android:fitsSystemWindows="true"
     tools:context=".ui.account.Register">
 
 
@@ -254,28 +253,27 @@
 
                 <TextView
                     android:id="@+id/txtBanner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:text="Select banner"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14ssp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/viewRefferalCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     tools:ignore="HardcodedText" />
 
                 <ImageView
                     android:id="@+id/ivBanner"
                     android:layout_width="@dimen/_150sdp"
                     android:layout_height="@dimen/_75sdp"
-                    android:src="@drawable/ic_plus"
-                    android:scaleType="fitXY"
                     android:layout_marginTop="@dimen/_10sdp"
-                    app:layout_constraintTop_toBottomOf="@id/txtBanner"
-                    app:layout_constraintStart_toStartOf="@id/txtBanner"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_plus"
                     app:layout_constraintEnd_toEndOf="@id/txtBanner"
-                     />
+                    app:layout_constraintStart_toStartOf="@id/txtBanner"
+                    app:layout_constraintTop_toBottomOf="@id/txtBanner" />
 
 
                 <TextView
@@ -289,9 +287,9 @@
                     android:text="@string/are_you_part_of"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/ivBanner"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivBanner" />
 
 
                 <CheckBox

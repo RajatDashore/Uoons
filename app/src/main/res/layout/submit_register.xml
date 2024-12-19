@@ -1,75 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/_140sdp"
-    android:layout_margin="@dimen/_10sdp"
-    android:fitsSystemWindows="true"
-    android:background="@color/primary_color"
-    android:foreground="?attr/selectableItemBackground"
-    android:padding="@dimen/_10sdp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground">
 
-    <LinearLayout
-        android:id="@+id/ll"
-        android:layout_width="0dp"
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/gray_bg"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:cardElevation="6dp"
+        app:contentPadding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/baseline_error_24"
-            android:drawablePadding="@dimen/_5sdp"
-            android:padding="@dimen/_5sdp"
-            android:text="Submit details"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_14ssp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5sdp"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="@string/are_you_sure"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/ivtxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Submit"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size18"
+                    android:textStyle="bold" />
 
 
-    <TextView
-        android:id="@+id/cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:foreground="?attr/selectableItemBackground"
-        android:padding="@dimen/_5sdp"
-        android:text="Cancel"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12ssp"
-        app:layout_constraintEnd_toStartOf="@id/submit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:foreground="?attr/selectableItemBackground"
-        android:padding="@dimen/_5sdp"
-        android:text="Submit"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/cancel"
-        app:layout_constraintTop_toBottomOf="@id/ll" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Confirm to submit the details ?"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size16" />
+
+
+            </LinearLayout>
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/txvMassage"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:layout_marginStart="@dimen/_10sdp"-->
+            <!--                android:layout_marginEnd="@dimen/_10sdp"-->
+            <!--                android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                android:fontFamily="@font/roboto_regular"-->
+            <!--                android:textSize="@dimen/text_size16"/>-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_30sdp"
+                    android:background="@drawable/update_border"
+                    android:backgroundTint="@color/primary_color"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/txtCancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:text="Cancel"
+                        android:textColor="@color/primary_color"
+                        android:textSize="@dimen/text_size16" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_30sdp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/primary_color"
+                    app:cardCornerRadius="@dimen/_11sdp">
+
+                    <TextView
+                        android:id="@+id/txtSubmit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Submit"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size16" />
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

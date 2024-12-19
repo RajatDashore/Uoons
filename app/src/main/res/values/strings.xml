@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!--    <string name="app_name">Uoons</string>-->
     <string name="facebook_app_id" translatable="false">451426460301235</string>
 
@@ -144,7 +144,7 @@
     <string name="sponsored" translatable="false">Sponsored</string>
     <string name="search_innovation" translatable="false">Search innovations...</string>
     <string name="are_you_part_of" translatable="false">Are you the part of Start up India ?</string>
-    <string name="are_you_sure">Are you sure to submit the details. All the details will be used to show on the app.</string>
+    <string name="are_you_sure" translatable="false">Are you sure to submit the details. All the details will be used to show on the app.</string>
 
 
     <!-- TODO: Account Screen -->
@@ -161,7 +161,7 @@
     <string name="Please_enter_the_exact_code_in_the_space_below">Please enter the exact code in the space below.</string>
     <string name="help">Help</string>
     <string name="settings">Settings</string>
-    <string name="security">Security</string>
+    <string name="security" tools:ignore="MissingTranslation">Security</string>
     <string name="rate_us">Rate us</string>
     <string name="legal_and_policies">Legal and Policies</string>
 

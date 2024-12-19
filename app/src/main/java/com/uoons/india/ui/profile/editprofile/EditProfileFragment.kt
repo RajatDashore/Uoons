@@ -53,35 +53,82 @@ import java.util.*
 
 
 @Obfuscate
-class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfileFragmentVM>(), EditProfileFrgamentNavigator {
+class EditProfileFragment : BaseFragment<FragmentEditProfilesBinding, EditProfileFragmentVM>(),
+    EditProfileFrgamentNavigator {
     override val bindingVariable: Int = BR.editProfileFragmentVM
     override val layoutId: Int = R.layout.fragment_edit_profiles
     override val viewModelClass: Class<EditProfileFragmentVM> = EditProfileFragmentVM::class.java
     private var navController: NavController? = null
-    private val lstGender = arrayOf("Please select gender","Male","Female","Other")
-    private val lstOccupation = arrayOf("Please select occupation","Job/Service","Housewife","Teacher","Business","Student","Others")
-    private val lstStates = arrayOf("Please select state","Andaman and Nicobar (UT)","Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chandigarh (UT)","Chhattisgarh",
-        "Dadra and Nagar Haveli (UT)","Daman and Diu (UT)","Delhi","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Lakshadweep (UT)",
-       "Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Orissa","Puducherry (UT)","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura",
-   "Uttar Pradesh","Uttarakhand","West Bengal")
-    var PID :String = ""
+    private val lstGender = arrayOf("Please select gender", "Male", "Female", "Other")
+    private val lstOccupation = arrayOf(
+        "Please select occupation",
+        "Job/Service",
+        "Housewife",
+        "Teacher",
+        "Business",
+        "Student",
+        "Others"
+    )
+    private val lstStates = arrayOf(
+        "Please select state",
+        "Andaman and Nicobar (UT)",
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar",
+        "Chandigarh (UT)",
+        "Chhattisgarh",
+        "Dadra and Nagar Haveli (UT)",
+        "Daman and Diu (UT)",
+        "Delhi",
+        "Goa",
+        "Gujarat",
+        "Haryana",
+        "Himachal Pradesh",
+        "Jammu and Kashmir",
+        "Jharkhand",
+        "Karnataka",
+        "Kerala",
+        "Lakshadweep (UT)",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Orissa",
+        "Puducherry (UT)",
+        "Punjab",
+        "Rajasthan",
+        "Sikkim",
+        "Tamil Nadu",
+        "Telangana",
+        "Tripura",
+        "Uttar Pradesh",
+        "Uttarakhand",
+        "West Bengal"
+    )
+    var PID: String = ""
     private var imageFilePath: String? = null
     private var mImageUri: Uri? = null
     private var picturePath = ""
     private var imageInputStream: InputStream? = null
-    private var arrayGenderAdapter : ArrayAdapter<String>? =  null
-    private var arrayOccupationAdapter : ArrayAdapter<String>? =  null
-    private var arrayStateAdapter : ArrayAdapter<String>? =  null
+    private var arrayGenderAdapter: ArrayAdapter<String>? = null
+    private var arrayOccupationAdapter: ArrayAdapter<String>? = null
+    private var arrayStateAdapter: ArrayAdapter<String>? = null
     private val permissionRequestCode = 200
 
-    override  fun init() {
+    override fun init() {
         mViewModel.navigator = this
         // Start shimmer animation
         viewDataBinding.shimmerEditProfileLayout.startShimmer()
         if (mViewModel.navigator!!.checkIfInternetOn()) {
             mViewModel.getUserDetailsApiCall()
-        }else{
-            mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons,resources.getString(R.string.please_check_internet_connection), onClick = {})
+        } else {
+            mViewModel.navigator!!.showAlertDialog1Button(
+                AppConstants.Uoons,
+                resources.getString(R.string.please_check_internet_connection),
+                onClick = {})
         }
     }
 
@@ -90,7 +137,7 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
         navController = Navigation.findNavController(view)
 //        PID= getActivity()?.let { getEncryptedSharedprefs(it).getString("PROFILE_ID", "") }.toString()
 
-        PID =    AppPreference.getValue(PreferenceKeys.PROFILE_ID)
+        PID = AppPreference.getValue(PreferenceKeys.PROFILE_ID)
         viewDataBinding.edtPhoneNumber.setText(AppPreference.getValue(PreferenceKeys.MOBILE_NO))
         viewDataBinding.toolbar.txvTitleName.text = resources.getString(R.string.edit_profile)
         viewDataBinding.toolbar.ivHeartVector.visibility = View.GONE
@@ -101,57 +148,74 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
             super.onBackClick()
         }
         //visibility hide about
-        viewDataBinding. edtAboutMe.visibility= View.GONE
-        viewDataBinding. txvAboutMe.visibility= View.GONE
+        viewDataBinding.edtAboutMe.visibility = View.GONE
+        viewDataBinding.txvAboutMe.visibility = View.GONE
         viewDataBinding.toolbar.ivCartVector.setOnClickListener(View.OnClickListener {
             if (mViewModel.navigator!!.checkIfInternetOn()) {
                 naviGateToMyCartFragment()
-            }else if (mViewModel.navigator!!.isConnectedToInternet()){
+            } else if (mViewModel.navigator!!.isConnectedToInternet()) {
                 return@OnClickListener
             }
         })
 
         // Sppiner For Gender
-        arrayGenderAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_dropdown_item_1line, lstGender)
+        arrayGenderAdapter = ArrayAdapter<String>(
+            view.context,
+            android.R.layout.simple_dropdown_item_1line,
+            lstGender
+        )
         viewDataBinding.sppinerGender.adapter = arrayGenderAdapter
 
         // Sppiner For Occupation
-        arrayOccupationAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_dropdown_item_1line, lstOccupation)
+        arrayOccupationAdapter = ArrayAdapter<String>(
+            view.context,
+            android.R.layout.simple_dropdown_item_1line,
+            lstOccupation
+        )
         viewDataBinding.sppinerOccupation.adapter = arrayOccupationAdapter
 
         // Sppiner For State
-        arrayStateAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_dropdown_item_1line, lstStates)
+        arrayStateAdapter = ArrayAdapter<String>(
+            view.context,
+            android.R.layout.simple_dropdown_item_1line,
+            lstStates
+        )
         viewDataBinding.sppinerState.adapter = arrayStateAdapter
 
 
-        viewDataBinding.edtAddress.visibility= View.GONE
-        viewDataBinding.txvAddressText.visibility= View.GONE
+        viewDataBinding.edtAddress.visibility = View.GONE
+        viewDataBinding.txvAddressText.visibility = View.GONE
     }
 
-    fun naviGateToMyCartFragment(){
+    fun naviGateToMyCartFragment() {
         navController?.navigate(R.id.action_editProfileFragment_to_myCartFragment)
     }
 
     override fun getUserDetailsData() {
-        if(view !=null){
-            mViewModel.getUserDetailsResponse.observe(viewLifecycleOwner, Observer<UserDetailsModel> {
-                if (it != null){
-                    setUserDetails(it)
-                }else{
-                    Toast.makeText(requireActivity(), "Error in fetching data", Toast.LENGTH_LONG).show()
-                }
-            })
+        if (view != null) {
+            mViewModel.getUserDetailsResponse.observe(
+                viewLifecycleOwner,
+                Observer<UserDetailsModel> {
+                    if (it != null) {
+                        setUserDetails(it)
+                    } else {
+                        Toast.makeText(
+                            requireActivity(),
+                            "Error in fetching data",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                })
         }
-
     }
 
     private fun setUserDetails(userDetails: UserDetailsModel) {
-        if (userDetails.Data[0].name.toString().isEmpty()){
+        if (userDetails.Data[0].name.toString().isEmpty()) {
             viewDataBinding.ivProfile.setImageResource(R.drawable.ic_profile)
-        }else{
-            if (userDetails.Data[0].profile.equals(AppConstants.assets_user)){
+        } else {
+            if (userDetails.Data[0].profile.equals(AppConstants.assets_user)) {
                 viewDataBinding.ivProfile.setImageResource(R.drawable.ic_profile)
-            }else{
+            } else {
                 Glide.with(this).load(userDetails.Data[0].profile).into(viewDataBinding.ivProfile)
             }
 
@@ -170,12 +234,14 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
                 viewDataBinding.sppinerGender.setSelection(spinnerPosition)
             }
 
-            val spinnerPositionState : Int? = arrayStateAdapter?.getPosition(userDetails.Data[0].state)
+            val spinnerPositionState: Int? =
+                arrayStateAdapter?.getPosition(userDetails.Data[0].state)
             if (spinnerPositionState != null) {
                 viewDataBinding.sppinerState.setSelection(spinnerPositionState)
             }
 
-            val spinnerPositionOccupation : Int? = arrayOccupationAdapter?.getPosition(userDetails.Data[0].occupation)
+            val spinnerPositionOccupation: Int? =
+                arrayOccupationAdapter?.getPosition(userDetails.Data[0].occupation)
             if (spinnerPositionOccupation != null) {
                 viewDataBinding.sppinerOccupation.setSelection(spinnerPositionOccupation)
             }
@@ -187,19 +253,41 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
     }
 
     override fun saveUserData() {
-        if (mViewModel.isValidField(strFullName = viewDataBinding.edtFullName.text.toString(), strEmail = viewDataBinding.edtEmail.text.toString(), strMobileNumber = viewDataBinding.edtPhoneNumber.text.toString()
-                ,strGender = viewDataBinding.sppinerGender.selectedItem.toString(), strLanguageSpoken = viewDataBinding.edtLanguageSpoken.text.toString(),
-                strAccoupation = viewDataBinding.sppinerOccupation.selectedItem.toString(), strAboutMe = viewDataBinding.edtAboutMe.text.toString(),
-                strAddress = viewDataBinding.edtAddress.text.toString(), strPinCode = viewDataBinding.edtPincode.text.toString(),
-                strCity = viewDataBinding.edtCity.text.toString(), strSate = viewDataBinding.sppinerState.selectedItem.toString()))
-        {
+        if (mViewModel.isValidField(
+                strFullName = viewDataBinding.edtFullName.text.toString(),
+                strEmail = viewDataBinding.edtEmail.text.toString(),
+                strMobileNumber = viewDataBinding.edtPhoneNumber.text.toString(),
+                strGender = viewDataBinding.sppinerGender.selectedItem.toString(),
+                strLanguageSpoken = viewDataBinding.edtLanguageSpoken.text.toString(),
+                strAccoupation = viewDataBinding.sppinerOccupation.selectedItem.toString(),
+                strAboutMe = viewDataBinding.edtAboutMe.text.toString(),
+                strAddress = viewDataBinding.edtAddress.text.toString(),
+                strPinCode = viewDataBinding.edtPincode.text.toString(),
+                strCity = viewDataBinding.edtCity.text.toString(),
+                strSate = viewDataBinding.sppinerState.selectedItem.toString()
+            )
+        ) {
             if (mViewModel.navigator!!.checkIfInternetOn()) {
-                mViewModel.saveUserApiCall(viewDataBinding.edtFullName.text.toString(),viewDataBinding.edtEmail.text.toString(),viewDataBinding.edtPhoneNumber.text.toString(),
-                    viewDataBinding.sppinerGender.selectedItem.toString(),viewDataBinding.edtLanguageSpoken.text.toString(),viewDataBinding.sppinerOccupation.selectedItem.toString(),
-                    viewDataBinding.edtAboutMe.text.toString(),viewDataBinding.edtAddress.text.toString(), viewDataBinding.edtPincode.text.toString(),viewDataBinding.edtCity.text.toString(),
-                    viewDataBinding.sppinerState.selectedItem.toString(),PID,activity)
-            }else{
-                mViewModel.navigator!!.showAlertDialog1Button(AppConstants.Uoons,resources.getString(R.string.please_check_internet_connection), onClick = {})
+                mViewModel.saveUserApiCall(
+                    viewDataBinding.edtFullName.text.toString(),
+                    viewDataBinding.edtEmail.text.toString(),
+                    viewDataBinding.edtPhoneNumber.text.toString(),
+                    viewDataBinding.sppinerGender.selectedItem.toString(),
+                    viewDataBinding.edtLanguageSpoken.text.toString(),
+                    viewDataBinding.sppinerOccupation.selectedItem.toString(),
+                    viewDataBinding.edtAboutMe.text.toString(),
+                    viewDataBinding.edtAddress.text.toString(),
+                    viewDataBinding.edtPincode.text.toString(),
+                    viewDataBinding.edtCity.text.toString(),
+                    viewDataBinding.sppinerState.selectedItem.toString(),
+                    PID,
+                    activity
+                )
+            } else {
+                mViewModel.navigator!!.showAlertDialog1Button(
+                    AppConstants.Uoons,
+                    resources.getString(R.string.please_check_internet_connection),
+                    onClick = {})
             }
         }
     }
@@ -217,27 +305,43 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
     }
 
     private fun checkPermission(): Boolean {
-        return ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+        return ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.CAMERA
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun requestPermission() {
-        ActivityCompat.requestPermissions(requireContext() as Activity, arrayOf(Manifest.permission.CAMERA), permissionRequestCode)
+        ActivityCompat.requestPermissions(
+            requireContext() as Activity,
+            arrayOf(Manifest.permission.CAMERA),
+            permissionRequestCode
+        )
     }
 
     override fun saveUserProfileImageResponse() {
-        if(view !=null){
-            mViewModel.saveUserProfileImageResposne.observe(viewLifecycleOwner,Observer<ProfileImageModel>{
-                if (it != null){
-                    context?.let { it2 ->setProfileImage(it,it2) }
-                }else{
-                    Toast.makeText(requireActivity(), "Error in fetching data", Toast.LENGTH_LONG).show()
-                }
-            })
+        if (view != null) {
+            mViewModel.saveUserProfileImageResposne.observe(
+                viewLifecycleOwner,
+                Observer<ProfileImageModel> {
+                    if (it != null) {
+                        context?.let { it2 -> setProfileImage(it, it2) }
+                    } else {
+                        Toast.makeText(
+                            requireActivity(),
+                            "Error in fetching data",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                })
         }
     }
 
     private fun setProfileImage(profileImageModel: ProfileImageModel, context: Context) {
-        AppPreference.addValue(PreferenceKeys.PROFILE_IMAGE,profileImageModel.Data?.fullPath.toString())
+        AppPreference.addValue(
+            PreferenceKeys.PROFILE_IMAGE,
+            profileImageModel.Data?.fullPath.toString()
+        )
         Glide.with(this).load(picturePath).into(viewDataBinding.ivProfile)
     }
 
@@ -251,7 +355,7 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
         selectImageDialog?.setCancelable(true)
         selectImageDialog?.setCanceledOnTouchOutside(true)
         selectImageDialog?.setContentView(R.layout.image_picker_dialog)
-        val window: Window =  requireActivity().window
+        val window: Window = requireActivity().window
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         selectImageDialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val takePhoto = selectImageDialog.findViewById<RelativeLayout>(R.id.takePhoto)
@@ -283,7 +387,6 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
     }
 
 
-
     private val SAMPLE_CROPPED_IMAGE_NAME = "UoonsCropImage"
 
     private fun startCrop(uri: Uri) {
@@ -302,7 +405,15 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
         if (requestCode == AppConstants.GALLERY_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
             val selectedImage: Uri? = data?.data
             val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
-            val cursor: Cursor? = selectedImage?.let { context?.contentResolver?.query(it, filePathColumn, null, null, null) }
+            val cursor: Cursor? = selectedImage?.let {
+                context?.contentResolver?.query(
+                    it,
+                    filePathColumn,
+                    null,
+                    null,
+                    null
+                )
+            }
             cursor?.moveToFirst()
             val columnIndex = cursor?.getColumnIndex(filePathColumn[0])
             picturePath = columnIndex?.let { cursor.getString(it) }.toString()
@@ -315,15 +426,25 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
                 e.printStackTrace()
             }
         } else if (requestCode == AppConstants.CAMERA_REQUEST) {
-            Log.e("","EditFRagment_IS:======")
+            Log.e("", "EditFRagment_IS:======")
             when (resultCode) {
                 Activity.RESULT_OK -> {
                     startCrop(mImageUri!!)
                 }
+
                 Activity.RESULT_CANCELED -> // user cancelled Image capture
-                    Toast.makeText(context, getStringResource(R.string.cancel_image_capture), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        getStringResource(R.string.cancel_image_capture),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
                 else -> // failed to capture image
-                    Toast.makeText(context, getStringResource(R.string.fail_image_capture), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        getStringResource(R.string.fail_image_capture),
+                        Toast.LENGTH_SHORT
+                    ).show()
             }
         } else if (requestCode == UCrop.REQUEST_CROP) {
             if (data != null) {
@@ -344,7 +465,13 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
                 // Error occurred while creating the File
             }
             if (photoFile != null) {
-                mImageUri = context?.let { FileProvider.getUriForFile(requireContext(), "com.uoons.india", photoFile) }
+                mImageUri = context?.let {
+                    FileProvider.getUriForFile(
+                        requireContext(),
+                        "com.uoons.india",
+                        photoFile
+                    )
+                }
                 pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri)
                 activity?.startActivityForResult(pictureIntent, AppConstants.CAMERA_REQUEST)
             }
@@ -359,10 +486,17 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
     /*Helper Methods*/
     @Throws(IOException::class)
     private fun createImageFile(context: Context): File {
-        val timeStamp = SimpleDateFormat(AppConstants.createImageFileDateFile, Locale.getDefault()).format(Date())
+        val timeStamp = SimpleDateFormat(
+            AppConstants.createImageFileDateFile,
+            Locale.getDefault()
+        ).format(Date())
         val imageFileName = AppConstants.IMG_ + timeStamp + "_"
         val storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        val image = File.createTempFile(imageFileName, /* prefix */".jpg", /* suffix */storageDir      /* directory */)
+        val image = File.createTempFile(
+            imageFileName, /* prefix */
+            ".jpg", /* suffix */
+            storageDir      /* directory */
+        )
         imageFilePath = image.absolutePath
         return image
     }
@@ -410,7 +544,7 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
             //val resultUri = result.getUri()
             picturePath = context?.let { getRealPathFromURI(it, resultUri) }!!
 
-            val file=File(picturePath)
+            val file = File(picturePath)
             // Get length of file in bytes
             val fileSizeInBytes = file.length()
             // Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
@@ -418,10 +552,9 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
             // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
             val fileSizeInMB = fileSizeInKB / 1024
             if (fileSizeInMB > 5) {
-                picturePath=""
+                picturePath = ""
                 mViewModel.navigator!!.showValidationError(getString(R.string.image_length))
-            }
-            else{
+            } else {
                 mViewModel.saveUserProfilePic(picturePath)
                 viewDataBinding.ivProfile.setImageURI(resultUri)
                 Glide.with(this).load(picturePath).into(viewDataBinding.ivProfile)
@@ -438,17 +571,17 @@ class EditProfileFragment: BaseFragment<FragmentEditProfilesBinding, EditProfile
     //////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////// END CODE FOR PIC IMAGE FROM CAMERA AND GALLERY //////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-    fun getEncryptedSharedprefs(context: Context): SharedPreferences {
+    /*
+        fun getEncryptedSharedprefs(context: Context): SharedPreferences {
 
-        val masterkeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
-        return EncryptedSharedPreferences.create(
-            "secured_prefs", masterkeyAlias, context ,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
+            val masterkeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+            return EncryptedSharedPreferences.create(
+                "secured_prefs", masterkeyAlias, context ,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
 
-    }
-*/
+        }
+    */
 
 }

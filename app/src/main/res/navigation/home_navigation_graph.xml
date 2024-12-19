@@ -310,6 +310,21 @@
             app:popUpTo="@+id/homeFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
+    <fragment android:id="@+id/activitySaasMain"
+        tools:layout="@layout/activity_main_saas"
+        android:label="saasMainActivity">
+
+        <action android:id="@+id/action_activityMainSaas_to_fragment_saas_show_data"
+            app:destination=""/>
+
+
+
+
+    </fragment>
+
+    <fra
+
     <fragment
         android:id="@+id/searchingItemFragment"
         android:name="com.uoons.india.ui.searching.SearchingItemFragment"

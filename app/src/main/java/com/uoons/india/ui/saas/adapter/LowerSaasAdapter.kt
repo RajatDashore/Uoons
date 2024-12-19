@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.uoons.india.R
@@ -17,6 +18,8 @@ class LowerSaasAdapter : RecyclerView.Adapter<LowerSaasAdapter.LowerSaasViewHold
 
     private lateinit var context: Context
     private var allItemList: ArrayList<CatImagesItem> = ArrayList()
+
+    private var navController:NavController? = null
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -48,6 +51,11 @@ class LowerSaasAdapter : RecyclerView.Adapter<LowerSaasAdapter.LowerSaasViewHold
             holder.off.text = item.width.toString()
         } catch (e: Exception) {
             Log.d("result", "Exception: $e")
+        }
+
+
+        holder.itemView.setOnClickListener {
+            navController?.navigate(R.id.action_searchingItemFragment_to_searchItemsFragment)
         }
     }
 
